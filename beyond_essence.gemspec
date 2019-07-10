@@ -16,4 +16,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = "https://github.com/ePages-de/beyond_essence"
 
   spec.files         = `git ls-files`.split("\n")
+
+  spec.add_dependency "bourbon", "~> 5.1"
+  spec.add_dependency "neat",    "~> 3.0"
 end
