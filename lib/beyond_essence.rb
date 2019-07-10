@@ -1,6 +1,5 @@
 require "beyond_essence/version"
 
 module BeyondEssence
-  class Error < StandardError; end
-  # Your code goes here...
+  class Engine < ::Rails::Engine; end
 end
