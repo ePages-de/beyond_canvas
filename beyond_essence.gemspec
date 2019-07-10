@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
     Beyond Essence is an open-source framework that provides CSS styles for apps
     designed and developed for the online shop software Beyond
   DESC
-  spec.homepage      = "https://github.com/ePages-de/beyond-ruby_sdk"
+  spec.homepage      = "https://github.com/ePages-de/beyond_essence"
 
   spec.files         = `git ls-files`.split("\n")
 end
