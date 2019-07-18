@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
     designed and developed for the online shop software Beyond
   DESC
   spec.homepage      = "https://github.com/ePages-de/beyond_canvas"
+  spec.license       = "MIT"
 
   spec.files         = `git ls-files`.split("\n")
 
