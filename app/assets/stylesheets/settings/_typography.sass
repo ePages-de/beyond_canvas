@@ -6,18 +6,18 @@ html
 body, #{$all-text-inputs}, #{$all-buttons}, select
   -moz-osx-font-smoothing: grayscale
   -webkit-font-smoothing: antialiased
-  font-family: $main-font-family
+  font-family: unquote($main-font-family)
   font-size: $main-font-size
   font-weight: normal
-  line-height: $main-line-height
 
 body, #{$all-text-inputs}, select
   color: $main-color
+  line-height: $main-line-height
 
 h1, h2, h3, h4, h5, h6
-  font-family: $title-font-family
+  color: $headline-color
   font-weight: bold
-  line-height: $title-line-height
+  line-height: $headline-line-height
 
 h1
   font-size: 5.6rem

@@ -1,30 +1,73 @@
 // Colors
 
-$primary-color:     rgb(78, 183, 168)
-$secondary-color:   rgb(28, 53, 69)
-$cancel-color:      rgb(153, 153, 153)
-$danger-color:      rgb(218, 60, 60)
+$white:                       rgb(255, 255, 255) !global
+$black:                       rgb(0, 0, 0) !global
 
-$white:             rgb(255, 255, 255)
-$black:             rgb(0, 0, 0)
+$palette-primary:             rgb(78, 183, 168) !default
+$palette-secondary:           rgb(28, 53, 69) !default
+$palette-cancel:              rgb(153, 153, 153) !default
+$palette-danger:              rgb(218, 60, 60) !default
 
-$main-background:   rgb(233, 232, 220)
+// General styles
 
-// Styles
-
-$main-box-shadow:   0 2px 7px rgba($black, .2)
-$main-transition:   .125s ease-in
-$main-padding:      2.5rem
+$main-background:             rgb(233, 232, 220) !default
+$main-transition:             .125s ease-in !global
 
 // Typography
 
-$main-font-family:  'Roboto', sans-serif
-$main-color:        rgb(62, 62, 62)
-$main-line-height:  1.5
-$main-font-size:    1.6rem
+$main-font-family:            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif' !global
+$main-color:                  rgb(62, 62, 62) !default
+$main-line-height:            1.5 !global
+$main-font-size:              14px !global
 
-$title-font-family: 'Montserrat', sans-serif
-$title-color:       rgb(122, 118, 76)
-$title-line-height: 1.3
+// Headlines
 
-$link-color:        $primary-color
+$headline-color:              rgb(122, 118, 76) !default
+$headline-line-height:        1 !global
+
+// Links
+
+$link-primary-color:          darken($palette-primary, 10%) !default
+$link-secondary-color:        darken($palette-cancel, 10%) !default
+$link-danger-color:           darken($palette-danger, 10%) !default
+
+// Buttons
+
+$button-primary-background:   $palette-primary !default
+$button-primary-color:        $white !default
+
+$button-secondary-background: $palette-cancel !default
+$button-secondary-color:      $white !default
+
+$button-danger-background:    $palette-danger !default
+$button-danger-color:         $white !default
+
+$button-border-radius:        3px !default
+$button-box-shadow:           0 2px 0 !default
+$button-font-weight:          700 !global
+$button-padding:              6px 12px !global
+
+// Cards
+
+$card-border-radius:          3px !default
+$card-box-shadow:             0 2px 7px rgba($black, .2) !default
+$card-padding:                40px !global
+$card-margin:                 30px !global
+
+// Labels
+
+$label-color:                 rgb(128, 128, 128) !default
+
+// Text inputs
+
+$input-border-color:          rgb(217, 216, 195) !default
+$input-border-color-focus:    $palette-primary !default
+
+// Hints
+
+$hint-color:                  rgb(158, 158, 158) !default
+
+// Logo
+
+$logo-width-public:           238px !default
+$logo-margin-top-public:      0 !default
