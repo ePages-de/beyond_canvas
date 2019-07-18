@@ -1,0 +1,18 @@
+doctype html
+
+html
+  head
+    = csrf_meta_tags
+    meta content='width=device-width, initial-scale=1.0' name='viewport' /
+    = render 'beyond_canvas/custom/public_head'
+
+  body.body--public
+    main.main class=("#{params[:controller].gsub(/[\/_]/, "-")}--#{params[:action]}")
+      .main-wrapper
+        - logo = Dir["app/assets/images/logo.*"].first
+        - unless logo.nil?
+          - if File.extname(logo) == '.svg'
+            = inline_svg File.basename(logo), class: 'logo'
+          - else
+            = image_tag File.basename(logo), class: 'logo'
+        = yield
