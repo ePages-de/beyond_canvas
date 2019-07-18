@@ -1,0 +1,11 @@
+%card
+  background: $white
+  border-radius: $card-border-radius
+  box-shadow: $card-box-shadow
+
+.card
+
+  &--padding
+    @extend %card
+    +padding($card-padding)
+    box-sizing: border-box

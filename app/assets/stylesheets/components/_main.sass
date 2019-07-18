@@ -1,0 +1,15 @@
+%body
+  background-color: $main-background
+
+.body--public
+  @extend %body
+
+  .main-wrapper
+    +margin(32px auto)
+    max-width: 531px
+    width: 94%
+
+    .logo
+      +margin($logo-margin-top-public auto 34px)
+      display: block
+      width: $logo-width-public
