@@ -10,6 +10,19 @@
     width: 94%
 
     .logo
-      +margin($logo-margin-top-public auto 34px)
+      +margin($logo-margin-top-public auto $logo-margin-bottom-public)
       display: block
-      width: $logo-width-public
+      width: 238px
+
+.body--single-page
+  @extend %body
+
+  .main-wrapper
+    +margin(32px auto)
+    max-width: 876px
+    width: 94%
+
+    .logo
+      +margin($logo-margin-top-public auto $logo-margin-bottom-public)
+      display: block
+      width: 238px
