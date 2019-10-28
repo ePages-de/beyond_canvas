@@ -5,10 +5,12 @@ html
     = csrf_meta_tags
     meta content='width=device-width, initial-scale=1.0' name='viewport' /
     link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" rel="stylesheet" /
+    script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
     = render 'beyond_canvas/custom/public_head'
 
   body.body--public
     main.main class=("#{params[:controller].gsub(/[\/_]/, "-")}--#{params[:action]}")
+      = render 'beyond_canvas/flash'
       .main-wrapper
         - logo = Dir["app/assets/images/logo.*"].first
         - unless logo.nil?

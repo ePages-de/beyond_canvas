@@ -1,0 +1,6 @@
+- flash.each do |key, value|
+  .flash
+    i.flash__icon class="flash__icon--#{key} #{get_flash_icon(key)}"
+
+    .flash__message = value
+    i.fas.fa-times.flash__close
