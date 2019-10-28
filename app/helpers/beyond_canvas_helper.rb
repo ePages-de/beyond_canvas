@@ -12,4 +12,19 @@ module BeyondCanvasHelper
       name
     end
   end
+
+  def get_flash_icon(key)
+    case key
+    when 'success'
+      "fas fa-check"
+    when 'notice'
+      "fas fa-info"
+    when 'warning'
+      "fas fa-exclamation"
+    when 'error'
+      "far fa-times-circle"
+    else
+      "fas fa-info"
+    end
+  end
 end
