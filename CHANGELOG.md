@@ -1,3 +1,15 @@
+### v0.4.0.pre
+
+* bug-fixes
+  * Fix transparent button bottom border
+  * Fix list styles
+
+* features
+  * Add table styles
+  * Add comment styles
+  * Add margin styles
+  * Add input type file
+
 ### v0.3.0.pre
 
 * features

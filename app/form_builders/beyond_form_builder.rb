@@ -17,21 +17,11 @@ class BeyondFormBuilder < ActionView::Helpers::FormBuilder
     end
   end
 
-  def email_field(attribute, args = {})
-    field_wrapper(attribute, args) do
-      super(attribute, args)
-    end
-  end
-
-  def text_field(attribute, args = {})
-    field_wrapper(attribute, args) do
-      super(attribute, args)
-    end
-  end
-
-  def password_field(attribute, args = {})
-    field_wrapper(attribute, args) do
-      super(attribute, args)
+  [:email, :text, :password, :file].each do |method|
+    define_method :"#{method}_field" do |attribute, args = {}|
+      field_wrapper(attribute, args) do
+        super(attribute, args)
+      end
     end
   end
 end
