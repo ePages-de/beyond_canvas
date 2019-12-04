@@ -1,3 +1,8 @@
+### v0.5.0.pre
+
+* features
+  * Add select box styles
+
 ### v0.4.0.pre
 
 * bug-fixes
