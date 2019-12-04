@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module BeyondCanvasHelper
   def link_to_with_icon(name = nil, options = nil, fa_icon_class = nil, html_options = nil)
     options ||= {}
@@ -15,13 +17,13 @@ module BeyondCanvasHelper
 
   def get_flash_icon(key)
     case key
-    when 'success'
+    when "success"
       "fas fa-check"
-    when 'notice'
+    when "notice"
       "fas fa-info"
-    when 'warning'
+    when "warning"
       "fas fa-exclamation"
-    when 'error'
+    when "error"
       "far fa-times-circle"
     else
       "fas fa-info"
