@@ -1,15 +1,26 @@
-#{$all-text-inputs}
+#{$all-text-inputs},
+select
   background-color: $white
   border: 1px solid $input-border-color
   border-radius: 3px
   box-sizing: border-box
-  line-height: 1
   outline: none
   padding: 6px 8px
   width: 100%
 
-#{$all-text-inputs-focus}
+#{$all-text-inputs}
+  line-height: 1
+
+#{$all-text-inputs-focus},
+select:focus
   border-color: $input-border-color-focus
+
+select
+  +prefixer(appearance, none, ('webkit', 'moz'))
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, $input-border-color, $input-border-color)
+  background-position: calc(100% - 19px) calc(1em + -1px), calc(100% - 15px) calc(1em + -1px), calc(100% - 2.5em) 0.5em
+  background-size: 4px 4px, 4px 4px, 0 0
+  background-repeat: no-repeat
 
 .input
 
