@@ -38,4 +38,12 @@ module BeyondCanvasHelper
       end
     end
   end
+
+  def logo_image_tag(logo)
+    if logo =~ URI::regexp
+      image_tag logo, class: "logo"
+    else
+      image_tag File.basename(logo), class: "logo"
+    end
+  end
 end
