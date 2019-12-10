@@ -1,0 +1,47 @@
+.notice
+  align-items: center
+  border-radius: $notice-border-radius
+  box-sizing: border-box
+  display: flex
+  padding: 10px 15px
+
+  &--success
+    background-color: lighten($notice-success-background, 25%)
+
+    .notice__icon
+      background-color: darken($notice-success-background, 10%)
+      color: lighten($notice-success-background, 25%)
+
+  &--info
+    background-color: lighten($notice-info-background, 25%)
+
+    .notice__icon
+      background-color: darken($notice-info-background, 10%)
+      color: lighten($notice-info-background, 25%)
+
+  &--warning
+    background-color: lighten($notice-warning-background, 25%)
+
+    .notice__icon
+      background-color: darken($notice-warning-background, 10%)
+      color: lighten($notice-warning-background, 25%)
+
+  &--error
+    background-color: lighten($notice-error-background, 25%)
+
+    .notice__icon
+      background-color: darken($notice-error-background, 10%)
+      color: lighten($notice-error-background, 25%)
+
+  &__icon
+    +size(18px)
+    align-items: center
+    border-radius: 100%
+    display: flex
+    font-size: 12px
+    justify-content: center
+    margin-right: 15px
+    min-width: 18px
+
+  &__message
+    color: $notice-color

@@ -29,4 +29,13 @@ module BeyondCanvasHelper
       "fas fa-info"
     end
   end
+
+  [:success, :info, :warning, :error].each do |method|
+    define_method :"notice_#{method}" do |message|
+      content_tag("div".freeze, class: "notice notice--#{method}") do
+        content_tag("i".freeze, nil, class: "notice__icon #{get_flash_icon(method.to_s)}") +
+        content_tag("span".freeze, message, class: "notice__message")
+      end
+    end
+  end
 end
