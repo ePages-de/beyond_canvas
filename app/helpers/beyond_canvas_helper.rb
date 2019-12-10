@@ -19,7 +19,7 @@ module BeyondCanvasHelper
     case key
     when "success"
       "fas fa-check"
-    when "notice"
+    when "info"
       "fas fa-info"
     when "warning"
       "fas fa-exclamation"
