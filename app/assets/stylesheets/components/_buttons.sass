@@ -1,29 +1,36 @@
 %button
   +padding($button-padding)
+  @if $button-box-shadow != true
+    padding-top: 7px
   border-radius: $button-border-radius
+  border-width: 1px
+  border-style: solid
   cursor: pointer
   font-weight: $button-font-weight
+  line-height: 1
   outline: none
   transition: $main-transition
 
 @mixin button-solid($background, $color)
-  @if $button-box-shadow != 0
-    box-shadow: $button-box-shadow darken($background, 10%)
   +background-color-darken($background, 10%)
-  border: 0
   color: $color
 
+  &:hover
+    border-color: darken($background, 10%)
+
 @mixin button-transparent($background)
-  @if $button-box-shadow != 0
-    box-shadow: $button-box-shadow darken($background, 10%)
-  +border-width(1px 1px 0)
   background-color: transparent
   border-color: $background
-  border-style: solid
   color: $background
 
   &:hover
     background-color: lighten($background, 40%)
+
+@mixin button-border($background)
+  @if $button-box-shadow == true
+    border-bottom-width: 2px
+    border-color: $background
+    border-bottom-color: darken($background, 10%)
 
 
 .button
@@ -33,25 +40,31 @@
     &--primary
       @extend %button
       +button-solid($button-primary-background, $button-primary-color)
+      +button-border($button-primary-background)
 
     &--secondary
       @extend %button
       +button-solid($button-secondary-background, $button-secondary-color)
+      +button-border($button-secondary-background)
 
     &--danger
       @extend %button
       +button-solid($button-danger-background, $button-danger-color)
+      +button-border($button-danger-background)
 
   &__transparent
 
     &--primary
       @extend %button
       +button-transparent($button-primary-background)
+      +button-border($button-primary-background)
 
     &--secondary
       @extend %button
       +button-transparent($button-secondary-background)
+      +button-border($button-secondary-background)
 
     &--danger
       @extend %button
       +button-transparent($button-danger-background)
+      +button-border($button-danger-background)
