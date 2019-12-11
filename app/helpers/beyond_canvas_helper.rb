@@ -40,10 +40,10 @@ module BeyondCanvasHelper
   end
 
   def logo_image_tag(logo)
-    if logo =~ URI::regexp
-      image_tag logo, class: "logo"
+    if File.extname(logo) == '.svg'
+      inline_svg logo, class: 'logo', alt: 'logo'
     else
-      image_tag File.basename(logo), class: "logo"
+      image_tag logo, class: 'logo', alt: 'logo'
     end
   end
 end
