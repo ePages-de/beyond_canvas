@@ -1,3 +1,21 @@
+### v0.6.0.pre
+
+* deprecations
+  * Rename `notice` flash types in favor of `info` flash types
+  * Rename `beyond_canvas:form_utils:install` rake task in favor of `beyond_canvas:install`
+
+* bug-fixes
+  * Fix `p` tag `font-size` and change `rem` to `px` on typography
+  * Fix button styles
+
+* enhancements
+  * Update how the public layout logo is handled. Now the logo is set via `config/initializers/beyond_canvas.rb` initializer and it also supports web URLs
+
+* features
+  * Add notice boxes
+  * Add custom styles generator
+  * Add a rake task (`beyond_canvas:release:prepare`) that creates or updates the `beyond_canvas_custom_styles.sass` generator template
+
 ### v0.5.0.pre
 
 * features
