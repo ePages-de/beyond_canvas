@@ -1,3 +1,8 @@
+### v0.6.1.pre
+
+* bug-fixes
+  * Fix `logo_image_tag`
+
 ### v0.6.0.pre
 
 * deprecations
