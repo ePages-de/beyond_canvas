@@ -1,37 +1,48 @@
+// ************************************************************
 // Colors
+// ************************************************************
 
 $white:                       rgb(255, 255, 255) !global
 $black:                       rgb(0, 0, 0) !global
-
 $palette-primary:             rgb(78, 183, 168) !default
 $palette-secondary:           rgb(28, 53, 69) !default
 $palette-cancel:              rgb(153, 153, 153) !default
 $palette-danger:              rgb(218, 60, 60) !default
 
+// ************************************************************
 // General styles
+// ************************************************************
 
 $main-background:             rgb(233, 232, 220) !default
 $main-transition:             .125s ease-in !global
 
+// ************************************************************
 // Typography
+// ************************************************************
 
 $main-font-family:            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif' !global
 $main-color:                  rgb(62, 62, 62) !default
 $main-line-height:            1.5 !global
 $main-font-size:              14px !global
 
+// ************************************************************
 // Headlines
+// ************************************************************
 
 $headline-color:              rgb(122, 118, 76) !default
 $headline-line-height:        1 !global
 
+// ************************************************************
 // Links
+// ************************************************************
 
 $link-primary-color:          darken($palette-primary, 10%) !default
 $link-secondary-color:        darken($palette-cancel, 10%) !default
 $link-danger-color:           darken($palette-danger, 10%) !default
 
+// ************************************************************
 // Buttons
+// ************************************************************
 
 $button-primary-background:   $palette-primary !default
 $button-primary-color:        $white !default
@@ -43,11 +54,13 @@ $button-danger-background:    $palette-danger !default
 $button-danger-color:         $white !default
 
 $button-border-radius:        3px !default
-$button-box-shadow:           0 2px 0 !default
+$button-box-shadow:           true !default
 $button-font-weight:          700 !global
-$button-padding:              6px 12px !global
+$button-padding:              6px 12px 7px !global
 
+// ************************************************************
 // Cards
+// ************************************************************
 
 $card-border-radius:          3px !default
 $card-box-shadow:             0 2px 7px rgba($black, .2) !default
@@ -57,41 +70,66 @@ $card-separator-color:        rgb(222, 222, 222) !default
 $card-separator-spacing:      50px !global
 $card-title-color:            rgb(247, 133, 96) !default
 
+// ************************************************************
 // Labels
+// ************************************************************
 
 $label-color:                 rgb(128, 128, 128) !default
 
+// ************************************************************
 // Inputs
+// ************************************************************
 
 $input-border-color:          rgb(217, 216, 195) !default
 $input-border-color-focus:    $palette-primary !default
 $input-errors-color:          $palette-danger !default
 
+// ************************************************************
 // Hints
+// ************************************************************
 
 $hint-color:                  rgb(158, 158, 158) !default
 
+// ************************************************************
 // Logo
+// ************************************************************
 
 $logo-margin-top-public:      0 !default
 $logo-margin-bottom-public:   34px !default
 
+// ************************************************************
 // Flash
+// ************************************************************
 
-$flash-success:               rgb(82, 204, 133) !default
-$flash-notice:                rgb(90, 129, 171) !default
-$flash-warning:               rgb(255, 180, 102) !default
-$flash-error:                 rgb(218, 60, 60) !default
+$flash-success:               rgb(123, 170, 81) !default
+$flash-info:                  rgb(90, 129, 171) !default
+$flash-warning:               rgb(193, 179, 26) !default
+$flash-error:                 rgb(162, 66, 60) !default
 $flash-border-radius:         4px !default
 $flash-box-shadow:            0 1px 2px 0 rgba($black, 0.2) !default
 $flash-color:                 rgb(128, 128, 128) !default
 
+// ************************************************************
 // Tables
+// ************************************************************
 
 $table-header-background:     rgb(243, 242, 236) !default
 $table-border-color:          rgb(233, 232, 220) !default
 
+// ************************************************************
 // Comments
+// ************************************************************
 
 $comment-background:          rgb(246, 246, 243) !default
 $comment-color:               rgb(170, 169, 156) !default
+
+// ************************************************************
+// Notices
+// ************************************************************
+
+$notice-success-background:   rgb(123, 170, 81) !default
+$notice-info-background:      rgb(90, 129, 171) !default
+$notice-warning-background:   rgb(193, 179, 26) !default
+$notice-error-background:     rgb(162, 66, 60) !default
+$notice-border-radius:        4px !default
+$notice-color:                rgb(255, 255, 255) !default

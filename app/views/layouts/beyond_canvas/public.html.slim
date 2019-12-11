@@ -12,10 +12,6 @@ html
     main.main class=("#{params[:controller].gsub(/[\/_]/, "-")}--#{params[:action]}")
       = render 'beyond_canvas/flash'
       .main-wrapper
-        - logo = Dir["app/assets/images/logo.*"].first
-        - unless logo.nil?
-          - if File.extname(logo) == '.svg'
-            = inline_svg File.basename(logo), class: 'logo'
-          - else
-            = image_tag File.basename(logo), class: 'logo'
+        - logo = BeyondCanvas.configuration.public_logo
+        = logo_image_tag(logo) unless logo.nil?
         = yield

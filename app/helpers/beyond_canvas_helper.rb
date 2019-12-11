@@ -19,7 +19,7 @@ module BeyondCanvasHelper
     case key
     when "success"
       "fas fa-check"
-    when "notice"
+    when "info"
       "fas fa-info"
     when "warning"
       "fas fa-exclamation"
@@ -27,6 +27,23 @@ module BeyondCanvasHelper
       "far fa-times-circle"
     else
       "fas fa-info"
+    end
+  end
+
+  [:success, :info, :warning, :error].each do |method|
+    define_method :"notice_#{method}" do |message|
+      content_tag("div".freeze, class: "notice notice--#{method}") do
+        content_tag("i".freeze, nil, class: "notice__icon #{get_flash_icon(method.to_s)}") +
+        content_tag("span".freeze, message, class: "notice__message")
+      end
+    end
+  end
+
+  def logo_image_tag(logo)
+    if logo =~ URI::regexp
+      image_tag logo, class: "logo"
+    else
+      image_tag File.basename(logo), class: "logo"
     end
   end
 end
