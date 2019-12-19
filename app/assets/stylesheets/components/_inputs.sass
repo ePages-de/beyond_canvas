@@ -22,6 +22,15 @@ select
   background-size: 4px 4px, 4px 4px, 0 0
   background-repeat: no-repeat
 
+#{$all-text-inputs},
+select
+
+  &.input__error
+    border-left: 2px solid $input-errors-color
+
+    &:focus
+      border: 1px solid $input-border-color-focus
+
 .input
 
   &__label
@@ -35,10 +44,10 @@ select
     font-size: 13px
     margin-top: 1px
 
-  &__with-error
-    border-left: 2px solid $input-errors-color
+  // &__with-error
+  //   border-left: 2px solid $input-errors-color
 
-  &__errors
+label.input__error
     +padding(5px 7px)
     +position(absolute, calc(100% + 8px) null null 0)
     background-color: $input-errors-color

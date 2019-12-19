@@ -27,9 +27,10 @@
     background-color: lighten($background, 40%)
 
 @mixin button-border($background)
+  border-color: $background
+
   @if $button-box-shadow == true
     border-bottom-width: 2px
-    border-color: $background
     border-bottom-color: darken($background, 10%)
 
 

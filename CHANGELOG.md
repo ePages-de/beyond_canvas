@@ -1,3 +1,12 @@
+### v0.6.2.pre
+
+* bug-fixes
+  * Fix button `border-color`
+  * Fix error-input's `border-color`
+
+* deprecations
+  * Update error-input's class to `.input__error`
+
 ### v0.6.1.pre
 
 * bug-fixes

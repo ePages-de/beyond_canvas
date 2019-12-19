@@ -2,7 +2,7 @@
 
 ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
   if html_tag =~ /<(input|textarea|select)/
-    error_class = "form__error"
+    error_class = "input__error".freeze
 
     doc = Nokogiri::XML(html_tag)
     doc.children.each do |field|
