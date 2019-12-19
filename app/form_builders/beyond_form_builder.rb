@@ -11,7 +11,7 @@ class BeyondFormBuilder < ActionView::Helpers::FormBuilder
       @template.content_tag(:div, class: 'relative') do
         block.call +
 
-        (@template.content_tag(:label, errors, class: "input__errors") unless errors.blank?)
+        (@template.content_tag(:label, errors, class: "input__error") unless errors.blank?)
       end +
       (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
     end
