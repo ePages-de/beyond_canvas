@@ -1,5 +1,9 @@
 require "beyond_canvas/version"
 
+require "bourbon"
+require "slim-rails"
+require "inline_svg"
+
 module BeyondCanvas
   class Error < StandardError; end
 
