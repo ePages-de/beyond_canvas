@@ -20,8 +20,8 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "colorize",     "~> 0.8"
 
-  spec.add_dependency "bourbon",    "~> 5.1"
-  spec.add_dependency "neat",       "~> 3.0"
-  spec.add_dependency "slim-rails", "~> 3.2"
-  spec.add_dependency "inline_svg", "~> 1.5"
+  spec.add_dependency "bourbon",     "~> 5.1"
+  spec.add_dependency "slim-rails",  "~> 3.2"
+  spec.add_dependency "sassc-rails", "~> 2.1"
+  spec.add_dependency "inline_svg",  "~> 1.5"
 end

@@ -1,3 +1,12 @@
+### v0.6.3.pre
+
+* bug-fixes
+  * Add `slim-rails` dependency
+  * Fix requiring dependencies on `Engine`
+
+* deprecations
+  * Remove `neat` dependency as is no longer maintained
+
 ### v0.6.2.pre
 
 * bug-fixes
