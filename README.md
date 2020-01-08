@@ -1,35 +1,92 @@
-# BeyondCanvas
+# Beyond Canvas
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/beyond_canvas`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+![Gem Version](https://img.shields.io/gem/v/beyond_canvas?label=gem%20version)
+![License](https://img.shields.io/github/license/ePages-de/beyond_canvas)
 
 ## Installation
 
-Add this line to your application's Gemfile:
+1. Add this line to your application's Gemfile:
 
-```ruby
-gem 'beyond_canvas'
-```
+    ```ruby
+    gem "beyond_canvas"
+    ```
 
-And then execute:
+1. Then execute:
 
-    $ bundle
+    ```bash
+    $ bundle install
+    ```
 
-Or install it yourself as:
+1. Restart your server and rename `application.css` to `application.scss` or `application.sass` (in case you prefer to use `sass` syntax):
 
-    $ gem install beyond_canvas
+    ```bash
+    $ mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss
+    ```
 
-## Usage
+1. Delete _all_ Sprockets directives in `application.scss` (`require`, `require_tree` and `require_self`) and use Sass’s native `@import` instead ([why?](https://content.pivotal.io/blog/structure-your-sass-files-with-import)).
 
-TODO: Write usage instructions here
+1. Import Beyond Canvas at the beginning of `application.scss`. Any other styles must be imported after Beyond Canvas to avoid issues:
 
-## Development
+    ```scss
+    @import 'beyond_canvas'
+    ```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+1. Add the following to `application.js`:
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+    ```js
+    //= require beyond_canvas
+    ```
+
+1. Run the generator:
+
+    ```bash
+    $ rails g beyond_canvas:install
+    ```
+
+    This will generate 2 new files:
+
+    1. `config/initializers/beyond_canvas.rb`, used for general Beyond Canvas configuration and
+    2. `config/initializers/beyond_canvas_form_utils.rb`, needed for changing the form generation behavior
+
+## Style Customization
+
+Beyond Canvas comes with _out-of-the-box_ styles to make your app look as a Beyond integrated one. If you want to customize the gem styles, follow these instructions:
+
+1. Run the custom style generator:
+
+    ```bash
+    $ rails g beyond_canvas:custom_styles
+    ```
+
+    This command will generate a file (`app/assets/stylesheets/_beyond_canvas_custom_styles.sass`) that contains all variables you can customize.
+
+1. Import the custom styles **before** Beyond Canvas itself (to override the default styles) on `application.scss`:
+
+    ```scss
+    @import 'beyond_canvas_custom_styles'
+    @import 'beyond_canvas'
+    ```
+
+## Documentation
+
+TBD
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/beyond_canvas.
+Please see [CONTRIBUTING](https://github.com/ePages-de/beyond_canvas/blob/master/CONTRIBUTING.md).
+
+## Changelog
+
+Beyond Canvas's changelog is available [here](https://github.com/ePages-de/beyond_canvas/blob/master/CHANGELOG.md).
+
+## License
+
+beyond_canvas is Copyright © 2019 ePages GmbH. It is free software, and may be redistributed under the terms specified in the [LICENSE](https://github.com/ePages-de/beyond_canvas/blob/master/LICENSE) file.
+
+## About ePages
+
+As the largest independent provider of online shop software in Europe, ePages specialises in high-performance ecommerce solutions for small and medium-sized businesses.
+Today, 100,000 companies in 70 countries operate professional online shops with ePages software in the cloud.
+
+And we love open source software!
+Check out our [other projects](https://github.com/ePages-de), or [become part of our team](https://developer.epages.com/devjobs/) and develop great ecommerce software with us!

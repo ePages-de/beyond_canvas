@@ -1,3 +1,8 @@
+### v0.6.4.pre
+
+* bug-fixes
+  * Fix requiting to create the `_head.html.*` on the project instead of the gem itself
+
 ### v0.6.3.pre
 
 * bug-fixes
