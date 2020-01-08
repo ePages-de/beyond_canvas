@@ -1,4 +1,4 @@
-# Contributing to Beyond API Ruby Client
+# Contributing to Beyond Canvas
 
 We love pull requests from everyone. Here are some ways _you_ can contribute:
 
