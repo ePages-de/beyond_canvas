@@ -17,13 +17,13 @@
     $ bundle install
     ```
 
-1. Restart your server and rename `application.css` to `application.scss` or `application.sass` (in case you prefer to use `sass` syntax):
+1. Restart your server and rename `application.css` to `application.scss` or `application.sass` (in case you prefer to use the `sass` syntax):
 
     ```bash
     $ mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss
     ```
 
-1. Delete _all_ Sprockets directives in `application.scss` (`require`, `require_tree` and `require_self`) and use Sass’s native `@import` instead ([why?](https://content.pivotal.io/blog/structure-your-sass-files-with-import)).
+1. Delete _all_ Sprockets directives in `application.scss` (`require`, `require_tree` and `require_self`) and use Sass’s native `@import` instead ([Here's why?](https://content.pivotal.io/blog/structure-your-sass-files-with-import)).
 
 1. Import Beyond Canvas at the beginning of `application.scss`. Any other styles must be imported after Beyond Canvas to avoid issues:
 
@@ -50,7 +50,7 @@
 
 ## Style Customization
 
-Beyond Canvas comes with _out-of-the-box_ styles to make your app look as a Beyond integrated one. If you want to customize the gem styles, follow these instructions:
+Beyond Canvas comes with _out-of-the-box_ styles to make your app look like as a Beyond integrated one. If you want to customize the gem styles, follow these instructions:
 
 1. Run the custom style generator:
 
