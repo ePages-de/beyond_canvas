@@ -26,10 +26,12 @@ module BeyondCanvas
   end
 
   class Configuration
-    attr_accessor :public_logo
+    attr_accessor :public_logo, :stylesheet_link_tag, :javascript_include_tag
 
     def initialize
       @public_logo = nil
+      @stylesheet_link_tag = nil
+      @javascript_include_tag = nil
     end
   end
 end
