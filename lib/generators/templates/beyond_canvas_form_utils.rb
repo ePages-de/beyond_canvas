@@ -1,19 +1,22 @@
 # frozen_string_literal: true
 
-ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+# Adds form__error class to the inputs after sending a form when errors
+ActionView::Base.field_error_proc = proc do |html_tag, _instance|
+  include ActionView::Helpers::SanitizeHelper
+
   if html_tag =~ /<(input|textarea|select)/
-    error_class = "input__error".freeze
+    error_class = 'form__error'
 
     doc = Nokogiri::XML(html_tag)
     doc.children.each do |field|
-      unless field["type"] == "hidden"
-        unless field["class"] =~ /\berror\b/
-          field["class"] = "#{field['class']} #{error_class}".strip
-        end
-      end
+      next if field['type'] == 'hidden'
+
+      next if field['class'] =~ /\berror\b/
+
+      field['class'] = "#{field['class']} #{error_class}".strip
     end
 
-    doc.to_html.html_safe
+    sanitize doc.to_html
   else
     html_tag
   end
