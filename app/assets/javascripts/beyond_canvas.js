@@ -1,1 +1,2 @@
 //= require flash
+//= require buttons
