@@ -1,3 +1,3 @@
 module BeyondCanvas
-  VERSION = "0.6.4.pre".freeze
+  VERSION = "0.7.0.pre".freeze
 end
