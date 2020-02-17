@@ -1,21 +1,21 @@
 $(document).ready(function() {
-  ("use strict");
+  ('use strict');
 
-  $(".flash").each(function() {
-    $(this).css("right", -$(this).width() + "px");
+  $('.flash').each(function() {
+    $(this).css('right', -$(this).width() + 'px');
   });
 
   setTimeout(function() {
-    $(".flash").addClass("flash--shown");
+    $('.flash').addClass('flash--shown');
   }, 100);
 
-  $(".flash").click(function() {
+  $('.flash').click(function() {
     closeAlert();
   });
 
   function closeAlert() {
-    $(".flash")
-      .removeClass("flash--shown")
+    $('.flash')
+      .removeClass('flash--shown')
       .delay(700)
       .queue(function() {
         $(this).remove();
