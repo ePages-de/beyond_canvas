@@ -1,7 +1,7 @@
 $(document).ready(function() {
   ('use strict');
 
-  $('[class^="button"][type=submit]').each(function() {
+  $('[class^="button"]').each(function() {
     var button = $(this);
 
     // Add width attribute and save old width
@@ -31,7 +31,7 @@ $(document).ready(function() {
   });
 
   // Bind click event to buttons
-  $('[class^="button"][type=submit]').click(function() {
+  $('[class^="button"]').click(function() {
     disableActionElements();
     showSpinner($(this));
   });
@@ -54,12 +54,12 @@ function hideSpinner(button) {
 }
 
 function disableActionElements() {
-  $('a, input[type="submit"], button').each(function() {
-    $(this).addClass('actions--disabled')
+  $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function() {
+    $(this).addClass('actions--disabled');
   });
 }
 function enableActionElements() {
-  $('a, input[type="submit"], button').each(function() {
+  $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function() {
     $(this).removeClass("actions--disabled");
   });
 }
