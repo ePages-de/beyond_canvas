@@ -1,5 +1,5 @@
-document.addEventListener('turbolinks:load', function() {
-  'use strict'
+$(document).ready(function() {
+  ('use strict');
 
   $('.flash').each(function() {
     $(this).css('right', -$(this).width() + 'px');
@@ -14,8 +14,11 @@ document.addEventListener('turbolinks:load', function() {
   });
 
   function closeAlert() {
-    $('.flash').removeClass('flash--shown').delay(700).queue(function() {
-      $(this).remove();
-    });
+    $('.flash')
+      .removeClass('flash--shown')
+      .delay(700)
+      .queue(function() {
+        $(this).remove();
+      });
   }
 });

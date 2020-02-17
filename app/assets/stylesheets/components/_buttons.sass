@@ -2,11 +2,14 @@
   +padding($button-padding)
   @if $button-box-shadow != true
     padding-top: 7px
+  align-items: center
   border-radius: $button-border-radius
   border-width: 1px
   border-style: solid
   cursor: pointer
+  display: flex
   font-weight: $button-font-weight
+  justify-content: flex-end
   line-height: 1
   outline: none
   transition: $main-transition
@@ -15,6 +18,12 @@
   +background-color-darken($background, 10%)
   color: $color
 
+  .spinner
+    display: none
+
+    > div
+      background-color: $color
+
   &:hover
     border-color: darken($background, 10%)
 
@@ -22,6 +31,12 @@
   background-color: transparent
   border-color: $background
   color: $background
+
+  .spinner
+    display: none
+
+    > div
+      background-color: $background
 
   &:hover
     background-color: lighten($background, 40%)
