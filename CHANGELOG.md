@@ -1,3 +1,14 @@
+### v0.7.0.pre
+
+* deprecations
+  * Use custom `stylesheet_link_tag` and `javascript_include_tag` on head
+
+* enhancements
+  * Make `lib/generators/templates/beyond_canvas_form_utils.rb` rubocop compatible
+
+* features
+  * Add loading buttons
+
 ### v0.6.4.pre
 
 * bug-fixes
