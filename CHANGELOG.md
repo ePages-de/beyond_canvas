@@ -1,3 +1,14 @@
+### v0.8.0.pre
+
+* deprecations
+  * Remove form builder generator
+
+* features
+  * Make `beyond_canvas` work as a Rails engine
+  * Add locale switch functionality
+  * Add form builder initializer
+  * Add rubocop
+
 ### v0.7.0.pre
 
 * deprecations
