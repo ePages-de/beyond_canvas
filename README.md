@@ -37,16 +37,19 @@
     //= require beyond_canvas
     ```
 
+1. Mount the engine in your routes file:
+
+    ```ruby
+    mount BeyondCanvas::Engine => "/<your-mounting-path>"
+    ```
+
 1. Run the generator:
 
     ```bash
     $ rails g beyond_canvas:install
     ```
 
-    This will generate 2 new files:
-
-    1. `config/initializers/beyond_canvas.rb`, used for general Beyond Canvas configuration and
-    2. `config/initializers/beyond_canvas_form_utils.rb`, needed for changing the form generation behavior
+    This will generate `config/initializers/beyond_canvas.rb` file, used for general Beyond Canvas configuration
 
 ## Style Customization
 
