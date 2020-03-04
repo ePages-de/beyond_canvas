@@ -1,3 +1,9 @@
+### v0.8.1.pre
+
+* bug-fixes
+  * Prevent calling 2 times `set_locale` method
+  * Fix `http/accept` requirement
+
 ### v0.8.0.pre
 
 * deprecations
