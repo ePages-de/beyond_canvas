@@ -7,6 +7,7 @@ require 'colorize'
 require 'bourbon'
 require 'slim-rails'
 require 'inline_svg'
+require 'http/accept'
 
 module BeyondCanvas
   class << self
