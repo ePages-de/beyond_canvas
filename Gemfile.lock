@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    beyond_canvas (0.8.1.pre)
+    beyond_canvas (0.9.0.pre)
       bourbon (~> 5.1)
       colorize (~> 0.8)
       http-accept (~> 2.1)
