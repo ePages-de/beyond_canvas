@@ -1,41 +1,39 @@
-$(document).ready(function() {
-  ('use strict');
+(function($) {
+  $(document).on('click', '[class^="button"]', function() {
+    disableActionElements();
+    showSpinner($(this));
+  });
 
-  $('[class^="button"]').each(function() {
-    var button = $(this);
+  $(document).on('ready page:load turbolinks:load', function() {
+    $('[class^="button"]').each(function() {
+      var button = $(this);
 
-    // Add width attribute and save old width
-    button.width(button.width());
-    button.data('oldWidth', button.width());
+      // Add width attribute and save old width
+      button.width(button.width());
+      button.data('oldWidth', button.width());
 
-    // Add the spinner
-    button.prepend(`
+      // Add the spinner
+      button.prepend(`
       <div class="spinner">
         <div class="bounce1"></div>
         <div class="bounce2"></div>
         <div class="bounce3"></div>
-      </div>`
-    );
+      </div>`);
 
-    // Bind ajax:success and ajax:error to the form the button belongs to
-    button
-      .closest('form')
-      .on('ajax:success', function() {
-        hideSpinner(button);
-        enableActionElements();
-      })
-      .on('ajax:error', function() {
-        hideSpinner(button);
-        enableActionElements();
-      });
+      // Bind ajax:success and ajax:error to the form the button belongs to
+      button
+        .closest('form')
+        .on('ajax:success', function() {
+          hideSpinner(button);
+          enableActionElements();
+        })
+        .on('ajax:error', function() {
+          hideSpinner(button);
+          enableActionElements();
+        });
+    });
   });
-
-  // Bind click event to buttons
-  $('[class^="button"]').click(function() {
-    disableActionElements();
-    showSpinner($(this));
-  });
-});
+})(jQuery);
 
 function showSpinner(button) {
   // Adjust the width of the button

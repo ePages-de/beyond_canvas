@@ -1,3 +1,12 @@
+### v0.9.0.pre
+
+* enhancements
+  * Make javascripts work with turbolinks
+
+* features
+  * Add markdown styling class
+  * Add text align class
+
 ### v0.8.1.pre
 
 * bug-fixes
