@@ -2,6 +2,17 @@
 
 module BeyondCanvas
   module ApplicationHelper
+    def full_title(page_title = '')
+      if I18n.exists?('app_name')
+        base_title = I18n.t('app_name')
+      else
+        logger.debug "[BeyondCanvas] Missing translation: #{I18n.locale}.app_name".yellow
+        base_title = File.basename(Rails.root).humanize
+      end
+
+      page_title.empty? ? base_title : page_title + ' | ' + base_title
+    end
+
     def link_to_with_icon(name = nil, options = nil, fa_class = nil, html_options = nil)
       options ||= {}
 
