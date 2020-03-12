@@ -24,5 +24,25 @@ module BeyondCanvas
         end
       end
     end
+
+    def file_field(attribute, args = {})
+      field_wrapper(attribute, args) do
+        filed_identifyer = "#{attribute}_#{(Time.now.to_f * 1000).to_i.to_s}"
+
+        args.merge!(id: filed_identifyer)
+            .merge!(hidden: true)
+
+        custom_attributes = { data: { multiple_caption: '{count} files selected' } }
+        args = custom_attributes.merge!(args)
+
+        @template.content_tag(:div, class: 'input__file') do
+          super(attribute, args) +
+          @template.content_tag(:label, for: filed_identifyer, class: 'input__file__label button__transparent--primary') do
+            args[:data][:choose_file_caption] || 'Choose file'
+          end +
+          @template.content_tag(:span, args[:data][:no_file_chosen_caption] || 'No file chosen', class: "input__file__text #{filed_identifyer}")
+        end
+      end
+    end
   end
 end
