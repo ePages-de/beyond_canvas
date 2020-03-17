@@ -25,8 +25,8 @@ module BeyondCanvas
 
     def initialize
       @public_logo = nil
-      @stylesheet_link_tag = nil
-      @javascript_include_tag = nil
+      @stylesheet_link_tag = 'application'
+      @javascript_include_tag = 'application'
     end
   end
 end

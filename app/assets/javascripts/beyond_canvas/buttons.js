@@ -5,7 +5,7 @@
   });
 
   $(document).on('ready page:load turbolinks:load', function() {
-    $('[class^="button"]').each(function() {
+    $('button[class^="button"]').each(function() {
       var button = $(this);
 
       // Add width attribute and save old width

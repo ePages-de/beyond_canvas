@@ -1,47 +1,41 @@
 .notice
-  align-items: center
   border-radius: $notice-border-radius
+  border: 1px solid
   box-sizing: border-box
   display: flex
-  padding: 10px 15px
 
   &--success
-    background-color: lighten($notice-success-background, 25%)
+    border-color: $notice-success-background
 
     .notice__icon
-      background-color: darken($notice-success-background, 10%)
-      color: lighten($notice-success-background, 25%)
+      background-color: $notice-success-background
 
   &--info
-    background-color: lighten($notice-info-background, 25%)
+    border-color: $notice-info-background
 
     .notice__icon
-      background-color: darken($notice-info-background, 10%)
-      color: lighten($notice-info-background, 25%)
+      background-color: $notice-info-background
 
   &--warning
-    background-color: lighten($notice-warning-background, 25%)
+    border-color: $notice-warning-background
 
     .notice__icon
-      background-color: darken($notice-warning-background, 10%)
-      color: lighten($notice-warning-background, 25%)
+      background-color: $notice-warning-background
 
   &--error
-    background-color: lighten($notice-error-background, 25%)
+    border-color: $notice-error-background
 
     .notice__icon
-      background-color: darken($notice-error-background, 10%)
-      color: lighten($notice-error-background, 25%)
+      background-color: $notice-error-background
 
   &__icon
-    +size(18px)
-    align-items: center
-    border-radius: 100%
+    +padding(10px 8px)
+    color: $white
     display: flex
-    font-size: 12px
-    justify-content: center
-    margin-right: 15px
-    min-width: 18px
+    font-size: 18px
 
-  &__message
+  &__content
+    +padding(8px 14px)
     color: $notice-color
+    display: flex
+    align-items: center
