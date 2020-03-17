@@ -27,27 +27,9 @@ module BeyondCanvas
       end
     end
 
-    def get_flash_icon(key)
-      case key
-      when 'success'
-        'fas fa-check'
-      when 'info'
-        'fas fa-info'
-      when 'warning'
-        'fas fa-exclamation'
-      when 'error'
-        'far fa-times-circle'
-      else
-        'fas fa-info'
-      end
-    end
-
     [:success, :info, :warning, :error].each do |method|
-      define_method :"notice_#{method}" do |message|
-        content_tag('div', class: "notice notice--#{method}") do
-          content_tag('i', nil, class: "notice__icon #{get_flash_icon(method.to_s)}") +
-            content_tag('span', message, class: 'notice__message')
-        end
+      define_method :"notice_#{method}" do |name = nil, html_options = nil, &block|
+        notice_render(method, name, html_options, &block)
       end
     end
 
@@ -56,6 +38,36 @@ module BeyondCanvas
         inline_svg_tag logo_path, class: 'logo', alt: 'logo'
       else
         image_tag logo_path, class: 'logo', alt: 'logo'
+      end
+    end
+
+    private
+
+    def get_flash_icon(key)
+      case key
+      when 'success'
+        'fas fa-check'
+      when 'info'
+        'fas fa-info-circle'
+      when 'warning'
+        'fas fa-exclamation-circle'
+      when 'error'
+        'far fa-times-circle'
+      else
+        'fas fa-info'
+      end
+    end
+
+    def notice_render(method, name = nil, html_options = nil, &block)
+      html_options, name = name, block if block_given?
+
+      html_options ||= {}
+
+      html_options.merge!(class: "notice notice--#{method}") { |key, old_val, new_val| [new_val, old_val].join(' ') }
+
+      content_tag('div', html_options) do
+        content_tag('i', nil, class: "notice__icon #{get_flash_icon(method.to_s)}") +
+        content_tag('span', block_given? ? capture(&name) : name, class: 'notice__content')
       end
     end
   end
