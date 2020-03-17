@@ -9,7 +9,12 @@ head
 
   - stylesheet_link_tag = BeyondCanvas.configuration.stylesheet_link_tag
   - javascript_include_tag = BeyondCanvas.configuration.javascript_include_tag
-  = stylesheet_link_tag(stylesheet_link_tag) unless stylesheet_link_tag.nil?
-  = javascript_include_tag(javascript_include_tag) unless javascript_include_tag.nil?
+
+  - if defined?(Turbolinks)
+    = stylesheet_link_tag stylesheet_link_tag, 'data-turbolinks-track' => true
+    = javascript_include_tag javascript_include_tag, 'data-turbolinks-track' => true
+  - else
+    = stylesheet_link_tag stylesheet_link_tag
+    = javascript_include_tag javascript_include_tag
 
   = render 'beyond_canvas/custom/public_head'
