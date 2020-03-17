@@ -32,15 +32,15 @@ module BeyondCanvas
         args.merge!(id: filed_identifyer)
             .merge!(hidden: true)
 
-        custom_attributes = { data: { multiple_caption: '{count} files selected' } }
+        custom_attributes = { data: { multiple_selection_text: '{count} files selected' } }
         args = custom_attributes.merge!(args)
 
         @template.content_tag(:div, class: 'input__file') do
           super(attribute, args) +
           @template.content_tag(:label, for: filed_identifyer, class: 'input__file__label button__transparent--primary') do
-            args[:data][:choose_file_caption] || 'Choose file'
+            args[:data][:button_text] || 'Choose file'
           end +
-          @template.content_tag(:span, args[:data][:no_file_chosen_caption] || 'No file chosen', class: "input__file__text #{filed_identifyer}")
+          @template.content_tag(:span, args[:data][:no_file_text] || 'No file chosen', class: "input__file__text #{filed_identifyer}")
         end
       end
     end
