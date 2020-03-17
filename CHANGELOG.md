@@ -1,15 +1,21 @@
-### v0.9.0.pre
+### v0.10.0.pre
 
 * bug-fixes
   * Fix locale switch functionality
 
 * enhancements
   * Improve `notice_success`, `notice_info`, `notice_warning` and `notice_error` styles
-  * Make javascripts work with turbolinks
 
 * features
   * Add title display functionality
   * Add styles for `file_field`
+
+### v0.9.0.pre
+
+* enhancements
+  * Make javascripts work with turbolinks
+
+* features
   * Add `.markdown` class for styling `.md` content
   * Add text align class
 
