@@ -2,8 +2,8 @@
   $(document).on('ready page:load turbolinks:load', function() {
     $('input[type="file"]').each(function() {
       var $input = $(this),
-				$label = $(`.input__file__text.${$input.attr('id')}`),
-				labelVal = $label.html();
+          $label = $(`.input__file__text.${$input.attr('id')}`),
+          labelVal = $label.html();
 
       $input.on('change', function(e) {
         var fileName = '';
