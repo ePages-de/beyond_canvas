@@ -4,10 +4,11 @@ module BeyondCanvas
   class Engine < ::Rails::Engine
     isolate_namespace BeyondCanvas
 
-    initializer 'local_helper.action_controller' do
+    config.before_initialize do
       ActiveSupport.on_load :action_controller do
-        helper BeyondCanvas::ApplicationHelper
-        helper BeyondCanvas::LocaleSwitchHelper
+        include ::BeyondCanvas::LocaleManagement
+
+        ::ActionController::Base.helper BeyondCanvas::Engine.helpers
       end
     end
   end
