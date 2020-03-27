@@ -1,3 +1,15 @@
+### v0.11.0.pre
+
+* bug-fixes
+  * Rename `app/assets/stylesheets/beyond_canvas/components/spinner.sass` to `app/assets/stylesheets/beyond_canvas/components/_spinner.sass`
+  * Fix `:last-child` margin on `_markdown.sass`
+
+* features
+  * Add mailer layout
+  * Add mailer text and button partials
+  * Add mailer styles
+  * Add `premailer-rails` as a dependency
+
 ### v0.10.0.pre
 
 * bug-fixes
