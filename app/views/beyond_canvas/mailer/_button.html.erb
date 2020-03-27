@@ -1,0 +1,23 @@
+<% locals = locals || {} %>
+
+<!-- Button : BEGIN -->
+<% if locals&.dig(:url) && locals&.dig(:text) %>
+  <tr>
+    <td style="background-color: #ffffff;">
+      <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+        <tr>
+          <td style="padding: 0 20px 20px;">
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: auto;">
+              <tr>
+                <td class="button-td button-td-primary" style="border-radius: 4px; background: #f6f6f6;">
+                  <a class="button-a button-a-primary" href="<%= locals[:url] %>" style="font-family: sans-serif; font-size: 15px; padding: 6px 12px 7px; border-radius: 3px; border-width: 1px; border-style: solid; cursor: pointer; font-weight: 700; line-height: 1; outline: none; background-color: #4eb7a8; transition: 0.125s ease-in; color: white; border-color: #4eb7a8; border-bottom-width: 2px; border-bottom-color: #3d9589;"><%= locals[:text] %></a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+<% end %>
+<!-- Button : END -->
