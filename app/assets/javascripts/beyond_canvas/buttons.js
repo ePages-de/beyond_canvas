@@ -1,3 +1,5 @@
+const SPINNER_ANIMATION_TIMEOUT = 125;
+
 (function($) {
   $(document).on('click', '[class^="button"]', function() {
     disableActionElements();
@@ -41,14 +43,16 @@ function showSpinner(button) {
   // Show the spinner
   setTimeout(function() {
     button.find('.spinner').css('display', 'flex');
-  }, 125);
+  }, SPINNER_ANIMATION_TIMEOUT);
 }
 
 function hideSpinner(button) {
-  // Hide the spinner
-  button.find('.spinner').hide();
-  // Adjust the width of the button
-  button.width(button.data('oldWidth'));
+  setTimeout(function () {
+    // Hide the spinner
+    button.find('.spinner').hide();
+    // Adjust the width of the button
+    button.width(button.data('oldWidth'));
+  }, SPINNER_ANIMATION_TIMEOUT);
 }
 
 function disableActionElements() {

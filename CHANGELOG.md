@@ -1,3 +1,8 @@
+### v0.11.1.pre
+
+* bug-fixes
+  * Fix hide spinner
+
 ### v0.11.0.pre
 
 * bug-fixes
