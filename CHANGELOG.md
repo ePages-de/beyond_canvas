@@ -6,6 +6,16 @@
 * enhancements
   * Now selected locale is saved on `cookies` instead of `session`
 
+### v0.11.2.pre
+
+* bug-fixes
+  * Add missing mailers partials
+
+### v0.11.1.pre
+
+* bug-fixes
+  * Fix hide spinner
+
 ### v0.11.0.pre
 
 * bug-fixes
