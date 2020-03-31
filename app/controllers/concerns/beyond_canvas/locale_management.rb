@@ -6,27 +6,22 @@ module BeyondCanvas
 
     included do
       before_action :set_locale, except: :update_locale
-
-      def update_locale
-        if I18n.available_locales.map(&:to_s).include? app_locale_params[:locale]
-          session[:locale] = app_locale_params[:locale]
-          set_locale
-        end
-
-        redirect_back(fallback_location: main_app.root_path)
-      end
     end
 
     private
 
     #
-    # Sets the I18n.locale to either +session[ :locale ]+ or the browser
-    # compatible locale (if +session[ :locale ]+ is not set)
+    # Sets the I18n.locale to either +cookies[ :locale ]+ or the browser
+    # compatible locale (if +cookies[ :locale ]+ is not set)
     #
     def set_locale
-      puts '*' * 100
-      puts '*' * 100
-      I18n.locale = session[:locale] || session[:locale] = browser_compatible_locale
+      unless valid_locale?(cookies[:locale])
+        cookies[:locale] = { value: browser_compatible_locale, expires: 1.day.from_now }
+      end
+
+      I18n.locale = cookies[:locale]
+
+      logger.debug "[BeyondCanvas] Locale set to: #{I18n.locale}".yellow
     end
 
     #
@@ -47,10 +42,10 @@ module BeyondCanvas
     end
 
     #
-    # Strong parameters for locale switch
+    # Checks if the given locale parameter is included on +I18n.available_locales+
     #
-    def app_locale_params
-      params.require(:app).permit(:locale)
+    def valid_locale?(locale)
+      I18n.available_locales.map(&:to_s).include? locale
     end
   end
 end
