@@ -1,3 +1,11 @@
+### v0.12.0.pre
+
+* bug-fixes
+  * Add styles to locale switch select input
+
+* enhancements
+  * Now selected locale is saved on `cookies` instead of `session`
+
 ### v0.11.2.pre
 
 * bug-fixes
