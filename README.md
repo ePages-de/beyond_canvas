@@ -50,10 +50,6 @@
     ```
 
     This will generate `config/initializers/beyond_canvas.rb` file, used for general Beyond Canvas configuration.
-    
-## Configuration
-
-TBD
 
 ## Documentation
 
