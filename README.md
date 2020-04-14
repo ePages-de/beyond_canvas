@@ -51,25 +51,6 @@
 
     This will generate `config/initializers/beyond_canvas.rb` file, used for general Beyond Canvas configuration
 
-## Style Customization
-
-Beyond Canvas comes with _out-of-the-box_ styles to make your app look like as a Beyond integrated one. If you want to customize the gem styles, follow these instructions:
-
-1. Run the custom style generator:
-
-    ```bash
-    $ rails g beyond_canvas:custom_styles
-    ```
-
-    This command will generate a file (`app/assets/stylesheets/_beyond_canvas_custom_styles.sass`) that contains all variables you can customize.
-
-1. Import the custom styles **before** Beyond Canvas itself (to override the default styles) on `application.scss`:
-
-    ```scss
-    @import 'beyond_canvas_custom_styles'
-    @import 'beyond_canvas'
-    ```
-
 ## Documentation
 
 TBD
