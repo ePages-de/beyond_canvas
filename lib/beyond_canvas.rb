@@ -10,6 +10,8 @@ require 'inline_svg'
 require 'http/accept'
 require 'premailer/rails'
 
+require 'beyond_api'
+
 module BeyondCanvas
   class << self
     attr_accessor :configuration
