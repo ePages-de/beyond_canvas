@@ -6,11 +6,13 @@
 
 * removals
   * Remove not used `beyond_canvas_form_utils.rb` template initializer
+  * Remove environment validation on `valid_signature?`
 
 * features
   * Add `beyond_api` gem as dependency
   * Add a method (`validate_app_installation_request!`) to be called on the `before_action` of your app's main entry point. This method validates that the installation request comes from Beyond
   * Filter app installation parameters
+  * Add `number_field` to form builder
 
 * enhancements
   * Add a controller for the locale management and adapt the code to work with it
