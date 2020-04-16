@@ -49,7 +49,7 @@
     $ rails g beyond_canvas:install
     ```
 
-    This will generate `config/initializers/beyond_canvas.rb` file, used for general Beyond Canvas configuration.
+    This will generate `config/initializers/beyond_canvas.rb` file, used for general Beyond Canvas configuration. Read [this wiki entry](https://github.com/ePages-de/beyond_canvas/wiki/Initializer) to get more information about the different configuration options.
 
 ## Documentation
 
