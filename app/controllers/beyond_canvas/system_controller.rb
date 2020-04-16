@@ -3,10 +3,10 @@
 require_dependency 'beyond_canvas/application_controller'
 
 module BeyondCanvas
-  class LocalesController < ApplicationController
+  class SystemController < ApplicationController
     include ::BeyondCanvas::LocaleManagement
 
-    def update
+    def update_locale
       cookies[:locale] = { value: system_locale_params[:locale], expires: 1.day.from_now }
 
       redirect_back(fallback_location: main_app.root_path)
