@@ -5,23 +5,23 @@ module BeyondCanvas
     extend ActiveSupport::Concern
 
     included do
-      before_action :set_locale, except: :update_locale
+      around_action :switch_locale, except: :update_locale
     end
 
     private
 
     #
-    # Sets the I18n.locale to either +cookies[ :locale ]+ or the browser
-    # compatible locale (if +cookies[ :locale ]+ is not set)
+    # Sets the cookie locale as default locale if it is a valid locale. If it is not a valid locale, searches for a
+    # browser compatible locale, sets the value to the cookie and set that locale as default locale.
     #
-    def set_locale
+    def switch_locale(&action)
       unless valid_locale?(cookies[:locale])
         cookies[:locale] = { value: browser_compatible_locale, expires: 1.day.from_now }
       end
 
-      I18n.locale = cookies[:locale]
+      I18n.with_locale(cookies[:locale], &action)
 
-      logger.debug "[BeyondCanvas] Locale set to: #{I18n.locale}".yellow
+      logger.debug "[BeyondCanvas] Locale set to: #{cookies[:locale]}".yellow
     end
 
     #

@@ -54,15 +54,15 @@ select
     &__text
       margin-left: 20px
       font-weight: 500
+      text-overflow: ellipsis
+      overflow: hidden
+      white-space: nowrap
+      max-width: 200px
 
     &__icon
       margin-right: 5px
       position: relative
       top: 1px
-
-
-  // &__with-error
-  //   border-left: 2px solid $input-errors-color
 
 label.input__error
     +padding(5px 7px)

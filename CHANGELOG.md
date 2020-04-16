@@ -1,3 +1,23 @@
+### v0.13.0.pre
+
+* buf-fixes
+  * Remove `:file` from metaprogrammed fields
+  * Add `text-overflow: ellipsis;` to `file_field` text to avoid line breaks
+
+* removals
+  * Remove not used `beyond_canvas_form_utils.rb` template initializer
+  * Remove environment validation on `valid_signature?`
+
+* features
+  * Add `beyond_api` gem as dependency
+  * Add a method (`validate_app_installation_request!`) to be called on the `before_action` of your app's main entry point. This method validates that the installation request comes from Beyond
+  * Filter app installation parameters
+  * Add `number_field` to form builder
+
+* enhancements
+  * Add a controller for the locale management and adapt the code to work with it
+  * Add information comments to `lib/generators/templates/beyond_canvas.rb`
+
 ### v0.12.0.pre
 
 * bug-fixes
