@@ -27,8 +27,6 @@ module BeyondCanvas
     end
 
     def valid_signature?(signature, data, secret)
-      return true unless Rails.env.production?
-
       digest = OpenSSL::Digest.new('SHA1')
       hmac = OpenSSL::HMAC.digest(digest, secret, data)
       signature == Base64.encode64(hmac).chop
