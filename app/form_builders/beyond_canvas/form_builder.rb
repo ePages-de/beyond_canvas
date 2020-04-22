@@ -17,7 +17,7 @@ module BeyondCanvas
       end
     end
 
-    [:email, :text, :password, :number].each do |method|
+    [:email, :text, :number, :password].each do |method|
       define_method :"#{method}_field" do |attribute, args = {}|
         field_wrapper(attribute, args) do
           super(attribute, args)

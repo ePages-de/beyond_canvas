@@ -6,7 +6,7 @@ html
   body.body--public
     main.main class=("#{params[:controller].gsub(/[\/_]/, "-")}--#{params[:action]}")
       = render 'beyond_canvas/shared/flash'
-      = render 'beyond_canvas/shared/locale_switch'
+      = render 'beyond_canvas/locales/edit'
       .main-wrapper
         = render 'beyond_canvas/shared/logo'
         = yield

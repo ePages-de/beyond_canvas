@@ -24,6 +24,8 @@ Gem::Specification.new do |spec|
     'README.md'
   ]
 
+  spec.add_dependency 'beyond_api'
+
   spec.add_dependency 'bourbon',         '~> 5.1'
   spec.add_dependency 'colorize',        '~> 0.8'
   spec.add_dependency 'http-accept',     '~> 2.1'
