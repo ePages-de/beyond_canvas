@@ -1,0 +1,49 @@
+{
+  "name": "@epages/beyond_canvas",
+  "version": "0.14.0-pre",
+  "description": "Open-source framework that provides CSS and JS for apps designed and developed for the online shop software Beyond",
+  "keywords": [
+    "epages",
+    "beyond",
+    "rails-engine",
+    "rails",
+    "ruby",
+    "gem"
+  ],
+  "homepage": "https://github.com/ePages-de/beyond_canvas#README",
+  "bugs": {
+    "url": "https://github.com/ePages-de/beyond_canvas/issues"
+  },
+  "license": "MIT",
+  "author": "Unai Abrisketa <u.abrisketa@epages.com>",
+  "contributors": [
+    "Kathia Salazar <k.salazar@epages.com>",
+    "German San Emeterio <g.sanemeterio@epages.com>"
+  ],
+  "files": [
+    "app/assets/javascripts/beyond_canvas/*.js",
+    "src/**/*"
+  ],
+  "main": "app/assets/javascripts/beyond_canvas/base.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ePages-de/beyond_canvas.git"
+  },
+  "scripts": {
+    "build": "rollup --config rollup.config.js",
+    "prepublishOnly": "rm -rf src && cp -R app/javascript/beyond_canvas src && cp -R app/assets/stylesheets/beyond_canvas src/sass"
+  },
+  "dependencies": {
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "common-tags": "^1.8.0",
+    "rollup": "^1.21.4",
+    "@rollup/plugin-babel": "^5.0.0",
+    "@rollup/plugin-commonjs": "^11.1.0",
+    "@rollup/plugin-node-resolve": "^7.1.3",
+    "rollup-plugin-uglify": "^6.0.4"
+  }
+}
