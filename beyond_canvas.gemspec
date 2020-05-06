@@ -32,7 +32,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'inline_svg',      '~> 1.5'
   spec.add_dependency 'rails',           '~> 6.0.2', '>= 6.0.2.1'
   spec.add_dependency 'sassc-rails',     '~> 2.1'
-  spec.add_dependency 'slim-rails',      '~> 3.2'
   spec.add_dependency 'premailer-rails', '~> 1.11'
 
   spec.add_development_dependency 'rubocop', '~> 0.80.0'

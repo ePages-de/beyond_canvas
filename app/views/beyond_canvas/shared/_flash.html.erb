@@ -1,0 +1,9 @@
+<% flash.each do |key, value| %>
+  <div class="flash">
+    <i class="flash__icon flash__icon--<%= key %> <%= get_flash_icon(key) %>"></i>
+    <div class="flash__message">
+      <%= value %>
+    </div>
+    <i class="fas fa-times flash__close"></i>
+  </div>
+<% end %>

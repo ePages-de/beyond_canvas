@@ -5,7 +5,6 @@ require 'beyond_canvas/engine'
 require 'colorize'
 
 require 'bourbon'
-require 'slim-rails'
 require 'inline_svg'
 require 'http/accept'
 require 'premailer/rails'
