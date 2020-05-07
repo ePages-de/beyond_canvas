@@ -1,6 +1,11 @@
+### v0.13.1.pre
+
+* bug-fixes
+  * Check the `HTTP_ACCEPT_LANGUAGE` header on `switch_locale` function to identify if the request comes from a browser or a server. If the request comes from a browser, use `I18n.default_locale`
+
 ### v0.13.0.pre
 
-* buf-fixes
+* bug-fixes
   * Remove `:file` from metaprogrammed fields
   * Add `text-overflow: ellipsis;` to `file_field` text to avoid line breaks
 
