@@ -14,7 +14,7 @@ const uglifyOptions = {
       /*
        * Warning: This file is auto-generated, do not modify. Instead, make your changes in 'app/javascript/beyond_canvas/' and run \`yarn build\`
        */
-      //= require jquery
+      //= require jquery3
       //= require jquery_ujs
       //= require_self
     ` + '\n'
