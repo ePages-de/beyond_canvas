@@ -1,0 +1,43 @@
+%form__actions {
+  align-items: center;
+  display: flex;
+}
+
+.form {
+  &__row,
+  &__actions {
+    width: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__actions {
+    &--spaced {
+      @extend %form__actions;
+
+      justify-content: space-between;
+    }
+
+    &--left {
+      @extend %form__actions;
+
+      justify-content: flex-start;
+
+      *:not(:last-child) {
+        margin-right: 30px;
+      }
+    }
+
+    &--right {
+      @extend %form__actions;
+
+      justify-content: flex-end;
+
+      *:not(:first-child) {
+        margin-left: 30px;
+      }
+    }
+  }
+}

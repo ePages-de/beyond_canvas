@@ -1,0 +1,34 @@
+.card {
+  background: $white;
+  border-radius: $card-border-radius;
+  box-shadow: $card-box-shadow;
+
+  &:not(:last-child) {
+    margin-bottom: $card-margin;
+  }
+
+  &--relative {
+    position: relative;
+  }
+
+  &--padding {
+    @include padding($card-padding);
+
+    box-sizing: border-box;
+  }
+
+  &__separator {
+    @include margin($card-separator-spacing null);
+
+    border-bottom: 1px solid $card-separator-color;
+    left: -#{$card-padding};
+    position: relative;
+    width: calc(100% + 2 * #{$card-padding});
+  }
+
+  &__headline {
+    color: $card-title-color;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+}

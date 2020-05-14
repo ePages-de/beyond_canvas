@@ -1,0 +1,112 @@
+%button {
+  @include padding($button-padding);
+
+  @if $button-box-shadow != true {
+    padding-top: 7px;
+  }
+
+  align-items: center;
+  border-radius: $button-border-radius;
+  border-width: 1px;
+  border-style: solid;
+  cursor: pointer;
+  display: flex;
+  font-weight: $button-font-weight;
+  justify-content: flex-end;
+  line-height: 1;
+  outline: none;
+  transition: $main-transition;
+}
+
+@mixin button-solid($background, $color) {
+  @include background-color-darken($background, 10%);
+
+  color: $color;
+
+  .spinner {
+    display: none;
+
+    > div {
+      background-color: $color;
+    }
+  }
+
+  &:hover {
+    border-color: darken($background, 10%);
+  }
+}
+
+@mixin button-transparent($background) {
+  background-color: transparent;
+  border-color: $background;
+  color: $background;
+
+  .spinner {
+    display: none;
+
+    > div {
+      background-color: $background;
+    }
+  }
+
+  &:hover {
+    background-color: lighten($background, 40%);
+  }
+}
+
+@mixin button-border($background) {
+  border-color: $background;
+
+  @if $button-box-shadow == true {
+    border-bottom-width: 2px;
+    border-bottom-color: darken($background, 10%);
+  }
+}
+
+.button {
+  &__solid {
+    &--primary {
+      @extend %button;
+
+      @include button-solid($button-primary-background, $button-primary-color);
+      @include button-border($button-primary-background);
+    }
+
+    &--secondary {
+      @extend %button;
+
+      @include button-solid($button-secondary-background, $button-secondary-color);
+      @include button-border($button-secondary-background);
+    }
+
+    &--danger {
+      @extend %button;
+
+      @include button-solid($button-danger-background, $button-danger-color);
+      @include button-border($button-danger-background);
+    }
+  }
+
+  &__transparent {
+    &--primary {
+      @extend %button;
+
+      @include button-transparent($button-primary-background);
+      @include button-border($button-primary-background);
+    }
+
+    &--secondary {
+      @extend %button;
+
+      @include button-transparent($button-secondary-background);
+      @include button-border($button-secondary-background);
+    }
+
+    &--danger {
+      @extend %button;
+
+      @include button-transparent($button-danger-background);
+      @include button-border($button-danger-background);
+    }
+  }
+}

@@ -1,0 +1,17 @@
+.link {
+  &__icon {
+    margin-right: 10px;
+  }
+
+  &--primary {
+    @include color-darken($link-primary-color, 10%);
+  }
+
+  &--secondary {
+    @include color-darken($link-secondary-color, 10%);
+  }
+
+  &--danger {
+    @include color-darken($link-danger-color, 10%);
+  }
+}
