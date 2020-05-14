@@ -1,12 +1,12 @@
 /*
  * Warning: This file is auto-generated, do not modify. Instead, make your changes in 'app/javascript/beyond_canvas/' and run `yarn build`
  */
-//= require jquery
+//= require jquery3
 //= require jquery_ujs
 //= require_self
 
 (function(factory) {
-  typeof define === "function" && define.amd ? define([ "jquery" ], factory) : factory();
+  typeof define === "function" && define.amd ? define([ "jquery", "jquery-ujs" ], factory) : factory();
 })(function() {
   "use strict";
   var SPINNER_ANIMATION_TIMEOUT = 125;
