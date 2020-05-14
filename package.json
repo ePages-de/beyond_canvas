@@ -34,7 +34,9 @@
     "prepublishOnly": "rm -rf src && cp -R app/javascript/beyond_canvas src && cp -R app/assets/stylesheets/beyond_canvas src/sass"
   },
   "dependencies": {
-    "jquery": "^3.5.1"
+    "bourbon": "^7.0.0",
+    "jquery": "^3.5.1",
+    "jquery-ujs": "^1.2.2"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
