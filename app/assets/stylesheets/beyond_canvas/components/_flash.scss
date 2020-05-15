@@ -12,22 +12,19 @@
   &--shown {
     // sass-lint:disable no-important
     right: 25px !important;
-
     // sass-lint:enable no-important
     transition: 0.4s linear;
   }
 
   &__icon {
-    align-items: center;
-    box-sizing: border-box;
-    color: $white;
     display: flex;
-    font-size: 18px;
+    align-items: center;
     justify-content: center;
     min-width: 34px;
-    padding: 11px 8px;
+    color: $white;
 
-    &--success {
+    &--success,
+    &--notice {
       background-color: $flash-success;
     }
 

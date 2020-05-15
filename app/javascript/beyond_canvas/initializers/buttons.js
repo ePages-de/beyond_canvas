@@ -1,13 +1,8 @@
 const SPINNER_ANIMATION_TIMEOUT = 125;
 
 (function($) {
-  $(document).on('click', '[class^="button"]', function() {
-    disableActionElements();
-    showSpinner($(this));
-  });
-
-  $(document).on('ready page:load turbolinks:load', function() {
-    $('button[class^="button"]').each(function() {
+  const onDOMReady = function () {
+    $('button[class^="button"]').each(function () {
       var button = $(this);
 
       // Add width attribute and save old width
@@ -16,25 +11,35 @@ const SPINNER_ANIMATION_TIMEOUT = 125;
 
       // Add the spinner
       button.prepend(`
-      <div class="spinner">
-        <div class="bounce1"></div>
-        <div class="bounce2"></div>
-        <div class="bounce3"></div>
-      </div>`);
+        <div class="spinner">
+          <div class="bounce1"></div>
+          <div class="bounce2"></div>
+          <div class="bounce3"></div>
+        </div>`
+      );
 
       // Bind ajax:success and ajax:error to the form the button belongs to
       button
         .closest('form')
-        .on('ajax:success', function() {
+        .on('ajax:success', function () {
           hideSpinner(button);
           enableActionElements();
         })
-        .on('ajax:error', function() {
+        .on('ajax:error', function () {
           hideSpinner(button);
           enableActionElements();
         });
     });
+  };
+
+  $(document).on('click', '[class^="button"]', function() {
+    disableActionElements();
+    showSpinner($(this));
   });
+
+  $(document)
+    .ready(onDOMReady)
+    .on('ready page:load turbolinks:load', onDOMReady);
 })(jQuery);
 
 function showSpinner(button) {

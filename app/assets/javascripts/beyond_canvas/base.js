@@ -11,16 +11,12 @@
   "use strict";
   var SPINNER_ANIMATION_TIMEOUT = 125;
   (function($) {
-    $(document).on("click", '[class^="button"]', function() {
-      disableActionElements();
-      showSpinner($(this));
-    });
-    $(document).on("ready page:load turbolinks:load", function() {
+    var onDOMReady = function onDOMReady() {
       $('button[class^="button"]').each(function() {
         var button = $(this);
         button.width(button.width());
         button.data("oldWidth", button.width());
-        button.prepend('\n      <div class="spinner">\n        <div class="bounce1"></div>\n        <div class="bounce2"></div>\n        <div class="bounce3"></div>\n      </div>');
+        button.prepend('\n        <div class="spinner">\n          <div class="bounce1"></div>\n          <div class="bounce2"></div>\n          <div class="bounce3"></div>\n        </div>');
         button.closest("form").on("ajax:success", function() {
           hideSpinner(button);
           enableActionElements();
@@ -29,7 +25,12 @@
           enableActionElements();
         });
       });
+    };
+    $(document).on("click", '[class^="button"]', function() {
+      disableActionElements();
+      showSpinner($(this));
     });
+    $(document).ready(onDOMReady).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
   function showSpinner(button) {
     button.width(button.width() + $(".spinner").outerWidth(true));
@@ -54,17 +55,18 @@
     });
   }
   (function($) {
-    $(document).on("click", ".flash", function() {
-      closeAlert();
-    });
-    $(document).on("ready page:load turbolinks:load", function() {
+    var onDOMReady = function onDOMReady() {
       $(".flash").each(function() {
         $(this).css("right", -$(this).width() + "px");
       });
       setTimeout(function() {
         $(".flash").addClass("flash--shown");
       }, 100);
+    };
+    $(document).on("click", ".flash", function() {
+      closeAlert();
     });
+    $(document).ready(onDOMReady).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
   function closeAlert() {
     $(".flash").removeClass("flash--shown").delay(700).queue(function() {
@@ -72,7 +74,7 @@
     });
   }
   (function($) {
-    $(document).on("ready page:load turbolinks:load", function() {
+    var onDOMReady = function onDOMReady() {
       $('input[type="file"]').each(function() {
         var $input = $(this), $label = $(".input__file__text." + $input.attr("id")), labelVal = $label.html();
         $input.on("change", function(e) {
@@ -86,6 +88,7 @@
           $input.removeClass("has-focus");
         });
       });
-    });
+    };
+    $(document).ready(onDOMReady).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
 });

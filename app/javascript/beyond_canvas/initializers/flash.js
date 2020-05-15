@@ -1,17 +1,21 @@
 (function($) {
+  const onDOMReady = function () {
+    $('.flash').each(function () {
+      $(this).css('right', -$(this).width() + 'px');
+    });
+
+    setTimeout(function () {
+      $('.flash').addClass('flash--shown');
+    }, 100);
+  };
+
   $(document).on('click', '.flash', function() {
     closeAlert();
   });
 
-  $(document).on('ready page:load turbolinks:load', function() {
-    $('.flash').each(function() {
-      $(this).css('right', -$(this).width() + 'px');
-    });
-
-    setTimeout(function() {
-      $('.flash').addClass('flash--shown');
-    }, 100);
-  });
+  $(document)
+    .ready(onDOMReady)
+    .on('ready page:load turbolinks:load', onDOMReady);
 })(jQuery);
 
 function closeAlert() {

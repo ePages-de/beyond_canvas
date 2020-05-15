@@ -1,5 +1,7 @@
 @import "bourbon";
 
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+
 @import "settings/variables";
 @import "settings/reset_css";
 @import "settings/typography";
@@ -17,9 +19,9 @@
 @import "components/links";
 @import "components/main";
 @import "components/margins";
+@import "components/markdown";
 @import "components/notices";
 @import "components/relative";
 @import "components/tables";
 @import "components/spinner";
 @import "components/texts";
-@import "components/markdown";
