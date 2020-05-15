@@ -1,0 +1,29 @@
+<head>
+
+  <%= csrf_meta_tags %>
+
+  <meta content='width=device-width, initial-scale=1.0' name='viewport' />
+
+  <title><%= full_title(yield :title) %></title>
+
+  <%= favicon_link_tag BeyondCanvas.configuration.favicon if BeyondCanvas.configuration.favicon %>
+
+  <% BeyondCanvas.configuration.stylesheets.each do |style, options| %>
+    <% if BeyondCanvas.configuration.skip_webpacker %>
+      <%= stylesheet_link_tag style, options %>
+    <% else %>
+      <%= stylesheet_pack_tag style, options %>
+    <% end %>
+  <% end %>
+
+  <% BeyondCanvas.configuration.javascripts.each do |path| %>
+    <% if BeyondCanvas.configuration.skip_webpacker %>
+      <%= javascript_include_tag path %>
+    <% else %>
+      <%= javascript_pack_tag path %>
+    <% end %>
+  <% end %>
+
+  <%= render 'beyond_canvas/custom/public_head' %>
+
+</head>
