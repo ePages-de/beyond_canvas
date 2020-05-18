@@ -4,8 +4,9 @@ require 'beyond_canvas/engine'
 
 require 'colorize'
 
+require 'jquery-rails'
 require 'bourbon'
-require 'slim-rails'
+require 'sassc-rails'
 require 'inline_svg'
 require 'http/accept'
 require 'premailer/rails'

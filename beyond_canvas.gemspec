@@ -24,16 +24,17 @@ Gem::Specification.new do |spec|
     'README.md'
   ]
 
-  spec.add_dependency 'beyond_api'
+  spec.required_ruby_version = '>= 2.5'
 
-  spec.add_dependency 'bourbon',         '~> 5.1'
+  spec.add_dependency 'beyond_api',      '~> 0.8'
+  spec.add_dependency 'bourbon',         '~> 7.0'
   spec.add_dependency 'colorize',        '~> 0.8'
   spec.add_dependency 'http-accept',     '~> 2.1'
   spec.add_dependency 'inline_svg',      '~> 1.5'
-  spec.add_dependency 'rails',           '~> 6.0.2', '>= 6.0.2.1'
-  spec.add_dependency 'sassc-rails',     '~> 2.1'
-  spec.add_dependency 'slim-rails',      '~> 3.2'
+  spec.add_dependency 'jquery-rails',    '~> 4.4'
   spec.add_dependency 'premailer-rails', '~> 1.11'
+  spec.add_dependency 'sassc-rails',     '~> 2.1'
+  spec.add_dependency 'sprockets',       '>= 3.0', '< 4.1'
 
-  spec.add_development_dependency 'rubocop', '~> 0.80.0'
+  spec.add_development_dependency 'rubocop-rails', '~> 2.5'
 end
