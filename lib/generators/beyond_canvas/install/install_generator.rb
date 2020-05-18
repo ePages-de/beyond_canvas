@@ -2,7 +2,7 @@
 
 module BeyondCanvas
   module Generators
-    class InstallGenerator < Rails::Generators::Base
+    class InstallGenerator < Rails::Generators::Base # :nodoc:
       desc 'Installs Beyond Canvas and generates the necessary files'
 
       class_option :skip_webpacker, type: :boolean, default: false, desc: 'Use Sprockets assets instead of Webpacker'

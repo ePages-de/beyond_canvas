@@ -2,7 +2,7 @@
 
 module BeyondCanvas
   module Generators
-    class BeyondApiGenerator < Rails::Generators::Base
+    class BeyondApiGenerator < Rails::Generators::Base # :nodoc:
       def install_beyond_api
         require 'beyond_api'
 

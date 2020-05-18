@@ -2,7 +2,7 @@
 
 module BeyondCanvas
   module Generators
-    class AssetsGenerator < Rails::Generators::Base
+    class AssetsGenerator < Rails::Generators::Base # :nodoc:
       source_root File.expand_path('templates', __dir__)
 
       def install_assets

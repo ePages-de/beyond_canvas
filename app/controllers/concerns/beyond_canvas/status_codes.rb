@@ -1,15 +1,17 @@
+# frozen_string_literal: true
+
 module BeyondCanvas
-  module StatusCodes
+  module StatusCodes # :nodoc:
     extend ActiveSupport::Concern
 
     private
 
     def bad_request
-      raise ActionController::BadRequest.new 'Bad Request'
+      raise ActionController::BadRequest, 'Bad Request'
     end
 
     def not_found
-      raise ActionController::RoutingError.new 'Not Found'
+      raise ActionController::RoutingError, 'Not Found'
     end
   end
 end

@@ -2,7 +2,7 @@
 
 module BeyondCanvas
   module Generators
-    class CustomStylesGenerator < Rails::Generators::Base
+    class CustomStylesGenerator < Rails::Generators::Base # :nodoc:
       source_root File.expand_path('templates', __dir__)
 
       def copy_initializer

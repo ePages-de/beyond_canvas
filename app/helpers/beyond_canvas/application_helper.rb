@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module BeyondCanvas
-  module ApplicationHelper
+  module ApplicationHelper # :nodoc:
     def full_title(page_title = '')
       if I18n.exists?('app_name')
         base_title = I18n.t('app_name')
@@ -27,7 +27,7 @@ module BeyondCanvas
       end
     end
 
-    [:success, :info, :warning, :error].each do |method|
+    %i[success info warning error].each do |method|
       define_method :"notice_#{method}" do |name = nil, html_options = nil, &block|
         notice_render(method, name, html_options, &block)
       end
@@ -59,15 +59,18 @@ module BeyondCanvas
     end
 
     def notice_render(method, name = nil, html_options = nil, &block)
-      html_options, name = name, block if block_given?
+      if block_given?
+        html_options = name
+        name = block
+      end
 
       html_options ||= {}
 
-      html_options.merge!(class: "notice notice--#{method}") { |key, old_val, new_val| [new_val, old_val].join(' ') }
+      html_options.merge!(class: "notice notice--#{method}") { |_key, old_val, new_val| [new_val, old_val].join(' ') }
 
       content_tag('div', html_options) do
         content_tag('i', nil, class: "notice__icon #{get_flash_icon(method.to_s)}") +
-        content_tag('span', block_given? ? capture(&name) : name, class: 'notice__content')
+          content_tag('span', block_given? ? capture(&name) : name, class: 'notice__content')
       end
     end
   end

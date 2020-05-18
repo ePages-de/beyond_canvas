@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module BeyondCanvas
-  module LocaleSwitchHelper
+  module LocaleSwitchHelper # :nodoc:
     def translate_locale(locale)
       if I18n.exists?("locales.#{locale}")
         I18n.t("locales.#{locale}")

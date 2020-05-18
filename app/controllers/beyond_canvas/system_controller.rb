@@ -3,7 +3,7 @@
 require_dependency 'beyond_canvas/application_controller'
 
 module BeyondCanvas
-  class SystemController < ApplicationController
+  class SystemController < ApplicationController # :nodoc:
     include ::BeyondCanvas::LocaleManagement
 
     def update_locale
