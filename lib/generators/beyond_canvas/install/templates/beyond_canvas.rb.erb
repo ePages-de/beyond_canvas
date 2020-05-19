@@ -1,0 +1,40 @@
+# frozen_string_literal: true
+
+BeyondCanvas.setup do |config|
+  # ==> Site configuration
+
+  # Set the title that is displayed on the main layout..
+  #
+  config.site_title = '<%= Rails.application.class.name.split("::").first.humanize %>'
+
+  # Set an optional image to be displayed instead of a string. Accepts any
+  # string supported by image_tag's source parameter or a SVG file. Overrides
+  # :site_title.
+  #
+  # config.site_logo = 'logo.png'
+
+  # Set the favicon of the site.
+  #
+  # config.favicon = 'favicon.ico'
+
+  # ==> Stylesheets & Javascripts
+
+  # We recommend using the built in Beyond Canvas layout and loading up your own
+  # stylesheets / javascripts to customize the look and feel.
+  #
+  # To load a stylesheet:
+  #   config.register_stylesheet 'my_stylesheet.css'
+  #
+  # You can provide an options hash for more control, which is passed along to stylesheet_link_tag():
+  #   config.register_stylesheet 'my_print_stylesheet.css', media: :print
+  #
+  # To load a javascript file:
+  #   config.register_javascript 'my_javascript.js'
+
+  # ==> Webpacker
+
+  # By default, Active Admin uses Webpacker.
+  # You can switch to using Sprocket's asset pipeline here.
+  #
+  <% unless @skip_webpacker %># <% end %>config.skip_webpacker = <%= @skip_webpacker %>
+end

@@ -12,7 +12,7 @@ module BeyondCanvas
       def copy_initializer
         @skip_webpacker = options[:skip_webpacker]
 
-        template 'beyond_canvas.rb', 'config/initializers/beyond_canvas.rb'
+        template 'beyond_canvas.rb.erb', 'config/initializers/beyond_canvas.rb'
       end
 
       def setup_routes

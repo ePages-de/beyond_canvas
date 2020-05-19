@@ -3,12 +3,7 @@
 module BeyondCanvas
   module ApplicationHelper # :nodoc:
     def full_title(page_title = '')
-      if I18n.exists?('app_name')
-        base_title = I18n.t('app_name')
-      else
-        logger.debug "[BeyondCanvas] Missing translation: #{I18n.locale}.app_name".yellow
-        base_title = File.basename(Rails.root).humanize
-      end
+      base_title = BeyondCanvas.configuration.site_title
 
       page_title.empty? ? base_title : page_title + ' | ' + base_title
     end
@@ -45,16 +40,16 @@ module BeyondCanvas
 
     def get_flash_icon(key)
       case key
-      when 'success'
-        'fas fa-check'
+      when 'success', 'notice'
+        inline_svg_tag 'icons/flash_checkbox.svg'
       when 'info'
-        'fas fa-info-circle'
+        inline_svg_tag 'icons/flash_info.svg'
       when 'warning'
-        'fas fa-exclamation-circle'
+        inline_svg_tag 'icons/flash_warning.svg'
       when 'error'
-        'far fa-times-circle'
+        inline_svg_tag 'icons/flash_error.svg'
       else
-        'fas fa-info'
+        inline_svg_tag 'icons/flash_info.svg'
       end
     end
 
@@ -69,8 +64,9 @@ module BeyondCanvas
       html_options.merge!(class: "notice notice--#{method}") { |_key, old_val, new_val| [new_val, old_val].join(' ') }
 
       content_tag('div', html_options) do
-        content_tag('i', nil, class: "notice__icon #{get_flash_icon(method.to_s)}") +
-          content_tag('span', block_given? ? capture(&name) : name, class: 'notice__content')
+        content_tag('div', class: 'notice__icon') do
+          get_flash_icon(method.to_s)
+        end + content_tag('span', block_given? ? capture(&name) : name, class: 'notice__content')
       end
     end
   end
