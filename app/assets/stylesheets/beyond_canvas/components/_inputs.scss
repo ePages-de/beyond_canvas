@@ -61,6 +61,7 @@ select {
     }
 
     &__text {
+      display: flex;
       margin-left: 20px;
       font-weight: 500;
       text-overflow: ellipsis;
@@ -70,9 +71,9 @@ select {
     }
 
     &__icon {
+      color: $main-color;
+      width: 14px;
       margin-right: 5px;
-      position: relative;
-      top: 1px;
     }
   }
 }
