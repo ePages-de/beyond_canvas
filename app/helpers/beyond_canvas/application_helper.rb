@@ -1,14 +1,9 @@
 # frozen_string_literal: true
 
 module BeyondCanvas
-  module ApplicationHelper
+  module ApplicationHelper # :nodoc:
     def full_title(page_title = '')
-      if I18n.exists?('app_name')
-        base_title = I18n.t('app_name')
-      else
-        logger.debug "[BeyondCanvas] Missing translation: #{I18n.locale}.app_name".yellow
-        base_title = File.basename(Rails.root).humanize
-      end
+      base_title = BeyondCanvas.configuration.site_title
 
       page_title.empty? ? base_title : page_title + ' | ' + base_title
     end
@@ -27,7 +22,7 @@ module BeyondCanvas
       end
     end
 
-    [:success, :info, :warning, :error].each do |method|
+    %i[success info warning error].each do |method|
       define_method :"notice_#{method}" do |name = nil, html_options = nil, &block|
         notice_render(method, name, html_options, &block)
       end
@@ -45,29 +40,33 @@ module BeyondCanvas
 
     def get_flash_icon(key)
       case key
-      when 'success'
-        'fas fa-check'
+      when 'success', 'notice'
+        inline_svg_tag 'icons/flash_checkbox.svg'
       when 'info'
-        'fas fa-info-circle'
+        inline_svg_tag 'icons/flash_info.svg'
       when 'warning'
-        'fas fa-exclamation-circle'
+        inline_svg_tag 'icons/flash_warning.svg'
       when 'error'
-        'far fa-times-circle'
+        inline_svg_tag 'icons/flash_error.svg'
       else
-        'fas fa-info'
+        inline_svg_tag 'icons/flash_info.svg'
       end
     end
 
     def notice_render(method, name = nil, html_options = nil, &block)
-      html_options, name = name, block if block_given?
+      if block_given?
+        html_options = name
+        name = block
+      end
 
       html_options ||= {}
 
-      html_options.merge!(class: "notice notice--#{method}") { |key, old_val, new_val| [new_val, old_val].join(' ') }
+      html_options.merge!(class: "notice notice--#{method}") { |_key, old_val, new_val| [new_val, old_val].join(' ') }
 
       content_tag('div', html_options) do
-        content_tag('i', nil, class: "notice__icon #{get_flash_icon(method.to_s)}") +
-        content_tag('span', block_given? ? capture(&name) : name, class: 'notice__content')
+        content_tag('div', class: 'notice__icon') do
+          get_flash_icon(method.to_s)
+        end + content_tag('span', block_given? ? capture(&name) : name, class: 'notice__content')
       end
     end
   end

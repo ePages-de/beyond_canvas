@@ -1,8 +1,17 @@
 # frozen_string_literal: true
 
 module BeyondCanvas
-  class Engine < ::Rails::Engine
+  class Engine < ::Rails::Engine # :nodoc:
     isolate_namespace BeyondCanvas
+
+    initializer 'beyond_canvas.assets.precompile' do |app|
+      BeyondCanvas.configuration.stylesheets.each do |path, _|
+        app.config.assets.precompile << path
+      end
+      BeyondCanvas.configuration.javascripts.each do |path|
+        app.config.assets.precompile << path
+      end
+    end
 
     config.before_initialize do
       ActiveSupport.on_load :action_controller do

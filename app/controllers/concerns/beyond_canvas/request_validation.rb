@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module BeyondCanvas
-  module RequestValidation
+  module RequestValidation # :nodoc:
     extend ActiveSupport::Concern
 
     private
@@ -12,10 +14,10 @@ module BeyondCanvas
 
     def app_installation_params?
       if params[:code].nil? ||
-        params[:signature].nil? ||
-        params[:return_url].nil? ||
-        params[:api_url].nil? ||
-        params[:access_token_url].nil?
+         params[:signature].nil? ||
+         params[:return_url].nil? ||
+         params[:api_url].nil? ||
+         params[:access_token_url].nil?
         false
       else
         true

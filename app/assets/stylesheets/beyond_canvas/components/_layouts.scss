@@ -1,0 +1,7 @@
+.body--public {
+  .select--locale {
+    @include position(absolute, 40px 40px null null);
+
+    width: 200px;
+  }
+}

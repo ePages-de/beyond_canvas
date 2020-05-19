@@ -1,10 +1,9 @@
 inherit_from: .rubocop_todo.yml
 
+require: rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.5
+
 Layout/LineLength:
   Max: 120
-
-Style/SymbolArray:
-  EnforcedStyle: brackets
-
-Style/WordArray:
-  EnforcedStyle: brackets

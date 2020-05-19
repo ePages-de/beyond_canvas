@@ -4,32 +4,27 @@ require 'beyond_canvas/engine'
 
 require 'colorize'
 
+require 'jquery-rails'
 require 'bourbon'
-require 'slim-rails'
+require 'sassc-rails'
 require 'inline_svg'
 require 'http/accept'
 require 'premailer/rails'
 
 require 'beyond_api'
 
-module BeyondCanvas
+module BeyondCanvas # :nodoc:
+  autoload :AssetRegistration, 'beyond_canvas/asset_registration'
+  autoload :Configuration,     'beyond_canvas/configuration'
+
   class << self
-    attr_accessor :configuration
-  end
+    def configuration
+      @configuration ||= ::BeyondCanvas::Configuration.new
+    end
 
-  def self.setup
-    self.configuration ||= Configuration.new
-
-    yield configuration
-  end
-
-  class Configuration
-    attr_accessor :public_logo, :stylesheet_link_tag, :javascript_include_tag
-
-    def initialize
-      @public_logo = nil
-      @stylesheet_link_tag = 'application'
-      @javascript_include_tag = 'application'
+    def setup
+      configuration.setup!
+      yield configuration
     end
   end
 end
