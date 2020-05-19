@@ -39,9 +39,13 @@
   &__icon {
     @include padding(10px 8px);
 
-    color: $white;
     display: flex;
-    font-size: 18px;
+
+    > svg {
+      @include size(18px);
+
+      fill: $white;
+    }
   }
 
   &__content {

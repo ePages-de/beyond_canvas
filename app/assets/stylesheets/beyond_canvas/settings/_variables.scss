@@ -102,9 +102,10 @@ $logo-margin-bottom-public: 34px !default;
 // ************************************************************
 
 $flash-success: rgb(123, 170, 81) !default;
-$flash-info: rgb(90, 129, 171) !default;
-$flash-warning: rgb(193, 179, 26) !default;
-$flash-error: rgb(162, 66, 60) !default;
+$flash-notice: rgb(123, 170, 81) !default;
+$flash-info: rgb(153, 153, 153) !default;
+$flash-warning: rgb(243, 181, 71) !default;
+$flash-error: rgb(218, 60, 60) !default;
 $flash-border-radius: 4px !default;
 $flash-box-shadow: 0 1px 2px 0 rgba($black, 0.2) !default;
 $flash-color: rgb(128, 128, 128) !default;
@@ -128,9 +129,10 @@ $comment-color: rgb(170, 169, 156) !default;
 // ************************************************************
 
 $notice-success-background: rgb(123, 170, 81) !default;
+$notice-notice-background: rgb(123, 170, 81) !default;
 $notice-info-background: rgb(153, 153, 153) !default;
-$notice-warning-background: rgb(235, 183, 92) !default;
-$notice-error-background: rgb(162, 66, 60) !default;
+$notice-warning-background: rgb(243, 181, 71) !default;
+$notice-error-background: rgb(218, 60, 60) !default;
 $notice-border-radius: 4px !default;
 $notice-color: rgb(153, 153, 153) !default;
 

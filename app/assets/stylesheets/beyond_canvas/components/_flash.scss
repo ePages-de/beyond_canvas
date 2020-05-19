@@ -17,11 +17,15 @@
   }
 
   &__icon {
+    @include padding(11px 8px);
+
     display: flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 34px;
-    color: $white;
+
+    > svg {
+      @include size(18px);
+
+      fill: $white;
+    }
 
     &--success,
     &--notice {
@@ -51,11 +55,12 @@
   &__close {
     @include padding(10px 15px);
 
-    align-items: center;
-    box-sizing: border-box;
-    color: $flash-color;
     cursor: pointer;
-    display: flex;
-    font-size: 10px;
+
+    > svg {
+      @include size(8px);
+
+      fill: $flash-color;
+    }
   }
 }
