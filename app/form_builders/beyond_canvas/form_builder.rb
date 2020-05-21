@@ -2,18 +2,18 @@
 
 module BeyondCanvas
   class FormBuilder < ActionView::Helpers::FormBuilder # :nodoc:
-    def field_wrapper(attribute, args, &block)
+    def field_wrapper(attribute, args, options = {}, &block)
       label = args[:label].presence || attribute.to_s.humanize
 
       errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
 
       @template.content_tag(:div, class: 'form__row') do
-        @template.content_tag(:label, label, class: 'input__label') +
-          @template.content_tag(:div, class: 'relative') do
-            block.call +
-              (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
-          end +
-          (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
+        (options[:hide_label] ? @template.tag.i : @template.content_tag(:label, label, class: 'input__label')) +
+        @template.content_tag(:div, class: 'relative') do
+          block.call +
+            (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
+        end +
+        (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
       end
     end
 
@@ -21,6 +21,23 @@ module BeyondCanvas
       define_method :"#{method}_field" do |attribute, args = {}|
         field_wrapper(attribute, args) do
           super(attribute, args)
+        end
+      end
+    end
+
+    def check_box(attribute, args = {})
+      label = args[:label].presence || attribute.to_s.humanize
+
+      field_wrapper(attribute, args, hide_label: true) do
+        filed_identifyer = "#{attribute}_#{(Time.now.to_f * 1000).to_i}"
+
+        args.merge!(id: filed_identifyer)
+            .merge!(hidden: true)
+
+        @template.content_tag(:div, class: 'input__checkbox') do
+          super(attribute, args) +
+            @template.content_tag(:label, nil, class: 'input__checkbox__label', for: filed_identifyer) +
+            @template.content_tag(:label, label, class: 'input__label', for: filed_identifyer)
         end
       end
     end
