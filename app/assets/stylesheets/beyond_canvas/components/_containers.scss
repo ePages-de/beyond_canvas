@@ -1,0 +1,37 @@
+$columns: 2, 3, 4;
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  &--center {
+    justify-content: center;
+  }
+
+  &__column {
+
+    @each $column in $columns {
+
+      &--#{$column} {
+        width: 100%;
+
+        @media (min-width: $laptop) {
+          width: calc((100% - (#{$column} - 1) * #{$container-spacing}) / #{$column});
+
+          &:not(:last-child) {
+            margin-right: $container-spacing;
+          }
+        }
+
+        &:not(:last-child) {
+          margin-bottom: $container-spacing;
+
+          @media (min-width: $laptop) {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
