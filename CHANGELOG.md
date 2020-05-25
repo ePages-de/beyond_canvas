@@ -1,3 +1,10 @@
+### v0.15.0.pre
+
+* features
+  * Add support for `check_box` and `radio_button` form tags
+  * Add support for containers
+  * Add possibility to set `label: false` on form inputs
+
 ### v0.14.0.pre
 
 * deprecations

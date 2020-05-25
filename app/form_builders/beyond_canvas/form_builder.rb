@@ -2,18 +2,39 @@
 
 module BeyondCanvas
   class FormBuilder < ActionView::Helpers::FormBuilder # :nodoc:
+    ############################################################################
+    # Wrappers
+    ############################################################################
+
     def field_wrapper(attribute, args, &block)
-      label = args[:label].presence || attribute.to_s.humanize
+      label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
 
       errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
 
       @template.content_tag(:div, class: 'form__row') do
         @template.content_tag(:label, label, class: 'input__label') +
-          @template.content_tag(:div, class: 'relative') do
-            block.call +
-              (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
-          end +
-          (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
+        @template.content_tag(:div, class: 'relative') do
+          block.call +
+            (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
+        end +
+        (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
+      end
+    end
+
+    def inline_wrapper(attribute, args, &block)
+      label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
+
+      errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
+
+      @template.content_tag(:div, class: 'form__row') do
+        @template.content_tag(:div, class: 'relative', style: 'display: flex; align-items: center;') do
+          block.call +
+            @template.content_tag(:div) do
+              @template.content_tag(:label, label, class: 'input__label') +
+              (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
+            end +
+            (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
+        end
       end
     end
 
@@ -25,9 +46,39 @@ module BeyondCanvas
       end
     end
 
+    def check_box(attribute, args = {})
+      inline_wrapper(attribute, args) do
+        filed_identifyer = filed_identifyer(attribute)
+
+        args.merge!(id: filed_identifyer)
+            .merge!(hidden: true)
+
+        @template.content_tag(:div, class: 'input__checkbox') do
+          super(attribute, args) +
+            @template.content_tag(:label, nil, class: 'input__checkbox__control', for: filed_identifyer)
+        end
+      end
+    end
+
+    def radio_button(attribute, value, args = {})
+      args.merge!(label: value) unless args[:label]
+
+      inline_wrapper(attribute, args) do
+        filed_identifyer = filed_identifyer(attribute)
+
+        args.merge!(id: filed_identifyer)
+            .merge!(hidden: true)
+
+        @template.content_tag(:div, class: 'input__radio') do
+          super(attribute, value, args) +
+            @template.content_tag(:label, nil, class: 'input__radio__control', for: filed_identifyer)
+        end
+      end
+    end
+
     def file_field(attribute, args = {})
       field_wrapper(attribute, args) do
-        filed_identifyer = "#{attribute}_#{(Time.now.to_f * 1000).to_i}"
+        filed_identifyer = filed_identifyer(attribute)
 
         args.merge!(id: filed_identifyer)
             .merge!(hidden: true)
@@ -39,7 +90,7 @@ module BeyondCanvas
           super(attribute, args) +
             @template.content_tag(:label,
                                   for: filed_identifyer,
-                                  class: 'input__file__label button__transparent--primary') do
+                                  class: 'input__file__control button__transparent--primary') do
               args[:data][:button_text] || 'Choose file'
             end +
             @template.content_tag(:span,
@@ -47,6 +98,12 @@ module BeyondCanvas
                                   class: "input__file__text #{filed_identifyer}")
         end
       end
+    end
+
+    private
+
+    def filed_identifyer(attribute)
+      "#{attribute}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
     end
   end
 end

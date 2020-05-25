@@ -1,15 +1,18 @@
 @import "bourbon";
 
+@import "settings/breakpoints";
 @import "settings/variables";
 @import "settings/reset_css";
 @import "settings/typography";
 
+@import "utilities/functions";
 @import "utilities/mixins";
 
 @import "components/actions";
 @import "components/buttons";
 @import "components/cards";
 @import "components/comments";
+@import "components/containers";
 @import "components/flash";
 @import "components/forms";
 @import "components/inputs";

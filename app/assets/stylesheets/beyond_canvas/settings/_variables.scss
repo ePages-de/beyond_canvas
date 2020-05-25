@@ -71,6 +71,12 @@ $card-separator-spacing: 50px !global;
 $card-title-color: rgb(247, 133, 96) !default;
 
 // ************************************************************
+// Containers
+// ************************************************************
+
+$container-spacing: 30px !global;
+
+// ************************************************************
 // Labels
 // ************************************************************
 
@@ -83,6 +89,24 @@ $label-color: rgb(128, 128, 128) !default;
 $input-border-color: rgb(217, 216, 195) !default;
 $input-border-color-focus: $palette-primary !default;
 $input-errors-color: $palette-danger !default;
+
+// ************************************************************
+// Checkboxes
+// ************************************************************
+
+$checkbox-checked-color: #97C344 !default;
+$checkbox-checked-background: #ffffff !default;
+$checkbox-unchecked-color: #C2BF9D !default;
+$checkbox-unchecked-background: #ffffff !default;
+
+// ************************************************************
+// Radiobuttons
+// ************************************************************
+
+$radio-checked-color: #97C344 !default;
+$radio-checked-background: #ffffff !default;
+$radio-unchecked-color: #C2BF9D !default;
+$radio-unchecked-background: #ffffff !default;
 
 // ************************************************************
 // Hints
