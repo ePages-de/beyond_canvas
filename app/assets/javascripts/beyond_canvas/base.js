@@ -15,7 +15,7 @@
       inputs.each(function() {
         var input = $(this);
         input.bind("invalid", function(e) {
-          if ($(input).is(":file")) {
+          if ($(input).is(":hidden")) {
             e.preventDefault();
           }
           $('button[class^="button"]').each(function() {
