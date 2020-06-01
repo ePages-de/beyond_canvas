@@ -2,16 +2,28 @@
  * Warning: This file is auto-generated, do not modify. Instead, make your changes in 'app/javascript/beyond_canvas/' and run `yarn build`
  */
 //= require jquery3
-//= require jquery_ujs
 //= require_self
 
 (function(factory) {
-  typeof define === "function" && define.amd ? define([ "jquery", "jquery-ujs" ], factory) : factory();
+  typeof define === "function" && define.amd ? define([ "jquery" ], factory) : factory();
 })(function() {
   "use strict";
   var SPINNER_ANIMATION_TIMEOUT = 125;
   (function($) {
     var onDOMReady = function onDOMReady() {
+      var inputs = $("input, textarea, select").not(":input[type=button], :input[type=submit], :input[type=reset]");
+      inputs.each(function() {
+        var input = $(this);
+        input.bind("invalid", function(e) {
+          if ($(input).is(":file")) {
+            e.preventDefault();
+          }
+          $('button[class^="button"]').each(function() {
+            hideSpinner($(this));
+          });
+          enableActionElements();
+        });
+      });
       $('button[class^="button"]').each(function() {
         var button = $(this);
         button.width(button.width());
@@ -30,7 +42,7 @@
       disableActionElements();
       showSpinner($(this));
     });
-    $(document).ready(onDOMReady).on("ready page:load turbolinks:load", onDOMReady);
+    $(document).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
   function showSpinner(button) {
     button.width(button.width() + $(".spinner").outerWidth(true));
@@ -66,7 +78,7 @@
     $(document).on("click", ".flash", function() {
       closeAlert();
     });
-    $(document).ready(onDOMReady).on("ready page:load turbolinks:load", onDOMReady);
+    $(document).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
   function closeAlert() {
     $(".flash").removeClass("flash--shown").delay(700).queue(function() {
@@ -89,6 +101,6 @@
         });
       });
     };
-    $(document).ready(onDOMReady).on("ready page:load turbolinks:load", onDOMReady);
+    $(document).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
 });

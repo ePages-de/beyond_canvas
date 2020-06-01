@@ -1,6 +1,5 @@
-import 'jquery'
-import 'jquery-ujs'
+import 'jquery';
 
-import './initializers/buttons'
-import './initializers/flash'
-import './initializers/inputs'
+import './initializers/buttons';
+import './initializers/flash';
+import './initializers/inputs';

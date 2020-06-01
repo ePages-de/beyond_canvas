@@ -2,6 +2,22 @@ const SPINNER_ANIMATION_TIMEOUT = 125;
 
 (function($) {
   const onDOMReady = function () {
+    const inputs = $('input, textarea, select').not(':input[type=button], :input[type=submit], :input[type=reset]');
+
+    inputs.each(function () {
+      var input = $(this);
+
+      input.bind('invalid', function (e) {
+        if ($(input).is(':hidden')) {
+          e.preventDefault();
+        }
+        $('button[class^="button"]').each(function () {
+          hideSpinner($(this));
+        });
+        enableActionElements();
+      });
+    });
+
     $('button[class^="button"]').each(function () {
       var button = $(this);
 
@@ -32,13 +48,12 @@ const SPINNER_ANIMATION_TIMEOUT = 125;
     });
   };
 
-  $(document).on('click', '[class^="button"]', function() {
+  $(document).on('click', '[class^="button"]', function () {
     disableActionElements();
     showSpinner($(this));
   });
 
   $(document)
-    .ready(onDOMReady)
     .on('ready page:load turbolinks:load', onDOMReady);
 })(jQuery);
 
@@ -67,6 +82,6 @@ function disableActionElements() {
 }
 function enableActionElements() {
   $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function() {
-    $(this).removeClass("actions--disabled");
+    $(this).removeClass('actions--disabled');
   });
 }
