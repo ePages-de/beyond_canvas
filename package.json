@@ -1,6 +1,6 @@
 {
   "name": "@epages/beyond_canvas",
-  "version": "0.2.0-pre",
+  "version": "0.2.1-pre",
   "description": "Open-source framework that provides CSS and JS for apps designed and developed for the online shop software Beyond",
   "keywords": [
     "epages",
@@ -31,21 +31,26 @@
   },
   "scripts": {
     "build": "rollup --config rollup.config.js",
-    "prepublishOnly": "rm -rf src && cp -R app/javascript/beyond_canvas src && cp -R app/assets/stylesheets/beyond_canvas src/scss"
+    "prepublishOnly": "rm -rf src && cp -R app/javascript/beyond_canvas src && cp -R app/assets/stylesheets/beyond_canvas src/scss",
+    "eslint": "eslint ./app/javascript/beyond_canvas"
   },
   "dependencies": {
     "bourbon": "^7.0.0",
-    "jquery": "^3.5.1",
-    "jquery-ujs": "^1.2.2"
+    "jquery": "^3.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
     "@babel/preset-env": "^7.6.2",
-    "common-tags": "^1.8.0",
-    "rollup": "^1.21.4",
     "@rollup/plugin-babel": "^5.0.0",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-node-resolve": "^7.1.3",
+    "common-tags": "^1.8.0",
+    "eslint": "^7.1.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "rollup": "^1.21.4",
     "rollup-plugin-uglify": "^6.0.4"
   }
 }

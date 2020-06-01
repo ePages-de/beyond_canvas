@@ -14,7 +14,6 @@
   });
 
   $(document)
-    .ready(onDOMReady)
     .on('ready page:load turbolinks:load', onDOMReady);
 })(jQuery);
 
