@@ -1,3 +1,15 @@
+### v0.15.1.pre
+
+* deprecations
+  * Remove `jquery-ujs` dependency
+  * Set bourbon dependency version to `~> 5.1`
+
+* bug-fixes
+  * Fix Add invalid binding for enabling buttons
+
+* features
+  * Add ESLint
+
 ### v0.15.0.pre
 
 * features
