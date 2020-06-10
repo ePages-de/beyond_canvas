@@ -1,8 +1,15 @@
-const SPINNER_ANIMATION_TIMEOUT = 125;
+import {
+  disableActionElements,
+  enableActionElements,
+  hideSpinner,
+  showSpinner,
+} from './functions';
 
-(function($) {
+(function ($) {
   const onDOMReady = function () {
-    const inputs = $('input, textarea, select').not(':input[type=button], :input[type=submit], :input[type=reset]');
+    const inputs = $('input, textarea, select').not(
+      ':input[type=button], :input[type=submit], :input[type=reset]'
+    );
 
     inputs.each(function () {
       var input = $(this);
@@ -31,8 +38,7 @@ const SPINNER_ANIMATION_TIMEOUT = 125;
           <div class="bounce1"></div>
           <div class="bounce2"></div>
           <div class="bounce3"></div>
-        </div>`
-      );
+        </div>`);
 
       // Bind ajax:success and ajax:error to the form the button belongs to
       button
@@ -53,35 +59,5 @@ const SPINNER_ANIMATION_TIMEOUT = 125;
     showSpinner($(this));
   });
 
-  $(document)
-    .on('ready page:load turbolinks:load', onDOMReady);
+  $(document).on('ready page:load turbolinks:load', onDOMReady);
 })(jQuery);
-
-function showSpinner(button) {
-  // Adjust the width of the button
-  button.width(button.width() + $('.spinner').outerWidth(true));
-  // Show the spinner
-  setTimeout(function() {
-    button.find('.spinner').css('display', 'flex');
-  }, SPINNER_ANIMATION_TIMEOUT);
-}
-
-function hideSpinner(button) {
-  setTimeout(function () {
-    // Hide the spinner
-    button.find('.spinner').hide();
-    // Adjust the width of the button
-    button.width(button.data('oldWidth'));
-  }, SPINNER_ANIMATION_TIMEOUT);
-}
-
-function disableActionElements() {
-  $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function() {
-    $(this).addClass('actions--disabled');
-  });
-}
-function enableActionElements() {
-  $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function() {
-    $(this).removeClass('actions--disabled');
-  });
-}
