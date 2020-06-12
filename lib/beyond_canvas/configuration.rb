@@ -2,7 +2,7 @@
 
 module BeyondCanvas
   class Configuration # :nodoc:
-    attr_accessor :site_title, :site_logo, :favicon, :skip_webpacker
+    attr_accessor :site_title, :site_logo, :favicon, :skip_webpacker, :authentication_resource
 
     include AssetRegistration
 
@@ -11,6 +11,7 @@ module BeyondCanvas
       @site_logo = nil
       @favicon = nil
       @skip_webpacker = false
+      @authentication_resource = nil
     end
 
     def setup!
