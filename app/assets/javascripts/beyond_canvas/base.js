@@ -113,7 +113,7 @@ function showSpinner(button) {
   }, SPINNER_ANIMATION_TIMEOUT);
 }
 function hideSpinner() {
-  $('button[class^="button"]').each(function (_i, button) {
+  $('button[class^="button"]').each(function (_, button) {
     setTimeout(function () {
       // Hide the spinner
       $(button).find('.spinner').hide(); // Adjust the width of the button
