@@ -1,2 +1,2 @@
-class <%= BeyondCanvas.configuration.authentication_resource.classify %> < BeyondCanvas::AuthenticationModel
+class <%= file_path.classify %> < BeyondCanvas::AuthenticationModel
 end

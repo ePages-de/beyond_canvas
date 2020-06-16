@@ -3,7 +3,7 @@
 module BeyondCanvas
   module Authentication # :nodoc:
     extend ActiveSupport::Concern
-    AUTH_RESOURCE = BeyondCanvas.configuration.authentication_resource.downcase
+    AUTH_RESOURCE = BeyondCanvas.configuration.auth_model
 
     class_eval <<-METHODS, __FILE__, __LINE__ + 1
       def authenticate_#{AUTH_RESOURCE}!
@@ -15,9 +15,10 @@ module BeyondCanvas
       end
 
       def new_#{AUTH_RESOURCE}_params
-        params.require(AUTH_RESOURCE.to_sym)
-              .permit(:code, :signature, :return_url, :api_url, :access_token_url)
+        beyond_canvas_parameter_sanitizer.sanitize
       end
+
+
     METHODS
 
     private
@@ -36,6 +37,10 @@ module BeyondCanvas
           raise ActiveRecord::RecordNotSaved, 'Invalid Record'
         end
       end
+    end
+
+    def beyond_canvas_parameter_sanitizer
+      @beyond_canvas_parameter_sanitizer ||= BeyondCanvas::ParameterSanitizer.new(AUTH_RESOURCE, params)
     end
   end
 end

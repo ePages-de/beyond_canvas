@@ -14,8 +14,9 @@ require 'premailer/rails'
 require 'beyond_api'
 
 module BeyondCanvas # :nodoc:
-  autoload :AssetRegistration, 'beyond_canvas/asset_registration'
-  autoload :Configuration,     'beyond_canvas/configuration'
+  autoload :AssetRegistration,  'beyond_canvas/asset_registration'
+  autoload :Configuration,      'beyond_canvas/configuration'
+  autoload :ParameterSanitizer, 'beyond_canvas/parameter_sanitizer'
 
   class << self
     def configuration

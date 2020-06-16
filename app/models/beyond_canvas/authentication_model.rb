@@ -2,7 +2,7 @@
 
 module BeyondCanvas
   class AuthenticationModel < ApplicationRecord
-    self.table_name = BeyondCanvas.configuration.authentication_resource.pluralize
+    self.table_name = BeyondCanvas.configuration.auth_model.pluralize
 
     attr_accessor :code, :signature, :return_url, :api_url, :access_token_url
 
@@ -10,11 +10,11 @@ module BeyondCanvas
     # Encrypted attribute configuration
     ##############################################################################
 
-    attr_encrypted :beyond_api_url,       key: [ENV['ENCRYPTION_KEY']].pack('H*')
-    attr_encrypted :beyond_access_token,  key: [ENV['ENCRYPTION_KEY']].pack('H*')
-    attr_encrypted :beyond_refresh_token, key: [ENV['ENCRYPTION_KEY']].pack('H*')
+    attr_encrypted :beyond_api_url,       key: [BeyondCanvas.configuration.encryption_key].pack('H*')
+    attr_encrypted :beyond_access_token,  key: [BeyondCanvas.configuration.encryption_key].pack('H*')
+    attr_encrypted :beyond_refresh_token, key: [BeyondCanvas.configuration.encryption_key].pack('H*')
 
-    blind_index    :beyond_api_url,       key: [ENV['BLIND_INDEX_KEY']].pack('H*')
+    blind_index    :beyond_api_url,       key: [BeyondCanvas.configuration.blind_index_key].pack('H*')
 
     ##############################################################################
     # Validations

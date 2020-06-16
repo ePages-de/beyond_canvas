@@ -17,7 +17,7 @@ module BeyondCanvas
       end
 
       def generate_model
-        template "model.rb", model_path
+        template "model.rb", File.join("app", "models", "#{file_path}.rb")
       end
 
       private
@@ -30,10 +30,6 @@ module BeyondCanvas
         if rails5_and_up?
           "[#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}]"
         end
-      end
-
-      def model_path
-        File.join("app", "models", "#{file_path}.rb")
       end
 
       def migration_data

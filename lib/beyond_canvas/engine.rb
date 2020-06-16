@@ -15,7 +15,7 @@ module BeyondCanvas
 
     initializer 'beyond_canvas.auth', after: :load_config_initializers do |app|
       ActiveSupport.on_load :action_controller do
-        include ::BeyondCanvas::Authentication if BeyondCanvas.configuration.authentication_resource.present?
+        include ::BeyondCanvas::Authentication if BeyondCanvas.configuration.auth_model.present?
       end
     end
 
