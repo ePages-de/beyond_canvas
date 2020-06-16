@@ -15,7 +15,7 @@ module.exports = {
     './app/javascript/beyond_canvas/initializers/functions.js',
   ],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.js'],
   },
   target: 'web',
   output: {
