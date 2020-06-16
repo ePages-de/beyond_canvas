@@ -1,15 +1,8 @@
-import {
-  disableActionElements,
-  enableActionElements,
-  hideSpinner,
-  showSpinner,
-} from './functions';
+import { disableActionElements, enableActionElements, hideSpinner, showSpinner } from './functions';
 
 (function ($) {
   const onDOMReady = function () {
-    const inputs = $('input, textarea, select').not(
-      ':input[type=button], :input[type=submit], :input[type=reset]'
-    );
+    const inputs = $('input, textarea, select').not(':input[type=button], :input[type=submit], :input[type=reset]');
 
     inputs.each(function () {
       var input = $(this);
@@ -18,9 +11,7 @@ import {
         if ($(input).is(':hidden')) {
           e.preventDefault();
         }
-        $('button[class^="button"]').each(function () {
-          hideSpinner($(this));
-        });
+        hideSpinner();
         enableActionElements();
       });
     });
@@ -44,11 +35,11 @@ import {
       button
         .closest('form')
         .on('ajax:success', function () {
-          hideSpinner(button);
+          hideSpinner();
           enableActionElements();
         })
         .on('ajax:error', function () {
-          hideSpinner(button);
+          hideSpinner();
           enableActionElements();
         });
     });

@@ -98,7 +98,6 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SPINNER_ANIMATION_TIMEOUT", function() { return SPINNER_ANIMATION_TIMEOUT; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "showSpinner", function() { return showSpinner; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "hideSpinner", function() { return hideSpinner; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "disableActionElements", function() { return disableActionElements; });
@@ -113,13 +112,15 @@ function showSpinner(button) {
     button.find('.spinner').css('display', 'flex');
   }, SPINNER_ANIMATION_TIMEOUT);
 }
-function hideSpinner(button) {
-  setTimeout(function () {
-    // Hide the spinner
-    button.find('.spinner').hide(); // Adjust the width of the button
+function hideSpinner() {
+  $('button[class^="button"]').each(function (_i, button) {
+    setTimeout(function () {
+      // Hide the spinner
+      $(button).find('.spinner').hide(); // Adjust the width of the button
 
-    button.width(button.data('oldWidth'));
-  }, SPINNER_ANIMATION_TIMEOUT);
+      $(button).width($(button).data('oldWidth'));
+    }, SPINNER_ANIMATION_TIMEOUT);
+  });
 }
 function disableActionElements() {
   $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function (_, button) {
@@ -196,9 +197,7 @@ var functions = __webpack_require__(0);
           e.preventDefault();
         }
 
-        $('button[class^="button"]').each(function () {
-          Object(functions["hideSpinner"])($(this));
-        });
+        Object(functions["hideSpinner"])();
         Object(functions["enableActionElements"])();
       });
     });
@@ -211,10 +210,10 @@ var functions = __webpack_require__(0);
       button.prepend("\n        <div class=\"spinner\">\n          <div class=\"bounce1\"></div>\n          <div class=\"bounce2\"></div>\n          <div class=\"bounce3\"></div>\n        </div>"); // Bind ajax:success and ajax:error to the form the button belongs to
 
       button.closest('form').on('ajax:success', function () {
-        Object(functions["hideSpinner"])(button);
+        Object(functions["hideSpinner"])();
         Object(functions["enableActionElements"])();
       }).on('ajax:error', function () {
-        Object(functions["hideSpinner"])(button);
+        Object(functions["hideSpinner"])();
         Object(functions["enableActionElements"])();
       });
     });
