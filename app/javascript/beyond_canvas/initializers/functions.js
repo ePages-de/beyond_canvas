@@ -1,4 +1,4 @@
-export const SPINNER_ANIMATION_TIMEOUT = 125;
+const SPINNER_ANIMATION_TIMEOUT = 125;
 
 export function showSpinner(button) {
   // Adjust the width of the button
@@ -9,26 +9,24 @@ export function showSpinner(button) {
   }, SPINNER_ANIMATION_TIMEOUT);
 }
 
-export function hideSpinner(button) {
-  setTimeout(function () {
-    // Hide the spinner
-    button.find('.spinner').hide();
-    // Adjust the width of the button
-    button.width(button.data('oldWidth'));
-  }, SPINNER_ANIMATION_TIMEOUT);
+export function hideSpinner() {
+  $('button[class^="button"]').each(function (_i, button) {
+    setTimeout(function () {
+      // Hide the spinner
+      $(button).find('.spinner').hide();
+      // Adjust the width of the button
+      $(button).width($(button).data('oldWidth'));
+    }, SPINNER_ANIMATION_TIMEOUT);
+  });
 }
 
 export function disableActionElements() {
-  $(
-    'a, input[type="submit"], input[type="button"], input[type="reset"], button'
-  ).each(function (_, button) {
+  $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function (_, button) {
     $(button).addClass('actions--disabled');
   });
 }
 export function enableActionElements() {
-  $(
-    'a, input[type="submit"], input[type="button"], input[type="reset"], button'
-  ).each(function (_, button) {
+  $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function (_, button) {
     $(button).removeClass('actions--disabled');
   });
 }
