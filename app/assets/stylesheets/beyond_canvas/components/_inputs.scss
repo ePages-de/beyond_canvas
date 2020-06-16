@@ -1,0 +1,143 @@
+$controls: checkbox, radio;
+
+#{$all-text-inputs},
+select {
+  background-color: $white;
+  border: 1px solid $input-border-color;
+  border-radius: 3px;
+  box-sizing: border-box;
+  outline: none;
+  padding: 6px 8px;
+  width: 100%;
+}
+
+#{$all-text-inputs} {
+  line-height: 1;
+}
+
+#{$all-text-inputs-focus},
+select:focus {
+  border-color: $input-border-color-focus;
+}
+
+select {
+  @include prefixer(appearance, none, ("webkit", "moz"));
+
+  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, $input-border-color, $input-border-color);
+  background-position: calc(100% - 19px) calc(1em + -1px), calc(100% - 15px) calc(1em + -1px), calc(100% - 2.5em) 0.5em;
+  background-size: 4px 4px, 4px 4px, 0 0;
+  background-repeat: no-repeat;
+}
+
+#{$all-text-inputs},
+select {
+  &.input__error {
+    border-left: 2px solid $input-errors-color;
+
+    &:focus {
+      border: 1px solid $input-border-color-focus;
+    }
+  }
+}
+
+.input {
+  &__label {
+    color: $label-color;
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+  }
+
+  &__hint {
+    color: $hint-color;
+    font-size: 13px;
+    margin-top: 1px;
+  }
+
+  @each $control in $controls {
+
+    &__#{$control} {
+      display: flex;
+      align-items: center;
+
+      .input__#{$control}__control {
+        @if $control == checkbox {
+          @include size(16px);
+        } @else if $control == radio {
+          @include size(18px);
+        }
+
+        cursor: pointer;
+        margin-right: 7px;
+      }
+
+      input[type=#{$control}] + .input__#{$control}__control {
+        @if $control == checkbox {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='background: #{str-replace('' + $checkbox-unchecked-background, '#', '%23')};' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='#{str-replace('' + $checkbox-unchecked-color, '#', '%23')}' d='M0 0v24h24V0H0zm21.5 21.5h-19v-19h19v19z'%3E%3C/path%3E%3C/svg%3E%0A");
+        } @else if $control == radio {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='background: #{str-replace('' + $radio-unchecked-background, '#', '%23')};' width='18' height='18' viewBox='0 0 24 24'%3E%3Cpath fill='#{str-replace('' + $radio-unchecked-color, '#', '%23')}' d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 21.6c-5.3 0-9.6-4.3-9.6-9.6S6.7 2.4 12 2.4s9.6 4.3 9.6 9.6-4.3 9.6-9.6 9.6z'%3E%3C/path%3E%3C/svg%3E");
+        }
+      }
+
+      input[type=#{$control}]:checked + .input__#{$control}__control {
+        @if $control == checkbox {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='background: #{str-replace('' + $checkbox-checked-background, '#', '%23')};' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='#{str-replace('' + $checkbox-checked-color, '#', '%23')}' d='M0 0v24h24V0H0zm9.6 18.4l-5.8-5.6 2-2.1 3.7 3.6L18 5.6l2.1 2.1L9.6 18.4z'%3E%3C/path%3E%3C/svg%3E%0A");
+        } @else if $control == radio {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='background: #{str-replace('' + $radio-checked-background, '#', '%23')};' width='18' height='18' viewBox='0 0 24 24'%3E%3Cpath fill='#{str-replace('' + $radio-checked-color, '#', '%23')}' d='M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.6 0 12 0zm0 21.6c-5.3 0-9.6-4.3-9.6-9.6S6.7 2.4 12 2.4s9.6 4.3 9.6 9.6-4.3 9.6-9.6 9.6zm0-15.9c-3.4 0-6.3 2.8-6.3 6.3s2.8 6.2 6.3 6.2 6.2-2.8 6.2-6.2-2.8-6.3-6.2-6.3z'%3E%3C/path%3E%3C/svg%3E");
+        }
+      }
+
+      + div .input__label {
+        line-height: 1;
+      }
+
+      + div .input__hint {
+        line-height: 1;
+        margin-top: 4px;
+      }
+    }
+  }
+
+  &__file {
+    display: flex;
+    align-items: center;
+
+    &__control {
+      display: inline-block;
+    }
+
+    &__text {
+      display: flex;
+      margin-left: 20px;
+      font-weight: 500;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      max-width: 200px;
+    }
+
+    &__icon {
+      color: $main-color;
+      width: 14px;
+      margin-right: 5px;
+    }
+  }
+}
+
+label.input__error {
+  @include padding(5px 7px);
+  @include position(absolute, calc(100% + 8px) null null 0);
+
+  background-color: $input-errors-color;
+  border-radius: 3px;
+  color: $white;
+  font-size: 13px;
+  z-index: 1;
+
+  &::before {
+    @include position(absolute, null null 100% 8px);
+    @include triangle("up", 12px, 6px, $input-errors-color);
+
+    content: "";
+  }
+}

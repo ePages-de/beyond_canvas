@@ -1,0 +1,66 @@
+.flash {
+  @include position(fixed, 70px null null null);
+
+  background-color: $white;
+  border-radius: $flash-border-radius;
+  box-shadow: $flash-box-shadow;
+  display: flex;
+  overflow: hidden;
+  transition: 0.7s linear;
+  z-index: 9999;
+
+  &--shown {
+    // sass-lint:disable no-important
+    right: 25px !important;
+    // sass-lint:enable no-important
+    transition: 0.4s linear;
+  }
+
+  &__icon {
+    @include padding(11px 8px);
+
+    display: flex;
+
+    > svg {
+      @include size(18px);
+
+      fill: $white;
+    }
+
+    &--success,
+    &--notice {
+      background-color: $flash-success;
+    }
+
+    &--info {
+      background-color: $flash-info;
+    }
+
+    &--warning {
+      background-color: $flash-warning;
+    }
+
+    &--error {
+      background-color: $flash-error;
+    }
+  }
+
+  &__message {
+    @include padding(10px 15px);
+
+    box-sizing: border-box;
+    color: $flash-color;
+  }
+
+  &__close {
+    @include padding(10px 15px);
+
+    cursor: pointer;
+
+    > svg {
+      @include size(8px);
+
+      fill: $flash-color;
+    }
+  }
+}

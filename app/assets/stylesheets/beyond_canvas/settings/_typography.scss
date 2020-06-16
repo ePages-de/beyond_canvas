@@ -1,0 +1,67 @@
+// sass-lint:disable single-line-per-selector, no-vendor-prefixes
+
+html {
+  font-size: 62.5%;
+}
+
+body, #{$all-text-inputs}, #{$all-buttons}, select {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-family: unquote($main-font-family);
+  font-size: $main-font-size;
+  font-weight: normal;
+}
+
+body, #{$all-text-inputs}, select {
+  color: $main-color;
+}
+
+body, #{$all-text-inputs} {
+  line-height: $main-line-height;
+}
+
+select {
+  line-height: initial;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $headline-color;
+  font-weight: bold;
+  line-height: $headline-line-height;
+}
+
+h1 {
+  font-size: 56px;
+}
+
+h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 16px;
+}
+
+p {
+  font-size: $main-font-size;
+}
+
+a {
+  color: $main-color;
+  outline: none;
+  text-decoration: none;
+}
+
+strong {
+  font-weight: bold;
+}
+
+// sass-lint:enable single-line-per-selector, no-vendor-prefixes

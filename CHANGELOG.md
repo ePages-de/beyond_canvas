@@ -1,6 +1,55 @@
+### v0.15.2.pre
+
+* bug-fixes
+  * Make `showSpinner` `hideSpinner` `disableActionElements` `enableActionElements` `closeAlert` functions public
+
+### v0.15.1.pre
+
+* deprecations
+  * Remove `jquery-ujs` dependency
+  * Set bourbon dependency version to `~> 5.1`
+
+* bug-fixes
+  * Fix Add invalid binding for enabling buttons
+
+* features
+  * Add ESLint
+
+### v0.15.0.pre
+
+* features
+  * Add support for `check_box` and `radio_button` form tags
+  * Add support for containers
+  * Add possibility to set `label: false` on form inputs
+
+### v0.14.0.pre
+
+* deprecations
+  * `application.css` is no longer loaded by Beyond Canvas
+  * Move stylesheets from `.sass` to `.scss`
+  * Move partials from `.html.slim` to `.html.erb`
+  * Deprecations on `BeyondCanvas` configuration file:
+    * `:public_logo` is substituted by `:site_logo`
+
+* features
+  * Add support for both Webpacker and Sprockets
+  * `BeyondCanvas` configuration:
+    * Added support for `:favicon`
+    * Added support for `:site_title`
+    * Added the possibility to register stylesheets and javascripts
+
+* enhancements
+  * Remove Font Awesome dependency (now `.svg` icons are used)
+  * Title is now taken from `BeyondCanvas` initializer
+
+### v0.13.1.pre
+
+* bug-fixes
+  * Check the `HTTP_ACCEPT_LANGUAGE` header on `switch_locale` function to identify if the request comes from a browser or a server. If the request comes from a browser, use `I18n.default_locale`
+
 ### v0.13.0.pre
 
-* buf-fixes
+* bug-fixes
   * Remove `:file` from metaprogrammed fields
   * Add `text-overflow: ellipsis;` to `file_field` text to avoid line breaks
 

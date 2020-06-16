@@ -1,0 +1,8 @@
+<% if defined?(I18n) && I18n.available_locales.count > 1 %>
+  <%= form_for :system, url: beyond_canvas.update_locale_path, method: :put do |f| %>
+      <%= f.select :locale, I18n.available_locales.collect { |l| [translate_locale(l), l] },
+                        { selected: cookies[:locale] },
+                        class: 'select--locale',
+                        onchange: 'this.form.submit()'  %>
+  <% end %>
+<% end %>

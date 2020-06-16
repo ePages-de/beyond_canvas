@@ -1,0 +1,54 @@
+{
+  "name": "@epages/beyond_canvas",
+  "version": "0.2.2-pre",
+  "description": "Open-source framework that provides CSS and JS for apps designed and developed for the online shop software Beyond",
+  "keywords": [
+    "epages",
+    "beyond",
+    "rails-engine",
+    "rails",
+    "ruby",
+    "gem"
+  ],
+  "homepage": "https://github.com/ePages-de/beyond_canvas#README",
+  "bugs": {
+    "url": "https://github.com/ePages-de/beyond_canvas/issues"
+  },
+  "license": "MIT",
+  "author": "Unai Abrisketa <u.abrisketa@epages.com>",
+  "contributors": [
+    "Kathia Salazar <k.salazar@epages.com>",
+    "German San Emeterio <g.sanemeterio@epages.com>"
+  ],
+  "files": [
+    "app/assets/javascripts/beyond_canvas/*.js",
+    "src/**/*"
+  ],
+  "main": "app/assets/javascripts/beyond_canvas/base.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ePages-de/beyond_canvas.git"
+  },
+  "scripts": {
+    "build": "webpack",
+    "prepublishOnly": "rm -rf src && cp -R app/javascript/beyond_canvas src && cp -R app/assets/stylesheets/beyond_canvas src/scss",
+    "eslint": "eslint ./app/javascript/beyond_canvas"
+  },
+  "dependencies": {
+    "bourbon": "^7.0.0",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "babel-loader": "^8.1.0",
+    "common-tags": "^1.8.0",
+    "eslint": "^7.1.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-standard": "^4.0.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 module BeyondCanvas
-  module LocaleManagement
+  module LocaleManagement # :nodoc:
     extend ActiveSupport::Concern
 
     included do
-      around_action :switch_locale, except: :update_locale
+      around_action :switch_locale, except: :update_locale # rubocop:disable Rails/LexicallyScopedActionFilter
     end
 
     private
@@ -15,6 +15,9 @@ module BeyondCanvas
     # browser compatible locale, sets the value to the cookie and set that locale as default locale.
     #
     def switch_locale(&action)
+      # NOTE: Check the HTTP_ACCEPT_LANGUAGE header to identify if the request comes from a browser or a server
+      return I18n.with_locale(I18n.default_locale, &action) if request.headers['HTTP_ACCEPT_LANGUAGE'].blank?
+
       unless valid_locale?(cookies[:locale])
         cookies[:locale] = { value: browser_compatible_locale, expires: 1.day.from_now }
       end
