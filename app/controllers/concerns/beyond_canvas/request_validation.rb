@@ -31,7 +31,7 @@ module BeyondCanvas
     def valid_signature?(signature, data, secret)
       digest = OpenSSL::Digest.new('SHA1')
       hmac = OpenSSL::HMAC.digest(digest, secret, data)
-      signature == Base64.encode64(hmac).chop
+      URI.decode(signature) == Base64.encode64(hmac).chop
     end
   end
 end
