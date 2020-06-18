@@ -1,3 +1,8 @@
+### v0.15.3.pre
+
+* bug-fixes
+  * Add `URI.decode` on signature validation
+
 ### v0.15.2.pre
 
 * bug-fixes
