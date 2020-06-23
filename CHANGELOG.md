@@ -1,3 +1,9 @@
+### v0.16.0.pre
+
+* features
+  * Add shop authentication functionality
+  * Add generators to create a model for authentication, controllers and views
+  
 ### v0.15.3.pre
 
 * bug-fixes

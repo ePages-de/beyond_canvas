@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    beyond_canvas (0.15.3.pre)
+    beyond_canvas (0.16.0.pre)
       attr_encrypted (~> 3.1)
       beyond_api (~> 0.8)
       blind_index (~> 1.0)
