@@ -21,7 +21,7 @@ module BeyondCanvas
     end
 
     def update
-      redirect_to after_update_path
+      create
     end
 
     private
@@ -32,10 +32,6 @@ module BeyondCanvas
     end
 
     def after_create_path
-      resource.return_url
-    end
-
-    def after_update_path
       resource.return_url
     end
   end
