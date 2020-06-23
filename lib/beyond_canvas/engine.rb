@@ -14,14 +14,9 @@ module BeyondCanvas
       end
     end
 
-    initializer 'beyond_canvas.auth', after: :load_config_initializers do |app|
-      ActiveSupport.on_load :action_controller do
-        include ::BeyondCanvas::Authentication
-      end
-    end
-
     config.before_initialize do
       ActiveSupport.on_load :action_controller do
+        include ::BeyondCanvas::Authentication
         include ::BeyondCanvas::LocaleManagement
         include ::BeyondCanvas::ResourceManagement
         include ::BeyondCanvas::RequestValidation
