@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'beyond_canvas/rails/routes'
 
 module BeyondCanvas
   class Engine < ::Rails::Engine # :nodoc:
@@ -13,9 +14,16 @@ module BeyondCanvas
       end
     end
 
+    initializer 'beyond_canvas.auth', after: :load_config_initializers do |app|
+      ActiveSupport.on_load :action_controller do
+        include ::BeyondCanvas::Authentication
+      end
+    end
+
     config.before_initialize do
       ActiveSupport.on_load :action_controller do
         include ::BeyondCanvas::LocaleManagement
+        include ::BeyondCanvas::ResourceManagement
         include ::BeyondCanvas::RequestValidation
         include ::BeyondCanvas::StatusCodes
 
