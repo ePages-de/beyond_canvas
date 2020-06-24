@@ -10,13 +10,23 @@ module BeyondCanvas
     include ::BeyondCanvas::ResourceManagement
 
     before_action :validate_app_installation_request!, only: :new
-    before_action :authenticate_scope!, only: [:create, :update]
 
     def new
       self.resource = resource_class.new
     end
 
     def create
+      # Search for the api url. If there is no record it creates a new record.
+      resource_params = new_resource_params
+      self.resource = resource_class.find_or_create_by(beyond_api_url: resource_params[:api_url])
+      # Assign the attributes to the record
+      if self.resource.update(resource_params)
+        # Get and save access_token and refresh_token using the authentication code
+        self.resource.authenticate
+      else
+        raise ActiveRecord::RecordNotSaved, 'Invalid Record'
+      end
+
       redirect_to after_create_path
     end
 
@@ -26,13 +36,12 @@ module BeyondCanvas
 
     private
 
-    def authenticate_scope!
-      send(:"authenticate_#{resource_name}!")
-      self.resource = send(:"current_#{resource_name}")
+    def new_resource_params
+      send "new_#{resource_name}_params"
     end
 
     def after_create_path
-      resource.return_url
+      new_resource_params[:return_url]
     end
   end
 end

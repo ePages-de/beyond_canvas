@@ -12,7 +12,7 @@ module BeyondCanvas
       end
     end
 
-    private
+    protected
 
     def resource_name
       BeyondCanvas.auth_model

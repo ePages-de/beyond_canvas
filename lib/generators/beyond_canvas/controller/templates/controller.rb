@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class <%= scope.camelize %>Controller < BeyondCanvas::AuthenticationController
-  # before_action :configure_params, only: [:create, :update]
+  # before_action :configure_params, only: [:create]
 
   # def new
   #   super
