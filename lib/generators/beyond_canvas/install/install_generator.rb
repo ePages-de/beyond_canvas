@@ -36,6 +36,7 @@ module BeyondCanvas
       def generate_auth_model
         generate "beyond_canvas:auth_model #{@auth_model}"
         route "beyond_canvas_for :#{@auth_model.pluralize}"
+        copy_file 'en.yml', 'config/locales/beyond_canvas.yml'
       end
     end
   end

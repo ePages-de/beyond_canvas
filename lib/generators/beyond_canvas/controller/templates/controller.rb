@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class <%= scope.camelize %>Controller < BeyondCanvas::AuthenticationController
+class <%= scope.camelize %>Controller < BeyondCanvas::AuthenticationsController
   # before_action :configure_params, only: [:create]
 
   # def new
@@ -21,5 +21,17 @@ class <%= scope.camelize %>Controller < BeyondCanvas::AuthenticationController
   # The path used after creating the shop in the database
   # def after_create_path
   #   resource.return_url
+  # end
+
+  # def handle_active_record_exception(exception)
+  #   super
+  # end
+
+  # def handle_beyond_api_exception(exception)
+  #   super
+  # end
+
+  # def handle_standard_error_exception(exception)
+  #   super
   # end
 end

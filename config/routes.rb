@@ -4,7 +4,7 @@ BeyondCanvas::Engine.routes.draw do
   put '/locale', to: 'system#update_locale', as: :update_locale
 
   def set_default_routes(resource_name)
-    resources resource_name, controller: 'authentication', except: :destroy
+    resources resource_name, controller: 'authentications', except: :destroy
   end
 
   unless BeyondCanvas.use_rails_app_controller
