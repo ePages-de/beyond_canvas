@@ -2,7 +2,7 @@
 
 module BeyondCanvas
   class Configuration # :nodoc:
-    attr_accessor :site_title, :site_logo, :favicon, :skip_webpacker, :encryption_key, :blind_index_key
+    attr_accessor :site_title, :site_logo, :favicon, :skip_webpacker, :encryption_key, :blind_index_key, :mounting_path
 
     include AssetRegistration
 
@@ -13,6 +13,7 @@ module BeyondCanvas
       @skip_webpacker = false
       @encryption_key = nil
       @blind_index_key = nil
+      @mounting_path = '/'
     end
 
     def setup!
