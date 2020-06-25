@@ -20,9 +20,10 @@ module BeyondCanvas
       resource_params = new_resource_params
       self.resource = resource_class.find_or_create_by(beyond_api_url: resource_params[:api_url])
       # Assign the attributes to the record
-      raise ActiveRecord::RecordNotSaved unless self.resource.update(resource_params)
+      raise ActiveRecord::RecordNotSaved unless resource.update(resource_params)
       # Get and save access_token and refresh_token using the authentication code
-      raise BeyondApi::Error if self.resource.authenticate.is_a? BeyondApi::Error
+      raise BeyondApi::Error if resource.authenticate.is_a?(BeyondApi::Error)
+
       redirect_to after_create_path
     rescue ActiveRecord::RecordNotSaved, BeyondApi::Error, StandardError => e
       logger.error "[BeyondCanvas] #{e.message}".red

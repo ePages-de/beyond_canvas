@@ -6,7 +6,7 @@ class BeyondCanvasCreate<%= table_name.camelize %> < ActiveRecord::Migration<%= 
 <%= migration_data -%>
 
 <% attributes.each do |attribute| -%>
-      t.<%= attribute.type %> :<%= attribute.name %>
+    t.<%= attribute.type %> :<%= attribute.name %>
 <% end -%>
 
       t.timestamps null: false

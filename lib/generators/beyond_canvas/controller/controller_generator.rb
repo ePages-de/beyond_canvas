@@ -12,7 +12,7 @@ module BeyondCanvas
       source_root File.expand_path('templates', __dir__)
 
       def create_controller
-        template 'controller.rb',
+        template 'controller.erb',
                  "app/controllers/#{scope}_controller.rb"
       end
     end

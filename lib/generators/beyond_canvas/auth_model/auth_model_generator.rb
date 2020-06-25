@@ -13,13 +13,13 @@ module BeyondCanvas
 
       def copy_beyond_canvas_migration
         migration_path = File.join('db', 'migrate')
-        migration_template 'migration.rb',
+        migration_template 'migration.erb',
                            "#{migration_path}/beyond_canvas_create_#{table_name}.rb",
                            migration_version: migration_version
       end
 
       def generate_model
-        template 'model.rb', File.join('app', 'models', "#{file_path}.rb")
+        template 'model.erb', File.join('app', 'models', "#{file_path}.rb")
       end
 
       private
@@ -33,16 +33,16 @@ module BeyondCanvas
       end
 
       def migration_data
-<<RUBY
-        t.string :encrypted_beyond_api_url,       null: false
-        t.string :encrypted_beyond_api_url_iv,    null: false
-        t.string :beyond_api_url_bidx,            null: false
+        <<RUBY
+      t.string :encrypted_beyond_api_url,       null: false
+      t.string :encrypted_beyond_api_url_iv,    null: false
+      t.string :beyond_api_url_bidx,            null: false
 
-        t.text :encrypted_beyond_access_token,    null: true
-        t.text :encrypted_beyond_access_token_iv, null: true
+      t.text :encrypted_beyond_access_token,    null: true
+      t.text :encrypted_beyond_access_token_iv, null: true
 
-        t.text :encrypted_beyond_refresh_token,    null: true
-        t.text :encrypted_beyond_refresh_token_iv, null: true
+      t.text :encrypted_beyond_refresh_token,    null: true
+      t.text :encrypted_beyond_refresh_token_iv, null: true
 RUBY
       end
     end
