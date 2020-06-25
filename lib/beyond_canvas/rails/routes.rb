@@ -3,7 +3,7 @@
 module ActionDispatch::Routing
   class Mapper
     def beyond_canvas_for(*resources)
-      mount BeyondCanvas::Engine => BeyondCanvas.configuration.mounting_path
+      mount BeyondCanvas::Engine => BeyondCanvas.configuration.namespace
 
       resource_name, options = resources
       BeyondCanvas.auth_model = resource_name.to_s.singularize
