@@ -1,3 +1,13 @@
+### v0.15.3.pre
+
+* bug-fixes
+  * Add `URI.decode` on signature validation
+
+### v0.15.2.pre
+
+* bug-fixes
+  * Make `showSpinner` `hideSpinner` `disableActionElements` `enableActionElements` `closeAlert` functions public
+
 ### v0.15.1.pre
 
 * deprecations
