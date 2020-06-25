@@ -3,6 +3,8 @@
 module ActionDispatch::Routing
   class Mapper
     def beyond_canvas_for(*resources)
+      mount BeyondCanvas::Engine => '/'
+
       resource_name, options = resources
       BeyondCanvas.auth_model = resource_name.to_s.singularize
       BeyondCanvas.use_rails_app_controller = options.present? && options[:controller].present?

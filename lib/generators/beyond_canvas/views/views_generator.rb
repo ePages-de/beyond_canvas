@@ -9,7 +9,7 @@ module BeyondCanvas
 
       argument :scope, required: true, desc: 'The scope to copy views to'
 
-      source_root File.expand_path('templates', __dir__)
+      source_root File.expand_path('../../../../app/views/beyond_canvas/authentications', __dir__)
 
       def create_view
         copy_file 'new.html.erb', "app/views/#{scope}/new.html.erb"

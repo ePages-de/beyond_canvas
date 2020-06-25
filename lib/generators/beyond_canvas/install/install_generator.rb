@@ -17,10 +17,6 @@ module BeyondCanvas
         template 'beyond_canvas.rb.erb', 'config/initializers/beyond_canvas.rb'
       end
 
-      def setup_routes
-        route "mount BeyondCanvas::Engine => '/'"
-      end
-
       def create_assets
         if options[:skip_webpacker]
           generate 'beyond_canvas:assets'
@@ -35,8 +31,14 @@ module BeyondCanvas
 
       def generate_auth_model
         generate "beyond_canvas:auth_model #{@auth_model}"
+      end
+
+      def setup_routes
         route "beyond_canvas_for :#{@auth_model.pluralize}"
-        copy_file 'en.yml', 'config/locales/beyond_canvas.yml'
+      end
+
+      def copy_locale
+        copy_file '../../../../../config/locales/en.yml', 'config/locales/beyond_canvas.en.yml'
       end
     end
   end
