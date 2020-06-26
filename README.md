@@ -37,12 +37,6 @@
     //= require beyond_canvas
     ```
 
-1. Mount the engine in your routes file:
-
-    ```ruby
-    mount BeyondCanvas::Engine => "/<your-mounting-path>"
-    ```
-
 1. Run the generator:
 
     ```bash
