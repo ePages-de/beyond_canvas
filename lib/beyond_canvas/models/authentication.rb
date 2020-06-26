@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength
 module BeyondCanvas
   module Models
     module Authentication # :nodoc:
@@ -65,4 +64,3 @@ module BeyondCanvas
     end
   end
 end
-# rubocop:enable Metrics/BlockLength

@@ -28,10 +28,14 @@ module BeyondCanvas # :nodoc:
   autoload :ParameterSanitizer, 'beyond_canvas/parameter_sanitizer'
 
   mattr_accessor :use_rails_app_controller
-  @@use_rails_app_controller = false
+  @@use_rails_app_controller = false # rubocop:disable Style/ClassVars
 
   mattr_accessor :auth_model
-  @@auth_model = 'shop'
+  @@auth_model = 'shop' # rubocop:disable Style/ClassVars
+
+  def self.use_rails_app_controller=(value)
+    @use_rails_app_controller = value
+  end
 
   class << self
     def configuration

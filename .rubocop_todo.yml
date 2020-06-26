@@ -11,6 +11,13 @@
 Metrics/AbcSize:
   Max: 28
 
+# Offense count: 1
+# Configuration parameters: CountComments, ExcludedMethods.
+Metrics/BlockLength:
+  Exclude:
+    - 'beyond_canvas.gemspec'
+    - 'lib/beyond_canvas/models/authentication.rb'
+
 # Offense count: 2
 # Configuration parameters: CountComments, ExcludedMethods.
 Metrics/MethodLength:
