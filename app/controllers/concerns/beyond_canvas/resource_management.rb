@@ -7,7 +7,7 @@ module BeyondCanvas
     included do
       # Share some methods defined in the controller to make them available for the view
       if respond_to?(:helper_method)
-        helpers = %w(resource resource_name resource_class)
+        helpers = %w[resource resource_name resource_class]
         helper_method(*helpers)
       end
     end

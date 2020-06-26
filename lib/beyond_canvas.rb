@@ -19,7 +19,7 @@ module BeyondCanvas # :nodoc:
   autoload :AssetRegistration,  'beyond_canvas/asset_registration'
   autoload :Configuration,      'beyond_canvas/configuration'
 
-  module Models
+  module Models # :nodoc:
     autoload :Authentication,   'beyond_canvas/models/authentication'
     autoload :Shop,             'beyond_canvas/models/shop'
     autoload :Utils,            'beyond_canvas/models/utils'

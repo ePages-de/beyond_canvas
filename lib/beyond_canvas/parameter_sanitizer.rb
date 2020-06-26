@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module BeyondCanvas
-  class ParameterSanitizer
-    DEFAULT_PERMITTED_ATTRIBUTES = [:code, :signature, :return_url, :api_url, :access_token_url]
+  class ParameterSanitizer # :nodoc:
+    DEFAULT_PERMITTED_ATTRIBUTES = %i[code signature return_url api_url access_token_url].freeze
 
     def initialize(resource_name, params)
       @params         = params

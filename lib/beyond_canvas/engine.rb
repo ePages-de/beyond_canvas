@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 require 'beyond_canvas/rails/routes'
 
 module BeyondCanvas

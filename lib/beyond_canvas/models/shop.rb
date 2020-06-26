@@ -2,7 +2,7 @@
 
 module BeyondCanvas
   module Models
-    module Shop
+    module Shop # :nodoc:
       extend ActiveSupport::Concern
       include BeyondCanvas::Models::Authentication
       include BeyondCanvas::Models::Utils

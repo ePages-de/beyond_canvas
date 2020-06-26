@@ -2,7 +2,7 @@
 
 module BeyondCanvas
   module Models
-    module Utils
+    module Utils # :nodoc:
       extend ActiveSupport::Concern
 
       included do
@@ -17,7 +17,7 @@ module BeyondCanvas
           beyond_session = BeyondApi::Session.new(api_url: beyond_api_url, refresh_token: beyond_refresh_token)
           beyond_session.token.refresh
 
-          update(beyond_access_token: beyond_session.access_token, 
+          update(beyond_access_token: beyond_session.access_token,
                  beyond_refresh_token: beyond_session.refresh_token)
         end
 
@@ -37,10 +37,9 @@ module BeyondCanvas
         #
         def to_session
           BeyondApi::Session.new(api_url: beyond_api_url,
-                                access_token: beyond_access_token,
-                                refresh_token: beyond_refresh_token)
+                                 access_token: beyond_access_token,
+                                 refresh_token: beyond_refresh_token)
         end
-        
 
         ##############################################################################
         # Class methods

@@ -7,7 +7,5 @@ BeyondCanvas::Engine.routes.draw do
     resources resource_name, controller: 'authentications', except: :destroy
   end
 
-  unless BeyondCanvas.use_rails_app_controller
-    set_default_routes(BeyondCanvas.auth_model.pluralize.to_sym)
-  end
+  set_default_routes(BeyondCanvas.auth_model.pluralize.to_sym) unless BeyondCanvas.use_rails_app_controller
 end

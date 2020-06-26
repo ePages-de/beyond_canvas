@@ -26,7 +26,9 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 2.5'
 
+  spec.add_dependency 'attr_encrypted',  '~> 3.1'
   spec.add_dependency 'beyond_api',      '~> 0.11'
+  spec.add_dependency 'blind_index',     '~> 1.0'
   spec.add_dependency 'bourbon',         '~> 5.1'
   spec.add_dependency 'colorize',        '~> 0.8'
   spec.add_dependency 'http-accept',     '~> 2.1'
@@ -35,8 +37,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'premailer-rails', '~> 1.11'
   spec.add_dependency 'sassc-rails',     '~> 2.1'
   spec.add_dependency 'sprockets',       '>= 3.0', '< 4.1'
-  spec.add_dependency 'blind_index',     '~> 1.0'
-  spec.add_dependency 'attr_encrypted',  '~> 3.1'
 
   spec.add_development_dependency 'rubocop-rails', '~> 2.5'
 end

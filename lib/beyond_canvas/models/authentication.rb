@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/BlockLength
 module BeyondCanvas
   module Models
-    module Authentication
+    module Authentication # :nodoc:
       extend ActiveSupport::Concern
 
       included do
@@ -51,7 +52,8 @@ module BeyondCanvas
 
         #
         # Get and save access_token and refresh_token using the authentication code
-        # NOTE: This method is used during the shop creation, as it is the only point we know about the authentication code
+        # NOTE: This method is used during the shop creation, as it is the only point
+        # we know about the authentication code
         #
         def authenticate
           session = BeyondApi::Session.new(api_url: beyond_api_url)
@@ -63,3 +65,4 @@ module BeyondCanvas
     end
   end
 end
+# rubocop:enable Metrics/BlockLength
