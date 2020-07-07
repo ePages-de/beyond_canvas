@@ -35,13 +35,13 @@ require 'colorize'
 namespace :release do
   desc 'Update beyond_canvas_custom_styles.sass generator template to latest version'
   task :custom_styles do |_task, _args|
-    ORIG = 'app/assets/stylesheets/beyond_canvas/settings/_variables.sass'
-    DEST = 'lib/generators/templates/beyond_canvas_custom_styles.sass'
+    ORIG = 'app/assets/stylesheets/beyond_canvas/settings/_variables.scss'
+    DEST = 'lib/generators/beyond_canvas/custom_styles/templates/beyond_canvas_custom_styles.scss'
 
     dest_file = File.open(DEST, 'w')
 
     File.open(ORIG, 'r').each do |line|
-      next if line.include?('!global')
+      next if line.start_with?('$') && !line.include?('!default')
 
       line.start_with?('$') ? dest_file.print('// ' + line.gsub(' !default', '')) : dest_file.print(line)
     end
