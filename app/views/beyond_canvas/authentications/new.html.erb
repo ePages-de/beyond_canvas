@@ -1,0 +1,18 @@
+<div class='card card--padding'>
+
+  <%= form_for(resource, as: resource_name) do |f| %>
+
+    <h2 class='card__headline'>Install <%= BeyondCanvas.configuration.site_title %> in your shop</h2>
+
+    <%= f.hidden_field :code,             value: params[:code] || resource.code %>
+    <%= f.hidden_field :signature,        value: params[:signature] || resource.signature %>
+    <%= f.hidden_field :return_url,       value: params[:return_url] || resource.return_url %>
+    <%= f.hidden_field :api_url,          value: params[:api_url] || resource.api_url %>
+    <%= f.hidden_field :access_token_url, value: params[:access_token_url] || resource.access_token_url %>
+
+    <div class='form__actions--spaced'>
+      <%= f.button 'Save', type: :submit, class: 'button__solid--primary' %>
+    </div>
+
+  <% end %>
+</div>
