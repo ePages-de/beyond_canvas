@@ -1,9 +1,15 @@
+### v0.16.1.pre
+
+* bug-fixes
+  * Remove `!global` from Sass variable declarations (see: https://sass-lang.com/documentation/variables#shadowing)
+  * Fix routes generation
+
 ### v0.16.0.pre
 
 * features
   * Add shop authentication functionality
   * Add generators to create a model for authentication, controllers and views
-  
+
 ### v0.15.3.pre
 
 * bug-fixes
