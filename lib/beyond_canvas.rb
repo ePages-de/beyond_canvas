@@ -33,10 +33,6 @@ module BeyondCanvas # :nodoc:
   mattr_accessor :auth_model
   @@auth_model = 'shop' # rubocop:disable Style/ClassVars
 
-  def self.use_rails_app_controller=(value)
-    @use_rails_app_controller = value
-  end
-
   class << self
     def configuration
       @configuration ||= ::BeyondCanvas::Configuration.new

@@ -2,6 +2,7 @@
 
 * bug-fixes
   * Remove `!global` from Sass variable declarations (see: https://sass-lang.com/documentation/variables#shadowing)
+  * Fix routes generation
 
 ### v0.16.0.pre
 
