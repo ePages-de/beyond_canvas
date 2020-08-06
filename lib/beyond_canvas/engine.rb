@@ -13,6 +13,8 @@ module BeyondCanvas
       BeyondCanvas.configuration.javascripts.each do |path|
         app.config.assets.precompile << path
       end
+
+      app.config.assets.precompile << 'beyond_canvas_manifest.js'
     end
 
     config.before_initialize do

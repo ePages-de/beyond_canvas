@@ -1,3 +1,9 @@
+### v0.17.0.pre
+
+* features
+  * Add cockpit-app development mode
+  * Add `beyond_canvas/application` layout
+
 ### v0.16.1.pre
 
 * bug-fixes

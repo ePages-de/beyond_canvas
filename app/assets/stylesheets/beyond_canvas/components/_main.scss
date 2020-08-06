@@ -2,6 +2,11 @@
   background-color: $main-background;
 }
 
+.main {
+  position: relative;
+  width: 100%;
+}
+
 .body--public {
   @extend %body;
 
@@ -20,20 +25,10 @@
   }
 }
 
-.body--single-page {
+.body--application {
   @extend %body;
 
   .main-wrapper {
-    @include margin(32px auto);
-
-    max-width: 876px;
-    width: 94%;
-
-    .logo {
-      @include margin($logo-margin-top-public auto $logo-margin-bottom-public);
-
-      display: block;
-      width: 238px;
-    }
+    @include margin(25px 25px 100px 25px);
   }
 }
