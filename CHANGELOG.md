@@ -3,6 +3,10 @@
 * features
   * Add cockpit-app development mode
   * Add `beyond_canvas/application` layout
+  * Add support for modals
+
+* deprecations
+  * Move back to rollupjs
 
 ### v0.16.1.pre
 
