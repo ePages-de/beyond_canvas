@@ -5,9 +5,9 @@
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     z-index: 99999;
-    display: flex;
     justify-content: center;
     align-items: center;
+    display: none;
   }
 
   &__content {
