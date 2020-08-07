@@ -16,7 +16,7 @@
       <%= render 'beyond_canvas/shared/menu' %>
     <% end %>
 
-    <div class="main-wrapper" <% if menu_content? %>style="margin-top: 12px;"<% end %>>
+    <div class="main-wrapper<% if menu_content? %> main-wrapper--menu<% end %>">
       <% if is_cockpit_app? %>
         <%= render 'beyond_canvas/shared/breadcrumbs' %>
         <h1 class="title"><%= BeyondCanvas.configuration.site_title %></h1>
