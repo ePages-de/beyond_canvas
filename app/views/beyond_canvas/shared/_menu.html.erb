@@ -1,4 +1,6 @@
-<div class="menu">
+<% if is_cockpit_app? && menu_content? %>
+
+  <div class="menu">
 
     <div class="menu--left">
       <%= yield :menu_left %>
@@ -8,4 +10,6 @@
       <%= yield :menu_right %>
     </div>
 
-</div>
+  </div>
+
+<% end %>

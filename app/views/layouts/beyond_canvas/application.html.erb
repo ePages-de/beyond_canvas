@@ -4,28 +4,25 @@
 <%= render 'beyond_canvas/shared/head' %>
 
 <body class="body--application"<% if is_cockpit_app? && Rails.env.development? %> style="display: flex;"<% end %>>
-  <% if is_cockpit_app? && Rails.env.development? %>
-    <%= image_tag 'sidebar.png' %>
-  <% end %>
+
+  <%= render 'beyond_canvas/shared/sidebar' %>
 
   <main class="main <%= params[:controller].gsub(/[\/_]/, "-") %>--<%= params[:action] %>">
+
     <%= render 'beyond_canvas/shared/flash' %>
     <%= render 'beyond_canvas/shared/locales' %>
-
     <%= render 'beyond_canvas/shared/modal' %>
-
-    <% if is_cockpit_app? && menu_content? %>
-      <%= render 'beyond_canvas/shared/menu' %>
-    <% end %>
+    <%= render 'beyond_canvas/shared/menu' %>
 
     <div class="main-wrapper<% if menu_content? %> main-wrapper--menu<% end %>">
-      <% if is_cockpit_app? %>
-        <%= render 'beyond_canvas/shared/breadcrumbs' %>
-        <h1 class="title"><%= BeyondCanvas.configuration.site_title %></h1>
-      <% end %>
+
+      <%= render 'beyond_canvas/shared/breadcrumbs' %>
 
       <%= yield %>
+
     </div>
+
   </main>
+
 </body>
 </html>

@@ -8,6 +8,7 @@ require 'jquery-rails'
 require 'bourbon'
 require 'sassc-rails'
 require 'inline_svg'
+require 'loaf'
 require 'http/accept'
 require 'premailer/rails'
 
