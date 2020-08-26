@@ -38,6 +38,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'sassc-rails',     '~> 2.1'
   spec.add_dependency 'sprockets',       '>= 3.0', '< 4.1'
   spec.add_dependency 'loaf'
+  spec.add_dependency 'jwt'
 
   spec.add_development_dependency 'rubocop-rails', '~> 2.5'
 end
