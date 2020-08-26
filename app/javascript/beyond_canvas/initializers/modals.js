@@ -16,5 +16,6 @@ $.extend({
   closeModal: function () {
     $('#modal').find('.modal__content').empty();
     $('#modal').css('display', 'none');
+    $.restoreActionElements();
   }
 });
