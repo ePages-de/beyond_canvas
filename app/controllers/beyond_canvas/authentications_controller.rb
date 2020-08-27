@@ -7,56 +7,63 @@ module BeyondCanvas
     layout 'beyond_canvas/public'
 
     include ::BeyondCanvas::Authentication
-    include ::BeyondCanvas::ResourceManagement
 
     before_action :validate_app_installation_request!, only: :new
 
     def new
-      self.resource = resource_class.new
+      @shop = Shop.find_or_initialize_by(beyond_api_url: params[:api_url])
+
+      if @shop&.authenticated?
+        open_app(shop)
+      elsif BeyondCanvas.configuration.preinstalled
+        preinstall
+      end
     end
 
-    def create
-      # Search for the api url. If there is no record it creates a new record.
-      resource_params = new_resource_params
-      self.resource = resource_class.find_or_create_by(beyond_api_url: resource_params[:api_url])
-      # Assign the attributes to the record
-      raise ActiveRecord::RecordNotSaved unless resource.update(resource_params)
-      # Get and save access_token and refresh_token using the authentication code
-      raise BeyondApi::Error if resource.authenticate.is_a?(BeyondApi::Error)
+    def install
+      @shop = Shop.create_with(shop_params).create_or_find_by(beyond_api_url: params[:shop][:api_url])
 
-      redirect_to after_create_path
-    rescue ActiveRecord::RecordNotSaved, BeyondApi::Error, StandardError => e
-      logger.error "[BeyondCanvas] #{e.message}".red
-      send "handle_#{e.class.name.split('::').first.underscore}_exception", e
-    end
+      @shop.assign_attributes(shop_params)
 
-    def update
-      create
+      if @shop.save
+        @shop.authenticate(params[:shop][:code])
+
+        redirect_to after_installation_path
+      else
+        render :new
+      end
     end
 
     private
 
-    def new_resource_params
-      send "new_#{resource_name}_params"
+    def shop_params
+      beyond_canvas_parameter_sanitizer.sanitize
     end
 
-    def after_create_path
-      new_resource_params[:return_url]
+    def after_preinstallation_path
+      params[:return_url]
     end
 
-    def handle_active_record_exception(_exception)
-      flash[:error] = t('beyond_canvas.authentications.failure')
-      render :new
+    def after_installation_path
+      params[:shop][:return_url]
     end
 
-    def handle_beyond_api_exception(_exception)
-      flash[:error] = t('beyond_canvas.authentications.failure')
-      render :new
+    def after_sign_in_path
+      BeyondCanvas.configuration.open_app_url
     end
 
-    def handle_standard_error_exception(_exception)
-      flash[:error] = t('beyond_canvas.authentications.failure')
-      render :new
+    def preinstall
+      @shop = Shop.create_or_find_by(beyond_api_url: params[:api_url])
+      @shop.authenticate(params[:code])
+
+      redirect_to after_preinstallation_path
+    end
+
+    def open_app(shop)
+      reset_session
+      log_in shop
+
+      redirect_to after_sign_in_path
     end
   end
 end
