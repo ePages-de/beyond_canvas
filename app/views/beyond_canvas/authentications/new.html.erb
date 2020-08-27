@@ -3,21 +3,21 @@
 
 <div class="card card--padding">
 
-  <%= form_with(url: callback_path,
-                scope: :shop,
-                model: @shop,
-                local: true,
-                builder: BeyondCanvas::FormBuilder) do |f| %>
+  <%= form_with(url: callback_path, scope: :shop, model: @shop, local: true, builder: BeyondCanvas::FormBuilder) do |f| %>
 
     <h2 class="card__headline"><%= I18n.t('headline', app_name: app_name, scope: i18n_scope) %></h2>
 
     <p class="margin--bottom"><%= I18n.t('body', app_name: app_name, scope: i18n_scope) %></p>
+
+    <%# Don't delete or modify any ot these hidden fields. They are used on shop identification and authentication %>
 
     <%= f.hidden_field :code,             value: params[:code] || @shop.code  %>
     <%= f.hidden_field :signature,        value: params[:signature] || @shop.signature  %>
     <%= f.hidden_field :return_url,       value: params[:return_url] || @shop.return_url  %>
     <%= f.hidden_field :api_url,          value: params[:api_url] || @shop.api_url  %>
     <%= f.hidden_field :access_token_url, value: params[:access_token_url] || @shop.access_token_url  %>
+
+    <%# Add HERE your custom shop fields %>
 
     <div class="form__actions--spaced">
       <%= f.button I18n.t('actions.install', scope: i18n_scope), type: :submit, class: 'button__solid--primary' %>
