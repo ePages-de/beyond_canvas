@@ -5,5 +5,6 @@ module BeyondCanvas
     protect_from_forgery with: :exception
 
     include ::BeyondCanvas::StatusCodes
+    include ::BeyondCanvas::DebugHelper
   end
 end

@@ -24,7 +24,7 @@ module BeyondCanvas
 
       I18n.with_locale(cookies[:locale], &action)
 
-      logger.debug "[BeyondCanvas] Locale set to: #{cookies[:locale]}".yellow
+      logger.debug "[BeyondCanvas] Locale set to: #{cookies[:locale]}".yellow if debug_mode?
     end
 
     #

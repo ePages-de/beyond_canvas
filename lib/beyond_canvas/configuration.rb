@@ -3,13 +3,14 @@
 module BeyondCanvas
   class Configuration # :nodoc:
     attr_accessor :site_title, :site_logo, :favicon, :skip_webpacker, :encryption_key, :blind_index_key, :namespace,
-                  :cockpit_app
+                  :cockpit_app, :open_app_url, :preinstalled, :debug_mode
 
     include AssetRegistration
 
     def initialize
       @blind_index_key = nil
       @cockpit_app = false
+      @debug_mode = false
       @encryption_key = nil
       @favicon = nil
       @namespace = '/'
