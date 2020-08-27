@@ -20,6 +20,8 @@
 
       <%= yield %>
 
+      <%= debug(params) if debug_mode? %>
+
     </div>
 
   </main>
