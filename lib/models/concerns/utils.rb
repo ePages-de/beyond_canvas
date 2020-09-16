@@ -21,7 +21,7 @@ module BeyondCanvas
             beyond_session.token.refresh
 
             update(beyond_access_token: beyond_session.access_token,
-                    beyond_refresh_token: beyond_session.refresh_token)
+                   beyond_refresh_token: beyond_session.refresh_token)
           end
 
           #
