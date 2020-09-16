@@ -14,7 +14,6 @@ require 'premailer/rails'
 
 require 'beyond_api'
 require 'attr_encrypted'
-require 'blind_index'
 
 module BeyondCanvas # :nodoc:
   autoload :AssetRegistration,  'beyond_canvas/asset_registration'

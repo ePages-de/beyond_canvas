@@ -13,11 +13,8 @@ module BeyondCanvas
           # Encrypted attribute configuration
           ##############################################################################
 
-          attr_encrypted :beyond_api_url,       key: [BeyondCanvas.configuration.encryption_key].pack('H*')
           attr_encrypted :beyond_access_token,  key: [BeyondCanvas.configuration.encryption_key].pack('H*')
           attr_encrypted :beyond_refresh_token, key: [BeyondCanvas.configuration.encryption_key].pack('H*')
-
-          blind_index    :beyond_api_url,       key: [BeyondCanvas.configuration.blind_index_key].pack('H*')
 
           ##############################################################################
           # Validations
