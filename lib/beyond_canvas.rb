@@ -18,20 +18,19 @@ require 'attr_encrypted'
 module BeyondCanvas # :nodoc:
   autoload :AssetRegistration,  'beyond_canvas/asset_registration'
   autoload :Configuration,      'beyond_canvas/configuration'
-
-  module Models # :nodoc:
-    autoload :Authentication,   'beyond_canvas/models/authentication'
-    autoload :Shop,             'beyond_canvas/models/shop'
-    autoload :Utils,            'beyond_canvas/models/utils'
-  end
-
   autoload :ParameterSanitizer, 'beyond_canvas/parameter_sanitizer'
 
-  mattr_accessor :use_rails_app_controller
-  @@use_rails_app_controller = false # rubocop:disable Style/ClassVars
+  module Models # :nodoc:
+    autoload :Shop, 'models/shop'
 
-  mattr_accessor :auth_model
-  @@auth_model = 'shop' # rubocop:disable Style/ClassVars
+    module Concerns
+      autoload :Authentication, 'models/concerns/authentication'
+      autoload :Utils,          'models/concerns/utils'
+    end
+  end
+
+  mattr_accessor :use_rails_app_controller
+  @@use_rails_app_controller = false
 
   class << self
     def configuration

@@ -19,11 +19,10 @@ module BeyondCanvas
 
     config.before_initialize do
       ActiveSupport.on_load :action_controller do
-        include ::BeyondCanvas::Authentication
         include ::BeyondCanvas::LocaleManagement
-        include ::BeyondCanvas::ResourceManagement
         include ::BeyondCanvas::RequestValidation
         include ::BeyondCanvas::StatusCodes
+        include ::BeyondCanvas::AuthenticationsHelper
 
         ::ActionController::Base.helper BeyondCanvas::Engine.helpers
       end
