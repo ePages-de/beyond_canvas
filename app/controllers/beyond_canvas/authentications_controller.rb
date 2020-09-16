@@ -14,7 +14,7 @@ module BeyondCanvas
       @shop = Shop.find_or_initialize_by(beyond_api_url: params[:api_url])
 
       if @shop&.authenticated?
-        open_app(shop)
+        open_app(@shop)
       elsif BeyondCanvas.configuration.preinstalled
         preinstall
       end
