@@ -14,6 +14,8 @@ module BeyondCanvas
       @encryption_key = nil
       @favicon = nil
       @namespace = '/'
+      @open_app_url = nil
+      @preinstalled = false
       @site_logo = nil
       @site_title = ::Rails.application.class.name.split('::').first.humanize
       @skip_webpacker = false
