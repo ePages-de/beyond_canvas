@@ -1,7 +1,8 @@
 const SPINNER_ANIMATION_TIMEOUT = 125;
+const BUTTON_SELECTORS = 'button[class^="button__"], a[class^="button__"]';
 
 (function ($) {
-  const onDOMReady = function () {
+  const onDOMReady = function (e) {
     const inputs = $('input, textarea, select').not(
       ':input[type=button], :input[type=submit], :input[type=reset]'
     );
@@ -17,7 +18,7 @@ const SPINNER_ANIMATION_TIMEOUT = 125;
       });
     });
 
-    $('button[class^="button"]').each(function () {
+    $(BUTTON_SELECTORS).each(function () {
       var button = $(this);
 
       // Add width attribute and save old width
@@ -25,12 +26,14 @@ const SPINNER_ANIMATION_TIMEOUT = 125;
       button.data('oldWidth', button.width());
 
       // Add the spinner
-      button.prepend(`
-        <div class="spinner">
-          <div class="bounce1"></div>
-          <div class="bounce2"></div>
-          <div class="bounce3"></div>
-        </div>`);
+      if (button.find('.spinner').length == 0) {
+        button.prepend(`
+          <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>`);
+      }
 
       // Bind ajax:success and ajax:error to the form the button belongs to
       button
@@ -44,6 +47,10 @@ const SPINNER_ANIMATION_TIMEOUT = 125;
     });
   };
 
+  $(document).on('confirm:complete', function ()  {
+    $.restoreActionElements();
+  });
+
   $(document).on('click', '[class^="button"]', function () {
     $.disableActionElements();
     $(this).showSpinner();
@@ -55,7 +62,7 @@ const SPINNER_ANIMATION_TIMEOUT = 125;
 $.extend({
   restoreActionElements: function () {
     // Hide spinners
-    $('button[class^="button"]').each(function (_, button) {
+    $(BUTTON_SELECTORS).each(function (_, button) {
       setTimeout(function () {
         // Hide the spinner
         $(button).find('.spinner').hide();
