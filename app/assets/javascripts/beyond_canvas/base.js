@@ -9,8 +9,9 @@
 })(function() {
   "use strict";
   var SPINNER_ANIMATION_TIMEOUT = 125;
+  var BUTTON_SELECTORS = 'button[class^="button__"], a[class^="button__"]';
   (function($) {
-    var onDOMReady = function onDOMReady() {
+    var onDOMReady = function onDOMReady(e) {
       var inputs = $("input, textarea, select").not(":input[type=button], :input[type=submit], :input[type=reset]");
       inputs.each(function() {
         var input = $(this);
@@ -21,11 +22,13 @@
           $.restoreActionElements();
         });
       });
-      $('button[class^="button"]').each(function() {
+      $(BUTTON_SELECTORS).each(function() {
         var button = $(this);
         button.width(button.width());
         button.data("oldWidth", button.width());
-        button.prepend('\n        <div class="spinner">\n          <div class="bounce1"></div>\n          <div class="bounce2"></div>\n          <div class="bounce3"></div>\n        </div>');
+        if (button.find(".spinner").length == 0) {
+          button.prepend('\n          <div class="spinner">\n            <div class="bounce1"></div>\n            <div class="bounce2"></div>\n            <div class="bounce3"></div>\n          </div>');
+        }
         button.closest("form").on("ajax:success", function() {
           $.restoreActionElements();
         }).on("ajax:error", function() {
@@ -33,6 +36,9 @@
         });
       });
     };
+    $(document).on("confirm:complete", function() {
+      $.restoreActionElements();
+    });
     $(document).on("click", '[class^="button"]', function() {
       $.disableActionElements();
       $(this).showSpinner();
@@ -41,7 +47,7 @@
   })(jQuery);
   $.extend({
     restoreActionElements: function restoreActionElements() {
-      $('button[class^="button"]').each(function(_, button) {
+      $(BUTTON_SELECTORS).each(function(_, button) {
         setTimeout(function() {
           $(button).find(".spinner").hide();
           $(button).width($(button).data("oldWidth"));
@@ -104,21 +110,19 @@
     $(document).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
   (function($) {
-    $(document).on("click", function(e) {
-      var target = $(e.target);
-      if (target.is(".modal__background")) {
-        $.closeModal();
-      }
+    $(document).on("click", ".modal__close", function(e) {
+      $.closeModal();
     });
   })(jQuery);
   $.extend({
     displayModal: function displayModal(modalContent) {
-      $("#modal").find(".modal__content").html(modalContent);
+      $("#modal").find("#modal__content").html(modalContent);
       $("#modal").css("display", "flex");
     },
     closeModal: function closeModal() {
-      $("#modal").find(".modal__content").empty();
+      $("#modal").find("#modal__content").empty();
       $("#modal").css("display", "none");
+      $.restoreActionElements();
     }
   });
 });
