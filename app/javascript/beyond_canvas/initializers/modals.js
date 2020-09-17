@@ -1,17 +1,13 @@
-(function ($) {
-  $(document).on('click', '.modal__close', function (e) {
-    $.closeModal();
-  });
-})(jQuery);
-
 $.extend({
-  displayModal: function (modalContent) {
-    $('#modal').find('#modal__content').html(modalContent);
+  displayModal: function (content, options = {}) {
+    $('#modal').find('#modal__content').html(content);
     $('#modal').css('display', 'flex');
+    $(document).trigger('modal:opened', options['extraEventParameters']);
   },
   closeModal: function () {
     $('#modal').find('#modal__content').empty();
     $('#modal').css('display', 'none');
     $.restoreActionElements();
+    $(document).trigger('modal:closed');
   }
 });

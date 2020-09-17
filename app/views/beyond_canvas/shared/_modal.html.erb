@@ -1,6 +1,6 @@
 <div class="modal__background" id="modal">
   <div class="relative card card--padding">
-    <%= inline_svg_tag 'icons/close.svg', class: 'modal__close' %>
+    <span onClick= "$.closeModal()"><%= inline_svg_tag 'icons/close.svg', class: 'modal__close' %></span>
     <div id="modal__content"></div>
   </div>
 </div>

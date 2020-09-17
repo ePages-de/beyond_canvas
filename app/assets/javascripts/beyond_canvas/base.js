@@ -109,20 +109,20 @@
     };
     $(document).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
-  (function($) {
-    $(document).on("click", ".modal__close", function(e) {
-      $.closeModal();
-    });
-  })(jQuery);
   $.extend({
-    displayModal: function displayModal(modalContent) {
-      $("#modal").find("#modal__content").html(modalContent);
+    displayModal: function displayModal(content, options) {
+      if (options === void 0) {
+        options = {};
+      }
+      $("#modal").find("#modal__content").html(content);
       $("#modal").css("display", "flex");
+      $(document).trigger("modal:opened", options["extraEventParameters"]);
     },
     closeModal: function closeModal() {
       $("#modal").find("#modal__content").empty();
       $("#modal").css("display", "none");
       $.restoreActionElements();
+      $(document).trigger("modal:closed");
     }
   });
 });
