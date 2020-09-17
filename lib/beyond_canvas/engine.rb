@@ -23,6 +23,7 @@ module BeyondCanvas
         include ::BeyondCanvas::RequestValidation
         include ::BeyondCanvas::StatusCodes
         include ::BeyondCanvas::AuthenticationsHelper
+        include ::BeyondCanvas::DebugHelper
 
         ::ActionController::Base.helper BeyondCanvas::Engine.helpers
       end
