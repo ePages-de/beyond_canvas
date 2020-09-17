@@ -1,4 +1,6 @@
 <div class="modal__background" id="modal">
-  <div class="modal__content card card--padding">
+  <div class="relative card card--padding">
+    <%= inline_svg_tag 'icons/close.svg', class: 'modal__close' %>
+    <div id="modal__content"></div>
   </div>
 </div>
