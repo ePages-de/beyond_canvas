@@ -1,4 +1,4 @@
-<% if show_locale_switch? && is_cockpit_app? %>
+<% if show_locale_switch? && !is_cockpit_app? %>
   <%= form_for :system, url: beyond_canvas.update_locale_path, method: :put do |f| %>
       <%= f.select :locale, I18n.available_locales.collect { |l| [translate_locale(l), l] },
                             { selected: cookies[:locale] },
