@@ -1,3 +1,16 @@
 <% if is_cockpit_app? && Rails.env.development? %>
-  <%= image_tag 'sidebar.png' %>
+  <div class="sidebar">
+    <div class="sidebar__header">
+      <div class="sidebar__logo"></div>
+    </div>
+    <div class="sidebar__item sidebar__item--selected"></div>
+    <div class="sidebar__item"></div>
+    <div class="sidebar__item"></div>
+    <div class="sidebar__item"></div>
+    <div class="sidebar__footer">
+      <div class="sidebar__icon"></div>
+      <div class="sidebar__icon"></div>
+      <div class="sidebar__icon"></div>
+    </div>
+  </div>
 <% end %>
