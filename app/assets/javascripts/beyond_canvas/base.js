@@ -116,6 +116,7 @@
       }
       $("#modal").find("#modal__content").html(content);
       $("#modal").css("display", "flex");
+      $.restoreActionElements();
       $(document).trigger("modal:opened", options["extraEventParameters"]);
     },
     closeModal: function closeModal() {
