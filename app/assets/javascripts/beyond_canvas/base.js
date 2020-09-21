@@ -9,7 +9,7 @@
 })(function() {
   "use strict";
   var SPINNER_ANIMATION_TIMEOUT = 125;
-  var BUTTON_SELECTORS = 'button[class^="button__"], a[class^="button__"]';
+  var BUTTON_SELECTORS = '[class^="button"]';
   (function($) {
     var onDOMReady = function onDOMReady(e) {
       var inputs = $("input, textarea, select").not(":input[type=button], :input[type=submit], :input[type=reset]");
@@ -39,7 +39,7 @@
     $(document).on("confirm:complete", function() {
       $.restoreActionElements();
     });
-    $(document).on("click", '[class^="button"]', function() {
+    $(document).on("click", BUTTON_SELECTORS, function() {
       $.disableActionElements();
       $(this).showSpinner();
     });
@@ -68,7 +68,7 @@
       var button = $(this);
       button.width(button.width() + $(".spinner").outerWidth(true));
       setTimeout(function() {
-        button.find(".spinner").css("display", "flex");
+        button.find(".spinner").css("display", "inline-flex");
       }, SPINNER_ANIMATION_TIMEOUT);
     }
   });

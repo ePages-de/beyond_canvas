@@ -1,5 +1,5 @@
 const SPINNER_ANIMATION_TIMEOUT = 125;
-const BUTTON_SELECTORS = 'button[class^="button__"], a[class^="button__"]';
+const BUTTON_SELECTORS = '[class^="button"]';
 
 (function ($) {
   const onDOMReady = function (e) {
@@ -51,7 +51,7 @@ const BUTTON_SELECTORS = 'button[class^="button__"], a[class^="button__"]';
     $.restoreActionElements();
   });
 
-  $(document).on('click', '[class^="button"]', function () {
+  $(document).on('click', BUTTON_SELECTORS, function () {
     $.disableActionElements();
     $(this).showSpinner();
   });
@@ -94,7 +94,7 @@ $.fn.extend({
 
     // Show the spinner
     setTimeout(function () {
-      button.find('.spinner').css('display', 'flex');
+      button.find('.spinner').css('display', 'inline-flex');
     }, SPINNER_ANIMATION_TIMEOUT);
   }
 });
