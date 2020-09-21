@@ -1,7 +1,3 @@
-%body {
-  background-color: $main-background;
-}
-
 .main {
   position: relative;
   width: 100%;
@@ -10,7 +6,7 @@
 }
 
 .body--public {
-  @extend %body;
+  background-color: $main-background-public;
 
   .main-wrapper {
     @include margin(32px auto);
@@ -28,7 +24,7 @@
 }
 
 .body--application {
-  @extend %body;
+  background-color: $main-background-application;
 
   .main-wrapper {
     @include margin(25px 25px 100px 25px);
