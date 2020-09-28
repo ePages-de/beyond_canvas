@@ -178,8 +178,13 @@ $title-color: rgb(122, 118, 76) !default;
 // Menu
 // ************************************************************
 
-$menu-background: rgb(255, 255, 255) !default;
-$menu-shadow: 1px solid rgba(0, 0, 0, 0.2) !default;
+// ************************************************************
+// Action bar
+// ************************************************************
+
+$action-bar-background: rgb(255, 255, 255) !default;
+$action-bar-shadow: 1px solid rgba(0, 0, 0, 0.2) !default;
+$action-bar-height: 73px !default;
 
 // ************************************************************
 // Markdown

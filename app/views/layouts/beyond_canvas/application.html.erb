@@ -13,8 +13,9 @@
     <%= render 'beyond_canvas/shared/locales' %>
     <%= render 'beyond_canvas/shared/modal' %>
     <%= render 'beyond_canvas/shared/menu' %>
+    <%= render 'beyond_canvas/shared/action_bar' %>
 
-    <div class="main-wrapper<% if menu_content? %> main-wrapper--menu<% end %>">
+    <div class="main-wrapper<% if action_bar_content? %> main-wrapper--action_bar<% end %>"<% if content_for?(:max_width)%> style="max-width: <%= yield :max_width %>"<% end %>>
 
       <%= render 'beyond_canvas/shared/breadcrumbs' %>
 
