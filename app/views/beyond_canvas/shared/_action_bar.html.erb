@@ -1,6 +1,6 @@
 <% if action_bar_content? %>
 
-  <div class="action_bar">
+  <div class="action_bar<% if menu_content? %> action_bar--menu<% end %>">
 
     <div class="action_bar--left">
       <%= yield :action_bar_left %>

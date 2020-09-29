@@ -9,8 +9,12 @@
   align-items: center;
   justify-content: space-between;
   position: sticky;
-  top: $menu-height;
+  top: 0;
   z-index: 999;
+
+  &--menu {
+    top: $menu-height;
+  }
 
   &--left {
     display: flex;

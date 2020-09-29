@@ -95,19 +95,19 @@ $input-errors-color: $palette-danger !default;
 // Checkboxes
 // ************************************************************
 
-$checkbox-checked-color: #97C344 !default;
-$checkbox-checked-background: #ffffff !default;
-$checkbox-unchecked-color: #C2BF9D !default;
-$checkbox-unchecked-background: #ffffff !default;
+$checkbox-checked-color: #97C344 !default; // This value MUST be HEX
+$checkbox-checked-background: #ffffff !default; // This value MUST be HEX
+$checkbox-unchecked-color: #C2BF9D !default; // This value MUST be HEX
+$checkbox-unchecked-background: #ffffff !default; // This value MUST be HEX
 
 // ************************************************************
 // Radiobuttons
 // ************************************************************
 
-$radio-checked-color: #97C344 !default;
-$radio-checked-background: #ffffff !default;
-$radio-unchecked-color: #C2BF9D !default;
-$radio-unchecked-background: #ffffff !default;
+$radio-checked-color: #97C344 !default; // This value MUST be HEX
+$radio-checked-background: #ffffff !default; // This value MUST be HEX
+$radio-unchecked-color: #C2BF9D !default; // This value MUST be HEX
+$radio-unchecked-background: #ffffff !default; // This value MUST be HEX
 
 // ************************************************************
 // Hints
@@ -177,6 +177,14 @@ $title-color: rgb(122, 118, 76) !default;
 // ************************************************************
 // Menu
 // ************************************************************
+
+$menu-background: #1c3445 !default;
+$menu-height: 60px !default;
+$menu-logo-height: 30px !default;
+$menu-item-color: #9ab5c6 !default;
+$menu-item-hover-color: lighten($menu-item-color, 13%) !default;
+$menu-item-selected-color: #4eb7a8 !default;
+$menu-item-selected-hover-color: lighten($menu-item-selected-color, 13%) !default;
 
 // ************************************************************
 // Action bar

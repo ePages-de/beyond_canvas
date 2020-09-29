@@ -6,6 +6,7 @@ module BeyondCanvas
                   :open_app_url, :preinstalled, :debug_mode
 
     include AssetRegistration
+    include MenuItemRegistration
 
     def initialize
       @cockpit_app = false

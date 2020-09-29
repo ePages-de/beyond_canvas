@@ -27,9 +27,11 @@
   background-color: $main-background-application;
 
   .main-wrapper {
-    @include margin(25px 25px 100px 25px);
+    @include margin(25px auto 100px auto);
 
-    &--menu {
+    width: calc(100% - 50px);
+
+    &--action_bar {
       margin-top: 12px;
     }
   }

@@ -9,5 +9,9 @@ module BeyondCanvas
     def action_bar_content?
       content_for?(:action_bar_left) || content_for?(:action_bar_right)
     end
+
+    def menu_content?
+      BeyondCanvas.configuration.menu_items.any?
+    end
   end
 end
