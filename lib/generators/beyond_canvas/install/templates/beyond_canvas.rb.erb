@@ -49,6 +49,18 @@ BeyondCanvas.setup do |config|
   #
   # config.favicon = 'favicon.ico'
 
+  # Set the menu items that will be displayed on the top of your app.
+  # It accepts 3 parameters:
+  #   1. name: the text displayed on the link tag. Supports any string or an I18n compatible path.
+  #   2. url: the href of the link tag. Supports any string or a symbolized route.
+  #   3. options: any html attributes that will be added to the link tag.
+  # You can also run `rails g beyond_canvas:custom_menu` to generate a menu template you can override.
+  # See examples:
+  #
+  # config.register_menu_item 'Contact', '/contact/, class: 'contact'
+  # config.register_menu_item 'menu_item.about_us', :root_path, class: 'about-us', id: 'about-us'
+  # config.register_menu_item 'Our website', 'https://epages.com', target: :_blank
+
   # ==> Stylesheets & Javascripts
 
   # We recommend using the built in Beyond Canvas layout and loading up your own
