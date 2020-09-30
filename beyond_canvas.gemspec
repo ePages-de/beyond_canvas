@@ -7,8 +7,16 @@ require 'beyond_canvas/version'
 Gem::Specification.new do |spec|
   spec.name        = 'beyond_canvas'
   spec.version     = BeyondCanvas::VERSION
-  spec.authors     = ['Unai Abrisketa']
-  spec.email       = ['u.abrisketa@epages.com']
+  spec.authors     = [
+    'Unai Abrisketa',
+    'Kathia Salazar',
+    'German San Emeterio'
+  ]
+  spec.email       = [
+    'uabrisketa@epages.com',
+    'ksalazar@epages.com',
+    'gsanemeterio@epages.com'
+  ]
   spec.homepage    = 'https://github.com/ePages-de/beyond_canvas'
   spec.summary     = 'Open-source framework that provides CSS styles'
   spec.description = <<-DESC
