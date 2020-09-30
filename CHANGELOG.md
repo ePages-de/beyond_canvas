@@ -21,6 +21,11 @@
   * Update authentication flow to fit future SSO
   * Update locale switch location
 
+### v0.16.2.pre
+
+* enhancements
+  * Add div id for wrapping flash partial
+
 ### v0.16.1.pre
 
 * bug-fixes
