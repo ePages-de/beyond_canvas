@@ -2,18 +2,23 @@
 
 module BeyondCanvas
   class Configuration # :nodoc:
-    attr_accessor :site_title, :site_logo, :favicon, :skip_webpacker, :encryption_key, :blind_index_key, :namespace
+    attr_accessor :site_title, :site_logo, :favicon, :skip_webpacker, :encryption_key, :namespace, :cockpit_app,
+                  :open_app_url, :preinstalled, :debug_mode
 
     include AssetRegistration
+    include MenuItemRegistration
 
     def initialize
-      @site_title = ::Rails.application.class.name.split('::').first.humanize
-      @site_logo = nil
-      @favicon = nil
-      @skip_webpacker = false
+      @cockpit_app = false
+      @debug_mode = false
       @encryption_key = nil
-      @blind_index_key = nil
+      @favicon = nil
       @namespace = '/'
+      @open_app_url = nil
+      @preinstalled = false
+      @site_logo = nil
+      @site_title = ::Rails.application.class.name.split('::').first.humanize
+      @skip_webpacker = false
     end
 
     def setup!

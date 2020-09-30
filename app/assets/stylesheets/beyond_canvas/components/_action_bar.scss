@@ -1,0 +1,28 @@
+.action_bar {
+  width: 100%;
+  height: $action-bar-height;
+  background-color: $action-bar-background;
+  border-bottom: $action-bar-shadow;
+  padding: 0 25px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  &--menu {
+    top: $menu-height;
+  }
+
+  &--left {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  &--right {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

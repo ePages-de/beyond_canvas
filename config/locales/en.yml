@@ -1,4 +1,9 @@
 en:
   beyond_canvas:
     authentications:
+      new:
+        headline: Install %{app_name} in your shop
+        body: You are about to install %{app_name} in your shop. For continuing with this process, press the install button below.
+        actions:
+          install: Install
       failure: Shop could not be saved

@@ -11,7 +11,8 @@
 // General styles
 // ************************************************************
 
-// $main-background: rgb(233, 232, 220);
+// $main-background-public: rgb(233, 232, 220);
+// $main-background-application: rgb(233, 232, 220);
 
 // ************************************************************
 // Typography
@@ -81,19 +82,19 @@
 // Checkboxes
 // ************************************************************
 
-// $checkbox-checked-color: #97C344;
-// $checkbox-checked-background: #ffffff;
-// $checkbox-unchecked-color: #C2BF9D;
-// $checkbox-unchecked-background: #ffffff;
+// $checkbox-checked-color: #97C344; // This value MUST be HEX
+// $checkbox-checked-background: #ffffff; // This value MUST be HEX
+// $checkbox-unchecked-color: #C2BF9D; // This value MUST be HEX
+// $checkbox-unchecked-background: #ffffff; // This value MUST be HEX
 
 // ************************************************************
 // Radiobuttons
 // ************************************************************
 
-// $radio-checked-color: #97C344;
-// $radio-checked-background: #ffffff;
-// $radio-unchecked-color: #C2BF9D;
-// $radio-unchecked-background: #ffffff;
+// $radio-checked-color: #97C344; // This value MUST be HEX
+// $radio-checked-background: #ffffff; // This value MUST be HEX
+// $radio-unchecked-color: #C2BF9D; // This value MUST be HEX
+// $radio-unchecked-background: #ffffff; // This value MUST be HEX
 
 // ************************************************************
 // Hints
@@ -148,6 +149,51 @@
 // $notice-color: rgb(153, 153, 153);
 
 // ************************************************************
+// Breadcrums
+// ************************************************************
+
+// $breadcrum-color: rgb(122, 118, 76);
+// $breadcrum-color-current: rgb(61, 149, 137);
+
+// ************************************************************
+// Titles
+// ************************************************************
+
+// $title-color: rgb(122, 118, 76);
+
+// ************************************************************
+// Menu
+// ************************************************************
+
+// $menu-background: #1c3445;
+// $menu-height: 60px;
+// $menu-logo-height: 30px;
+// $menu-item-color: #9ab5c6;
+// $menu-item-hover-color: lighten($menu-item-color, 13%);
+// $menu-item-selected-color: #4eb7a8;
+// $menu-item-selected-hover-color: lighten($menu-item-selected-color, 13%);
+
+// ************************************************************
+// Action bar
+// ************************************************************
+
+// $action-bar-background: rgb(255, 255, 255);
+// $action-bar-shadow: 1px solid rgba(0, 0, 0, 0.2);
+// $action-bar-height: 73px;
+
+// ************************************************************
 // Markdown
 // ************************************************************
 
+
+// ************************************************************
+// Sidebar
+// ************************************************************
+
+
+// ************************************************************
+// Modals
+// ************************************************************
+
+// $modal-close-icon-color: #8b8b8b;
+// $modal-background-color: rgba(0, 0, 0, 0.5);

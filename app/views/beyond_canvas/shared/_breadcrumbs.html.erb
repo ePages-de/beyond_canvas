@@ -1,0 +1,14 @@
+<% if is_cockpit_app? %>
+
+  <div class='breadcrumbs'>
+
+    <%= inline_svg_tag 'icons/home.svg' %>
+
+    <% breadcrumb_trail do |crumb| %>
+      <%= link_to crumb.name, crumb.url, class: "breadcrumb__item#{ '--current' if crumb.current? }" %>
+      <% unless crumb.current? %><%= inline_svg_tag 'icons/arrow_right.svg' %><% end %>
+    <% end %>
+
+  </div>
+
+<% end %>

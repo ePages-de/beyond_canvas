@@ -1,6 +1,5 @@
 %form__actions {
-  align-items: center;
-  display: flex;
+  overflow: auto;
 }
 
 .form {
@@ -14,29 +13,27 @@
   }
 
   &__actions {
-    &--spaced {
-      @extend %form__actions;
-
-      justify-content: space-between;
-    }
-
     &--left {
       @extend %form__actions;
 
-      justify-content: flex-start;
+      > * {
+        float: left;
 
-      *:not(:last-child) {
-        margin-right: 30px;
+        &:not(:first-child) {
+          margin-left: 30px;
+        }
       }
     }
 
     &--right {
       @extend %form__actions;
 
-      justify-content: flex-end;
+      > * {
+        float: right;
 
-      *:not(:first-child) {
-        margin-left: 30px;
+        &:not(:first-child) {
+          margin-right: 30px;
+        }
       }
     }
   }
