@@ -1,9 +1,12 @@
-%body {
-  background-color: $main-background;
+.main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
 }
 
 .body--public {
-  @extend %body;
+  background-color: $main-background-public;
 
   .main-wrapper {
     @include margin(32px auto);
@@ -20,20 +23,16 @@
   }
 }
 
-.body--single-page {
-  @extend %body;
+.body--application {
+  background-color: $main-background-application;
 
   .main-wrapper {
-    @include margin(32px auto);
+    @include margin(25px auto 100px auto);
 
-    max-width: 876px;
-    width: 94%;
+    width: calc(100% - 50px);
 
-    .logo {
-      @include margin($logo-margin-top-public auto $logo-margin-bottom-public);
-
-      display: block;
-      width: 238px;
+    &--action_bar {
+      margin-top: 12px;
     }
   }
 }

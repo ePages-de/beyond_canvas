@@ -1,5 +1,3 @@
-import { closeAlert } from './functions';
-
 (function ($) {
   const onDOMReady = function () {
     $('.flash').each(function () {
@@ -17,3 +15,12 @@ import { closeAlert } from './functions';
 
   $(document).on('ready page:load turbolinks:load', onDOMReady);
 })(jQuery);
+
+function closeAlert() {
+  $('.flash')
+    .removeClass('flash--shown')
+    .delay(700)
+    .queue(function () {
+      $(this).remove();
+    });
+}

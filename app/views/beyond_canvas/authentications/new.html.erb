@@ -1,17 +1,26 @@
-<div class='card card--padding'>
+<% app_name = BeyondCanvas.configuration.site_title %>
+<% i18n_scope = 'beyond_canvas.authentications.new' %>
 
-  <%= form_for(resource, as: resource_name) do |f| %>
+<div class="card card--padding">
 
-    <h2 class='card__headline'>Install <%= BeyondCanvas.configuration.site_title %> in your shop</h2>
+  <%= form_with(url: callback_path, method: :post, scope: :shop, model: @shop, local: true, builder: BeyondCanvas::FormBuilder) do |f| %>
 
-    <%= f.hidden_field :code,             value: params[:code] || resource.code %>
-    <%= f.hidden_field :signature,        value: params[:signature] || resource.signature %>
-    <%= f.hidden_field :return_url,       value: params[:return_url] || resource.return_url %>
-    <%= f.hidden_field :api_url,          value: params[:api_url] || resource.api_url %>
-    <%= f.hidden_field :access_token_url, value: params[:access_token_url] || resource.access_token_url %>
+    <h2 class="card__headline"><%= I18n.t('headline', app_name: app_name, scope: i18n_scope) %></h2>
 
-    <div class='form__actions--spaced'>
-      <%= f.button 'Save', type: :submit, class: 'button__solid--primary' %>
+    <p class="margin--bottom"><%= I18n.t('body', app_name: app_name, scope: i18n_scope) %></p>
+
+    <%# Don't delete or modify any ot these hidden fields. They are used on shop identification and authentication %>
+
+    <%= f.hidden_field :code,             value: params[:code] || @shop.code  %>
+    <%= f.hidden_field :signature,        value: params[:signature] || @shop.signature  %>
+    <%= f.hidden_field :return_url,       value: params[:return_url] || @shop.return_url  %>
+    <%= f.hidden_field :api_url,          value: params[:api_url] || @shop.api_url  %>
+    <%= f.hidden_field :access_token_url, value: params[:access_token_url] || @shop.access_token_url  %>
+
+    <%# Add HERE your custom shop fields %>
+
+    <div class="form__actions--spaced">
+      <%= f.button I18n.t('actions.install', scope: i18n_scope), type: :submit, class: 'button__solid--primary' %>
     </div>
 
   <% end %>

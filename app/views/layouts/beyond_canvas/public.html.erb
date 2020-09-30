@@ -4,15 +4,22 @@
 <%= render 'beyond_canvas/shared/head' %>
 
 <body class="body--public">
+
   <main class="main <%= params[:controller].gsub(/[\/_]/, "-") %>--<%= params[:action] %>">
-    <div id="flash">
-      <%= render 'beyond_canvas/shared/flash' %>
-    </div>
-    <%= render 'beyond_canvas/locales/edit' %>
+
+    <%= render 'beyond_canvas/shared/flash' %>
+    <%= render 'beyond_canvas/shared/locales' %>
+
     <div class="main-wrapper">
+
       <%= render 'beyond_canvas/shared/logo' %>
+
       <%= yield %>
+
     </div>
+
+    <%= debug(params) if debug_mode? %>
+
   </main>
 </body>
 </html>

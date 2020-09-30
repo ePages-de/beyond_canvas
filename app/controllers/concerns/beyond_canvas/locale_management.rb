@@ -15,16 +15,13 @@ module BeyondCanvas
     # browser compatible locale, sets the value to the cookie and set that locale as default locale.
     #
     def switch_locale(&action)
-      # NOTE: Check the HTTP_ACCEPT_LANGUAGE header to identify if the request comes from a browser or a server
-      return I18n.with_locale(I18n.default_locale, &action) if request.headers['HTTP_ACCEPT_LANGUAGE'].blank?
-
       unless valid_locale?(cookies[:locale])
         cookies[:locale] = { value: browser_compatible_locale, expires: 1.day.from_now }
       end
 
       I18n.with_locale(cookies[:locale], &action)
 
-      logger.debug "[BeyondCanvas] Locale set to: #{cookies[:locale]}".yellow
+      logger.debug "[BeyondCanvas] Locale set to: #{cookies[:locale]}".yellow if debug_mode?
     end
 
     #
@@ -36,12 +33,16 @@ module BeyondCanvas
     #   +I18n.default_locale+. (e.g. +'en-GB'+)
     #
     def browser_compatible_locale
+      return I18n.default_locale if request.headers['HTTP_ACCEPT_LANGUAGE'].blank?
+
       browser_locales = HTTP::Accept::Languages.parse(request.headers['HTTP_ACCEPT_LANGUAGE'])
       available_locales = HTTP::Accept::Languages::Locales.new(I18n.available_locales.map(&:to_s))
 
       locales = available_locales & browser_locales
 
       locales.empty? ? I18n.default_locale : locales.first
+    rescue
+      I18n.default_locale
     end
 
     #

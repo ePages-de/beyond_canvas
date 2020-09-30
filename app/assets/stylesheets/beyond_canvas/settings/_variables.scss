@@ -13,7 +13,8 @@ $palette-danger: rgb(218, 60, 60) !default;
 // General styles
 // ************************************************************
 
-$main-background: rgb(233, 232, 220) !default;
+$main-background-public: rgb(233, 232, 220) !default;
+$main-background-application: rgb(233, 232, 220) !default;
 $main-transition: 0.125s ease-in;
 
 // ************************************************************
@@ -94,19 +95,19 @@ $input-errors-color: $palette-danger !default;
 // Checkboxes
 // ************************************************************
 
-$checkbox-checked-color: #97C344 !default;
-$checkbox-checked-background: #ffffff !default;
-$checkbox-unchecked-color: #C2BF9D !default;
-$checkbox-unchecked-background: #ffffff !default;
+$checkbox-checked-color: #97C344 !default; // This value MUST be HEX
+$checkbox-checked-background: #ffffff !default; // This value MUST be HEX
+$checkbox-unchecked-color: #C2BF9D !default; // This value MUST be HEX
+$checkbox-unchecked-background: #ffffff !default; // This value MUST be HEX
 
 // ************************************************************
 // Radiobuttons
 // ************************************************************
 
-$radio-checked-color: #97C344 !default;
-$radio-checked-background: #ffffff !default;
-$radio-unchecked-color: #C2BF9D !default;
-$radio-unchecked-background: #ffffff !default;
+$radio-checked-color: #97C344 !default; // This value MUST be HEX
+$radio-checked-background: #ffffff !default; // This value MUST be HEX
+$radio-unchecked-color: #C2BF9D !default; // This value MUST be HEX
+$radio-unchecked-background: #ffffff !default; // This value MUST be HEX
 
 // ************************************************************
 // Hints
@@ -161,6 +162,39 @@ $notice-border-radius: 4px !default;
 $notice-color: rgb(153, 153, 153) !default;
 
 // ************************************************************
+// Breadcrums
+// ************************************************************
+
+$breadcrum-color: rgb(122, 118, 76) !default;
+$breadcrum-color-current: rgb(61, 149, 137) !default;
+
+// ************************************************************
+// Titles
+// ************************************************************
+
+$title-color: rgb(122, 118, 76) !default;
+
+// ************************************************************
+// Menu
+// ************************************************************
+
+$menu-background: #1c3445 !default;
+$menu-height: 60px !default;
+$menu-logo-height: 30px !default;
+$menu-item-color: #9ab5c6 !default;
+$menu-item-hover-color: lighten($menu-item-color, 13%) !default;
+$menu-item-selected-color: #4eb7a8 !default;
+$menu-item-selected-hover-color: lighten($menu-item-selected-color, 13%) !default;
+
+// ************************************************************
+// Action bar
+// ************************************************************
+
+$action-bar-background: rgb(255, 255, 255) !default;
+$action-bar-shadow: 1px solid rgba(0, 0, 0, 0.2) !default;
+$action-bar-height: 73px !default;
+
+// ************************************************************
 // Markdown
 // ************************************************************
 
@@ -169,3 +203,24 @@ $markdown-table-border-color: #dfe2e5;
 $markdown-blockquote-font-color: #6a737d;
 $markdown-blockquote-border-color: #dfe2e5;
 $markdown-hr-background: #e1e4e8;
+
+// ************************************************************
+// Sidebar
+// ************************************************************
+
+$sidebar-width: 250px;
+$sidebar-background: #1d3544;
+$sidebar-header-background: #12222c;
+$sidebar-footer-background: #12222c;
+$sidebar-footer-icon-background: #9ab5c5;
+$sidebar-item-background: #9ab5c6;
+$sidebar-item-selected-background: #4eb7a8;
+
+// ************************************************************
+// Modals
+// ************************************************************
+
+$modal-padding: 10px;
+$modal-width: 650px;
+$modal-close-icon-color: #8b8b8b !default;
+$modal-background-color: rgba(0, 0, 0, 0.5) !default;
