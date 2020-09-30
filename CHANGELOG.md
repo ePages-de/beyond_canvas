@@ -1,12 +1,25 @@
 ### v0.17.0.pre
 
+* bug-fixes
+  * Minor CSS fixes on buttons, alignments...
+
+* deprecations
+  * Move back to rollupjs
+  * Rename `menu` to `action_bar`
+
 * features
   * Add cockpit-app development mode
   * Add `beyond_canvas/application` layout
   * Add support for modals
+  * Add support for breadcrumbs
+  * Add support for menu
+  * Add support for titles
+  * Add shop session
+  * Add generator for custom menu
 
-* deprecations
-  * Move back to rollupjs
+* enhancements
+  * Update authentication flow to fit future SSO
+  * Update locale switch location
 
 ### v0.16.1.pre
 
