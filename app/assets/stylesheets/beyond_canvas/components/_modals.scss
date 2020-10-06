@@ -17,6 +17,14 @@
     }
   }
 
+  &__headline {
+    margin-bottom: 30px;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.2;
+    color: rgb(62, 62, 62);
+  }
+
   &__close {
     @include position(absolute, $modal-padding $modal-padding null null);
     @include size(14px);
