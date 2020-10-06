@@ -1,3 +1,10 @@
+### v0.18.0.pre
+
+* features
+  * Add basic grid styles
+  * Add scrollbox styles
+  * Add modal headline styles
+
 ### v0.17.0.pre
 
 * bug-fixes
