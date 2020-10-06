@@ -1,4 +1,4 @@
-### v0.17.1.pre
+### v0.18.0.pre
 
 * features
   * Add basic grid styles
