@@ -2,10 +2,6 @@
 
 module BeyondCanvas
   class FormBuilder < ActionView::Helpers::FormBuilder # :nodoc:
-    ############################################################################
-    # Wrappers
-    ############################################################################
-
     def field_wrapper(attribute, args, &block)
       label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
 
@@ -38,11 +34,17 @@ module BeyondCanvas
       end
     end
 
-    %i[email text number password].each do |method|
-      define_method :"#{method}_field" do |attribute, args = {}|
+    %i[email_field text_field number_field password_field text_area].each do |method|
+      define_method method do |attribute, args = {}|
         field_wrapper(attribute, args) do
           super(attribute, args)
         end
+      end
+    end
+
+    def select(attribute, choices, options  = {}, args = {})
+      field_wrapper(attribute, args) do
+        super(attribute, choices, options, args)
       end
     end
 
