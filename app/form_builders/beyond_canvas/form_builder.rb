@@ -2,10 +2,6 @@
 
 module BeyondCanvas
   class FormBuilder < ActionView::Helpers::FormBuilder # :nodoc:
-    ############################################################################
-    # Wrappers
-    ############################################################################
-
     def field_wrapper(attribute, args, &block)
       label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
 
@@ -43,6 +39,12 @@ module BeyondCanvas
         field_wrapper(attribute, args) do
           super(attribute, args)
         end
+      end
+    end
+
+    def select(attribute, choices, options  = {}, args = {})
+      field_wrapper(attribute, args) do
+        super(attribute, choices, options, args)
       end
     end
 
