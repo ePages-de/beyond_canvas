@@ -1,3 +1,12 @@
+### v0.19.0.pre
+
+* bug-fixes
+  * Fix `menu__item--selected` condition
+
+* features
+  * Add support for `text_area` form tag
+  * Add support for `select` form tag
+
 ### v0.18.0.pre
 
 * features
