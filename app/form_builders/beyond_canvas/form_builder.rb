@@ -38,8 +38,8 @@ module BeyondCanvas
       end
     end
 
-    %i[email text number password].each do |method|
-      define_method :"#{method}_field" do |attribute, args = {}|
+    %i[email_field text_field number_field password_field text_area].each do |method|
+      define_method method do |attribute, args = {}|
         field_wrapper(attribute, args) do
           super(attribute, args)
         end

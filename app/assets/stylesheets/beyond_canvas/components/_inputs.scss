@@ -29,6 +29,11 @@ select {
   background-repeat: no-repeat;
 }
 
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
 #{$all-text-inputs},
 select {
   &.input__error {
