@@ -16,7 +16,7 @@
 
         <% path = Rails.application.routes.recognize_path(url) %>
 
-        <% options = options.merge(class: 'menu__item--active') { |_key, old_val, new_val| [new_val, old_val].join(' ') if !external_url && path[:controller] == params[:controller] } %>
+        <% options = options.merge(class: 'menu__item--active') { |_key, old_val, new_val| [new_val, old_val].join(' ') } if !external_url && (path[:controller] == params[:controller]) %>
         <% options = options.merge(class: 'menu__item') { |_key, old_val, new_val| [new_val, old_val].join(' ') } %>
 
         <%= link_to name, url, options %>
