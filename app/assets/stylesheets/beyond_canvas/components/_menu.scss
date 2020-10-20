@@ -15,14 +15,24 @@
     height: $menu-logo-height;
   }
 
+  &--left {
+    display: inherit;
+  }
+
   &--center {
     left: 50%;
     position: absolute;
     transform: translateX(-50%);
+    display: inherit;
+  }
+
+  &--right {
+    display: inherit;
   }
 
   &__item {
     @include margin(0 15px);
+    line-height: 1;
     color: $menu-item-color;
 
     &:hover {
