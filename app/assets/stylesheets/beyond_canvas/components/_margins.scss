@@ -1,4 +1,8 @@
 .margin {
+  &--clear {
+    margin: 0 !important;
+  }
+
   &--top {
     margin-top: 30px;
   }

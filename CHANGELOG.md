@@ -1,3 +1,12 @@
+### v0.19.1.pre
+
+* bug-fixes
+  * Fix menu display for vertical align
+  * Fix block comment on menu generator template
+
+* features
+  * Add `margin--clear` class for removing all margins
+
 ### v0.19.0.pre
 
 * bug-fixes
