@@ -27,10 +27,6 @@ module BeyondCanvas
 
         ::ActionController::Base.helper BeyondCanvas::Engine.helpers
       end
-
-      ActiveSupport.on_load :action_mailer do
-        layout 'beyond_canvas/mailer'
-      end
     end
   end
 end
