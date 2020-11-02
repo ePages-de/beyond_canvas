@@ -83,7 +83,7 @@ BeyondCanvas.setup do |config|
   #
   <% unless @skip_webpacker %># <% end %>config.skip_webpacker = <%= @skip_webpacker %>
 
-  # ==> Authentication with ePages Beyond API
+  # ==> Database encryption
 
   config.encryption_key = '<%= SecureRandom.hex(32) %>'
 end

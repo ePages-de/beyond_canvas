@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class <%= scope.camelize %>Controller < BeyondCanvas::AuthenticationsController
+class ShopsController < BeyondCanvas::AuthenticationsController
   # before_action :configure_params, only: [:install]
 
   # def new
