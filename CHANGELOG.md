@@ -1,5 +1,15 @@
 ### v0.19.1.pre
 
+* deprecations
+  * Prevent loading `beyond_canvas/mailer` layout by default
+  * No need to specify the model when generating the custom controller
+
+* features
+  * Add `text__align--left` and `text__align--right`
+  * Add `beyond_canvas_controller?` method that returns `true` if the controller is a `BeyondCanvas` controller
+
+### v0.19.1.pre
+
 * bug-fixes
   * Fix menu display for vertical align
   * Fix block comment on menu generator template
