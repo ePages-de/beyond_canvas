@@ -1,4 +1,9 @@
-### v0.19.1.pre
+### v0.20.0.pre
+
+* features
+  * Add support for statuses (`status_good`, `status_warning`, `status_danger` and `status_neutral`)
+
+### v0.19.2.pre
 
 * deprecations
   * Prevent loading `beyond_canvas/mailer` layout by default
