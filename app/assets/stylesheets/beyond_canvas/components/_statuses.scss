@@ -1,0 +1,27 @@
+.status {
+  @include padding(4px 6px);
+  font-size: 12px;
+  border-radius: 3px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  &--good {
+    background-color: $status-good-background;
+    color: $status-good-color;
+  }
+
+  &--warning {
+    background-color: $status-warning-background;
+    color: $status-warning-color;
+  }
+
+  &--danger {
+    background-color: $status-danger-background;
+    color: $status-danger-color;
+  }
+
+  &--neutral {
+    border: 1px solid $status-neutral-background;
+    color: $status-neutral-color;
+  }
+}
