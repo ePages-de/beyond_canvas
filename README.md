@@ -3,48 +3,6 @@
 ![Gem Version](https://img.shields.io/gem/v/beyond_canvas?label=gem%20version)
 ![License](https://img.shields.io/github/license/ePages-de/beyond_canvas)
 
-## Installation
-
-1. Add this line to your application's Gemfile:
-
-    ```ruby
-    gem "beyond_canvas"
-    ```
-
-1. Then execute:
-
-    ```bash
-    $ bundle install
-    ```
-
-1. Restart your server and rename `application.css` to `application.scss` or `application.sass` (in case you prefer to use the `sass` syntax):
-
-    ```bash
-    $ mv app/assets/stylesheets/application.css app/assets/stylesheets/application.scss
-    ```
-
-1. Delete _all_ Sprockets directives in `application.scss` (`require`, `require_tree` and `require_self`) and use Sass’s native `@import` instead ([Here's why?](https://content.pivotal.io/blog/structure-your-sass-files-with-import)).
-
-1. Import Beyond Canvas at the beginning of `application.scss`. Any other styles must be imported after Beyond Canvas to avoid issues:
-
-    ```scss
-    @import 'beyond_canvas'
-    ```
-
-1. Add the following to `application.js`:
-
-    ```js
-    //= require beyond_canvas
-    ```
-
-1. Run the generator:
-
-    ```bash
-    $ rails g beyond_canvas:install
-    ```
-
-    This will generate `config/initializers/beyond_canvas.rb` file, used for general Beyond Canvas configuration. Read [this wiki entry](https://github.com/ePages-de/beyond_canvas/wiki/Initializer) to get more information about the different configuration options.
-
 ## Documentation
 
 Please see the [Beyond Canvas wiki](https://github.com/ePages-de/beyond_canvas/wiki) for additional information about the gem and its features.
