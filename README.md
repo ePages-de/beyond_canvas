@@ -47,15 +47,15 @@
 
 ## Documentation
 
-TBD
+Please see the [Beyond Canvas wiki](https://github.com/ePages-de/beyond_canvas/wiki) for additional information about the gem and its features.
 
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/ePages-de/beyond_canvas/blob/master/CONTRIBUTING.md).
 
-## Changelog
+## Change log
 
-Beyond Canvas's changelog is available [here](https://github.com/ePages-de/beyond_canvas/blob/master/CHANGELOG.md).
+Beyond Canvas's change log is available [here](https://github.com/ePages-de/beyond_canvas/blob/master/CHANGELOG.md).
 
 ## License
 
