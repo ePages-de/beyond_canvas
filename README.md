@@ -47,7 +47,7 @@
 
 ## Documentation
 
-Please see the [Beyond Canvas wiki](https://github.com/ePages-de/beyond_canvas/wiki) for additional information about the gem and its possibilities.
+Please see the [Beyond Canvas wiki](https://github.com/ePages-de/beyond_canvas/wiki) for additional information about the gem and its features.
 
 ## Contributing
 
