@@ -48,7 +48,7 @@
 // $button-danger-color: $white;
 
 // $button-disabled-background: rgb(208,208,208);
-// $button-disabled-color:  rgb(144,144,144);
+// $button-disabled-color: rgb(144,144,144);
 // $button-disabled-text-shadow: 1px 1px 0 $white;
 
 // $button-border-radius: 3px;
@@ -81,8 +81,8 @@
 // $input-border-color: rgb(217, 216, 195);
 // $input-border-color-focus: $palette-primary;
 // $input-errors-color: $palette-danger;
-// $input-disabled-background:  rgb(245,244,239);
-// $input-disabled-color:  rgb(163,161,137);
+// $input-disabled-background: rgb(245,244,239);
+// $input-disabled-color: rgb(163,161,137);
 
 // ************************************************************
 // Checkboxes
@@ -221,3 +221,12 @@
 // Select2
 // ************************************************************
 
+// $select2-border-color: $input-border-color;
+// $select2-border-color-focus: $input-border-color-focus;
+// $select2-close-icon-color: #79764b;
+// $select2-close-icon-color-hover: darken($select2-close-icon-color, 15%);
+// $select2-tag-background: rgb(223, 222, 204);
+// $select2-tag-color: rgb(122, 118, 76);
+// $select2-disabled-background: rgb(245, 244, 239);
+// $select2-option-hover-background: rgb(229, 241, 240);
+// $select2-option-hover-color: rgb(62, 62, 62);
