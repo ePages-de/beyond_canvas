@@ -9,6 +9,12 @@ select {
   outline: none;
   padding: 6px 8px;
   width: 100%;
+
+  &:disabled {
+    background-color: $input-disabled-background !important;
+    color: $input-disabled-color;
+    opacity: 1;
+  }
 }
 
 #{$all-text-inputs} {

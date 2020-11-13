@@ -1,3 +1,13 @@
+### v0.21.0.pre
+
+* features
+  * Add styles for disabled inputs and buttons
+  * Add support for Rails default alert flashes
+  * Add styles for supporting the use of [Select2](https://select2.org/)
+
+* enhancements
+  * Close flashes only when clicking on the `x` (`flash__close`)
+
 ### v0.20.0.pre
 
 * features

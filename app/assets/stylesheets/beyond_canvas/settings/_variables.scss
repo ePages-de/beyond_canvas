@@ -54,6 +54,10 @@ $button-secondary-color: $white !default;
 $button-danger-background: $palette-danger !default;
 $button-danger-color: $white !default;
 
+$button-disabled-background: rgb(208,208,208) !default;
+$button-disabled-color: rgb(144,144,144) !default;
+$button-disabled-text-shadow: 1px 1px 0 $white !default;
+
 $button-border-radius: 3px !default;
 $button-box-shadow: true !default;
 $button-font-weight: 700;
@@ -90,6 +94,8 @@ $label-color: rgb(128, 128, 128) !default;
 $input-border-color: rgb(217, 216, 195) !default;
 $input-border-color-focus: $palette-primary !default;
 $input-errors-color: $palette-danger !default;
+$input-disabled-background: rgb(245,244,239) !default;
+$input-disabled-color: rgb(163,161,137) !default;
 
 // ************************************************************
 // Checkboxes
@@ -237,3 +243,17 @@ $modal-padding: 10px;
 $modal-width: 650px;
 $modal-close-icon-color: #8b8b8b !default;
 $modal-background-color: rgba(0, 0, 0, 0.5) !default;
+
+// ************************************************************
+// Select2
+// ************************************************************
+
+$select2-border-color: $input-border-color !default;
+$select2-border-color-focus: $input-border-color-focus !default;
+$select2-close-icon-color: #79764b !default;
+$select2-close-icon-color-hover: darken($select2-close-icon-color, 15%) !default;
+$select2-tag-background: rgb(223, 222, 204) !default;
+$select2-tag-color: rgb(122, 118, 76) !default;
+$select2-disabled-background: rgb(245, 244, 239) !default;
+$select2-option-hover-background: rgb(229, 241, 240) !default;
+$select2-option-hover-color: rgb(62, 62, 62) !default;

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module BeyondCanvas
-  VERSION = '0.20.0.pre'
+  VERSION = '0.21.0.pre'
 end

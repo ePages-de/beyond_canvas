@@ -46,7 +46,7 @@ module BeyondCanvas
         inline_svg_tag 'icons/flash_info.svg'
       when 'warning'
         inline_svg_tag 'icons/flash_warning.svg'
-      when 'error'
+      when 'error', 'alert'
         inline_svg_tag 'icons/flash_error.svg'
       else
         inline_svg_tag 'icons/flash_info.svg'
