@@ -9,7 +9,7 @@
     }, 100);
   };
 
-  $(document).on('click', '.flash', function () {
+  $(document).on('click', '.flash__close', function () {
     closeAlert();
   });
 

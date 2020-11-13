@@ -81,7 +81,7 @@
         $(".flash").addClass("flash--shown");
       }, 100);
     };
-    $(document).on("click", ".flash", function() {
+    $(document).on("click", ".flash__close", function() {
       closeAlert();
     });
     $(document).on("ready page:load turbolinks:load", onDOMReady);
