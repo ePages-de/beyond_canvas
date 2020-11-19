@@ -1,3 +1,8 @@
+### v0.22.0.pre
+
+* features
+  * Add `collapse` Rails helper for collapsible elements
+
 ### v0.21.0.pre
 
 * features
