@@ -73,6 +73,13 @@
     }
   });
   (function($) {
+    $(document).on("click", "[data-toggle='collapse']", function(e) {
+      e.preventDefault();
+      $($(this).attr("data-target")).slideToggle();
+      $(this).find(".collapse__icon").toggleClass("collapse__icon--open");
+    });
+  })(jQuery);
+  (function($) {
     var onDOMReady = function onDOMReady() {
       $(".flash").each(function() {
         $(this).css("right", -$(this).width() + "px");
