@@ -40,6 +40,7 @@ $headline-line-height: 1;
 $link-primary-color: darken($palette-primary, 10%) !default;
 $link-secondary-color: darken($palette-cancel, 10%) !default;
 $link-danger-color: darken($palette-danger, 10%) !default;
+$link-disabled-color: rgb(208,208,208) !default;
 
 // ************************************************************
 // Buttons
