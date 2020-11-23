@@ -19,31 +19,7 @@ const BUTTON_SELECTORS = '[class^="button"]';
     });
 
     $(BUTTON_SELECTORS).each(function () {
-      var button = $(this);
-
-      // Add width attribute and save old width
-      button.width(button.width());
-      button.data('oldWidth', button.width());
-
-      // Add the spinner
-      if (button.find('.spinner').length == 0) {
-        button.prepend(`
-          <div class="spinner">
-            <div class="bounce1"></div>
-            <div class="bounce2"></div>
-            <div class="bounce3"></div>
-          </div>`);
-      }
-
-      // Bind ajax:success and ajax:error to the form the button belongs to
-      button
-        .closest('form')
-        .on('ajax:success', function () {
-          $.restoreActionElements();
-        })
-        .on('ajax:error', function () {
-          $.restoreActionElements();
-        });
+      $(this).buildButton();
     });
   };
 
@@ -52,8 +28,13 @@ const BUTTON_SELECTORS = '[class^="button"]';
   });
 
   $(document).on('click', BUTTON_SELECTORS, function () {
+    var button = $(this);
+
     $.disableActionElements();
-    $(this).showSpinner();
+
+    if (!button.hasClass('button--no-spinner')) {
+      $(this).showSpinner();
+    }
   });
 
   $(document).on('ready page:load turbolinks:load', onDOMReady);
@@ -84,6 +65,37 @@ $.extend({
 });
 
 $.fn.extend({
+  buildButton: function() {
+    var button = $(this);
+
+    if (button.is('[class^=button]')) {
+      if (!button.hasClass('button--no-spinner')) {
+        // Add width attribute and save old width
+        button.width(button.width());
+        button.data('oldWidth', button.width());
+
+        // Add the spinner
+        if (button.find('.spinner').length == 0) {
+          button.prepend(`
+          <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>`);
+        }
+      }
+
+      // Bind ajax:success and ajax:error to the form the button belongs to
+      button
+        .closest('form')
+        .on('ajax:success', function () {
+          $.restoreActionElements();
+        })
+        .on('ajax:error', function () {
+          $.restoreActionElements();
+        });
+    }
+  },
   showSpinner: function () {
     var button = $(this);
 
