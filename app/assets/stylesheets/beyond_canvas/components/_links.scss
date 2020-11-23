@@ -1,17 +1,41 @@
+%link_disabled {
+  @include color-darken($link-disabled-color, 10%);
+
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .link {
   &__icon {
-    margin-right: 10px;
+    @include size(14px);
+
+    margin-right: 4px;
   }
 
   &--primary {
     @include color-darken($link-primary-color, 10%);
+
+    line-height: 1;
   }
 
   &--secondary {
     @include color-darken($link-secondary-color, 10%);
+
+    line-height: 1;
   }
 
   &--danger {
     @include color-darken($link-danger-color, 10%);
+
+    line-height: 1;
+  }
+
+  &--primary,
+  &--secondary,
+  &--danger {
+    &:disabled,
+    &[disabled] {
+      @extend %link_disabled;
+    }
   }
 }
