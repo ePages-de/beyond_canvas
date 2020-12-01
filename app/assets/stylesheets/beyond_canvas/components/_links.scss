@@ -5,29 +5,33 @@
   pointer-events: none;
 }
 
+%link {
+  line-height: 1.2;
+}
+
 .link {
   &__icon {
     @include size(14px);
 
-    margin-right: 4px;
+    margin-right: 6px;
   }
 
   &--primary {
     @include color-darken($link-primary-color, 10%);
 
-    line-height: 1;
+    @extend %link;
   }
 
   &--secondary {
     @include color-darken($link-secondary-color, 10%);
 
-    line-height: 1;
+    @extend %link;
   }
 
   &--danger {
     @include color-darken($link-danger-color, 10%);
 
-    line-height: 1;
+    @extend %link;
   }
 
   &--primary,
