@@ -40,8 +40,8 @@ module BeyondCanvas
           #
           def to_session
             BeyondApi::Session.new(api_url: beyond_api_url,
-                                    access_token: beyond_access_token,
-                                    refresh_token: beyond_refresh_token)
+                                   access_token: beyond_access_token,
+                                   refresh_token: beyond_refresh_token)
           end
 
           #
