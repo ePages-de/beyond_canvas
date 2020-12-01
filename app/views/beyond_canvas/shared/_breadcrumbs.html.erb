@@ -1,12 +1,15 @@
-<% if is_cockpit_app? %>
+<% if is_cockpit_app? && breadcrumb_trail.count.positive? %>
 
   <div class='breadcrumbs'>
 
     <%= inline_svg_tag 'icons/home.svg' %>
 
+    <% i = 1 %>
+
     <% breadcrumb_trail do |crumb| %>
       <%= link_to crumb.name, crumb.url, class: "breadcrumb__item#{ '--current' if crumb.current? }" %>
-      <% unless crumb.current? %><%= inline_svg_tag 'icons/arrow_right.svg' %><% end %>
+      <% unless i ==  breadcrumb_trail.count || crumb.current? %><%= inline_svg_tag 'icons/arrow_right.svg' %><% end %>
+      <% i += 1 %>
     <% end %>
 
   </div>

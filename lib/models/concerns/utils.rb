@@ -40,15 +40,16 @@ module BeyondCanvas
           #
           def to_session
             BeyondApi::Session.new(api_url: beyond_api_url,
-                                    access_token: beyond_access_token,
-                                    refresh_token: beyond_refresh_token)
+                                   access_token: beyond_access_token,
+                                   refresh_token: beyond_refresh_token)
           end
 
           #
           # Returns the shop url
           #
-          def url
-            "https://#{URI.parse(beyond_api_url).host}"
+          def url(path = nil, params = nil)
+            path = path[1..-1] if path&.chr == '/'
+            "https://#{URI.parse(beyond_api_url).host}/#{path}#{'?' +params&.to_query if params.present?}"
           end
 
           def has_scope?(scope)
