@@ -1,5 +1,9 @@
 .beyond-canvas {
 
+  .select2-dropdown--above {
+    border-top: 1px solid $select2-border-color-focus !important;
+  }
+
   .select2-container--default .select2-selection--multiple {
     border: 1px solid $select2-border-color;
     border-radius: 3px;
@@ -53,6 +57,7 @@
   .select2-dropdown{
     border: 1px solid $input-border-color-focus;
     border-top: none;
+    z-index: 9999999;
   }
 
   .select2-results__option {

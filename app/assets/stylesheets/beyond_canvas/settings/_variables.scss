@@ -40,6 +40,7 @@ $headline-line-height: 1;
 $link-primary-color: darken($palette-primary, 10%) !default;
 $link-secondary-color: darken($palette-cancel, 10%) !default;
 $link-danger-color: darken($palette-danger, 10%) !default;
+$link-disabled-color: rgb(208,208,208) !default;
 
 // ************************************************************
 // Buttons
@@ -72,7 +73,7 @@ $card-box-shadow: 0 2px 7px rgba($black, 0.2) !default;
 $card-padding: 40px;
 $card-margin: 30px;
 $card-separator-color: rgb(222, 222, 222) !default;
-$card-separator-spacing: 50px;
+$card-separator-spacing: 40px;
 $card-title-color: rgb(247, 133, 96) !default;
 
 // ************************************************************
@@ -184,8 +185,9 @@ $status-neutral-color: rgb(155,151,100) !default;
 // Breadcrums
 // ************************************************************
 
-$breadcrum-color: rgb(122, 118, 76) !default;
-$breadcrum-color-current: rgb(61, 149, 137) !default;
+$breadcrum-color: rgb(112, 110, 77) !default;
+$breadcrum-color-hover: rgb(67, 65, 46) !default;
+$breadcrum-color-current: rgb(112, 110, 77) !default;
 
 // ************************************************************
 // Titles
@@ -257,3 +259,9 @@ $select2-tag-color: rgb(122, 118, 76) !default;
 $select2-disabled-background: rgb(245, 244, 239) !default;
 $select2-option-hover-background: rgb(229, 241, 240) !default;
 $select2-option-hover-color: rgb(62, 62, 62) !default;
+
+// ************************************************************
+// Collapsibles
+// ************************************************************
+
+$collapsible-color: $palette-primary !default

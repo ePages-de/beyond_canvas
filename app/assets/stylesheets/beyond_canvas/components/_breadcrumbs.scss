@@ -21,6 +21,10 @@
   &__item {
     color: $breadcrum-color-current;
 
+    &:hover {
+      color: $breadcrum-color-hover
+    }
+
     &--current {
       color: $breadcrum-color;
       pointer-events: none;
