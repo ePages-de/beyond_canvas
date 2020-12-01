@@ -2,7 +2,7 @@ const SPINNER_ANIMATION_TIMEOUT = 125;
 const BUTTON_SELECTORS = '[class^="button"]';
 
 (function ($) {
-  const onDOMReady = function (e) {
+  const onDOMReady = function () {
     const inputs = $('input, textarea, select').not(
       ':input[type=button], :input[type=submit], :input[type=reset]'
     );
