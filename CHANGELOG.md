@@ -1,7 +1,21 @@
 ### v0.22.0.pre
 
+* deprecations
+  * Remove support for containers
+
+* bug-fixes
+  * Fix minor styles on `breadcrumbs`, `notices`, `links`, `modals`, `select2` and `variables`
+  * Make `breadrumbs` work with support for external links
+
 * features
   * Add `collapse` Rails helper for collapsible elements
+  * Add support for disabled links
+  * Add `buildButton` function
+  * Allow to prevent adding the spinner to a button adding `button--no-spinner` to the button class
+  * Allow to send `path` and `params` to `BeyondCanvas::Shop`'s `url` function
+
+* enhancements
+  * Add color and hover to SVGs on `color-darken` mixin
 
 ### v0.21.0.pre
 
