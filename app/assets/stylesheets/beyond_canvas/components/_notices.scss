@@ -52,7 +52,6 @@
     @include padding(8px 14px);
 
     color: $notice-color;
-    display: flex;
-    align-items: center;
+    display: block;
   }
 }
