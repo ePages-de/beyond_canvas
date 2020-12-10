@@ -11,7 +11,7 @@
   var SPINNER_ANIMATION_TIMEOUT = 125;
   var BUTTON_SELECTORS = '[class^="button"]';
   (function($) {
-    var onDOMReady = function onDOMReady(e) {
+    var onDOMReady = function onDOMReady() {
       var inputs = $("input, textarea, select").not(":input[type=button], :input[type=submit], :input[type=reset]");
       inputs.each(function() {
         var input = $(this);
@@ -62,7 +62,7 @@
       if (button.is("[class^=button]")) {
         if (!button.hasClass("button--no-spinner")) {
           button.width(button.width());
-          button.data("oldWidth", button.width());
+          button.data("oldWidth", button.width() + .001);
           if (button.find(".spinner").length == 0) {
             button.prepend('\n          <div class="spinner">\n            <div class="bounce1"></div>\n            <div class="bounce2"></div>\n            <div class="bounce3"></div>\n          </div>');
           }
