@@ -5,14 +5,12 @@ require 'rails/generators/active_record'
 module BeyondCanvas
   module Generators
     class ViewsGenerator < Rails::Generators::Base # :nodoc:
-      desc 'Creates a view in the app/view folder'
+      desc 'Creates all Beyond Canvas views to overwrite them'
 
-      argument :scope, required: true, desc: 'The scope to copy views to'
+      source_root File.expand_path('../../../../app/views/beyond_canvas', __dir__)
 
-      source_root File.expand_path('../../../../app/views/beyond_canvas/authentications', __dir__)
-
-      def create_view
-        copy_file 'new.html.erb', "app/views/#{scope}/new.html.erb"
+      def copy_views
+        directory 'authentications', 'app/views/beyond_canvas/authentications'
       end
     end
   end

@@ -11,7 +11,8 @@
 // General styles
 // ************************************************************
 
-// $main-background: rgb(233, 232, 220);
+// $main-background-public: rgb(233, 232, 220);
+// $main-background-application: rgb(233, 232, 220);
 
 // ************************************************************
 // Typography
@@ -46,6 +47,10 @@
 // $button-danger-background: $palette-danger;
 // $button-danger-color: $white;
 
+// $button-disabled-background: rgb(208,208,208);
+// $button-disabled-color: rgb(144,144,144);
+// $button-disabled-text-shadow: 1px 1px 0 $white;
+
 // $button-border-radius: 3px;
 // $button-box-shadow: true;
 
@@ -76,24 +81,26 @@
 // $input-border-color: rgb(217, 216, 195);
 // $input-border-color-focus: $palette-primary;
 // $input-errors-color: $palette-danger;
+// $input-disabled-background: rgb(245,244,239);
+// $input-disabled-color: rgb(163,161,137);
 
 // ************************************************************
 // Checkboxes
 // ************************************************************
 
-// $checkbox-checked-color: #97C344;
-// $checkbox-checked-background: #ffffff;
-// $checkbox-unchecked-color: #C2BF9D;
-// $checkbox-unchecked-background: #ffffff;
+// $checkbox-checked-color: #97C344; // This value MUST be HEX
+// $checkbox-checked-background: #ffffff; // This value MUST be HEX
+// $checkbox-unchecked-color: #C2BF9D; // This value MUST be HEX
+// $checkbox-unchecked-background: #ffffff; // This value MUST be HEX
 
 // ************************************************************
 // Radiobuttons
 // ************************************************************
 
-// $radio-checked-color: #97C344;
-// $radio-checked-background: #ffffff;
-// $radio-unchecked-color: #C2BF9D;
-// $radio-unchecked-background: #ffffff;
+// $radio-checked-color: #97C344; // This value MUST be HEX
+// $radio-checked-background: #ffffff; // This value MUST be HEX
+// $radio-unchecked-color: #C2BF9D; // This value MUST be HEX
+// $radio-unchecked-background: #ffffff; // This value MUST be HEX
 
 // ************************************************************
 // Hints
@@ -148,6 +155,78 @@
 // $notice-color: rgb(153, 153, 153);
 
 // ************************************************************
+// Status
+// ************************************************************
+
+// $status-good-background: rgb(205,225,165);
+// $status-good-color: rgb(85,110,41);
+// $status-warning-background: rgb(249,220,166);
+// $status-warning-color: rgb(178,120,18);
+// $status-danger-background: rgb(247,174,163);
+// $status-danger-color: rgb(164,35,34);
+// $status-neutral-background: rgb(224,223,205);
+// $status-neutral-color: rgb(155,151,100);
+
+// ************************************************************
+// Breadcrums
+// ************************************************************
+
+// $breadcrum-color: rgb(122, 118, 76);
+// $breadcrum-color-current: rgb(61, 149, 137);
+
+// ************************************************************
+// Titles
+// ************************************************************
+
+// $title-color: rgb(122, 118, 76);
+
+// ************************************************************
+// Menu
+// ************************************************************
+
+// $menu-background: #1c3445;
+// $menu-height: 60px;
+// $menu-logo-height: 30px;
+// $menu-item-color: #9ab5c6;
+// $menu-item-hover-color: lighten($menu-item-color, 13%);
+// $menu-item-selected-color: #4eb7a8;
+// $menu-item-selected-hover-color: lighten($menu-item-selected-color, 13%);
+
+// ************************************************************
+// Action bar
+// ************************************************************
+
+// $action-bar-background: rgb(255, 255, 255);
+// $action-bar-shadow: 1px solid rgba(0, 0, 0, 0.2);
+// $action-bar-height: 73px;
+
+// ************************************************************
 // Markdown
 // ************************************************************
 
+
+// ************************************************************
+// Sidebar
+// ************************************************************
+
+
+// ************************************************************
+// Modals
+// ************************************************************
+
+// $modal-close-icon-color: #8b8b8b;
+// $modal-background-color: rgba(0, 0, 0, 0.5);
+
+// ************************************************************
+// Select2
+// ************************************************************
+
+// $select2-border-color: $input-border-color;
+// $select2-border-color-focus: $input-border-color-focus;
+// $select2-close-icon-color: #79764b;
+// $select2-close-icon-color-hover: darken($select2-close-icon-color, 15%);
+// $select2-tag-background: rgb(223, 222, 204);
+// $select2-tag-color: rgb(122, 118, 76);
+// $select2-disabled-background: rgb(245, 244, 239);
+// $select2-option-hover-background: rgb(229, 241, 240);
+// $select2-option-hover-color: rgb(62, 62, 62);

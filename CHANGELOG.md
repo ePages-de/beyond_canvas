@@ -1,3 +1,95 @@
+### v0.22.0.pre
+
+* deprecations
+  * Remove support for containers
+
+* bug-fixes
+  * Fix minor styles on `breadcrumbs`, `notices`, `links`, `modals`, `select2` and `variables`
+  * Make `breadrumbs` work with support for external links
+
+* features
+  * Add `collapse` Rails helper for collapsible elements
+  * Add support for disabled links
+  * Add `buildButton` function
+  * Allow to prevent adding the spinner to a button adding `button--no-spinner` to the button class
+  * Allow to send `path` and `params` to `BeyondCanvas::Shop`'s `url` function
+
+* enhancements
+  * Add color and hover to SVGs on `color-darken` mixin
+
+### v0.21.0.pre
+
+* features
+  * Add styles for disabled inputs and buttons
+  * Add support for Rails default alert flashes
+  * Add styles for supporting the use of [Select2](https://select2.org/)
+
+* enhancements
+  * Close flashes only when clicking on the `x` (`flash__close`)
+
+### v0.20.0.pre
+
+* features
+  * Add support for statuses (`status_good`, `status_warning`, `status_danger` and `status_neutral`)
+
+### v0.19.2.pre
+
+* deprecations
+  * Prevent loading `beyond_canvas/mailer` layout by default
+  * No need to specify the model when generating the custom controller
+
+* features
+  * Add `text__align--left` and `text__align--right`
+  * Add `beyond_canvas_controller?` method that returns `true` if the controller is a `BeyondCanvas` controller
+
+### v0.19.1.pre
+
+* bug-fixes
+  * Fix menu display for vertical align
+  * Fix block comment on menu generator template
+
+* features
+  * Add `margin--clear` class for removing all margins
+
+### v0.19.0.pre
+
+* bug-fixes
+  * Fix `menu__item--selected` condition
+
+* features
+  * Add support for `text_area` form tag
+  * Add support for `select` form tag
+
+### v0.18.0.pre
+
+* features
+  * Add basic grid styles
+  * Add scrollbox styles
+  * Add modal headline styles
+
+### v0.17.0.pre
+
+* bug-fixes
+  * Minor CSS fixes on buttons, alignments...
+
+* deprecations
+  * Move back to rollupjs
+  * Rename `menu` to `action_bar`
+
+* features
+  * Add cockpit-app development mode
+  * Add `beyond_canvas/application` layout
+  * Add support for modals
+  * Add support for breadcrumbs
+  * Add support for menu
+  * Add support for titles
+  * Add shop session
+  * Add generator for custom menu
+
+* enhancements
+  * Update authentication flow to fit future SSO
+  * Update locale switch location
+
 ### v0.16.2.pre
 
 * enhancements

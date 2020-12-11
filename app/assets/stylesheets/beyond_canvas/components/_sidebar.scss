@@ -1,0 +1,53 @@
+.sidebar {
+  height: 100vh;
+  width: $sidebar-width;
+  min-width: $sidebar-width;
+  background-color: $sidebar-background;
+  position: relative;
+
+  &__header, &__footer {
+    width: 100%;
+  }
+
+  &__header {
+    background-color: $sidebar-header-background;
+    height: 73px;
+    padding-left: 15px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 128px;
+    height: 30px;
+    background-color: white;
+  }
+
+  &__item {
+    width: 120px;
+    height: 14px;
+    background-color: $sidebar-item-background;
+    margin: 16px 0 24px 35px;
+
+    &--selected {
+      background-color: $sidebar-item-selected-background;
+    }
+  }
+
+  &__footer {
+    background-color: $sidebar-footer-background;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-color: $sidebar-footer-icon-background;
+  }
+}

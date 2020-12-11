@@ -8,30 +8,30 @@ require 'jquery-rails'
 require 'bourbon'
 require 'sassc-rails'
 require 'inline_svg'
+require 'loaf'
 require 'http/accept'
 require 'premailer/rails'
 
 require 'beyond_api'
 require 'attr_encrypted'
-require 'blind_index'
 
 module BeyondCanvas # :nodoc:
-  autoload :AssetRegistration,  'beyond_canvas/asset_registration'
-  autoload :Configuration,      'beyond_canvas/configuration'
+  autoload :AssetRegistration,    'beyond_canvas/asset_registration'
+  autoload :Configuration,        'beyond_canvas/configuration'
+  autoload :MenuItemRegistration, 'beyond_canvas/menu_item_registration'
+  autoload :ParameterSanitizer,   'beyond_canvas/parameter_sanitizer'
 
   module Models # :nodoc:
-    autoload :Authentication,   'beyond_canvas/models/authentication'
-    autoload :Shop,             'beyond_canvas/models/shop'
-    autoload :Utils,            'beyond_canvas/models/utils'
+    autoload :Shop, 'models/shop'
+
+    module Concerns
+      autoload :Authentication, 'models/concerns/authentication'
+      autoload :Utils,          'models/concerns/utils'
+    end
   end
 
-  autoload :ParameterSanitizer, 'beyond_canvas/parameter_sanitizer'
-
   mattr_accessor :use_rails_app_controller
-  @@use_rails_app_controller = false # rubocop:disable Style/ClassVars
-
-  mattr_accessor :auth_model
-  @@auth_model = 'shop' # rubocop:disable Style/ClassVars
+  @@use_rails_app_controller = false
 
   class << self
     def configuration

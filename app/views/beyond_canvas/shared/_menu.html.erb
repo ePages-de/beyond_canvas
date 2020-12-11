@@ -1,0 +1,31 @@
+<% if menu_content? %>
+
+  <div class="menu">
+
+    <div class="menu--left">
+      <%= render 'beyond_canvas/shared/logo' %>
+    </div>
+
+    <div class="menu--center">
+
+      <% BeyondCanvas.configuration.menu_items.each do |menu_item| %>
+        <% name, url, options = menu_item.name.to_s, menu_item.url.to_s, menu_item.options %>
+
+        <% url, external_url = respond_to?(url) ? [send(url), false] : [url, true] %>
+        <% name = defined?(I18n) && I18n.exists?(name) ? I18n.t(name) : name %>
+
+        <% path = Rails.application.routes.recognize_path(url) %>
+
+        <% options = options.merge(class: 'menu__item--active') { |_key, old_val, new_val| [new_val, old_val].join(' ') } if !external_url && (path[:controller] == params[:controller]) %>
+        <% options = options.merge(class: 'menu__item') { |_key, old_val, new_val| [new_val, old_val].join(' ') } %>
+
+        <%= link_to name, url, options %>
+      <% end %>
+
+    </div>
+
+    <div class="menu--right"></div>
+
+  </div>
+
+<% end %>

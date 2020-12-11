@@ -1,0 +1,30 @@
+.collapse {
+
+  &:not(:last-child) {
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    display: none;
+  }
+
+  &__button {
+    color: $palette-primary;
+    font-weight: 700;
+    cursor: pointer;
+    display: table;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  &__icon {
+    @include size(10px);
+
+    fill: $palette-primary;
+    margin-right: 2px;
+
+    &--open {
+      transform: rotate(90deg);
+    }
+  }
+}

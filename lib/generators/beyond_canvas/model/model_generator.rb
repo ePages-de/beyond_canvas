@@ -4,7 +4,7 @@ require 'rails/generators/active_record'
 
 module BeyondCanvas
   module Generators
-    class AuthModelGenerator < ActiveRecord::Generators::Base # :nodoc:
+    class ModelGenerator < ActiveRecord::Generators::Base # :nodoc:
       desc 'Generates a model with the given name and provides a method to authenticate in Beyond Backend'
 
       argument :attributes, type: :array, default: [], banner: 'field:type field:type'
@@ -19,7 +19,7 @@ module BeyondCanvas
       end
 
       def generate_model
-        template 'model.erb', File.join('app', 'models', "#{file_path}.rb")
+        template 'model.erb', File.join("app/models/#{file_path}.rb")
       end
 
       private
@@ -34,15 +34,14 @@ module BeyondCanvas
 
       def migration_data
         <<RUBY
-      t.string :encrypted_beyond_api_url,       null: false
-      t.string :encrypted_beyond_api_url_iv,    null: false
-      t.string :beyond_api_url_bidx,            null: false
+      t.string :beyond_api_url, null: false
 
       t.text :encrypted_beyond_access_token,    null: true
       t.text :encrypted_beyond_access_token_iv, null: true
 
       t.text :encrypted_beyond_refresh_token,    null: true
       t.text :encrypted_beyond_refresh_token_iv, null: true
+
 RUBY
       end
     end

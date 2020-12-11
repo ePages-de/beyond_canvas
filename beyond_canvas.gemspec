@@ -7,8 +7,16 @@ require 'beyond_canvas/version'
 Gem::Specification.new do |spec|
   spec.name        = 'beyond_canvas'
   spec.version     = BeyondCanvas::VERSION
-  spec.authors     = ['Unai Abrisketa']
-  spec.email       = ['u.abrisketa@epages.com']
+  spec.authors     = [
+    'Unai Abrisketa',
+    'Kathia Salazar',
+    'German San Emeterio'
+  ]
+  spec.email       = [
+    'uabrisketa@epages.com',
+    'ksalazar@epages.com',
+    'gsanemeterio@epages.com'
+  ]
   spec.homepage    = 'https://github.com/ePages-de/beyond_canvas'
   spec.summary     = 'Open-source framework that provides CSS styles'
   spec.description = <<-DESC
@@ -28,7 +36,6 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'attr_encrypted',  '~> 3.1'
   spec.add_dependency 'beyond_api',      '~> 0.11'
-  spec.add_dependency 'blind_index',     '~> 1.0'
   spec.add_dependency 'bourbon',         '~> 5.1'
   spec.add_dependency 'colorize',        '~> 0.8'
   spec.add_dependency 'http-accept',     '~> 2.1'
@@ -37,6 +44,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'premailer-rails', '~> 1.11'
   spec.add_dependency 'sassc-rails',     '~> 2.1'
   spec.add_dependency 'sprockets',       '>= 3.0', '< 4.1'
+  spec.add_dependency 'loaf',            '~> 0.9'
+  spec.add_dependency 'jwt',             '~> 2.2'
 
   spec.add_development_dependency 'rubocop-rails', '~> 2.5'
 end

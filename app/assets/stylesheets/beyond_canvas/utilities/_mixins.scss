@@ -12,6 +12,15 @@
   color: $color;
   transition: $main-transition;
 
+  svg {
+    fill: $color;
+
+    &:hover {
+      fill: darken($color, $percent);
+      transition: $main-transition;
+    }
+  }
+
   &:hover {
     color: darken($color, $percent);
     transition: $main-transition;

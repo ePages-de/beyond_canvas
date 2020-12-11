@@ -40,7 +40,8 @@
       background-color: $flash-warning;
     }
 
-    &--error {
+    &--error,
+    &--alert {
       background-color: $flash-error;
     }
   }

@@ -10,13 +10,23 @@
   border-width: 1px;
   border-style: solid;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   font-weight: $button-font-weight;
   justify-content: flex-end;
   line-height: 1;
   outline: none;
   transition: $main-transition;
 }
+
+%button_disabled {
+  border-color: $button-disabled-background;
+  background-color: $button-disabled-background;
+  pointer-events: none;
+  color: $button-disabled-color;
+  text-shadow: $button-disabled-text-shadow;
+  border-bottom-color: #aaaaaa;
+}
+
 
 @mixin button-solid($background, $color) {
   @include background-color-darken($background, 10%);
@@ -63,6 +73,10 @@
   }
 }
 
+input[type=file][disabled] ~ .button__transparent--primary {
+  @extend %button_disabled;
+}
+
 .button {
   &__solid {
     &--primary {
@@ -70,6 +84,11 @@
 
       @include button-solid($button-primary-background, $button-primary-color);
       @include button-border($button-primary-background);
+
+      &:disabled,
+      &[disabled] {
+        @extend %button_disabled;
+      }
     }
 
     &--secondary {
@@ -77,6 +96,11 @@
 
       @include button-solid($button-secondary-background, $button-secondary-color);
       @include button-border($button-secondary-background);
+
+      &:disabled,
+      &[disabled] {
+        @extend %button_disabled;
+      }
     }
 
     &--danger {
@@ -84,6 +108,11 @@
 
       @include button-solid($button-danger-background, $button-danger-color);
       @include button-border($button-danger-background);
+
+      &:disabled,
+      &[disabled] {
+        @extend %button_disabled;
+      }
     }
   }
 
@@ -93,6 +122,11 @@
 
       @include button-transparent($button-primary-background);
       @include button-border($button-primary-background);
+
+      &:disabled,
+      &[disabled] {
+        @extend %button_disabled;
+      }
     }
 
     &--secondary {
@@ -100,6 +134,11 @@
 
       @include button-transparent($button-secondary-background);
       @include button-border($button-secondary-background);
+
+      &:disabled,
+      &[disabled] {
+        @extend %button_disabled;
+      }
     }
 
     &--danger {
@@ -107,6 +146,11 @@
 
       @include button-transparent($button-danger-background);
       @include button-border($button-danger-background);
+
+      &:disabled,
+      &[disabled] {
+        @extend %button_disabled;
+      }
     }
   }
 }

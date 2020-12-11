@@ -1,0 +1,50 @@
+.menu {
+  @include padding(0 15px);
+
+  height: $menu-height;
+  background-color: $menu-background;
+  align-items: center;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+
+  .logo {
+    height: $menu-logo-height;
+  }
+
+  &--left {
+    display: inherit;
+  }
+
+  &--center {
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    display: inherit;
+  }
+
+  &--right {
+    display: inherit;
+  }
+
+  &__item {
+    @include margin(0 15px);
+    line-height: 1;
+    color: $menu-item-color;
+
+    &:hover {
+      color: $menu-item-hover-color;
+    }
+
+    &--active {
+      color: $menu-item-selected-color;
+
+      &:hover {
+        color: $menu-item-selected-hover-color;
+      }
+    }
+  }
+}

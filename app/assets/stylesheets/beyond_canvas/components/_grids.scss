@@ -1,0 +1,12 @@
+.grid {
+  &__container {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(auto-fill, 385px);
+  }
+
+  &__item {
+    border: 1px solid #dfdecc;
+    padding: 20px;
+  }
+}

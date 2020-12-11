@@ -3,18 +3,19 @@
 module ActionDispatch
   module Routing
     class Mapper # :nodoc:
-      def beyond_canvas_for(*resources)
+      def beyond_canvas_routes(options = nil)
         mount BeyondCanvas::Engine => BeyondCanvas.configuration.namespace
 
-        resource_name, options = resources
-        BeyondCanvas.auth_model = resource_name.to_s.singularize
-        BeyondCanvas.use_rails_app_controller = options.present? && options[:controller].present?
+        BeyondCanvas.use_rails_app_controller = options.present? && options[:custom_controller].present?
 
-        set_routes(resource_name, options[:controller]) if BeyondCanvas.use_rails_app_controller
+        set_routes if BeyondCanvas.use_rails_app_controller
       end
 
-      def set_routes(resource_name, controller)
-        resources resource_name, controller: controller
+      def set_routes
+        scope BeyondCanvas.configuration.namespace do
+          get  'callback', controller: :authentications, action: :new
+          post 'callback', controller: :authentications, action: :install
+        end
       end
     end
   end
