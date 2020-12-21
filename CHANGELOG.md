@@ -1,3 +1,8 @@
+### v0.22.1.pre
+
+* bug-fixes
+  * Make `breadrumbs` open urls as parent
+
 ### v0.22.0.pre
 
 * deprecations
