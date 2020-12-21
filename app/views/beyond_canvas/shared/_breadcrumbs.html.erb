@@ -7,7 +7,7 @@
     <% i = 1 %>
 
     <% breadcrumb_trail do |crumb| %>
-      <%= link_to crumb.name, crumb.url, class: "breadcrumb__item#{ '--current' if crumb.current? }" %>
+      <%= link_to crumb.name, crumb.url, class: "breadcrumb__item#{ '--current' if crumb.current? }", target: "_parent" %>
       <% unless i ==  breadcrumb_trail.count || crumb.current? %><%= inline_svg_tag 'icons/arrow_right.svg' %><% end %>
       <% i += 1 %>
     <% end %>
