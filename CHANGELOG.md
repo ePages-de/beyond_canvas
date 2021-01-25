@@ -1,3 +1,25 @@
+### v0.23.0.pre
+
+* bug-fixes
+  * Fix buttons having multiple lines
+  * Fix `form__actions` bottom spacing
+  * Fix `action_bar` spacings
+
+* features
+  * Add the following `form_tag_helpers`:
+    * `email_field_tag`
+    * `text_field_tag`
+    * `number_field_tag`
+    * `password_field_tag`
+    * `text_area_tag`
+    * `select_tag`
+    * `radio_button_tag`
+
+* enhancements
+  * Make `field_wrapper` and `inline_wrapper` private on `BeyondCanvas::FormBuilder`
+  * Add more margin-bottom to `.body--public .main-wrapper`
+  * Update gem dependencies
+
 ### v0.22.0.pre
 
 * deprecations
