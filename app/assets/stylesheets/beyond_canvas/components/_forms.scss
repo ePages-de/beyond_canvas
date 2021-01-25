@@ -7,7 +7,7 @@
   &__actions {
     width: 100%;
 
-    &:not(:last-child) {
+    &:not(:last-of-type) {
       margin-bottom: 30px;
     }
   }
