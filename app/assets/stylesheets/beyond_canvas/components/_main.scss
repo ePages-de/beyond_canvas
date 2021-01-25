@@ -9,7 +9,7 @@
   background-color: $main-background-public;
 
   .main-wrapper {
-    @include margin(32px auto);
+    @include margin(32px auto 100px);
 
     max-width: 531px;
     width: 94%;
