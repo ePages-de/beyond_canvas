@@ -7,7 +7,6 @@ module BeyondCanvas
     #
     def log_in(shop)
       cookies[:shop_id] = {
-        domain: :all,
         same_site: :none,
         http_only: true,
         secure: :true,
