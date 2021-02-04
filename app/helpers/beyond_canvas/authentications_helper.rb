@@ -7,7 +7,7 @@ module BeyondCanvas
     #
     def log_in(shop)
       cookies[:shop_id] = {
-        domain: 'bydapp-googl-chrome-coo-cnffom.herokuapp.com',
+        domain: 'bydapp-googl-chrome-coo-j8utxg.herokuapp.com',
         same_site: :none,
         http_only: true,
         secure: :true,
