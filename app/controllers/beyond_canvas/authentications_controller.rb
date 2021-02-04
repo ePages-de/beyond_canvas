@@ -60,10 +60,14 @@ module BeyondCanvas
     end
 
     def open_app(shop)
-      reset_session
+      reset_cookies
       log_in shop
 
       redirect_to after_sign_in_path
+    end
+
+    def reset_cookies
+      cookies.delete :shop_id
     end
   end
 end
