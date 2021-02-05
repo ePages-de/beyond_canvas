@@ -2,7 +2,7 @@
 
 if BeyondCanvas.configuration.cockpit_app == true && !Rails.env.development?
   Rails.application.config.session_store :cookie_store, {
-    secure: :true,
+    secure: true,
     same_site: :none
   }
 end
