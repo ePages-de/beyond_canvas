@@ -6,13 +6,7 @@ module BeyondCanvas
     # Logs in the given shop
     #
     def log_in(shop)
-      cookies[:shop_id] = {
-        same_site: :none,
-        http_only: true,
-        secure: :true,
-        tld_length: 2,
-        value: shop.id
-      }
+      session[:shop_id] = shop.id
     end
 
     #
@@ -20,11 +14,10 @@ module BeyondCanvas
     #
     def current_shop
       puts '@' * 75
-      puts request.env["HTTP_HOST"]
-      puts cookies[:shop_id]
+      puts session[:shop_id]
       puts '@' * 75
-      if cookies[:shop_id]
-        @current_shop ||= Shop.find_by(id: cookies[:shop_id])
+      if session[:shop_id]
+        @current_shop ||= Shop.find_by(id: session[:shop_id])
       end
     end
 
