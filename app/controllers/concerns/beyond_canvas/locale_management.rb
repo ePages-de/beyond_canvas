@@ -18,9 +18,7 @@ module BeyondCanvas
       unless valid_locale?(cookies[:locale])
         cookies[:locale] = {
           same_site: :none,
-          http_only: true,
           secure: :true,
-          tld_length: 2,
           value: browser_compatible_locale,
           expires: 1.day.from_now
         }

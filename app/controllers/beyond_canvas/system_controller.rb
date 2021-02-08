@@ -9,9 +9,7 @@ module BeyondCanvas
     def update_locale
       cookies[:locale] = {
         same_site: :none,
-        http_only: true,
         secure: :true,
-        tld_length: 2,
         value: system_locale_params[:locale],
         expires: 1.day.from_now
       }
