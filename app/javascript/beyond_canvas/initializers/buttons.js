@@ -72,7 +72,7 @@ $.fn.extend({
       if (!button.hasClass('button--no-spinner')) {
         // Add width attribute and save old width
         button.width(button.width());
-        button.data('oldWidth', button.width() + 0.001);
+        button.data('oldWidth', button.width());
 
         // Add the spinner
         if (button.find('.spinner').length == 0) {
