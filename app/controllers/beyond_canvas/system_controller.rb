@@ -8,11 +8,8 @@ module BeyondCanvas
 
     def update_locale
       cookies[:locale] = {
-        same_site: :none,
-        secure: :true,
-        value: system_locale_params[:locale],
-        expires: 1.day.from_now
-      }
+        value: system_locale_params[:locale]
+      }.merge COOKIES_ATTRIBUTES
 
       redirect_back(fallback_location: main_app.root_path)
     end
