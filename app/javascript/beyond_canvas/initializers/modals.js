@@ -1,14 +1,27 @@
-$.extend({
-  displayModal: function (content, options = {}) {
-    $('#modal').find('#modal__content').html(content);
-    $('#modal').css('display', 'flex');
+(function ($) {
+  const onDOMReady = function () {
+    $('.modal').each(function () {
+      $(this).hide().css('visibility', 'visible');
+    });
+  };
+
+  $(document).on('click', '[data-toggle="modal"]', function (e) {
+    e.preventDefault();
+
+    const dataTarget = $(this).attr('data-target');
+
     $.restoreActionElements();
-    $(document).trigger('modal:opened', options['extraEventParameters']);
-  },
-  closeModal: function () {
-    $('#modal').find('#modal__content').empty();
-    $('#modal').css('display', 'none');
+    $(dataTarget).css('display', 'flex');
+  });
+
+  $(document).on('click', '[data-dismiss="modal"]', function (e) {
+    e.preventDefault();
+
+    const dataTarget = $(this).closest('.modal');
+
     $.restoreActionElements();
-    $(document).trigger('modal:closed');
-  }
-});
+    $(dataTarget).hide();
+  });
+
+  $(document).on('ready page:load turbolinks:load', onDOMReady);
+})(jQuery);
