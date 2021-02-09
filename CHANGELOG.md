@@ -14,11 +14,14 @@
     * `text_area_tag`
     * `select_tag`
     * `radio_button_tag`
+  * Add `table-layout: fixed;` to tables with `.table` class
+  * Add `:hover` effect to table rows
 
 * enhancements
   * Make `field_wrapper` and `inline_wrapper` private on `BeyondCanvas::FormBuilder`
   * Add more margin-bottom to `.body--public .main-wrapper`
   * Update gem dependencies
+  * Increase locale expiration to 1 year
 
 ### v0.22.0.pre
 
