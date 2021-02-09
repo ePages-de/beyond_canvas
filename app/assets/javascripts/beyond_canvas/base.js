@@ -62,7 +62,7 @@
       if (button.is("[class^=button]")) {
         if (!button.hasClass("button--no-spinner")) {
           button.width(button.width());
-          button.data("oldWidth", button.width() + .001);
+          button.data("oldWidth", button.width());
           if (button.find(".spinner").length == 0) {
             button.prepend('\n          <div class="spinner">\n            <div class="bounce1"></div>\n            <div class="bounce2"></div>\n            <div class="bounce3"></div>\n          </div>');
           }
@@ -126,21 +126,24 @@
     };
     $(document).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
-  $.extend({
-    displayModal: function displayModal(content, options) {
-      if (options === void 0) {
-        options = {};
-      }
-      $("#modal").find("#modal__content").html(content);
-      $("#modal").css("display", "flex");
+  (function($) {
+    var onDOMReady = function onDOMReady() {
+      $(".modal").each(function() {
+        $(this).hide().css("visibility", "visible");
+      });
+    };
+    $(document).on("click", '[data-toggle="modal"]', function(e) {
+      e.preventDefault();
+      var dataTarget = $(this).attr("data-target");
       $.restoreActionElements();
-      $(document).trigger("modal:opened", options["extraEventParameters"]);
-    },
-    closeModal: function closeModal() {
-      $("#modal").find("#modal__content").empty();
-      $("#modal").css("display", "none");
+      $(dataTarget).css("display", "flex");
+    });
+    $(document).on("click", '[data-dismiss="modal"]', function(e) {
+      e.preventDefault();
+      var dataTarget = $(this).closest(".modal");
       $.restoreActionElements();
-      $(document).trigger("modal:closed");
-    }
-  });
+      $(dataTarget).hide();
+    });
+    $(document).on("ready page:load turbolinks:load", onDOMReady);
+  })(jQuery);
 });
