@@ -136,14 +136,24 @@
       e.preventDefault();
       var dataTarget = $(this).attr("data-target");
       $.restoreActionElements();
-      $(dataTarget).css("display", "flex");
+      $(dataTarget).showModal();
     });
     $(document).on("click", '[data-dismiss="modal"]', function(e) {
       e.preventDefault();
       var dataTarget = $(this).closest(".modal");
       $.restoreActionElements();
-      $(dataTarget).hide();
+      $(dataTarget).hideModal();
     });
     $(document).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
+  $.extend({
+    showModal: function showModal() {
+      $.restoreActionElements();
+      $(this).css("display", "flex");
+    },
+    hideModal: function hideModal() {
+      $.restoreActionElements();
+      $(this).hide();
+    }
+  });
 });

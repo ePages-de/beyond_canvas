@@ -11,7 +11,7 @@
     const dataTarget = $(this).attr('data-target');
 
     $.restoreActionElements();
-    $(dataTarget).css('display', 'flex');
+    $(dataTarget).showModal();
   });
 
   $(document).on('click', '[data-dismiss="modal"]', function (e) {
@@ -20,8 +20,19 @@
     const dataTarget = $(this).closest('.modal');
 
     $.restoreActionElements();
-    $(dataTarget).hide();
+    $(dataTarget).hideModal();
   });
 
   $(document).on('ready page:load turbolinks:load', onDOMReady);
 })(jQuery);
+
+$.extend({
+  showModal: function () {
+    $.restoreActionElements();
+    $(this).css('display', 'flex');
+  },
+  hideModal: function () {
+    $.restoreActionElements();
+    $(this).hide();
+  },
+});
