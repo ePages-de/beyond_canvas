@@ -146,7 +146,7 @@
     });
     $(document).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
-  $.extend({
+  $.fn.extend({
     showModal: function showModal() {
       $.restoreActionElements();
       $(this).css("display", "flex");
