@@ -2,38 +2,6 @@
 
 module BeyondCanvas
   class FormBuilder < ActionView::Helpers::FormBuilder # :nodoc:
-    def field_wrapper(attribute, args, &block)
-      label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
-
-      errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
-
-      @template.content_tag(:div, class: 'form__row') do
-        @template.content_tag(:label, label, class: 'input__label') +
-        @template.content_tag(:div, class: 'relative') do
-          block.call +
-            (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
-        end +
-        (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
-      end
-    end
-
-    def inline_wrapper(attribute, args, &block)
-      label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
-
-      errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
-
-      @template.content_tag(:div, class: 'form__row') do
-        @template.content_tag(:div, class: 'relative', style: 'display: flex; align-items: center;') do
-          block.call +
-            @template.content_tag(:div) do
-              @template.content_tag(:label, label, class: 'input__label') +
-              (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
-            end +
-            (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
-        end
-      end
-    end
-
     %i[email_field text_field number_field password_field text_area].each do |method|
       define_method method do |attribute, args = {}|
         field_wrapper(attribute, args) do
@@ -103,6 +71,38 @@ module BeyondCanvas
     end
 
     private
+
+    def field_wrapper(attribute, args, &block)
+      label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
+
+      errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
+
+      @template.content_tag(:div, class: 'form__row') do
+        @template.content_tag(:label, label, class: 'input__label') +
+        @template.content_tag(:div, class: 'relative') do
+          block.call +
+            (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
+        end +
+        (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
+      end
+    end
+
+    def inline_wrapper(attribute, args, &block)
+      label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
+
+      errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
+
+      @template.content_tag(:div, class: 'form__row') do
+        @template.content_tag(:div, class: 'relative', style: 'display: flex; align-items: center;') do
+          block.call +
+            @template.content_tag(:div) do
+              @template.content_tag(:label, label, class: 'input__label') +
+              (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
+            end +
+            (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
+        end
+      end
+    end
 
     def filed_identifyer(attribute)
       "#{attribute}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
