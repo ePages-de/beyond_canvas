@@ -11,7 +11,7 @@
   var SPINNER_ANIMATION_TIMEOUT = 125;
   var BUTTON_SELECTORS = '[class^="button"]';
   (function($) {
-    var onDOMReady = function onDOMReady(e) {
+    var onDOMReady = function onDOMReady() {
       var inputs = $("input, textarea, select").not(":input[type=button], :input[type=submit], :input[type=reset]");
       inputs.each(function() {
         var input = $(this);
@@ -126,21 +126,34 @@
     };
     $(document).on("ready page:load turbolinks:load", onDOMReady);
   })(jQuery);
-  $.extend({
-    displayModal: function displayModal(content, options) {
-      if (options === void 0) {
-        options = {};
-      }
-      $("#modal").find("#modal__content").html(content);
-      $("#modal").css("display", "flex");
+  (function($) {
+    var onDOMReady = function onDOMReady() {
+      $(".modal").each(function() {
+        $(this).hide().css("visibility", "visible");
+      });
+    };
+    $(document).on("click", '[data-toggle="modal"]', function(e) {
+      e.preventDefault();
+      var dataTarget = $(this).attr("data-target");
       $.restoreActionElements();
-      $(document).trigger("modal:opened", options["extraEventParameters"]);
+      $(dataTarget).showModal();
+    });
+    $(document).on("click", '[data-dismiss="modal"]', function(e) {
+      e.preventDefault();
+      var dataTarget = $(this).closest(".modal");
+      $.restoreActionElements();
+      $(dataTarget).hideModal();
+    });
+    $(document).on("ready page:load turbolinks:load", onDOMReady);
+  })(jQuery);
+  $.fn.extend({
+    showModal: function showModal() {
+      $.restoreActionElements();
+      $(this).css("display", "flex");
     },
-    closeModal: function closeModal() {
-      $("#modal").find("#modal__content").empty();
-      $("#modal").css("display", "none");
+    hideModal: function hideModal() {
       $.restoreActionElements();
-      $(document).trigger("modal:closed");
+      $(this).hide();
     }
   });
 });

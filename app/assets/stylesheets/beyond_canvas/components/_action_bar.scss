@@ -16,13 +16,17 @@
     top: $menu-height;
   }
 
-  &--left {
+  &--left,
+  &--right {
     display: flex;
+    min-width: 50%;
+  }
+
+  &--left {
     justify-content: flex-start;
   }
 
   &--right {
-    display: flex;
     justify-content: flex-end;
   }
 }

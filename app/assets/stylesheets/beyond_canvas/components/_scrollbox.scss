@@ -1,6 +1,7 @@
-.scrollbox {
+%scrollbox {
   max-height: 65vh;
   overflow: auto;
+  padding-right: 20px;
   width: 100%;
 
   -ms-overflow-style: none;
@@ -28,8 +29,8 @@
 
   /* Opera doesn’t support this in the shorthand */
   background-attachment: local, local, scroll, scroll;
+}
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
+.scrollbox {
+  @extend %scrollbox;
 }

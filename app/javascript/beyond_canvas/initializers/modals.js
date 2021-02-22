@@ -1,14 +1,38 @@
-$.extend({
-  displayModal: function (content, options = {}) {
-    $('#modal').find('#modal__content').html(content);
-    $('#modal').css('display', 'flex');
+(function ($) {
+  const onDOMReady = function () {
+    $('.modal').each(function () {
+      $(this).hide().css('visibility', 'visible');
+    });
+  };
+
+  $(document).on('click', '[data-toggle="modal"]', function (e) {
+    e.preventDefault();
+
+    const dataTarget = $(this).attr('data-target');
+
     $.restoreActionElements();
-    $(document).trigger('modal:opened', options['extraEventParameters']);
+    $(dataTarget).showModal();
+  });
+
+  $(document).on('click', '[data-dismiss="modal"]', function (e) {
+    e.preventDefault();
+
+    const dataTarget = $(this).closest('.modal');
+
+    $.restoreActionElements();
+    $(dataTarget).hideModal();
+  });
+
+  $(document).on('ready page:load turbolinks:load', onDOMReady);
+})(jQuery);
+
+$.fn.extend({
+  showModal: function () {
+    $.restoreActionElements();
+    $(this).css('display', 'flex');
   },
-  closeModal: function () {
-    $('#modal').find('#modal__content').empty();
-    $('#modal').css('display', 'none');
+  hideModal: function () {
     $.restoreActionElements();
-    $(document).trigger('modal:closed');
-  }
+    $(this).hide();
+  },
 });
