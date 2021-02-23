@@ -16,6 +16,41 @@ module BeyondCanvas
       end
     end
 
+    def check_box_tag(name, value = 1, checked = false, options = {})
+      options.merge!(label: name) unless options[:label]
+
+      inline_wrapper(name, options) do
+        filed_identifyer = filed_identifyer(name)
+
+        options.merge!(id: filed_identifyer)
+               .merge!(hidden: true)
+
+        content_tag(:div, class: 'input__checkbox') do
+          super(name, value, checked, options) +
+            content_tag(:label, nil, class: 'input__checkbox__control', for: filed_identifyer)
+        end
+      end
+    end
+
+    def toggle_tag(name, value = 1, checked = false, options = {})
+      options.merge!(label: name) unless options[:label]
+
+      inline_wrapper(name, options) do
+        filed_identifyer = filed_identifyer(name)
+
+        options.merge!(id: filed_identifyer)
+               .merge!(hidden: true)
+
+        html_options = { "type" => "checkbox", "name" => name, "value" => value }.update(options.stringify_keys)
+        html_options["checked"] = "checked" if checked
+
+        content_tag(:div, class: 'input__toggle') do
+          tag(:input, html_options) +
+            content_tag(:label, nil, class: 'input__toggle__control', for: filed_identifyer)
+        end
+      end
+    end
+
     def radio_button_tag(name, value, checked = false, options = {})
       options.merge!(label: value) unless options[:label]
 
@@ -23,13 +58,17 @@ module BeyondCanvas
         filed_identifyer = filed_identifyer(name)
 
         options.merge!(id: filed_identifyer)
-            .merge!(hidden: true)
+               .merge!(hidden: true)
 
         content_tag(:div, class: 'input__radio') do
           super(name, value, checked, options) +
             content_tag(:label, nil, class: 'input__radio__control', for: filed_identifyer)
         end
       end
+    end
+
+    def hidden_field_tag(name, value = nil, options = {})
+      tag :input, { type: :text, name: name, id: sanitize_to_id(name), value: value }.update(options.stringify_keys.merge(type: :hidden))
     end
 
     private
@@ -39,10 +78,10 @@ module BeyondCanvas
 
       content_tag(:div, class: 'form__row') do
         content_tag(:label, label, class: 'input__label') +
-        content_tag(:div, class: 'relative') do
-          block.call
-        end +
-        (content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
+          content_tag(:div, class: 'relative') do
+            block.call
+          end +
+          (content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
       end
     end
 
@@ -54,14 +93,14 @@ module BeyondCanvas
           block.call +
             content_tag(:div) do
               content_tag(:label, label, class: 'input__label') +
-              (content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
+                (content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
             end
         end
       end
     end
 
     def filed_identifyer(attribute)
-      "#{attribute}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
+      "#{attribute.delete!('[]')}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
     end
   end
 end

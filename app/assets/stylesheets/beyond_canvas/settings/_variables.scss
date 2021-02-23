@@ -108,6 +108,17 @@ $checkbox-unchecked-color: #C2BF9D !default; // This value MUST be HEX
 $checkbox-unchecked-background: #ffffff !default; // This value MUST be HEX
 
 // ************************************************************
+// Toggles
+// ************************************************************
+
+$toggle-border-color: #cbc9ad !default;
+$toggle-disabled-background: #f5f4ef !default;
+$toggle-checked-background: #97c344 !default; // This value MUST be HEX
+$toggle-checked-color: #ffffff !default; // This value MUST be HEX
+$toggle-unchecked-background: #c2bf9d !default; // This value MUST be HEX
+$toggle-unchecked-color: #ffffff !default; // This value MUST be HEX
+
+// ************************************************************
 // Radiobuttons
 // ************************************************************
 
