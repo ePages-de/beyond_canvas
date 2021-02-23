@@ -100,7 +100,7 @@ module BeyondCanvas
     end
 
     def filed_identifyer(attribute)
-      "#{attribute.delete!('[]')}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
+      "#{attribute.delete('[]')}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
     end
   end
 end
