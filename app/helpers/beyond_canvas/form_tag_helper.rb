@@ -2,7 +2,7 @@
 
 module BeyondCanvas
   module FormTagHelper
-    %i[email_field_tag text_field_tag number_field_tag password_field_tag text_area_tag].each do |method|
+    %i[email_field_tag text_field_tag password_field_tag text_area_tag].each do |method|
       define_method method do |name, value = nil, options = {}|
         field_wrapper(name, options) do
           super(name, value, options)
@@ -41,8 +41,8 @@ module BeyondCanvas
         options.merge!(id: filed_identifyer)
                .merge!(hidden: true)
 
-        html_options = { "type" => "checkbox", "name" => name, "value" => value }.update(options.stringify_keys)
-        html_options["checked"] = "checked" if checked
+        html_options = { type: 'checkbox', name: name, value: value }.update(options.stringify_keys)
+        html_options['checked'] = 'checked' if checked
 
         content_tag(:div, class: 'input__toggle') do
           tag(:input, html_options) +
@@ -69,6 +69,16 @@ module BeyondCanvas
 
     def hidden_field_tag(name, value = nil, options = {})
       tag :input, { type: :text, name: name, id: sanitize_to_id(name), value: value }.update(options.stringify_keys.merge(type: :hidden))
+    end
+
+    def number_field_tag(name, value = nil, options = {})
+      field_wrapper(name, options) do
+        options = options.stringify_keys
+        if (range = options.delete('in') || options.delete('within'))
+          options.update(min: range.min, max: range.max)
+        end
+        tag :input, { type: 'number', name: name, id: sanitize_to_id(name), value: value }.update(options.stringify_keys)
+      end
     end
 
     private
