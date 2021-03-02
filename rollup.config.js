@@ -16,6 +16,7 @@ const uglifyOptions = {
        * Warning: This file is auto-generated, do not modify. Instead, make your changes in 'app/javascript/beyond_canvas/' and run \`yarn build\`
        */
       //= require jquery3
+      //= require jquery_ujs
       //= require_self
     ` + '\n',
   },
@@ -28,7 +29,15 @@ export default {
     format: 'umd',
     name: 'ActiveAdmin',
   },
-  plugins: [resolve(), commonjs(), babel(), uglify(uglifyOptions)],
+  plugins: [
+    resolve(),
+    commonjs(),
+    babel(),
+    uglify(uglifyOptions)
+  ],
   // Use client's yarn dependencies instead of bundling everything
-  external: ['jquery'],
+  external: [
+    'jquery',
+    'jquery-ujs'
+  ]
 };
