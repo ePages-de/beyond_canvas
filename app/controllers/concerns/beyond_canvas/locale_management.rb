@@ -16,7 +16,9 @@ module BeyondCanvas
     #
     def switch_locale(&action)
       unless valid_locale?(cookies[:locale])
-        cookies[:locale] = { value: browser_compatible_locale, expires: 1.year.from_now }
+        cookies[:locale] = {
+          value: browser_compatible_locale,
+        }.merge COOKIES_ATTRIBUTES
       end
 
       I18n.with_locale(cookies[:locale], &action)
