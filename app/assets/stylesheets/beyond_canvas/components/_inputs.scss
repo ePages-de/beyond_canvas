@@ -129,6 +129,7 @@ select {
 
       &:disabled {
         + .input__toggle__control {
+          cursor: initial;
           background: $toggle-disabled-background;
         }
       }
