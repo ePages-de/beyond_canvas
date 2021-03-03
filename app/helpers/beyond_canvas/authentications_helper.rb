@@ -19,7 +19,7 @@ module BeyondCanvas
       puts '#' * 75
       puts session.loaded?
       puts '#' * 75
-      # redirect_to '/disable_add_blocker.html' unless session.loaded?
+      redirect_to '/disable_add_blocker.html' unless session.loaded?
       if session[:shop_id]
         @current_shop ||= Shop.find_by(id: session[:shop_id])
       end
