@@ -6,6 +6,9 @@ module BeyondCanvas
     # Logs in the given shop
     #
     def log_in(shop)
+      puts '~' * 75
+      puts session.loaded?
+      puts '~' * 75
       session[:shop_id] = shop.id
     end
 
@@ -13,8 +16,10 @@ module BeyondCanvas
     # Returns the current logged-in shop (if any)
     #
     def current_shop
+      puts '#' * 75
+      puts session.loaded?
+      puts '#' * 75
       redirect_to '/disable_add_blocker.html' unless session.loaded?
-
       if session[:shop_id]
         @current_shop ||= Shop.find_by(id: session[:shop_id])
       end
