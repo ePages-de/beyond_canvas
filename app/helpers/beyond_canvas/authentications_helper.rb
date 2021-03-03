@@ -18,6 +18,7 @@ module BeyondCanvas
     def current_shop
       puts '#' * 75
       puts session.loaded?
+      puts cookies.inspect
       puts '#' * 75
       redirect_to '/disable_add_blocker.html' unless session.loaded?
       if session[:shop_id]
