@@ -28,11 +28,23 @@
 
 $.fn.extend({
   showModal: function () {
+    const modal = $(this);
+
+    modal.trigger('bc.modal.show');
+
     $.restoreActionElements();
-    $(this).css('display', 'flex');
+    modal.css('display', 'flex');
+
+    modal.trigger('bc.modal.shown');
   },
   hideModal: function () {
+    const modal = $(this);
+
+    modal.trigger('bc.modal.hide');
+
     $.restoreActionElements();
-    $(this).hide();
+    modal.hide();
+
+    modal.trigger('bc.modal.hidden');
   },
 });

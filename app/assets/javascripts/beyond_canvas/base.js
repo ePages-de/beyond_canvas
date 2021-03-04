@@ -149,12 +149,18 @@
   })(jQuery);
   $.fn.extend({
     showModal: function showModal() {
+      var modal = $(this);
+      modal.trigger("bc.modal.show");
       $.restoreActionElements();
-      $(this).css("display", "flex");
+      modal.css("display", "flex");
+      modal.trigger("bc.modal.shown");
     },
     hideModal: function hideModal() {
+      var modal = $(this);
+      modal.trigger("bc.modal.hide");
       $.restoreActionElements();
-      $(this).hide();
+      modal.hide();
+      modal.trigger("bc.modal.hidden");
     }
   });
 });
