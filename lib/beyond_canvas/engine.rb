@@ -21,6 +21,7 @@ module BeyondCanvas
       ActiveSupport.on_load :action_controller do
         include ::BeyondCanvas::LocaleManagement
         include ::BeyondCanvas::RequestValidation
+        include ::BeyondCanvas::StatusCodes
         include ::BeyondCanvas::AuthenticationsHelper
         include ::BeyondCanvas::DebugHelper
         include ::BeyondCanvas::ControllerHelper
@@ -31,7 +32,7 @@ module BeyondCanvas
 
     config.after_initialize do
       ActiveSupport.on_load :action_controller do
-        include ::BeyondCanvas::StatusCodes
+        include ::BeyondCanvas::AddBlockerCheck
       end
     end
   end
