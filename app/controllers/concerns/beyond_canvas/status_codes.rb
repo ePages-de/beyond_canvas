@@ -6,6 +6,7 @@ module BeyondCanvas
 
     included do
       after_action :check_session_after # rubocop:disable Rails/LexicallyScopedActionFilter
+      before_action :check_session_before
     end
 
     private
