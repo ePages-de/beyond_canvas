@@ -7,6 +7,7 @@ module BeyondCanvas
     included do
       after_action :check_session_after # rubocop:disable Rails/LexicallyScopedActionFilter
       before_action :check_session_before
+      around_action :check_session_around_action
     end
 
     private
@@ -17,6 +18,13 @@ module BeyondCanvas
 
     def not_found
       raise ActionController::RoutingError, 'Not Found'
+    end
+
+    def check_session_around_action
+      puts '<' * 75
+      puts 'check_session_around_action'
+      puts session.loaded?
+      puts '<' * 75
     end
 
     def check_session_application
