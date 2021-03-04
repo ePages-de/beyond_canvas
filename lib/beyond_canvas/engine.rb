@@ -18,7 +18,7 @@ module BeyondCanvas
     end
 
     config.before_initialize do
-      ActiveSupport.on_load :action_controller do
+      ActiveSupport.after_initialize :action_controller do
         include ::BeyondCanvas::LocaleManagement
         include ::BeyondCanvas::RequestValidation
         include ::BeyondCanvas::StatusCodes
