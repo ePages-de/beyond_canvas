@@ -18,8 +18,13 @@ module BeyondCanvas
       raise ActionController::RoutingError, 'Not Found'
     end
 
+    def check_session_application
+
+    end
+
     def check_session_after
       puts '.' * 75
+      puts 'check_session_after'
       puts session.loaded?
       puts '.' * 75
       # redirect_to '/disable_add_blocker.html' unless session.loaded?
@@ -27,6 +32,7 @@ module BeyondCanvas
 
     def check_session
       puts '~' * 75
+      puts 'check_session'
       puts session.loaded?
       puts '~' * 75
       # redirect_to '/disable_add_blocker.html' unless session.loaded?
