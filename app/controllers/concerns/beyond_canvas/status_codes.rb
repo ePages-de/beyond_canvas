@@ -19,7 +19,18 @@ module BeyondCanvas
     end
 
     def check_session_application
+      puts 'x' * 75
+      puts 'check_session_application'
+      puts session.loaded?
+      puts 'x' * 75
+    end
 
+    def check_session_before
+      puts '\\' * 75
+      puts 'check_session_before'
+      puts session.loaded?
+      puts '\\' * 75
+      # redirect_to '/disable_add_blocker.html' unless session.loaded?
     end
 
     def check_session_after
