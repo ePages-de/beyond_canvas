@@ -37,5 +37,12 @@ module BeyondCanvas
       puts '~' * 75
       # redirect_to '/disable_add_blocker.html' unless session.loaded?
     end
+
+    def check_session_index
+      puts '@' * 75
+      puts 'check_session_index'
+      puts session.loaded?
+      puts '@' * 75
+    end
   end
 end
