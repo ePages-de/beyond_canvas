@@ -17,16 +17,21 @@ module BeyondCanvas
       app.config.assets.precompile << 'beyond_canvas_manifest.js'
     end
 
-    config.after_initialize do
+    config.before_initialize do
       ActiveSupport.on_load :action_controller do
         include ::BeyondCanvas::LocaleManagement
         include ::BeyondCanvas::RequestValidation
-        include ::BeyondCanvas::StatusCodes
         include ::BeyondCanvas::AuthenticationsHelper
         include ::BeyondCanvas::DebugHelper
         include ::BeyondCanvas::ControllerHelper
 
         ::ActionController::Base.helper BeyondCanvas::Engine.helpers
+      end
+    end
+
+    config.after_initialize do
+      ActiveSupport.on_load :action_controller do
+        include ::BeyondCanvas::StatusCodes
       end
     end
   end
