@@ -5,7 +5,7 @@ module BeyondCanvas
     extend ActiveSupport::Concern
 
     included do
-      before_action :check_session # rubocop:disable Rails/LexicallyScopedActionFilter
+      after_action :check_session_after # rubocop:disable Rails/LexicallyScopedActionFilter
     end
 
     private
@@ -18,11 +18,18 @@ module BeyondCanvas
       raise ActionController::RoutingError, 'Not Found'
     end
 
+    def check_session_after
+      puts '.' * 75
+      puts session.loaded?
+      puts '.' * 75
+      # redirect_to '/disable_add_blocker.html' unless session.loaded?
+    end
+
     def check_session
       puts '~' * 75
       puts session.loaded?
       puts '~' * 75
-      redirect_to '/disable_add_blocker.html' unless session.loaded?
+      # redirect_to '/disable_add_blocker.html' unless session.loaded?
     end
   end
 end

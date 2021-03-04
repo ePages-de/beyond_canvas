@@ -6,6 +6,9 @@ module BeyondCanvas
     # Logs in the given shop
     #
     def log_in(shop)
+      puts '-' * 75
+      puts session.loaded?
+      puts '-' * 75
       session[:shop_id] = shop.id
     end
 
