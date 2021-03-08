@@ -29,5 +29,11 @@ module BeyondCanvas
         ::ActionController::Base.helper BeyondCanvas::Engine.helpers
       end
     end
+
+    config.after_initialize do
+      ActiveSupport.on_load :action_controller do
+        include ::BeyondCanvas::AddBlockerCheck
+      end
+    end
   end
 end

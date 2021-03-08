@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page not found</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next-browser-languagedetector/1.0.1/i18nextBrowserLanguageDetector.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/8.1.0/i18next.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.2.0/jquery-i18next.min.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="body--application">
+  <!-- This file lives in public/404.html -->
+  <main class="main">
+    <div class="main-wrapper">
+      <div class="card">
+        <div class="wrapper">
+          <div class="container">
+            <div class="container__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 265 240.65" class="icon">
+                <path class="surface" d="M51.81 117.52v105.1h72.71v10.5h32.6v-10.5H229.72v-105.1H51.81z"></path>
+                <path class="bubbles" d="M73.6 88.2a2.3 2.3 0 1 0 2.3 2.3 2.33 2.33 0 0 0-2.3-2.3zm63.2-11.7a4.7 4.7 0 1 0 4.7 4.7 4.69 4.69 0 0 0-4.7-4.7zM56.4 36.4a2.3 2.3 0 1 0 2.3 2.3 2.33 2.33 0 0 0-2.3-2.3zM105.5 50a4.7 4.7 0 1 0 4.7 4.7 4.69 4.69 0 0 0-4.7-4.7zM113 8.4a2.26 2.26 0 0 0-2.3 2.3A2.33 2.33 0 0 0 113 13a2.3 2.3 0 0 0 0-4.6zM11.6 121.2a2.3 2.3 0 1 0 2.3 2.3 2.33 2.33 0 0 0-2.3-2.3zM33 78.1a4.4 4.4 0 1 0 0 8.8 4.35 4.35 0 0 0 4.4-4.3v-.1a4.44 4.44 0 0 0-4.4-4.4zM25.4 21a2.26 2.26 0 0 0 2.3-2.3 2.33 2.33 0 0 0-2.3-2.3 2.3 2.3 0 1 0 0 4.6zm-1.3 135.4H24a5.9 5.9 0 0 0-.1 11.8h.1a5.9 5.9 0 0 0 .1-11.8zM247 145.5a4.4 4.4 0 1 0 4.4 4.4 4.37 4.37 0 0 0-4.4-4.4zM221.1.1a2.3 2.3 0 1 0 2.3 2.3 2.33 2.33 0 0 0-2.3-2.3zm34.2 122.3a2.3 2.3 0 1 0 2.3 2.3 2.33 2.33 0 0 0-2.3-2.3zM226 90a2.3 2.3 0 1 0 2.3 2.3A2.33 2.33 0 0 0 226 90zm31.1-41.9a2.3 2.3 0 1 0 2.3 2.3 2.33 2.33 0 0 0-2.3-2.3zm-94.5-7a2.3 2.3 0 1 0 2.3 2.3 2.33 2.33 0 0 0-2.3-2.3zm0-41.1a4.1 4.1 0 1 0 4.1 4.1 4.12 4.12 0 0 0-4.1-4.1zm47 30.6a4.7 4.7 0 1 0 4.7 4.7 4.69 4.69 0 0 0-4.7-4.7zm-22.8 49.3a2.3 2.3 0 1 0 2.3 2.3 2.33 2.33 0 0 0-2.3-2.3z"></path>
+                <path class="outline" d="M149.55 239.15v-9.2h72.6V123.4H42.75V230h72.7v9.2H0v1.5h265v-1.5zm-105.3-114.3h176.4v89.8H44.25zm103.8 114.1H117v-10.5H44.25v-12.3h176.4v12.3h-72.6zm-32.62-78.5h-1.84L99.7 182.02v1.48h13.94v8.74h1.79v-8.74h3.68l.32-1.52h-4zm-1.75 21.53h-12.05l12.05-18.72zm18.82-22.4q-9.3 0-9.3 16.74 0 8.46 2.28 12.61a7.42 7.42 0 0 0 6.92 4.14q9.3 0 9.3-16.75 0-8.46-2.28-12.6a7.42 7.42 0 0 0-6.92-4.14zm5.5 28.17a6 6 0 0 1-11.08 0q-1.77-3.66-1.77-11.43t1.77-11.43a6 6 0 0 1 11.08 0q1.77 3.66 1.77 11.43T138 187.75zm23.44-27.3h-1.84l-13.9 21.57v1.48h13.94v8.74h1.79v-8.74h3.68l.32-1.52h-4zm-1.75 21.53h-12.06l12.05-18.72z"></path>
+              </svg>
+            </div>
+            <div class="text_conainer">
+              <h2 data-i18n="title" class="headline"></h2>
+              <p data-i18n="message" class="text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    i18next
+      .use(window.i18nextBrowserLanguageDetector)
+      .init({
+        fallbackLng: "en",
+        resources: {
+          "en": {
+            translation: {
+              title: "Page not found",
+              message: "We're sorry, we couldn't find the page you were looking for. The link you followed may be broken or the page may have moved. You can browse all available pages in the sidebar of your cockpit."
+            }
+          },
+          "de": {
+            translation: {
+              title: "Seite nicht gefunden",
+              message: "Es tut uns leid, wir konnten die gewünschte Seite nicht finden. Möglicherweise ist der Link defekt, den du aufgerufen hast oder die Seite befindet sich mittlerweile an einer anderen Stelle. Du findest die verfügbaren Seiten in der Seitenleiste deines Cockpits."
+            }
+          },
+          "fr": {
+            title: "Page introuvable",
+            message: "Nous sommes désolés, nous n'avons pas pu trouver la page que tu cherches. Le lien que tu as utilisé est peut-être rompu ou la page a été déplacée. Tu peux parcourir toutes les pages disponibles dans la barre latérale."
+          }
+        }
+      }, function (err, t) {
+        jqueryI18next.init(i18next, $);
+        $('body').localize();
+      });
+  </script>
+</body>
+</html>
