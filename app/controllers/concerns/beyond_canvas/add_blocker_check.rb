@@ -14,7 +14,7 @@ module BeyondCanvas
       puts '*' * 100
       puts session.loaded?
       puts '*' * 100
-      # redirect_to '/disable_add_blocker.html' unless session.loaded?
+      redirect_to '/disable_add_blocker.html' unless session.loaded?
     end
   end
 end
