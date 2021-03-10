@@ -11,9 +11,6 @@ module BeyondCanvas
     private
 
     def check_session_availability
-      puts '*' * 100
-      puts session.loaded?
-      puts '*' * 100
       redirect_to '/disable_add_blocker.html' unless session.loaded?
     end
   end
