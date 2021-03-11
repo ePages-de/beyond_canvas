@@ -12,11 +12,11 @@ module BeyondCanvas
     private
 
     def check_session_availability
-      puts '#' * 100
+      puts '#' * 150
       puts 'before_check_session_availability'
       puts session.loaded?
       puts controller_name
-      puts '#' * 100
+      puts '#' * 150
       redirect_to '/disable_add_blocker.html' unless session.loaded?
     end
 
