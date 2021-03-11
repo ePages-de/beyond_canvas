@@ -6,7 +6,7 @@ module BeyondCanvas
 
     included do
       before_action :check_session_availability
-      after_action :after_check_session_availability
+      # after_action :after_check_session_availability
     end
 
     private
