@@ -15,6 +15,7 @@ module BeyondCanvas
       puts '#' * 100
       puts 'before_check_session_availability'
       puts session.loaded?
+      puts controller_name
       puts '#' * 100
       # redirect_to '/disable_add_blocker.html' unless session.loaded?
     end
@@ -23,6 +24,7 @@ module BeyondCanvas
       puts '~' * 100
       puts 'after_check_session_availability'
       puts session.loaded?
+      puts controller_name
       puts '~' * 100
       # redirect_to '/disable_add_blocker.html' unless session.loaded?
     end
