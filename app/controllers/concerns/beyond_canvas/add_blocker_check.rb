@@ -17,7 +17,7 @@ module BeyondCanvas
       puts session.loaded?
       puts controller_name
       puts '#' * 100
-      # redirect_to '/disable_add_blocker.html' unless session.loaded?
+      redirect_to '/disable_add_blocker.html' unless session.loaded?
     end
 
     def after_check_session_availability
