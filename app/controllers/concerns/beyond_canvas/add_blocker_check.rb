@@ -5,7 +5,7 @@ module BeyondCanvas
     extend ActiveSupport::Concern
 
     included do
-      before_action :check_session_availability
+      before_action :check_session_availability, unless: -> { controller_path == 'beyond_canvas/authentications' }
     end
 
     private
