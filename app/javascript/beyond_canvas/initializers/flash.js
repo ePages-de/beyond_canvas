@@ -13,7 +13,7 @@
     closeAlert();
   });
 
-  $(document).on('ready page:load turbolinks:load flash:show', onDOMReady);
+  $(document).on('ready page:load turbolinks:load bc.flash.show', onDOMReady);
 })(jQuery);
 
 function closeAlert() {
@@ -41,6 +41,6 @@ $.fn.extend({
         </div>`;
 
     $('#flash').html(flash);
-    $(document).trigger('flash:show');
+    $(document).trigger('bc.flash.show');
   }
 });
