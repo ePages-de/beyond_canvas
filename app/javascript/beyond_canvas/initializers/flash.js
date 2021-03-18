@@ -7,15 +7,14 @@
     setTimeout(function () {
       $('.flash').addClass('flash--shown');
     }, 100);
+
+    $('form').on('submit', $.fn.closeAlert);
   };
 
   $(document).on('click', '.flash__close', function () {
     closeAlert();
   });
 
-  $('form').on('submit', function() {
-    $.fn.closeAlert();
-  });
 
   $(document).on('ready page:load turbolinks:load bc.flash.show', onDOMReady);
 })(jQuery);
