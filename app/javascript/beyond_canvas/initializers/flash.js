@@ -7,8 +7,6 @@
     setTimeout(function () {
       $('.flash').addClass('flash--shown');
     }, 100);
-
-    $('form').on('submit', $.fn.closeAlert);
   };
 
   $(document).on('click', '.flash__close', function () {
