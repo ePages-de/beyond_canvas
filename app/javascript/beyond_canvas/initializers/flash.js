@@ -13,6 +13,10 @@
     closeAlert();
   });
 
+  $('form').on('submit', function() {
+    $.fn.closeAlert();
+  });
+
   $(document).on('ready page:load turbolinks:load bc.flash.show', onDOMReady);
 })(jQuery);
 
@@ -42,5 +46,6 @@ $.fn.extend({
 
     $('#flash').html(flash);
     $(document).trigger('bc.flash.show');
-  }
+  },
+  closeAlert: closeAlert
 });
