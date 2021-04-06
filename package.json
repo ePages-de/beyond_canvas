@@ -36,8 +36,7 @@
   },
   "dependencies": {
     "bourbon": "^7.0.0",
-    "jquery": "^3.5.1",
-    "jquery-ujs": "^1.2.2"
+    "jquery": "^3.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
