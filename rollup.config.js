@@ -1,8 +1,8 @@
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
-import { uglify } from 'rollup-plugin-uglify';
+import commonjs from '@rollup/plugin-commonjs';
+import resolve from '@rollup/plugin-node-resolve';
 import { stripIndent } from 'common-tags';
+import { uglify } from 'rollup-plugin-uglify';
 
 const uglifyOptions = {
   mangle: false,
@@ -16,7 +16,6 @@ const uglifyOptions = {
        * Warning: This file is auto-generated, do not modify. Instead, make your changes in 'app/javascript/beyond_canvas/' and run \`yarn build\`
        */
       //= require jquery3
-      //= require jquery_ujs
       //= require_self
     ` + '\n',
   },
@@ -38,6 +37,5 @@ export default {
   // Use client's yarn dependencies instead of bundling everything
   external: [
     'jquery',
-    'jquery-ujs'
   ]
 };
