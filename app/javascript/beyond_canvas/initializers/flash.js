@@ -14,7 +14,7 @@
   });
 
 
-  $(document).on('ready page:load turbolinks:load bc.flash.show', onDOMReady);
+  $(document).on('ready page:load turbolinks:load bc.flash.shown', onDOMReady);
 })(jQuery);
 
 function closeAlert() {
@@ -41,8 +41,9 @@ $.fn.extend({
           </div>
         </div>`;
 
-    $('#flash').html(flash);
     $(document).trigger('bc.flash.show');
+    $('#flash').html(flash);
+    $(document).trigger('bc.flash.shown');
   },
   closeAlert: closeAlert
 });
