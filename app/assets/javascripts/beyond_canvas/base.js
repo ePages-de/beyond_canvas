@@ -2,6 +2,7 @@
  * Warning: This file is auto-generated, do not modify. Instead, make your changes in 'app/javascript/beyond_canvas/' and run `yarn build`
  */
 //= require jquery3
+//= require rails-ujs
 //= require_self
 
 (function(factory) {
