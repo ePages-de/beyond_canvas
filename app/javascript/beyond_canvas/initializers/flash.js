@@ -10,23 +10,13 @@
   };
 
   $(document).on('click', '.flash__close', function () {
-    closeAlert();
+    $.closeAlert();
   });
-
 
   $(document).on('ready page:load turbolinks:load bc.flash.shown', onDOMReady);
 })(jQuery);
 
-function closeAlert() {
-  $('.flash')
-    .removeClass('flash--shown')
-    .delay(700)
-    .queue(function () {
-      $(this).remove();
-    });
-}
-
-$.fn.extend({
+$.extend({
   showFlash: function(status, message) {
     const flash = `
         <div class="flash">
@@ -45,5 +35,14 @@ $.fn.extend({
     $('#flash').html(flash);
     $(document).trigger('bc.flash.shown');
   },
-  closeAlert: closeAlert
+  closeAlert: function() {
+    $(document).trigger('bc.flash.hide');
+    $('.flash')
+      .removeClass('flash--shown')
+      .delay(700)
+      .queue(function () {
+        $(this).remove();
+      });
+    $(document).trigger('bc.flash.hidden');
+  }
 });
