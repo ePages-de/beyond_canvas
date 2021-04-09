@@ -16,6 +16,7 @@ const uglifyOptions = {
        * Warning: This file is auto-generated, do not modify. Instead, make your changes in 'app/javascript/beyond_canvas/' and run \`yarn build\`
        */
       //= require jquery3
+      //= require rails-ujs
       //= require_self
     ` + '\n',
   },
@@ -36,6 +37,6 @@ export default {
   ],
   // Use client's yarn dependencies instead of bundling everything
   external: [
-    'jquery',
+    'jquery'
   ]
 };

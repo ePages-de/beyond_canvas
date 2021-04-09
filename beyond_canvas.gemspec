@@ -44,6 +44,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'jwt',             '~> 2.2'
   spec.add_dependency 'loaf',            '~> 0.9'
   spec.add_dependency 'premailer-rails', '~> 1.11'
+  spec.add_dependency 'rails',           '>= 5.1.7'
   spec.add_dependency 'sassc-rails',     '~> 2.1'
   spec.add_dependency 'sprockets',       '>= 3.0', '< 4.1'
 
