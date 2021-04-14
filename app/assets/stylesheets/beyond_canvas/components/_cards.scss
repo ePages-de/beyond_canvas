@@ -1,7 +1,17 @@
-.card {
+%card {
   background: $white;
   border-radius: $card-border-radius;
   box-shadow: $card-box-shadow;
+}
+
+%card_padding {
+  @include padding($card-padding);
+
+  box-sizing: border-box;
+}
+
+.card {
+  @extend %card;
 
   &:not(:last-child) {
     margin-bottom: $card-margin;
@@ -12,9 +22,7 @@
   }
 
   &--padding {
-    @include padding($card-padding);
-
-    box-sizing: border-box;
+    @extend %card_padding;
   }
 
   &__separator {
