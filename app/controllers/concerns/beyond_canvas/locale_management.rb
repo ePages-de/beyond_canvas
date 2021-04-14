@@ -16,7 +16,9 @@ module BeyondCanvas
     #
     def switch_locale(&action)
       unless valid_locale?(cookies[:locale])
-        cookies[:locale] = { value: browser_compatible_locale, expires: 1.day.from_now }
+        cookies[:locale] = {
+          value: app_locale
+        }.merge COOKIES_ATTRIBUTES
       end
 
       I18n.with_locale(cookies[:locale], &action)
@@ -50,6 +52,16 @@ module BeyondCanvas
     #
     def valid_locale?(locale)
       I18n.available_locales.map(&:to_s).include? locale
+    end
+
+    def app_locale
+      BeyondCanvas.configuration.cockpit_app ? shop_locale : browser_compatible_locale
+    end
+
+    def shop_locale
+      BeyondApi::Session.new(api_url: current_shop.beyond_api_url).shop.current.default_locale
+    rescue
+      browser_compatible_locale
     end
   end
 end
