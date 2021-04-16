@@ -36,7 +36,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'attr_encrypted',  '~> 3.1'
   spec.add_dependency 'beyond_api',      '~> 0.11'
-  spec.add_dependency 'bourbon',         '~> 5.1'
+  spec.add_dependency 'bourbon',         '~> 7.0'
   spec.add_dependency 'colorize',        '~> 0.8'
   spec.add_dependency 'http-accept',     '~> 2.1'
   spec.add_dependency 'inline_svg',      '~> 1.5'
