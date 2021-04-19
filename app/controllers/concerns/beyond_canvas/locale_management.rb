@@ -44,7 +44,7 @@ module BeyondCanvas
     end
 
     #
-    # Retrieves the shop default locale from the Beyond API
+    # Retrieves the shop default locale from the Beyond API.
     #
     # @return [String] the shop default locale (e.g. +'en-GB'+)
     #
