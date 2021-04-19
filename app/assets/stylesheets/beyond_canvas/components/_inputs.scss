@@ -109,6 +109,62 @@ select {
     }
   }
 
+  &__toggle {
+    display: flex;
+    align-items: center;
+
+    input[type=checkbox] {
+
+      &:checked {
+
+        + .input__toggle__control {
+
+          &::after {
+            left: calc(100% - 2px);
+            transform: translateX(-100%);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='background: #{str-replace('' + $toggle-checked-color, '#', '%23')};' viewBox='3.3 2.9 20 20'%3E%3Cpath fill='#{str-replace('' + $toggle-checked-background, '#', '%23')}' d='M13.3 2.9c-5.6 0-10 4.4-10 10s4.4 10 10 10 10-4.4 10-10-4.4-10-10-10zm-.6 13.5l-1.8 1.9-1.8-1.8L6.6 14l1.8-1.8 2.5 2.6 6.9-6.9 1.8 1.8-6.9 6.7z'/%3E%3C/svg%3E%0A");
+          }
+        }
+      }
+
+      &:disabled {
+        + .input__toggle__control {
+          cursor: initial;
+          background: $toggle-disabled-background;
+        }
+      }
+    }
+
+    &__control {
+      @include size(46px, 26px);
+      background: $white;
+      border: 1px solid $toggle-border-color;
+      border-radius: 100px;
+      box-sizing: border-box;
+      color: transparent;
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      user-select: none;
+      margin-right: 10px;
+
+      &::after {
+        @include size(20px);
+        @include position(absolute, 2px null null 2px);
+
+        align-items: center;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' style='background: #{str-replace('' + $toggle-unchecked-color, '#', '%23')};' viewBox='3.3 2.9 20 20'%3E%3Cpath fill='#{str-replace('' + $toggle-unchecked-background, '#', '%23')}' d='M13.3 2.9c-5.6 0-10 4.4-10 10s4.4 10 10 10 10-4.4 10-10-4.5-10-10-10zm5.3 13.4l-1.8 1.8-3.4-3.4-3.4 3.4-1.8-1.8 3.4-3.4-3.4-3.4L10 7.7l3.4 3.4 3.4-3.4 1.8 1.8-3.5 3.4 3.5 3.4z'/%3E%3C/svg%3E%0A");
+        border-radius: 100%;
+        color: $white;
+        content: '';
+        display: flex;
+        justify-content: center;
+        transition: .3s;
+      }
+
+    }
+  }
+
   &__file {
     display: flex;
     align-items: center;

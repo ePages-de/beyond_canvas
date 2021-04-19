@@ -16,6 +16,7 @@
   line-height: 1;
   outline: none;
   transition: $main-transition;
+  white-space: nowrap;
 }
 
 %button_disabled {

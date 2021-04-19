@@ -108,6 +108,17 @@ $checkbox-unchecked-color: #C2BF9D !default; // This value MUST be HEX
 $checkbox-unchecked-background: #ffffff !default; // This value MUST be HEX
 
 // ************************************************************
+// Toggles
+// ************************************************************
+
+$toggle-border-color: #cbc9ad !default;
+$toggle-disabled-background: #f5f4ef !default;
+$toggle-checked-background: #97c344 !default; // This value MUST be HEX
+$toggle-checked-color: #ffffff !default; // This value MUST be HEX
+$toggle-unchecked-background: #c2bf9d !default; // This value MUST be HEX
+$toggle-unchecked-color: #ffffff !default; // This value MUST be HEX
+
+// ************************************************************
 // Radiobuttons
 // ************************************************************
 
@@ -148,6 +159,7 @@ $flash-color: rgb(128, 128, 128) !default;
 
 $table-header-background: rgb(243, 242, 236) !default;
 $table-border-color: rgb(233, 232, 220) !default;
+$table-row-hover-background: rgb(232,243,242) !default;
 
 // ************************************************************
 // Comments
@@ -241,10 +253,10 @@ $sidebar-item-selected-background: #4eb7a8;
 // Modals
 // ************************************************************
 
-$modal-padding: 10px;
+$modal-padding: 20px;
 $modal-width: 650px;
 $modal-close-icon-color: #8b8b8b !default;
-$modal-background-color: rgba(0, 0, 0, 0.5) !default;
+$modal-background-color: rgba(0, 0, 0, 0.75) !default;
 
 // ************************************************************
 // Select2
