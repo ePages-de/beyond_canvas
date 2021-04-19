@@ -27,6 +27,34 @@ module BeyondCanvas
     end
 
     #
+    # Checks if the given locale parameter is included on +I18n.available_locales+
+    #
+    def valid_locale?(locale)
+      I18n.available_locales.map(&:to_s).include? locale
+    end
+
+    #
+    # If it is a cockpit app, it returns the shop default locale.
+    # Otherwise it returns the browser compatible locale.
+    #
+    # @return [String] the local that the app will use (e.g. +'en-GB'+)
+    #
+    def app_locale
+      BeyondCanvas.configuration.cockpit_app ? shop_locale : browser_compatible_locale
+    end
+
+    #
+    # Retrieves the shop default locale from the Beyond API
+    #
+    # @return [String] the shop default locale (e.g. +'en-GB'+)
+    #
+    def shop_locale
+      BeyondApi::Session.new(api_url: current_shop.beyond_api_url).shop.current.default_locale
+    rescue
+      browser_compatible_locale
+    end
+
+    #
     # Reads the +HTTP_ACCEPT_LANGUAGE+ header and searches a compatible locale
     # on +I18n.available_locales+. If no compatible language is found, it
     # returns +I18n.default_locale+.
@@ -45,23 +73,6 @@ module BeyondCanvas
       locales.empty? ? I18n.default_locale : locales.first
     rescue
       I18n.default_locale
-    end
-
-    #
-    # Checks if the given locale parameter is included on +I18n.available_locales+
-    #
-    def valid_locale?(locale)
-      I18n.available_locales.map(&:to_s).include? locale
-    end
-
-    def app_locale
-      BeyondCanvas.configuration.cockpit_app ? shop_locale : browser_compatible_locale
-    end
-
-    def shop_locale
-      BeyondApi::Session.new(api_url: current_shop.beyond_api_url).shop.current.default_locale
-    rescue
-      browser_compatible_locale
     end
   end
 end
