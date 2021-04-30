@@ -44,7 +44,7 @@ module BeyondCanvas
       html_options.merge!(id: id)
 
       content_tag('div', class: 'collapse') do
-        content_tag('a', class: 'collapse__button', data: { toggle: 'collapse', target: "##{id}" }) do
+        content_tag('a', class: 'collapse__button', title: name, data: { toggle: 'collapse', target: "##{id}" }) do
           (inline_svg_tag('icons/arrow_right.svg', class: 'collapse__icon') + name).html_safe
         end +
         content_tag('div', html_options) do
