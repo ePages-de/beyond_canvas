@@ -25,12 +25,10 @@
 
   tbody {
     tr {
+      border-bottom: 1px solid $table-border-color;
+
       &:hover {
         background: $table-row-hover-background;
-      }
-
-      &:not(:last-child) {
-        border-bottom: 1px solid $table-border-color;
       }
     }
   }
