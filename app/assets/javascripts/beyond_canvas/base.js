@@ -38,6 +38,9 @@
       }
     });
     $(document).on("ready page:load turbolinks:load", onDOMReady);
+    $(document).on("beforeunload turbolinks:before-visit", function() {
+      $.restoreActionElements();
+    });
   })(jQuery);
   $.extend({
     restoreActionElements: function restoreActionElements() {
