@@ -51,7 +51,7 @@ module BeyondCanvas
         filed_identifyer = filed_identifyer(attribute)
 
         args.merge!(id: filed_identifyer)
-            .merge!(hidden: true)
+            .merge!(style: 'visibility: hidden; position: absolute;')
 
         custom_attributes = { data: { multiple_selection_text: '{count} files selected' } }
         args = custom_attributes.merge!(args)

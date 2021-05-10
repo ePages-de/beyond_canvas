@@ -23,7 +23,7 @@ const BUTTON_SELECTORS = '[class^="button"]';
     });
   };
 
-  $(document).on('confirm:complete', function ()  {
+  $(document).on('confirm:complete', function () {
     $.restoreActionElements();
   });
 
@@ -38,6 +38,10 @@ const BUTTON_SELECTORS = '[class^="button"]';
   });
 
   $(document).on('ready page:load turbolinks:load', onDOMReady);
+
+  $(document).on('beforeunload turbolinks:before-visit', function () {
+    $.restoreActionElements();
+  });
 })(jQuery);
 
 $.extend({
