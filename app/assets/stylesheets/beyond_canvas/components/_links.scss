@@ -10,10 +10,17 @@
 }
 
 .link {
-  &__icon {
+  &__icon--left,
+  &__icon--right {
     @include size(14px);
+  }
 
+  &__icon--left {
     margin-right: 6px;
+  }
+
+  &__icon--right {
+    margin-left: 6px;
   }
 
   &--primary {
