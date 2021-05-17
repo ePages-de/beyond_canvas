@@ -19,8 +19,9 @@ module BeyondCanvas
     def check_box_tag(name, value = 1, checked = false, options = {})
       options.merge!(label: name) unless options[:label]
 
-      inline_wrapper(name, options) do
-        filed_identifyer = filed_identifyer(name)
+      filed_identifyer = filed_identifyer(name)
+
+      inline_wrapper(name, filed_identifyer, options) do
 
         options.merge!(id: filed_identifyer)
                .merge!(hidden: true)
@@ -35,8 +36,9 @@ module BeyondCanvas
     def toggle_tag(name, value = 1, checked = false, options = {})
       options.merge!(label: name) unless options[:label]
 
-      inline_wrapper(name, options) do
-        filed_identifyer = filed_identifyer(name)
+      filed_identifyer = filed_identifyer(name)
+
+      inline_wrapper(name, filed_identifyer, options) do
 
         options.merge!(id: filed_identifyer)
                .merge!(hidden: true)
@@ -54,8 +56,9 @@ module BeyondCanvas
     def radio_button_tag(name, value, checked = false, options = {})
       options.merge!(label: value) unless options[:label]
 
-      inline_wrapper(name, options) do
-        filed_identifyer = filed_identifyer(name)
+      filed_identifyer = filed_identifyer(name)
+
+      inline_wrapper(name, filed_identifyer, options) do
 
         options.merge!(id: filed_identifyer)
                .merge!(hidden: true)
@@ -95,14 +98,15 @@ module BeyondCanvas
       end
     end
 
-    def inline_wrapper(attribute, args, &block)
+    def inline_wrapper(attribute, filed_identifyer, args, &block)
+      # FIXME: attribute.to_s.humanize will never be called as label value is already set on lines: 20, 35 and 53
       label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
 
       content_tag(:div, class: 'form__row') do
         content_tag(:div, class: 'relative', style: 'display: flex; align-items: center;') do
           block.call +
             content_tag(:div) do
-              content_tag(:label, label, class: 'input__label') +
+              content_tag(:label, label, class: 'input__label', for: filed_identifyer) +
                 (content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
             end
         end
@@ -110,7 +114,7 @@ module BeyondCanvas
     end
 
     def filed_identifyer(attribute)
-      "#{attribute.delete('[]')}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
+      "#{attribute.to_s.delete('[]')}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
     end
   end
 end

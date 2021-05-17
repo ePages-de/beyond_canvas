@@ -79,7 +79,6 @@ select {
         }
 
         cursor: pointer;
-        margin-right: 7px;
       }
 
       input[type=#{$control}] + .input__#{$control}__control {
@@ -100,6 +99,8 @@ select {
 
       + div .input__label {
         line-height: 1;
+        padding-left: 7px;
+        cursor: pointer;
       }
 
       + div .input__hint {
@@ -146,7 +147,6 @@ select {
       display: inline-block;
       position: relative;
       user-select: none;
-      margin-right: 10px;
 
       &::after {
         @include size(20px);
@@ -161,7 +161,12 @@ select {
         justify-content: center;
         transition: .3s;
       }
+    }
 
+    + div .input__label {
+      line-height: 1;
+      padding-left: 10px;
+      cursor: pointer;
     }
   }
 
