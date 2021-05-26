@@ -27,6 +27,7 @@ module BeyondCanvas # :nodoc:
     module Concerns
       autoload :Authentication, 'models/concerns/authentication'
       autoload :Utils,          'models/concerns/utils'
+      autoload :Webhook,        'models/concerns/webhook'
     end
   end
 
