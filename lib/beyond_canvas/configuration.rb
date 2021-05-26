@@ -3,7 +3,7 @@
 module BeyondCanvas
   class Configuration # :nodoc:
     attr_accessor :site_title, :site_logo, :favicon, :skip_webpacker, :encryption_key, :namespace, :cockpit_app,
-                  :open_app_url, :preinstalled, :debug_mode
+                  :open_app_url, :preinstalled, :debug_mode, :webhook_event_types, :webhook_site_url
 
     include AssetRegistration
     include MenuItemRegistration

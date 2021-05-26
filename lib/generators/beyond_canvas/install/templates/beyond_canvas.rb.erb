@@ -86,4 +86,15 @@ BeyondCanvas.setup do |config|
   # ==> Database encryption
 
   config.encryption_key = '<%= SecureRandom.hex(32) %>'
+
+  # Webhooks event listeners
+  # You can inculde the beyond
+  # By default Beyond canvas is listening for app.unistalled event.
+
+  # URL for get webhooks whe you are using develpment
+
+  # ==> Webhooks
+
+  config.webhook_event_types = []
+  config.webhook_site_url = ''
 end
