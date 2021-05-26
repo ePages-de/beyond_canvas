@@ -27,6 +27,7 @@ module BeyondCanvas
 
       if @shop.save
         @shop.authenticate(params[:shop][:code])
+        subscribe_to_beyond_webhooks
 
         redirect_to after_installation_path
       else
@@ -55,6 +56,7 @@ module BeyondCanvas
     def preinstall
       @shop = Shop.create_or_find_by(beyond_api_url: params[:api_url])
       @shop.authenticate(params[:code])
+      subscribe_to_beyond_webhooks
 
       redirect_to after_preinstallation_path
     end
@@ -64,6 +66,11 @@ module BeyondCanvas
       log_in shop
 
       redirect_to after_sign_in_path
+    end
+
+    def subscribe_to_beyond_webhooks
+      @shop.create_signer
+      @shop.subscribe_to_beyond_webhooks
     end
   end
 end
