@@ -95,6 +95,20 @@ BeyondCanvas.setup do |config|
 
   # ==> Webhooks
 
-  config.webhook_event_types = []
-  config.webhook_site_url = ''
+  # By default Beyond Canvas subscribes to `app.uninstalled` webhook event and
+  # handles the uninstallation of an app.
+  # If you want to subscribe to any of the existing webhooks (`product.created`,
+  # `product.updated`, `order.created`, `order.updated`) apart from
+  # `app.uninstalled` on app installation process, add them like follows:
+  #
+  # To subscribe to a single webhook event:
+  # config.register_webhook_event = 'product.created'
+  #
+  # To subscribe to multiple webhook events:
+  # config.register_webhook_events = ['product.created', 'product.updated']
+
+  # Set a URL where webhooks will call on non-production environments. You can
+  # make use of https://webhook.site/.
+  # On production environments, the URL will be automatically generated.
+  config.webhook_site_url = nil
 end
