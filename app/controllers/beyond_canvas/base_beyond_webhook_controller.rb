@@ -37,11 +37,8 @@ module BeyondCanvas
     private
 
     def handle_app_uninstalled(_data)
-      # @shop.delete_beyond_webhooks_subscriptions
-      # @shop.destroy
-      puts '*' * 150
-      puts 'CANVAS handle_app_uninstalled'
-      puts '*' * 150
+      @shop.delete_beyond_webhooks_subscriptions
+      @shop.destroy
     end
 
     def set_shop
