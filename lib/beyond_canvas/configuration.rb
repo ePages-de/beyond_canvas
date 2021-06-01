@@ -7,6 +7,7 @@ module BeyondCanvas
 
     include AssetRegistration
     include MenuItemRegistration
+    include WebhookEventRegistration
 
     def initialize
       @cockpit_app = false
@@ -23,6 +24,7 @@ module BeyondCanvas
 
     def setup!
       register_default_assets
+      register_default_webhook_events
     end
 
     private
@@ -30,6 +32,10 @@ module BeyondCanvas
     def register_default_assets
       register_stylesheet 'beyond_canvas.css', media: 'screen'
       register_javascript 'beyond_canvas.js'
+    end
+
+    def register_default_webhook_events
+      register_webhook_event('app.uninstalled')
     end
   end
 end
