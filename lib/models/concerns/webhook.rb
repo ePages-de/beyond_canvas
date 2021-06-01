@@ -29,36 +29,25 @@ module BeyondCanvas
           ##############################################################################
 
           #
-          # Deletes all existing signers and creates and stores a new one
-          #
-          def create_signer
-            # Get all existing signer ids
-            signer_ids = self.to_session.signers.all.embedded.signers&.map(&:id)
-            # Create and save the new signer
-            signer = self.to_session.signers.create
-            self.update(beyond_shared_secret: signer.shared_secret)
-            # Delete old signers
-            signer_ids&.each { |signer_id| self.to_session.signers.delete(signer_id) }
-          end
-
-          #
           # Subscribes to Beyond webhooks:
           #   * Callback URI: {APP_URL}/shops/:id/beyond_webhook
           #
           def subscribe_to_beyond_webhooks
-            # Unsubscribe from Beyond webhooks
-            delete_beyond_webhooks_subscriptions
-
+            # Unsubscribe from all existing Beyond webhooks
+            self.unsubscribe_from_all_beyond_webhooks
+            # Create and save a signer
+            self.create_signer
+            # Subscribe to webhooks
             self.to_session.webhook_subscriptions.create(
               callback_uri: beyond_webhook_url(self.id),
-              event_types: DEFAULT_WEBHOOK_EVENT_TYPES.concat(BeyondCanvas.configuration.webhook_event_types || [])
+              event_types: BeyondCanvas.configuration.webhook_events.to_a
             )
           end
 
           #
           # Unsubscribe from Beyond webhooks
           #
-          def delete_beyond_webhooks_subscriptions
+          def unsubscribe_from_all_beyond_webhooks
             self.refresh_token_if_needed
 
             session = self.to_session
@@ -66,6 +55,23 @@ module BeyondCanvas
             session.webhook_subscriptions.all.embedded.subscriptions.each do |webhook|
               session.webhook_subscriptions.delete(webhook.id)
             end
+          end
+
+          private
+
+          #
+          # Deletes all existing signers and creates and stores a new one
+          #
+          def create_signer
+            # Get all existing signer ids
+            signer_ids = self.to_session.signers.all.embedded.signers&.map(&:id)
+            # Remove the first signer if max number of signers reached to allow to create a new one
+            self.to_session.signers.delete(signer_ids.slice!(0)) if signer_ids.count == 5
+            # Create and save the new signer
+            signer = self.to_session.signers.create
+            self.update(beyond_shared_secret: signer.shared_secret)
+            # Delete old signers
+            signer_ids&.each { |signer_id| self.to_session.signers.delete(signer_id) }
           end
 
           #
