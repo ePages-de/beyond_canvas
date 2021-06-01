@@ -68,6 +68,8 @@ module BeyondCanvas
             end
           end
 
+          private
+
           #
           # Generates the Beyond webhook url for a given shop_id. If Rails.env is development, it uses the WEBHOOK_SITE_URL
           # environment variable. In any other case, it uses the request.env['HTTP_HOST'], that should be
