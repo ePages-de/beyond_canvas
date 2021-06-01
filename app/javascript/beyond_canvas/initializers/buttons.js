@@ -46,6 +46,7 @@ const BUTTON_SELECTORS = '[class^="button"]';
 
 $.extend({
   restoreActionElements: function () {
+    setTimeout(function () {
     // Hide spinners
     $(BUTTON_SELECTORS).each(function (_, button) {
       setTimeout(function () {
@@ -60,6 +61,7 @@ $.extend({
     $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function () {
       $(this).removeClass('actions--disabled');
     });
+    }, 100);
   },
   disableActionElements: function () {
     $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function () {

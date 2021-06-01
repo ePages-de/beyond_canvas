@@ -44,15 +44,17 @@
   })(jQuery);
   $.extend({
     restoreActionElements: function restoreActionElements() {
-      $(BUTTON_SELECTORS).each(function(_, button) {
-        setTimeout(function() {
-          $(button).find(".spinner").hide();
-          $(button).width($(button).data("oldWidth"));
-        }, SPINNER_ANIMATION_TIMEOUT);
-      });
-      $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function() {
-        $(this).removeClass("actions--disabled");
-      });
+      setTimeout(function() {
+        $(BUTTON_SELECTORS).each(function(_, button) {
+          setTimeout(function() {
+            $(button).find(".spinner").hide();
+            $(button).width($(button).data("oldWidth"));
+          }, SPINNER_ANIMATION_TIMEOUT);
+        });
+        $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function() {
+          $(this).removeClass("actions--disabled");
+        });
+      }, 100);
     },
     disableActionElements: function disableActionElements() {
       $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function() {
