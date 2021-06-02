@@ -11,5 +11,3 @@ else
     expires: 1.year.from_now
   }.freeze
 end
-
-DEFAULT_WEBHOOK_EVENT_TYPES = ['app.uninstalled']
