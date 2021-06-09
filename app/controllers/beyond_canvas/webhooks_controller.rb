@@ -3,7 +3,7 @@
 require_dependency 'beyond_canvas/application_controller'
 
 module BeyondCanvas
-  class BeyondWebhookController < ApplicationController # :nodoc:
+  class WebhooksController < ApplicationController # :nodoc:
     skip_before_action :verify_authenticity_token
 
     include ::BeyondCanvas::RequestValidation

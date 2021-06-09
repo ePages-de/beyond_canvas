@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BeyondCanvas::BeyondWebhookController < BeyondCanvas::BaseBeyondWebhookController
+class WebhooksController < BeyondCanvas::WebhooksController
 
   private
 
