@@ -43,9 +43,6 @@ module BeyondCanvas
             # Create and save a signer
             self.create_signer
             # Subscribe to webhooks
-            puts '_' * 150
-            puts 'subscribe_to_beyond_webhooks'
-            puts '_' * 150
             self.to_session.webhook_subscriptions.create(
               callback_uri: beyond_webhook_url(self.id),
               event_types: BeyondCanvas.configuration.webhook_events.to_a
@@ -104,9 +101,6 @@ module BeyondCanvas
           # {APP_URL}/shops/:id/beyond_webhook
           #
           def beyond_webhook_url(shop_id)
-            puts '~' * 150
-            puts 'beyond_webhook_url'
-            puts '~' * 150
             if Rails.env.development?
               obtain_webhook_site_url
             else
@@ -119,9 +113,6 @@ module BeyondCanvas
             if BeyondCanvas.configuration.webhook_site_url.blank?
               raise 'Set BeyondCanvas.config.webhook_site_url environment variable for develpment'
             end
-            puts '*' * 150
-            puts 'obtain_webhook_site_url'
-            puts '*' * 150
 
             BeyondCanvas.configuration.webhook_site_url
           end
