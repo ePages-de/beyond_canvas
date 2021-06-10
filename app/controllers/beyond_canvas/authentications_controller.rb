@@ -38,7 +38,7 @@ module BeyondCanvas
     private
 
     def shop_params
-      beyond_canvas_parameter_sanitizer.sanitize
+      beyond_canvas_parameter_sanitizer.sanitize.merge(http_host: request.env['HTTP_HOST'])
     end
 
     def after_preinstallation_path
@@ -62,6 +62,7 @@ module BeyondCanvas
     end
 
     def open_app(shop)
+      shop.authenticate(params[:code]) if params[:code]
       reset_session
       log_in shop
 
