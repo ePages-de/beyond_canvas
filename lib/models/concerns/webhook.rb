@@ -107,7 +107,7 @@ module BeyondCanvas
             puts '~' * 150
             puts 'beyond_webhook_url'
             puts '~' * 150
-            unless Rails.env.development?
+            if Rails.env.development?
               obtain_webhook_site_url
             else
               Rails.application.routes.url_helpers.beyond_webhook_shop_url(shop_id, host: http_host || ENV['HTTP_HOST'],
