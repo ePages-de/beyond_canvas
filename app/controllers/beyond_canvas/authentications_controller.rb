@@ -38,6 +38,9 @@ module BeyondCanvas
     private
 
     def shop_params
+      puts '~' * 150
+      puts beyond_canvas_parameter_sanitizer.sanitize.merge(http_host: request.env['HTTP_HOST'])
+      puts '~' * 150
       beyond_canvas_parameter_sanitizer.sanitize.merge(http_host: request.env['HTTP_HOST'])
     end
 
