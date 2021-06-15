@@ -57,6 +57,9 @@ module BeyondCanvas
     end
 
     def preinstall
+      puts '&' * 100
+      puts 'preinstall ' + request.env['HTTP_HOST']
+      puts '&' * 100
       @shop = Shop.create_or_find_by(beyond_api_url: params[:api_url])
       @shop.authenticate(params[:code])
       @shop.subscribe_to_beyond_webhooks
