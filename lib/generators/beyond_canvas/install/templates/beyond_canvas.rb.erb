@@ -102,10 +102,10 @@ BeyondCanvas.setup do |config|
   # `app.uninstalled` on app installation process, add them like follows:
   #
   # To subscribe to a single webhook event:
-  # config.register_webhook_event = 'product.created'
+  # config.register_webhook_event('product.created')
   #
   # To subscribe to multiple webhook events:
-  # config.register_webhook_events = ['product.created', 'product.updated']
+  # config.register_webhook_events(['product.created', 'product.updated'])
 
   # Set a URL where webhooks will call on non-production environments. You can
   # make use of https://webhook.site/.
