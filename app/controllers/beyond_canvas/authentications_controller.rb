@@ -38,9 +38,6 @@ module BeyondCanvas
     private
 
     def shop_params
-      puts '~' * 150
-      puts beyond_canvas_parameter_sanitizer.sanitize.merge(http_host: request.env['HTTP_HOST'])
-      puts '~' * 150
       beyond_canvas_parameter_sanitizer.sanitize.merge(http_host: request.env['HTTP_HOST'])
     end
 
@@ -57,10 +54,8 @@ module BeyondCanvas
     end
 
     def preinstall
-      puts '&' * 100
-      puts 'preinstall ' + request.env['HTTP_HOST']
-      puts '&' * 100
       @shop = Shop.create_or_find_by(beyond_api_url: params[:api_url])
+      @shop.http_host = request.env['HTTP_HOST']
       @shop.authenticate(params[:code])
       @shop.subscribe_to_beyond_webhooks
 

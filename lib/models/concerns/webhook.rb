@@ -104,9 +104,6 @@ module BeyondCanvas
             if Rails.env.development?
               obtain_webhook_site_url
             else
-              puts '*' * 150
-              puts http_host
-              puts '*' * 150
               Rails.application.routes.url_helpers.beyond_webhook_shop_url(shop_id, host: http_host || ENV['HTTP_HOST'],
                                                                                     protocol: 'https')
             end
