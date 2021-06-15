@@ -27,6 +27,7 @@ module BeyondCanvas
 
       if @shop.save
         @shop.authenticate(params[:shop][:code])
+        @shop.subscribe_to_beyond_webhooks
 
         redirect_to after_installation_path
       else
@@ -37,7 +38,7 @@ module BeyondCanvas
     private
 
     def shop_params
-      beyond_canvas_parameter_sanitizer.sanitize
+      beyond_canvas_parameter_sanitizer.sanitize.merge(http_host: request.env['HTTP_HOST'])
     end
 
     def after_preinstallation_path
@@ -54,12 +55,15 @@ module BeyondCanvas
 
     def preinstall
       @shop = Shop.create_or_find_by(beyond_api_url: params[:api_url])
+      @shop.http_host = request.env['HTTP_HOST']
       @shop.authenticate(params[:code])
+      @shop.subscribe_to_beyond_webhooks
 
       redirect_to after_preinstallation_path
     end
 
     def open_app(shop)
+      shop.authenticate(params[:code]) if params[:code]
       reset_session
       log_in shop
 
