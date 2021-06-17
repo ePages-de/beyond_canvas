@@ -15,6 +15,8 @@ module BeyondCanvas
     # browser compatible locale, sets the value to the cookie and set that locale as default locale.
     #
     def switch_locale(&action)
+      cookies.delete :locale if BeyondCanvas.configuration.cockpit_app
+
       unless valid_locale?(cookies[:locale])
         cookies[:locale] = {
           value: app_locale,
