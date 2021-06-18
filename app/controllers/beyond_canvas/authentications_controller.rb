@@ -9,6 +9,7 @@ module BeyondCanvas
     include ::BeyondCanvas::Authentication
 
     before_action :validate_app_installation_request!, only: :new
+    before_action :clear_cookies, only: [:new, :install]
 
     def new
       @shop = Shop.find_or_initialize_by(beyond_api_url: params[:api_url])
@@ -68,6 +69,10 @@ module BeyondCanvas
       log_in shop
 
       redirect_to after_sign_in_path
+    end
+
+    def clear_cookies
+      cookies.delete :locale if BeyondCanvas.configuration.cockpit_app
     end
   end
 end
