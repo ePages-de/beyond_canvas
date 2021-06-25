@@ -73,22 +73,30 @@ module BeyondCanvas
     private
 
     def field_wrapper(attribute, args, &block)
-      label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
+      label = args.key?(:label).blank? ? nil : args.delete(:label) || attribute.to_s.humanize
+      hint = args.delete(:hint).html_safe if args.key?(:hint)
+      pre = args.delete(:pre) if args.key?(:pre)
+      post = args.delete(:post) if args.key?(:post)
 
       errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
 
       @template.content_tag(:div, class: 'form__row') do
-        @template.content_tag(:label, label, class: 'input__label') +
-        @template.content_tag(:div, class: 'relative') do
-          block.call +
+        @template.content_tag(:label, label.html_safe, class: 'input__label') +
+        @template.content_tag(:div, class: 'relative', style: 'display: flex;') do
+          [
+            (@template.content_tag(:span, pre, class: 'input__pre') if pre.present?),
+            (@template.content_tag(:span, post, class: 'input__post') if post.present?),
+            block.call,
             (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
+          ].compact.inject(:+)
         end +
-        (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
+        (@template.content_tag(:div, hint, class: 'input__hint') if hint.present?)
       end
     end
 
     def inline_wrapper(attribute, args, &block)
-      label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
+      label = args.key?(:label).blank? ? nil : args.delete(:label) || attribute.to_s.humanize
+      hint = args.delete(:hint).html_safe if args.key?(:hint)
 
       errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
 
@@ -96,8 +104,8 @@ module BeyondCanvas
         @template.content_tag(:div, class: 'relative', style: 'display: flex; align-items: center;') do
           block.call +
             @template.content_tag(:div) do
-              @template.content_tag(:label, label, class: 'input__label') +
-              (@template.content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
+              @template.content_tag(:label, label.html_safe, class: 'input__label') +
+              (@template.content_tag(:div, hint, class: 'input__hint') if hint.present?)
             end +
             (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
         end

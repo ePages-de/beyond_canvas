@@ -6,6 +6,7 @@ select {
   border: 1px solid $input-border-color;
   border-radius: 3px;
   box-sizing: border-box;
+  order: 2;
   outline: none;
   padding: 6px 8px;
   width: 100%;
@@ -63,6 +64,38 @@ select {
     color: $hint-color;
     font-size: 13px;
     margin-top: 1px;
+  }
+
+  &__pre,
+  &__post {
+    background-color: $input-disabled-background;
+    border: 1px solid $input-border-color;
+    box-sizing: border-box;
+    color: $input-disabled-color;
+    outline: none;
+    padding: 6px 8px;
+  }
+
+  &__pre {
+    @include border-left-radius(3px);
+    border-right: 0;
+    order: 1;
+
+    ~ input,
+    ~ select {
+      @include border-left-radius(0);
+    }
+  }
+
+  &__post {
+    @include border-right-radius(3px);
+    border-left: 0;
+    order: 10;
+
+    ~ input,
+    ~ select {
+      @include border-right-radius(0);
+    }
   }
 
   @each $control in $controls {
