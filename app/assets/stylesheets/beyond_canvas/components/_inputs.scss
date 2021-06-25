@@ -72,6 +72,7 @@ select {
     border: 1px solid $input-border-color;
     box-sizing: border-box;
     color: $input-disabled-color;
+    line-height: 1;
     outline: none;
     padding: 6px 8px;
   }
