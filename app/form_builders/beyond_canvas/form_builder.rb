@@ -73,16 +73,16 @@ module BeyondCanvas
     private
 
     def field_wrapper(attribute, args, &block)
-      label = args.key?(:label).blank? ? nil : args.delete(:label) || attribute.to_s.humanize
-      hint = args.delete(:hint).html_safe if args.key?(:hint)
-      pre = args.delete(:pre) if args.key?(:pre)
-      post = args.delete(:post) if args.key?(:post)
+      label = args.dig(:label).blank? ? nil : args.delete(:label) || attribute.to_s.humanize
+      hint = args.dig(:hint)&.html_safe
+      pre = args.dig(:pre)
+      post = args.dig(:post)
 
       errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
 
       @template.content_tag(:div, class: 'form__row') do
-        @template.content_tag(:label, label.html_safe, class: 'input__label') +
-        @template.content_tag(:div, class: 'relative', style: 'display: flex;') do
+        @template.content_tag(:label, label&.html_safe, class: 'input__label') +
+        @template.content_tag(:div, class: 'relative', style: "#{'display: flex;' if pre || post}") do
           [
             (@template.content_tag(:span, pre, class: 'input__pre') if pre.present?),
             (@template.content_tag(:span, post, class: 'input__post') if post.present?),
@@ -95,8 +95,8 @@ module BeyondCanvas
     end
 
     def inline_wrapper(attribute, args, &block)
-      label = args.key?(:label).blank? ? nil : args.delete(:label) || attribute.to_s.humanize
-      hint = args.delete(:hint).html_safe if args.key?(:hint)
+      label = args.dig(:label).blank? ? nil : args.delete(:label) || attribute.to_s.humanize
+      hint = args.dig(:hint)&.html_safe
 
       errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
 
