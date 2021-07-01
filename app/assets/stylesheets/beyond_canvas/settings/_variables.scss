@@ -276,4 +276,14 @@ $select2-option-hover-color: rgb(62, 62, 62) !default;
 // Collapsibles
 // ************************************************************
 
-$collapsible-color: $palette-primary !default
+$collapsible-color: $palette-primary !default;
+
+// ************************************************************
+// Step lists
+// ************************************************************
+
+$step-list-container-background: #f1f0e9 !default;
+$step-list-title-color: #3e3e3e !default;
+$step-list-bubble-background: #808080 !default;
+$step-list-headline-color: #747474 !default;
+$step-list-description-color: #3e3e3e !default;
