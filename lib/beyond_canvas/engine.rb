@@ -28,12 +28,6 @@ module BeyondCanvas
 
         ::ActionController::Base.helper BeyondCanvas::Engine.helpers
       end
-
-      ActiveSupport.on_load :action_mailer do
-        include ::BeyondCanvas::ApplicationHelper
-
-        ::ActionMailer::Base.helper BeyondCanvas::ApplicationHelper
-      end
     end
 
     config.after_initialize do
