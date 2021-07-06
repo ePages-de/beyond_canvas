@@ -3,7 +3,7 @@
 module BeyondCanvas
   class Configuration # :nodoc:
     attr_accessor :site_title, :site_logo, :favicon, :skip_webpacker, :encryption_key, :namespace, :cockpit_app,
-                  :open_app_url, :preinstalled, :debug_mode, :webhook_site_url
+                  :open_app_url, :preinstalled, :debug_mode, :webhook_site_url, :email_logo
 
     include AssetRegistration
     include MenuItemRegistration
@@ -18,6 +18,7 @@ module BeyondCanvas
       @open_app_url = nil
       @preinstalled = false
       @site_logo = nil
+      @email_logo = nil
       @site_title = ::Rails.application.class.name.split('::').first.humanize
       @skip_webpacker = false
     end
