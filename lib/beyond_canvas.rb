@@ -16,10 +16,11 @@ require 'beyond_api'
 require 'attr_encrypted'
 
 module BeyondCanvas # :nodoc:
-  autoload :AssetRegistration,    'beyond_canvas/asset_registration'
-  autoload :Configuration,        'beyond_canvas/configuration'
-  autoload :MenuItemRegistration, 'beyond_canvas/menu_item_registration'
-  autoload :ParameterSanitizer,   'beyond_canvas/parameter_sanitizer'
+  autoload :AssetRegistration,        'beyond_canvas/asset_registration'
+  autoload :Configuration,            'beyond_canvas/configuration'
+  autoload :MenuItemRegistration,     'beyond_canvas/menu_item_registration'
+  autoload :ParameterSanitizer,       'beyond_canvas/parameter_sanitizer'
+  autoload :WebhookEventRegistration, 'beyond_canvas/webhook_event_registration'
 
   module Models # :nodoc:
     autoload :Shop, 'models/shop'
@@ -27,6 +28,7 @@ module BeyondCanvas # :nodoc:
     module Concerns
       autoload :Authentication, 'models/concerns/authentication'
       autoload :Utils,          'models/concerns/utils'
+      autoload :Webhook,        'models/concerns/webhook'
     end
   end
 

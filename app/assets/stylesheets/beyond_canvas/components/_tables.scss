@@ -1,8 +1,10 @@
 .table {
-  width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
 
   th, td {
+    box-sizing: border-box;
     padding: 15px;
     text-align: left;
   }
@@ -23,8 +25,10 @@
 
   tbody {
     tr {
-      &:not(:last-child) {
-        border-bottom: 1px solid $table-border-color;
+      border-bottom: 1px solid $table-border-color;
+
+      &:hover {
+        background: $table-row-hover-background;
       }
     }
   }

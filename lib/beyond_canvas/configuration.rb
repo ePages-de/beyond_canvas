@@ -3,10 +3,11 @@
 module BeyondCanvas
   class Configuration # :nodoc:
     attr_accessor :site_title, :site_logo, :favicon, :skip_webpacker, :encryption_key, :namespace, :cockpit_app,
-                  :open_app_url, :preinstalled, :debug_mode
+                  :open_app_url, :preinstalled, :debug_mode, :webhook_site_url, :email_logo
 
     include AssetRegistration
     include MenuItemRegistration
+    include WebhookEventRegistration
 
     def initialize
       @cockpit_app = false
@@ -17,12 +18,14 @@ module BeyondCanvas
       @open_app_url = nil
       @preinstalled = false
       @site_logo = nil
+      @email_logo = nil
       @site_title = ::Rails.application.class.name.split('::').first.humanize
       @skip_webpacker = false
     end
 
     def setup!
       register_default_assets
+      register_default_webhook_events
     end
 
     private
@@ -30,6 +33,10 @@ module BeyondCanvas
     def register_default_assets
       register_stylesheet 'beyond_canvas.css', media: 'screen'
       register_javascript 'beyond_canvas.js'
+    end
+
+    def register_default_webhook_events
+      register_webhook_event('app.uninstalled')
     end
   end
 end

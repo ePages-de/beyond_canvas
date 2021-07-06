@@ -16,12 +16,42 @@ module BeyondCanvas
     #
     def switch_locale(&action)
       unless valid_locale?(cookies[:locale])
-        cookies[:locale] = { value: browser_compatible_locale, expires: 1.day.from_now }
+        cookies[:locale] = {
+          value: app_locale,
+        }.merge COOKIES_ATTRIBUTES
       end
 
       I18n.with_locale(cookies[:locale], &action)
 
       logger.debug "[BeyondCanvas] Locale set to: #{cookies[:locale]}".yellow if debug_mode?
+    end
+
+    #
+    # Checks if the given locale parameter is included on +I18n.available_locales+
+    #
+    def valid_locale?(locale)
+      I18n.available_locales.map(&:to_s).include? locale
+    end
+
+    #
+    # If it is a cockpit app, it returns the shop default locale.
+    # Otherwise it returns the browser compatible locale.
+    #
+    # @return [String] the local that the app will use (e.g. +'en-GB'+)
+    #
+    def app_locale
+      BeyondCanvas.configuration.cockpit_app ? shop_locale : browser_compatible_locale
+    end
+
+    #
+    # Retrieves the shop default locale from the Beyond API.
+    #
+    # @return [String] the shop default locale (e.g. +'en-GB'+)
+    #
+    def shop_locale
+      BeyondApi::Session.new(api_url: current_shop.beyond_api_url).shop.current.default_locale
+    rescue
+      browser_compatible_locale
     end
 
     #
@@ -43,13 +73,6 @@ module BeyondCanvas
       locales.empty? ? I18n.default_locale : locales.first
     rescue
       I18n.default_locale
-    end
-
-    #
-    # Checks if the given locale parameter is included on +I18n.available_locales+
-    #
-    def valid_locale?(locale)
-      I18n.available_locales.map(&:to_s).include? locale
     end
   end
 end

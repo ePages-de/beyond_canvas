@@ -1,0 +1,100 @@
+body {
+  font-family: 'apple-system', 'BlinkMacSystemFont', "Segoe UI", 'Roboto', 'Oxygen-Sans', 'Ubuntu', 'Cantarell', "Helvetica Neue", sans-serif
+}
+
+.body--application {
+  background-color: #e9e8dc;
+}
+
+.main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.main-wrapper {
+  padding: 25px 25px 100px 25px;
+}
+
+.card {
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 2px 7px rgb(0 0 0 / 20%);
+  padding: 40px;
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  min-height: 50vh;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-width: 50vw;
+  line-height: 1.5;
+}
+
+.container__icon {
+  text-align: right;
+}
+
+.surface {
+  fill: #edece2;
+}
+
+.bubbles {
+  fill: #e9e8dc;
+}
+
+.outline {
+  fill: #284b62
+}
+
+.icon {
+  flex-shrink: 0;
+  max-width: 200px;
+  width: max-content;
+  margin-right: 40px;
+}
+
+.headline {
+  color: #7a764c;
+  font-size: 42px;
+  font-weight: 100;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.text {
+  color: #808080;
+  font-size: 17px;
+}
+
+@media only screen and (max-width: 1199px) {
+  .container {
+    flex-direction: column;
+    max-width: 80%;
+  }
+
+  .text {
+    text-align: center;
+  }
+
+  .headline {
+    text-align: center;
+  }
+
+  .container__icon {
+    padding-left: 30px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .container > * {
+    width: 50%;
+  }
+}

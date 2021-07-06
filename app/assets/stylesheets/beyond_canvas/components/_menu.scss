@@ -30,13 +30,26 @@
     display: inherit;
   }
 
+  &__icon {
+    @include size(14px);
+
+    margin-right: 6px;
+    fill: $menu-item-color;
+  }
+
   &__item {
     @include margin(0 15px);
     line-height: 1;
     color: $menu-item-color;
+    display: flex;
+    align-items: center;
 
     &:hover {
       color: $menu-item-hover-color;
+
+      .menu__icon {
+        fill: $menu-item-hover-color;
+      }
     }
 
     &--active {
