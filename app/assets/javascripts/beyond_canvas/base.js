@@ -30,8 +30,10 @@
     $(document).on("confirm:complete", function() {
       $.restoreActionElements();
     });
-    $(document).on("click", BUTTON_SELECTORS, function() {
+    $(document).on("click", BUTTON_SELECTORS, function(e) {
+      var _e$target$attributes$;
       var button = $(this);
+      if (((_e$target$attributes$ = e.target.attributes.getNamedItem("target")) == null ? void 0 : _e$target$attributes$.value) === "_blank") return;
       $.disableActionElements();
       if (!button.hasClass("button--no-spinner")) {
         $(this).showSpinner();

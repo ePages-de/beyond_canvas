@@ -27,8 +27,10 @@ const BUTTON_SELECTORS = '[class^="button"]';
     $.restoreActionElements();
   });
 
-  $(document).on('click', BUTTON_SELECTORS, function () {
+  $(document).on('click', BUTTON_SELECTORS, function (e) {
     var button = $(this);
+
+    if(e.target.attributes.getNamedItem('target')?.value === '_blank') return;
 
     $.disableActionElements();
 
