@@ -1,9 +1,10 @@
 ### v0.23.0.pre
 
 * bug-fixes
-  * Fix buttons having multiple lines
+  * Fix button line breaks
   * Fix `form__actions` bottom spacing
   * Fix `action_bar` spacings
+  * Increase flash element's `z-index`
 
 * features
   * Add the following `form_tag_helpers`:
@@ -16,12 +17,15 @@
     * `radio_button_tag`
   * Add `table-layout: fixed;` to tables with `.table` class
   * Add `:hover` effect to table rows
+  * Add `step_list` helper
+  * Allow to send `pre` and `post` attributes to inputs
 
 * enhancements
   * Make `field_wrapper` and `inline_wrapper` private on `BeyondCanvas::FormBuilder`
   * Add more margin-bottom to `.body--public .main-wrapper`
   * Update gem dependencies
   * Increase locale expiration to 1 year
+  * Add `text-overflow: ellipsis;` to `collapse` elements
 
 ### v0.22.0.pre
 
