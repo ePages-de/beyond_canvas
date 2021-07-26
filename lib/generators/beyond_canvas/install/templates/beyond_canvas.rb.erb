@@ -33,6 +33,12 @@ BeyondCanvas.setup do |config|
   #
   # config.debug_mode = false
 
+  # Set an optional image to be send as email. Accepts any
+  # string supported by image_tag's source parameter. Overrides
+  # :email_logo.
+  #
+  # config.email_logo = 'logo.png' # Can't be svg
+
   # ==> Site configuration
 
   # Set the title that is displayed on the main layout.
@@ -43,7 +49,7 @@ BeyondCanvas.setup do |config|
   # string supported by image_tag's source parameter or a SVG file. Overrides
   # :site_title.
   #
-  # config.site_logo = 'logo.png'
+  # config.site_logo = 'logo.svg'
 
   # Set the favicon of the site.
   #

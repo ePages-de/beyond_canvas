@@ -28,11 +28,13 @@ module BeyondCanvas
       end
     end
 
-    def logo_image_tag(logo_path)
+    def logo_image_tag(logo_path, options = {})
+      html_options = { class: 'logo', alt: 'logo' }.merge options
+
       if File.extname(logo_path) == '.svg'
-        inline_svg_tag logo_path, class: 'logo', alt: 'logo'
+        inline_svg_tag logo_path, html_options
       else
-        image_tag logo_path, class: 'logo', alt: 'logo'
+        image_tag logo_path, html_options
       end
     end
 
