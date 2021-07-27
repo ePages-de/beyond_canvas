@@ -10,7 +10,7 @@ module BeyondCanvas
       end
     end
 
-    def select(attribute, choices, options  = {}, args = {})
+    def select(attribute, choices, options = {}, args = {})
       field_wrapper(attribute, args) do
         super(attribute, choices, options, args)
       end
@@ -20,7 +20,6 @@ module BeyondCanvas
       filed_identifyer = filed_identifyer(attribute)
 
       inline_wrapper(attribute, filed_identifyer, args) do
-
         args.merge!(id: filed_identifyer)
             .merge!(hidden: true)
 
@@ -37,7 +36,6 @@ module BeyondCanvas
       filed_identifyer = filed_identifyer(attribute)
 
       inline_wrapper(attribute, filed_identifyer, args) do
-
         args.merge!(id: filed_identifyer)
             .merge!(hidden: true)
 
