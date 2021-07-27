@@ -28,7 +28,7 @@ module BeyondCanvas
 
         content_tag(:div, class: 'input__checkbox') do
           super(name, value, checked, options) +
-            content_tag(:label, nil, class: 'input__checkbox__control', for: filed_identifyer)
+            content_tag(:label, nil, class: 'input__checkbox__control')
         end
       end
     end
@@ -99,7 +99,7 @@ module BeyondCanvas
     end
 
     def inline_wrapper(attribute, filed_identifyer, args, &block)
-      # FIXME: attribute.to_s.humanize will never be called as label value is already set on lines: 20, 35 and 53
+      # FIXME: attribute.to_s.humanize will never be called as label value is already set on lines: 20, 37 and 57
       label = args[:label] == false ? nil : args[:label].presence || attribute.to_s.humanize
 
       content_tag(:div, class: 'form__row') do
