@@ -17,8 +17,9 @@ module BeyondCanvas
     end
 
     def check_box(attribute, args = {})
-      inline_wrapper(attribute, args) do
-        filed_identifyer = filed_identifyer(attribute)
+      filed_identifyer = filed_identifyer(attribute)
+
+      inline_wrapper(attribute, filed_identifyer, args) do
 
         args.merge!(id: filed_identifyer)
             .merge!(hidden: true)
@@ -33,8 +34,9 @@ module BeyondCanvas
     def radio_button(attribute, value, args = {})
       args.merge!(label: value) unless args[:label]
 
-      inline_wrapper(attribute, args) do
-        filed_identifyer = filed_identifyer(attribute)
+      filed_identifyer = filed_identifyer(attribute)
+
+      inline_wrapper(attribute, filed_identifyer, args) do
 
         args.merge!(id: filed_identifyer)
             .merge!(hidden: true)
@@ -94,7 +96,7 @@ module BeyondCanvas
       end
     end
 
-    def inline_wrapper(attribute, args, &block)
+    def inline_wrapper(attribute, filed_identifyer, args, &block)
       label = args.dig(:label).blank? ? nil : args.delete(:label) || attribute.to_s.humanize
       hint = args.dig(:hint)&.html_safe
 
@@ -104,7 +106,7 @@ module BeyondCanvas
         @template.content_tag(:div, class: 'relative', style: 'display: flex; align-items: center;') do
           block.call +
             @template.content_tag(:div) do
-              @template.content_tag(:label, label.html_safe, class: 'input__label') +
+              @template.content_tag(:label, label.html_safe, class: 'input__label', for: filed_identifyer) +
               (@template.content_tag(:div, hint, class: 'input__hint') if hint.present?)
             end +
             (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
