@@ -1,38 +1,38 @@
 .notice {
-  border-radius: $notice-border-radius;
+  border-radius: var(--notification-borderRadius);
   border: 1px solid;
   box-sizing: border-box;
   display: flex;
 
   &--success {
-    border-color: $notice-success-background;
+    border-color: var(--notification-success);
 
     .notice__icon {
-      background-color: $notice-success-background;
+      background-color: var(--notification-success);
     }
   }
 
   &--info {
-    border-color: $notice-info-background;
+    border-color: var(--notification-info);
 
     .notice__icon {
-      background-color: $notice-info-background;
+      background-color: var(--notification-info);
     }
   }
 
   &--warning {
-    border-color: $notice-warning-background;
+    border-color: var(--notification-warning);
 
     .notice__icon {
-      background-color: $notice-warning-background;
+      background-color: var(--notification-warning);
     }
   }
 
   &--error {
-    border-color: $notice-error-background;
+    border-color: var(--notification-danger);
 
     .notice__icon {
-      background-color: $notice-error-background;
+      background-color: var(--notification-danger);
     }
   }
 
@@ -44,14 +44,14 @@
     > svg {
       @include size(18px);
 
-      fill: $white;
+      fill: var(--notification-background);
     }
   }
 
   &__content {
     @include padding(8px 14px);
 
-    color: $notice-color;
+    color: var(--notification-text);
     display: block;
   }
 }
