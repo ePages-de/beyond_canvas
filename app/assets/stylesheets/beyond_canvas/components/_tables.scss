@@ -14,21 +14,22 @@
       font-weight: 700;
 
       &:first-child {
-        background-color: $table-header-background;
+        background-color: var(--table-header-background);
       }
 
       &:nth-child(2) {
-        border-bottom: 2px solid $table-border-color;
+        border-bottom: 2px solid var(--table-row-border);
       }
     }
   }
 
   tbody {
     tr {
-      border-bottom: 1px solid $table-border-color;
+      background-color: var(--table-row-background);
+      border-bottom: 1px solid var(--table-row-border);
 
       &:hover {
-        background: $table-row-hover-background;
+        background-color: var(--table-row-background-hover);
       }
     }
   }

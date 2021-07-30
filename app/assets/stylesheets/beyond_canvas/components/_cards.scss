@@ -1,11 +1,11 @@
 %card {
-  background: $white;
-  border-radius: $card-border-radius;
-  box-shadow: $card-box-shadow;
+  background: var(--card-background);
+  border-radius: var(--card-borderRadius);
+  box-shadow: var(--card-shadow);
 }
 
 %card_padding {
-  @include padding($card-padding);
+  @include padding(var(--card-padding));
 
   box-sizing: border-box;
 }
@@ -14,7 +14,7 @@
   @extend %card;
 
   &:not(:last-child) {
-    margin-bottom: $card-margin;
+    margin-bottom: 30px;
   }
 
   &--relative {
@@ -26,16 +26,16 @@
   }
 
   &__separator {
-    @include margin($card-separator-spacing null);
+    @include margin(35px null);
 
-    border-bottom: 1px solid $card-separator-color;
-    left: -#{$card-padding};
+    border-bottom: 1px solid var(--card-divider-border);
+    left: -#{var(--card-padding)};
     position: relative;
-    width: calc(100% + 2 * #{$card-padding});
+    width: calc(100% + 2 * #{var(--card-padding)});
   }
 
   &__headline {
-    color: $card-title-color;
+    color: var(--card-headline);
     font-size: 20px;
     margin-bottom: 20px;
   }
