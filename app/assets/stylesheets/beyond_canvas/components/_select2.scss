@@ -1,41 +1,41 @@
 .beyond-canvas {
 
   .select2-dropdown--above {
-    border-top: 1px solid $select2-border-color-focus !important;
+    border-top: 1px solid var(--inputField-border-focus) !important;
   }
 
   .select2-container--default .select2-selection--multiple {
-    border: 1px solid $select2-border-color;
+    border: 1px solid var(--inputField-border);
     border-radius: 3px;
   }
 
   .select2-container--default.select2-container--focus .select2-selection--multiple{
-    border: 1px solid $select2-border-color-focus;
+    border: 1px solid var(--inputField-border-focus);
   }
 
   .select2-container--default.select2-container--open.select2-container--below .select2-selection--single,
   .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    border-color: $select2-border-color-focus;
+    border-color: var(--inputField-border-focus);
   }
 
   .select2-container--default.select2-container--disabled .select2-selection--multiple {
-    background-color: $select2-disabled-background;
+    background-color: var(--inputField-background-disabled);
     pointer-events: none;
   }
 
   .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: $select2-option-hover-background;
-    color: $select2-option-hover-color;
+    background-color: var(--smartInputField-suggestion-active);
+    color: var(--workspace-text);
   }
 
   .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    background-color: $select2-tag-background;
-    color: $select2-tag-color;
+    background-color: var(--smartInputField-value-background);
+    color: var(--smartInputField-value-text);
     font-weight: bold;
     font-size: 11px;
-    border-radius: 3px;
+    border-radius: var(--smartInputField-value-borderRadius);
     border: none;
     padding: 3px 7px 4px;
     display: flex;
@@ -45,17 +45,17 @@
 
   .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
     margin-left: 8px;
-    color: $select2-close-icon-color;
+    color: var(--smartInputField-value-icon);
     font-size: 18px;
     line-height: 0;
 
     &:hover {
-      color: $select2-close-icon-color-hover;
+      color: var(--smartInputField-value-icon-hover);
     }
   }
 
   .select2-dropdown{
-    border: 1px solid $input-border-color-focus;
+    border: 1px solid var(--inputField-border-focus);
     border-top: none;
     z-index: 9999999;
   }

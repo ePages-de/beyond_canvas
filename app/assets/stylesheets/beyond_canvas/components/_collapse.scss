@@ -9,7 +9,7 @@
   }
 
   &__button {
-    color: $palette-primary;
+    color: var(--primary-color);
     font-weight: 700;
     cursor: pointer;
     display: block;
@@ -23,7 +23,7 @@
   &__icon {
     @include size(10px);
 
-    fill: $palette-primary;
+    fill: var(--primary-color);
     margin-right: 2px;
 
     &--open {
