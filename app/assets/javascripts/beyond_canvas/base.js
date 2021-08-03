@@ -142,7 +142,15 @@
         });
       });
     };
-    $(document).on("ready page:load turbolinks:load", onDOMReady);
+    $(document).on("ready page:load turbolinks:load", function() {
+      var observer = new MutationObserver(function() {
+        return onDOMReady();
+      });
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    });
   })(jQuery);
   (function($) {
     var onDOMReady = function onDOMReady() {
