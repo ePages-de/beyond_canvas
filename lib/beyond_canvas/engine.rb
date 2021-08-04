@@ -21,6 +21,7 @@ module BeyondCanvas
       ActiveSupport.on_load :action_controller do
         include ::BeyondCanvas::LocaleManagement
         include ::BeyondCanvas::RequestValidation
+        include ::BeyondCanvas::CustomStyles
         include ::BeyondCanvas::StatusCodes
         include ::BeyondCanvas::AuthenticationsHelper
         include ::BeyondCanvas::DebugHelper
