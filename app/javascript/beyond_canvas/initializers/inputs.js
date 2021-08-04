@@ -2,8 +2,8 @@
   const onDOMReady = function () {
     $('input[type="file"]').each(function () {
       const $input = $(this),
-            $label = $(`.input__file__text.${$input.attr('id')}`),
-            labelVal = $label.html();
+        $label = $(`.input__file__text.${$input.attr('id')}`),
+        labelVal = $label.html();
 
       $input.on('change', function (e) {
         let fileName = '';
