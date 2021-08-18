@@ -1,9 +1,9 @@
-@mixin background-color-darken($color, $percent) {
-  background-color: $color;
+@mixin background-color-darken($color, $hover-color) {
+  background-color: var(--#{color});
   transition: $main-transition;
 
   &:hover {
-    background-color: darken($color, $percent);
+    background-color: var(--#{hover-color});
     transition: $main-transition;
   }
 }

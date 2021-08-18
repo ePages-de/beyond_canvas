@@ -1,17 +1,17 @@
 %button {
-  @include padding($button-padding);
+  // @include padding($button-padding);
 
-  @if $button-box-shadow != true {
-    padding-top: 7px;
-  }
+  // @if $button-box-shadow != true {
+  //   padding-top: 7px;
+  // }
 
   align-items: center;
-  border-radius: $button-border-radius;
+  border-radius: var(--button-borderRadius);
   border-width: 1px;
   border-style: solid;
   cursor: pointer;
   display: inline-flex;
-  font-weight: $button-font-weight;
+  font-weight: 700;
   justify-content: flex-end;
   line-height: 1;
   outline: none;
@@ -20,62 +20,69 @@
 }
 
 %button_disabled {
-  border-color: $button-disabled-background;
-  background-color: $button-disabled-background;
+  border-color: var(--button-disabled-background);
+  background-color: var(--button-disabled-background);
   pointer-events: none;
-  color: $button-disabled-color;
-  text-shadow: $button-disabled-text-shadow;
+  color: var(--button-disabled-text);
+  text-shadow: var(--button-disabled-textShadow);
   border-bottom-color: #aaaaaa;
 }
 
 
 @mixin button-solid($background, $color) {
-  @include background-color-darken($background, 10%);
+  // @include background-color-darken($background, 10%);
 
-  color: $color;
+  background-color: var(#{$background});
+  color: var(#{$color});
 
   .spinner {
     display: none;
 
     > div {
-      background-color: $color;
+      background-color: var(#{$color});
     }
   }
 
-  &:hover {
-    border-color: darken($background, 10%);
-  }
+  // &:hover {
+  //   border-color: darken($background, 10%);
+  // }
 }
 
 @mixin button-transparent($background) {
   background-color: transparent;
-  border-color: $background;
-  color: $background;
+  color: var(#{$background});
 
   .spinner {
     display: none;
 
     > div {
-      background-color: $background;
+      background-color: var(#{$background});
     }
   }
 
-  &:hover {
-    background-color: lighten($background, 40%);
-  }
+  // &:hover {
+  //   background-color: lighten($background, 40%);
+  // }
 }
 
 @mixin button-border($background) {
-  border-color: $background;
+  border-color: var(#{$background});
 
-  @if $button-box-shadow == true {
-    border-bottom-width: 2px;
-    border-bottom-color: darken($background, 10%);
-  }
+  // @if $button-box-shadow == true {
+  //   border-bottom-width: 2px;
+  //   border-bottom-color: darken($background, 10%);
+  // }
 }
 
 input[type=file][disabled] ~ .button__transparent--primary {
   @extend %button_disabled;
+}
+
+[class^='button__'] {
+  &:disabled,
+  &[disabled] {
+    @extend %button_disabled;
+  }
 }
 
 .button {
@@ -83,37 +90,22 @@ input[type=file][disabled] ~ .button__transparent--primary {
     &--primary {
       @extend %button;
 
-      @include button-solid($button-primary-background, $button-primary-color);
-      @include button-border($button-primary-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
+      @include button-solid(--button-primary-background, --button-text);
+      @include button-border(--button-primary-background);
     }
 
     &--secondary {
       @extend %button;
 
-      @include button-solid($button-secondary-background, $button-secondary-color);
-      @include button-border($button-secondary-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
+      @include button-solid(--button-default-background, --button-text);
+      @include button-border(--button-default-background);
     }
 
     &--danger {
       @extend %button;
 
-      @include button-solid($button-danger-background, $button-danger-color);
-      @include button-border($button-danger-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
+      @include button-solid(--button-danger-background, --button-text);
+      @include button-border(--button-danger-background);
     }
   }
 
@@ -121,37 +113,22 @@ input[type=file][disabled] ~ .button__transparent--primary {
     &--primary {
       @extend %button;
 
-      @include button-transparent($button-primary-background);
-      @include button-border($button-primary-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
+      @include button-transparent(--button-primary-background);
+      @include button-border(--button-primary-background);
     }
 
     &--secondary {
       @extend %button;
 
-      @include button-transparent($button-secondary-background);
-      @include button-border($button-secondary-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
+      @include button-transparent(--button-default-background);
+      @include button-border(--button-default-background);
     }
 
     &--danger {
       @extend %button;
 
-      @include button-transparent($button-danger-background);
-      @include button-border($button-danger-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
+      @include button-transparent(--button-danger-background);
+      @include button-border(--button-danger-background);
     }
   }
 }

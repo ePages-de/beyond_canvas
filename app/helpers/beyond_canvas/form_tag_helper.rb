@@ -28,7 +28,30 @@ module BeyondCanvas
 
         content_tag(:div, class: 'input__checkbox') do
           super(name, value, checked, options) +
-            content_tag(:label, nil, class: 'input__checkbox__control', for: filed_identifyer)
+            content_tag(:label, class: 'input__checkbox__control', for: filed_identifyer) do
+              inline_svg_tag('icons/checkbox_checked.svg', style: 'display: none;', class: 'input__checkbox--checked') +
+              inline_svg_tag('icons/checkbox_unchecked.svg', style: 'display: none;', class: 'input__checkbox--unchecked')
+            end
+        end
+      end
+    end
+
+    def radio_button_tag(name, value, checked = false, options = {})
+      options.merge!(label: value) unless options[:label]
+
+      filed_identifyer = filed_identifyer(name)
+
+      inline_wrapper(name, filed_identifyer, options) do
+
+        options.merge!(id: filed_identifyer)
+               .merge!(hidden: true)
+
+        content_tag(:div, class: 'input__radio') do
+          super(name, value, checked, options) +
+            content_tag(:label, class: 'input__radio__control', for: filed_identifyer) do
+              inline_svg_tag('icons/radiobutton_checked.svg', style: 'display: none;', class: 'input__radio--checked') +
+              inline_svg_tag('icons/radiobutton_unchecked.svg', style: 'display: none;', class: 'input__radio--unchecked')
+            end
         end
       end
     end
@@ -48,24 +71,10 @@ module BeyondCanvas
 
         content_tag(:div, class: 'input__toggle') do
           tag(:input, html_options) +
-            content_tag(:label, nil, class: 'input__toggle__control', for: filed_identifyer)
-        end
-      end
-    end
-
-    def radio_button_tag(name, value, checked = false, options = {})
-      options.merge!(label: value) unless options[:label]
-
-      filed_identifyer = filed_identifyer(name)
-
-      inline_wrapper(name, filed_identifyer, options) do
-
-        options.merge!(id: filed_identifyer)
-               .merge!(hidden: true)
-
-        content_tag(:div, class: 'input__radio') do
-          super(name, value, checked, options) +
-            content_tag(:label, nil, class: 'input__radio__control', for: filed_identifyer)
+            # content_tag(:label, nil, class: 'input__toggle__control', for: filed_identifyer)
+            content_tag(:label, class: 'input__toggle__control', for: filed_identifyer) do
+              inline_svg_tag('icons/toggle.svg')
+            end
         end
       end
     end
@@ -106,7 +115,7 @@ module BeyondCanvas
         content_tag(:div, class: 'relative', style: 'display: flex; align-items: center;') do
           block.call +
             content_tag(:div) do
-              content_tag(:label, label, class: 'input__label', for: filed_identifyer) +
+              content_tag(:label, label, class: "input__label #{'input__label--disabled' if args[:disabled].present?}", for: filed_identifyer) +
                 (content_tag(:div, args[:hint].html_safe, class: 'input__hint') if args[:hint].present?)
             end
         end

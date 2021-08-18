@@ -24,7 +24,7 @@
 }
 
 .body--application {
-  background-color: $main-background-application;
+  background-color: var(--workspace-background);
 
   .main-wrapper {
     @include margin(25px auto 100px auto);

@@ -1,0 +1,234 @@
+:root {
+  //
+  // ---------------------------------------------------
+  // Brand
+  // ---------------------------------------------------
+  --primary-color: Orange;
+  --secondary-color: #383838;
+  --tertiary-color: DeepSkyBlue;
+  //
+  // ---------------------------------------------------
+  // Global layout
+  // ---------------------------------------------------
+  --workspace-text: #3e3e3e;
+  --workspace-background: #e6e6e6;
+  --workspace-border: #d2d2d2;
+  --workspace-headline: #676767;
+  --padding: 40px;
+  --borderRadius: 3px;
+  --surfaceHover-color: #b3ecff;
+  //
+  // ---------------------------------------------------
+  // Card
+  // ---------------------------------------------------
+  --card-headline: #a3a3a3;
+  --card-background: white;
+  --card-shadow: 0 2px 7px rgba(0, 0, 0, 0.2);
+  --card-divider-border: 1px solid #e6e6e6;
+  --card-borderRadius: 3px;
+  --card-padding: 40px;
+  //
+  // ---------------------------------------------------
+  // Breadcrumb
+  // ---------------------------------------------------
+  --breadcrumb-text: #787878;
+  --breadcrumb-link: #787878;
+  --breadcrumb-link-hover: #525252;
+  --breadcrumb-icon: #787878;
+  //
+  // ---------------------------------------------------
+  // Action bar
+  // ---------------------------------------------------
+  --workspace-toolbar-background: white;
+  --workspace-toolbar-border: 1px solid rgba(0, 0, 0, 0.2);
+  --header-bar-height: 73px;
+  //
+  // ---------------------------------------------------
+  // Notification and Toast messages
+  // ---------------------------------------------------
+  --notification-background: white;
+  --notification-text: gray;
+  --notification-borderRadius: 4px;
+  --notification-boxShadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  --notification-success: #97c344;
+  --notification-info: #999999;
+  --notification-warning: #f3b547;
+  --notification-danger: #da3c3c;
+  //
+  // ---------------------------------------------------
+  // Modal
+  // ---------------------------------------------------
+  --modal-overlay-background: rgba(0, 0, 0, 0.75);
+  --modal-container-background: white;
+  --modal-container-borderRadius: 3px;
+  --modal-closeButton-icon: #8b8b8b;
+  --modal-closeButton-icon-hover: #717171;
+  --modal-container-padding: 40px;
+  //
+  // ---------------------------------------------------
+  // Empty states
+  // ---------------------------------------------------
+  --emptyState-surface: #e3e3e3;
+  --emptyState-bubbles: #dedede;
+  --emptyState-outline: #575757;
+  --emptyState-headline: #676767;
+  --emptyState-help-text: gray;
+  //
+  // ---------------------------------------------------
+  // Loading spinner
+  // ---------------------------------------------------
+  --spinner-border: #c0c0c0;
+  --spinner-border-highlighting: #676767;
+  //
+  // ---------------------------------------------------
+  // States
+  // ---------------------------------------------------
+  --danger-color: #da3c3c;
+  --success-color: #97c344;
+  --warning-color: #f3b547;
+  --disabled-color: #d0d0d0;
+  --default-color: #999999;
+  //
+  // ---------------------------------------------------
+  // Status bubbles
+  // ---------------------------------------------------
+  --todo-status-background: #f9dca7;
+  --todo-status-text: #af740b;
+  --active-status-background: #cde2a5;
+  --active-status-text: #4e6721;
+  --danger-status-background: #eeb3a7;
+  --danger-status-text: #c72626;
+  --outline-status-background: transparent;
+  --outline-status-border: #b3b3b3;
+  --outline-status-text: #808080;
+  //
+  // ---------------------------------------------------
+  // Link
+  // ---------------------------------------------------
+  --primaryLink-color: DeepSkyBlue;
+  --primaryLink-hover-color: #0099cc;
+  --defaultLink-color: #787878;
+  --defaultLink-hover-color: #5e5e5e;
+  //
+  // ---------------------------------------------------
+  // Buttons
+  // ---------------------------------------------------
+  --button-default-background: #999999;
+  --button-primary-background: Orange;
+  --button-danger-background: #da3c3c;
+  --button-text: white;
+  --button-disabled-background: #d0d0d0;
+  --button-disabled-text: #909090;
+  --button-disabled-textShadow: 1px 1px 0 #ffffff;
+  --button-outline-border-color: Orange;
+  --button-outline-border-width: 1px;
+  --button-outline-background: transparent;
+  --button-outline-text: #eb9800;
+  --button-link-default-text: #787878;
+  --button-link-primary-text: DeepSkyBlue;
+  --button-borderRadius: 4px;
+  --button-borderBottom-width: 2px;
+  --button-horizontal-padding: calc(8px - 2px / 2);
+  //
+  // ---------------------------------------------------
+  // RichTextEditor
+  // ---------------------------------------------------
+  --textEditor-text: #3e3e3e;
+  --textEditor-background: white;
+  --textEditor-border-color: #d2d2d2;
+  --textEditor-border-radius: 3px;
+  --textEditor-toolbar-background: #f3f3f3;
+  --textEditor-toolbar-border-color: #d2d2d2;
+  --textEditor-button-background: #f3f3f3;
+  --textEditor-button-background-hover: #e6e6e6;
+  --textEditor-button-active-background: #d4d4d4;
+  --textEditor-button-icon: #676767;
+  --textEditor-button-icon-disabled: #b3b3b3;
+  //
+  // ---------------------------------------------------
+  // Table
+  // ---------------------------------------------------
+  --table-row-border: 1px solid #e6e6e6;
+  --table-row-background: white;
+  --table-row-background-hover: #b3ecff;
+  --table-header-background: #ebebeb;
+  --table-header-link: #3e3e3e;
+  --table-header-link-hover: #252525;
+  --table-header-sort-icon-default: #b3b3b3;
+  --table-header-sort-icon: currentColor;
+  //
+  // ---------------------------------------------------
+  // Media queries
+  // ---------------------------------------------------
+  --screen-xs-max: 47.9375em;
+  --screen-sm: 48em;
+  --screen-sm-max: 61.9375em;
+  --screen-md: 62em;
+  --screen-md-max: 74.9375em;
+  --screen-lg: 75em;
+  --screen-lg-max: 112.4375em;
+  --screen-xl: 112.5em;
+  //
+  // ---------------------------------------------------
+  // Form elements
+  // ---------------------------------------------------
+  --formGroup-label: gray;
+  --formGroup-validation-error: #da3c3c;
+  --formGroup-validation-text: white;
+  --formGroup-validation-borderRadius: 3px;
+  --inputField-borderRadius: 3px;
+  --inputField-border: #d2d2d2;
+  --inputField-border-focus: Orange;
+  --inputField-text: #3e3e3e;
+  --inputField-background: white;
+  --inputField-background-focus: white;
+  --inputField-background-disabled: #f5f5f5;
+  --inputField-text-disabled: #9a9a9a;
+  --inputField-placeholder-text: #a4a4a4;
+  --inputField-hint-text: gray;
+  --smartInputField-suggestion-active: #b3ecff;
+  --smartInputField-value-background: #d9d9d9;
+  --smartInputField-value-text: #666666;
+  --smartInputField-value-icon: currentColor;
+  --smartInputField-value-icon-hover: #4d4d4d;
+  --smartInputField-value-borderRadius: 3px;
+  //
+  // ---------------------------------------------------
+  // Checkboxes and Radio buttons
+  // ---------------------------------------------------
+  --check-color: #97c344;
+  --uncheck-color: #b3b3b3;
+  --check-disabled-text: #c5c5c5;
+  --check-disabled-icon: #d9d9d9;
+  //
+  // ---------------------------------------------------
+  // FlipSwitch
+  // ---------------------------------------------------
+  --flipSwitch-unchecked-background: #b3b3b3;
+  --flipSwitch-checked-background: #97c344;
+  --flipSwitch-border: #c0c0c0;
+  --flipSwitch-label: gray;
+  --flipSwitch-text: silver;
+  //
+  // ---------------------------------------------------
+  // Step list
+  // ---------------------------------------------------
+  --stepList-background: #f0f0f0;
+  --stepList-headline: #747474;
+  --stepList-bubble-line: #808080;
+  --stepList-bubble-background: #808080;
+  --stepList-bubble-text: white;
+  //
+  // ---------------------------------------------------
+  // Reseller logo
+  // ---------------------------------------------------
+  --logo-width: 238px;
+  --logo-height: 76px;
+  //
+  // ---------------------------------------------------
+  // Gray scale colors
+  // ---------------------------------------------------
+  --white: white;
+  --gray: gray;
+  --silver: silver;
+}

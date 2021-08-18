@@ -1,12 +1,12 @@
 .step-list {
 
   &__container {
-    background-color: $step-list-container-background;
+    background-color: var(--stepList-background);
     padding: 25px;
   }
 
   &__title {
-    color: $step-list-title-color;
+    color: var(--stepList-headline);
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 15px;
@@ -42,7 +42,7 @@
       left: 10px;
       width: 2px;
       height: 100%;
-      background-color: $step-list-bubble-background;
+      background-color: var(--stepList-bubble-line);
     }
   }
 
@@ -50,8 +50,8 @@
     width: 20px;
     height: 20px;
     border-radius: 10px;
-    background-color: $step-list-bubble-background;
-    color: white;
+    background-color: var(--stepList-bubble-background);
+    color: var(--stepList-bubble-text);
     line-height: 19px;
     font-size: 11px;
     font-weight: bold;
@@ -61,7 +61,7 @@
     font-weight: bold;
     line-height: 1.2;
     margin-bottom: 5px;
-    color: $step-list-headline-color;
+    color: var(--stepList-headline);
   }
 
 }
