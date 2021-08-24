@@ -54,7 +54,8 @@ module BeyondCanvas
           end
 
           def authenticated?
-            beyond_access_token.present? && beyond_refresh_token.present?
+            beyond_access_token.present? &&
+              (Rails.env.development? && BeyondCanvas.configuration.client_credentials || beyond_refresh_token.present?)
           end
         end
       end

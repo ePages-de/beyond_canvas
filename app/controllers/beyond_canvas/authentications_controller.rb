@@ -8,7 +8,9 @@ module BeyondCanvas
 
     include ::BeyondCanvas::Authentication
 
-    before_action :validate_app_installation_request!, only: :new
+    before_action :validate_app_installation_request!,
+                  only: :new,
+                  unless: -> { Rails.env.development? && BeyondCanvas.configuration.client_credentials }
     before_action :clear_locale_cookie, only: [:new, :install]
 
     def new
