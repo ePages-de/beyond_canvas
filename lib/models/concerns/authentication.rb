@@ -43,7 +43,7 @@ module BeyondCanvas
           def authenticate(code)
             session = BeyondApi::Session.new(api_url: beyond_api_url)
 
-            if Rails.env.development? && BeyondCanvas.configuration.client_credentials?
+            if Rails.env.development? && BeyondCanvas.configuration.client_credentials
               session.token.client_credentials
             else
               session.token.authorization_code(code)
