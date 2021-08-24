@@ -40,9 +40,15 @@ module BeyondCanvas
           # NOTE: This method is used during the shop creation, as it is the only point
           # we know about the authentication code
           #
-          def authenticate(params_code)
+          def authenticate(code)
             session = BeyondApi::Session.new(api_url: beyond_api_url)
-            session.token.create(params_code)
+
+            if Rails.env.development? && BeyondCanvas.configuration.client_credentials?
+              session.token.client_credentials
+            else
+              session.token.authorization_code(code)
+            end
+
             update(beyond_access_token: session.access_token,
                    beyond_refresh_token: session.refresh_token)
           end
