@@ -35,7 +35,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = '>= 2.5'
 
   spec.add_dependency 'attr_encrypted',  '~> 3.1'
-  spec.add_dependency 'beyond_api',      '~> 0.18'
+  spec.add_dependency 'beyond_api',      '>= 0.18'
   spec.add_dependency 'bourbon',         '~> 7.0'
   spec.add_dependency 'colorize',        '~> 0.8'
   spec.add_dependency 'http-accept',     '~> 2.1'
