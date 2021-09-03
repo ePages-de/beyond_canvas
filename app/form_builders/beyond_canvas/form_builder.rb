@@ -16,33 +16,37 @@ module BeyondCanvas
       end
     end
 
-    def check_box(attribute, args = {})
-      inline_wrapper(attribute, args) do
-        filed_identifyer = filed_identifyer(attribute)
+    def check_box(attribute, args = {}, checked_value = '1', unchecked_value = '0')
+      filed_identifyer = filed_identifyer(attribute)
+
+      inline_wrapper(attribute, args, filed_identifyer) do
 
         args.merge!(id: filed_identifyer)
             .merge!(hidden: true)
+            .merge!(class: 'input__checkbox')
 
-        @template.content_tag(:div, class: 'input__checkbox') do
-          super(attribute, args) +
-            @template.content_tag(:label, nil, class: 'input__checkbox__control', for: filed_identifyer)
-        end
+        super(attribute, args, checked_value, unchecked_value) +
+          @template.content_tag(:label, class: 'input__checkbox__control', for: filed_identifyer) do
+            @template.inline_svg_tag('icons/checkbox_checked.svg', style: 'display: none;', class: 'input__checkbox--checked') +
+            @template.inline_svg_tag('icons/checkbox_unchecked.svg', style: 'display: none;', class: 'input__checkbox--unchecked')
+          end
       end
     end
 
     def radio_button(attribute, value, args = {})
-      args.merge!(label: value) unless args[:label]
+      filed_identifyer = filed_identifyer(attribute)
 
-      inline_wrapper(attribute, args) do
-        filed_identifyer = filed_identifyer(attribute)
+      inline_wrapper(attribute, args, filed_identifyer) do
 
         args.merge!(id: filed_identifyer)
             .merge!(hidden: true)
+            .merge!(class: 'input__radio')
 
-        @template.content_tag(:div, class: 'input__radio') do
-          super(attribute, value, args) +
-            @template.content_tag(:label, nil, class: 'input__radio__control', for: filed_identifyer)
-        end
+        super(attribute, value, args) +
+          @template.content_tag(:label, class: 'input__radio__control', for: filed_identifyer) do
+            @template.inline_svg_tag('icons/radiobutton_checked.svg', style: 'display: none;', class: 'input__radio--checked') +
+            @template.inline_svg_tag('icons/radiobutton_unchecked.svg', style: 'display: none;', class: 'input__radio--unchecked')
+          end
       end
     end
 
@@ -73,40 +77,43 @@ module BeyondCanvas
     private
 
     def field_wrapper(attribute, args, &block)
-      label = args.dig(:label).blank? ? nil : args.delete(:label) || attribute.to_s.humanize
-      hint = args.dig(:hint)&.html_safe
-      pre = args.dig(:pre)
-      post = args.dig(:post)
+      label = args.delete(:label)&.html_safe
+      hint = args.delete(:hint)&.html_safe
+      pre = args.delete(:pre)
+      post = args.delete(:post)
 
       errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
 
       @template.content_tag(:div, class: 'form__row') do
-        @template.content_tag(:label, label&.html_safe, class: 'input__label') +
-        @template.content_tag(:div, class: 'relative', style: "#{'display: flex;' if pre || post}") do
-          [
-            (@template.content_tag(:span, pre, class: 'input__pre') if pre.present?),
-            (@template.content_tag(:span, post, class: 'input__post') if post.present?),
-            block.call,
-            (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
-          ].compact.inject(:+)
-        end +
-        (@template.content_tag(:div, hint, class: 'input__hint') if hint.present?)
+        [
+          (@template.content_tag(:label, label, class: 'input__label') if label.present?),
+          (@template.content_tag(:div, class: 'relative', style: "#{'display: flex;' if pre || post}") do
+            [
+              (@template.content_tag(:span, pre, class: 'input__pre') if pre.present?),
+              (@template.content_tag(:span, post, class: 'input__post') if post.present?),
+              block.call,
+              (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
+            ].compact.inject(:+)
+          end),
+          (@template.content_tag(:div, hint, class: 'input__hint') if hint.present?)
+        ].compact.inject(:+)
       end
     end
 
-    def inline_wrapper(attribute, args, &block)
-      label = args.dig(:label).blank? ? nil : args.delete(:label) || attribute.to_s.humanize
-      hint = args.dig(:hint)&.html_safe
-
+    def inline_wrapper(attribute, args, filed_identifyer, &block)
+      label = args.delete(:label)&.html_safe
+      hint = args.delete(:hint)&.html_safe
       errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
 
       @template.content_tag(:div, class: 'form__row') do
         @template.content_tag(:div, class: 'relative', style: 'display: flex; align-items: center;') do
           block.call +
-            @template.content_tag(:div) do
-              @template.content_tag(:label, label.html_safe, class: 'input__label') +
-              (@template.content_tag(:div, hint, class: 'input__hint') if hint.present?)
-            end +
+            (@template.content_tag(:div) do
+              [
+                (@template.content_tag(:label, label, class: "input__label", for: filed_identifyer) if label.present?),
+                (@template.content_tag(:label, hint, class: 'input__hint', for: filed_identifyer) if hint.present?)
+              ].compact.inject(:+)
+            end if label.present? || hint.present?) +
             (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
         end
       end

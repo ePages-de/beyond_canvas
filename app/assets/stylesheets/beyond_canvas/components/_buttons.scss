@@ -1,76 +1,62 @@
 %button {
-  @include padding($button-padding);
-
-  @if $button-box-shadow != true {
-    padding-top: 7px;
-  }
-
   align-items: center;
-  border-radius: $button-border-radius;
-  border-width: 1px;
-  border-style: solid;
+  border-radius: var(--button-borderRadius);
+  border-width: 0;
   cursor: pointer;
   display: inline-flex;
-  font-weight: $button-font-weight;
+  font-weight: 700;
   justify-content: flex-end;
   line-height: 1;
   outline: none;
+  padding: var(--button-horizontal-padding) 12px;
   transition: $main-transition;
   white-space: nowrap;
 }
 
 %button_disabled {
-  border-color: $button-disabled-background;
-  background-color: $button-disabled-background;
+  border-color: var(--button-disabled-background);
+  background-color: var(--button-disabled-background);
   pointer-events: none;
-  color: $button-disabled-color;
-  text-shadow: $button-disabled-text-shadow;
+  color: var(--button-disabled-text);
+  text-shadow: var(--button-disabled-textShadow);
   border-bottom-color: #aaaaaa;
 }
 
+@mixin button-border-bottom($border-bottom-color) {
+  border-bottom: var(--button-borderBottom-width) solid var(#{$border-bottom-color});
+}
 
-@mixin button-solid($background, $color) {
-  @include background-color-darken($background, 10%);
+@mixin button-solid($background, $background-hover, $color) {
+  @include spinner($color);
 
-  color: $color;
+  background-color: var(#{$background});
+  color: var(#{$color});
 
+  &:hover {
+    background-color: var(#{$background-hover});
+  }
+}
+
+@mixin button-transparent($background, $background-hover, $color) {
+  @include spinner($color);
+
+  background-color: var(#{$background});
+  color: var(#{$color});
+  padding: calc(var(--button-horizontal-padding) - var(--button-outline-border-width)) 12px var(--button-horizontal-padding);
+  border: var(--button-outline-border-width) solid var(--button-outline-border-color);
+
+  &:hover {
+    background-color: var(#{$background-hover});
+  }
+}
+
+@mixin spinner($background) {
   .spinner {
     display: none;
 
     > div {
-      background-color: $color;
+      background-color: var(#{$background});
     }
-  }
-
-  &:hover {
-    border-color: darken($background, 10%);
-  }
-}
-
-@mixin button-transparent($background) {
-  background-color: transparent;
-  border-color: $background;
-  color: $background;
-
-  .spinner {
-    display: none;
-
-    > div {
-      background-color: $background;
-    }
-  }
-
-  &:hover {
-    background-color: lighten($background, 40%);
-  }
-}
-
-@mixin button-border($background) {
-  border-color: $background;
-
-  @if $button-box-shadow == true {
-    border-bottom-width: 2px;
-    border-bottom-color: darken($background, 10%);
   }
 }
 
@@ -78,42 +64,34 @@ input[type=file][disabled] ~ .button__transparent--primary {
   @extend %button_disabled;
 }
 
+[class^='button__'] {
+  &:disabled,
+  &[disabled] {
+    @extend %button_disabled;
+  }
+}
+
 .button {
   &__solid {
     &--primary {
       @extend %button;
 
-      @include button-solid($button-primary-background, $button-primary-color);
-      @include button-border($button-primary-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
+      @include button-solid(--button-primary-background, --button-primary-background-hover, --button-text);
+      @include button-border-bottom(--button-primary-borderBottom-color);
     }
 
     &--secondary {
       @extend %button;
 
-      @include button-solid($button-secondary-background, $button-secondary-color);
-      @include button-border($button-secondary-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
+      @include button-solid(--button-default-background, --button-default-background-hover, --button-text);
+      @include button-border-bottom(--button-default-borderBottom-color);
     }
 
     &--danger {
       @extend %button;
 
-      @include button-solid($button-danger-background, $button-danger-color);
-      @include button-border($button-danger-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
+      @include button-solid(--button-danger-background, --button-danger-background-hover, --button-text);
+      @include button-border-bottom(--button-danger-borderBottom-color);
     }
   }
 
@@ -121,37 +99,8 @@ input[type=file][disabled] ~ .button__transparent--primary {
     &--primary {
       @extend %button;
 
-      @include button-transparent($button-primary-background);
-      @include button-border($button-primary-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
-    }
-
-    &--secondary {
-      @extend %button;
-
-      @include button-transparent($button-secondary-background);
-      @include button-border($button-secondary-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
-    }
-
-    &--danger {
-      @extend %button;
-
-      @include button-transparent($button-danger-background);
-      @include button-border($button-danger-background);
-
-      &:disabled,
-      &[disabled] {
-        @extend %button_disabled;
-      }
+      @include button-transparent(--button-outline-background, --button-outline-background-hover, --button-outline-text);
+      @include button-border-bottom(--button-primary-borderBottom-color);
     }
   }
 }

@@ -1,7 +1,8 @@
 @import "bourbon";
 
 @import "settings/breakpoints";
-@import "settings/variables";
+@import "settings/constant_variables";
+@import "settings/base_variables";
 @import "settings/reset_css";
 @import "settings/typography";
 
@@ -14,7 +15,6 @@
 @import "components/buttons";
 @import "components/cards";
 @import "components/collapse";
-@import "components/comments";
 @import "components/debug";
 @import "components/flash";
 @import "components/forms";

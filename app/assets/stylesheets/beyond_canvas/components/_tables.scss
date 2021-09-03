@@ -26,7 +26,7 @@
   tbody {
     tr {
       background-color: var(--table-row-background);
-      border-bottom: 1px solid var(--table-row-border);
+      border-bottom: var(--table-row-border);
 
       &:hover {
         background-color: var(--table-row-background-hover);
