@@ -3,7 +3,7 @@
 module BeyondCanvas
   class Configuration # :nodoc:
     attr_accessor :site_title, :site_logo, :favicon, :skip_webpacker, :encryption_key, :namespace, :cockpit_app,
-                  :open_app_url, :preinstalled, :debug_mode, :webhook_site_url, :email_logo
+                  :open_app_url, :preinstalled, :debug_mode, :webhook_site_url, :email_logo, :client_credentials
 
     include AssetRegistration
     include MenuItemRegistration
@@ -12,6 +12,7 @@ module BeyondCanvas
     def initialize
       @cockpit_app = false
       @debug_mode = false
+      @client_credentials = false
       @encryption_key = nil
       @favicon = nil
       @namespace = '/'

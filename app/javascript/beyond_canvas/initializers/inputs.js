@@ -1,15 +1,15 @@
 (function ($) {
   const onDOMReady = function () {
     $('input[type="file"]').each(function () {
-      var $input = $(this),
+      const $input = $(this),
         $label = $(`.input__file__text.${$input.attr('id')}`),
         labelVal = $label.html();
 
       $input.on('change', function (e) {
-        var fileName = '';
+        let fileName = '';
 
         if (this.files && this.files.length > 1)
-          fileName = (this.getAttribute('data-multiple-caption') || '').replace(
+          fileName = (this.getAttribute('data-multiple-caption') || '{count} files selected').replace(
             '{count}',
             this.files.length
           );
@@ -33,5 +33,9 @@
     });
   };
 
-  $(document).on('ready page:load turbolinks:load', onDOMReady);
+  $(document).on('ready page:load turbolinks:load', () => {
+    const observer = new MutationObserver(() => onDOMReady());
+
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
 })(jQuery);

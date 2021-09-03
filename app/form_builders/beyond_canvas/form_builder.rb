@@ -10,7 +10,7 @@ module BeyondCanvas
       end
     end
 
-    def select(attribute, choices, options  = {}, args = {})
+    def select(attribute, choices, options = {}, args = {})
       field_wrapper(attribute, args) do
         super(attribute, choices, options, args)
       end
@@ -20,7 +20,6 @@ module BeyondCanvas
       filed_identifyer = filed_identifyer(attribute)
 
       inline_wrapper(attribute, args, filed_identifyer) do
-
         args.merge!(id: filed_identifyer)
             .merge!(hidden: true)
             .merge!(class: 'input__checkbox')
@@ -37,7 +36,6 @@ module BeyondCanvas
       filed_identifyer = filed_identifyer(attribute)
 
       inline_wrapper(attribute, args, filed_identifyer) do
-
         args.merge!(id: filed_identifyer)
             .merge!(hidden: true)
             .merge!(class: 'input__radio')
