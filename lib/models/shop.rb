@@ -7,6 +7,7 @@ module BeyondCanvas
 
       include ::BeyondCanvas::Models::Concerns::Authentication
       include ::BeyondCanvas::Models::Concerns::Utils
+      include ::BeyondCanvas::Models::Concerns::Webhook
     end
   end
 end

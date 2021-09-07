@@ -6,10 +6,10 @@
 }
 
 .body--public {
-  background-color: $main-background-public;
+  background-color: var(--workspace-background);
 
   .main-wrapper {
-    @include margin(32px auto);
+    @include margin(32px auto 100px);
 
     max-width: 531px;
     width: 94%;
@@ -24,7 +24,7 @@
 }
 
 .body--application {
-  background-color: $main-background-application;
+  background-color: var(--workspace-background);
 
   .main-wrapper {
     @include margin(25px auto 100px auto);

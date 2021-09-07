@@ -6,22 +6,23 @@
   font-weight: 500;
 
   &--good {
-    background-color: $status-good-background;
-    color: $status-good-color;
+    background-color: var(--active-status-background);
+    color: var(--active-status-text);
   }
 
   &--warning {
-    background-color: $status-warning-background;
-    color: $status-warning-color;
+    background-color: var(--todo-status-background);
+    color: var(--todo-status-text);
   }
 
   &--danger {
-    background-color: $status-danger-background;
-    color: $status-danger-color;
+    background-color: var(--danger-status-background);
+    color: var(--danger-status-text);
   }
 
   &--neutral {
-    border: 1px solid $status-neutral-background;
-    color: $status-neutral-color;
+    background-color: var(--outline-status-background);
+    border: 1px solid var(--outline-status-border);
+    color: var(--outline-status-text);
   }
 }

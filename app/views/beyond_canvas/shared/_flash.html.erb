@@ -2,21 +2,25 @@
 
   <% flash.each do |key, value| %>
 
-    <div class="flash">
+    <% unless value.blank? %>
 
-      <div class="flash__icon flash__icon--<%= key %>">
-        <%= get_flash_icon(key) %>
+      <div class="flash">
+
+        <div class="flash__icon flash__icon--<%= key %>">
+          <%= get_flash_icon(key) %>
+        </div>
+
+        <div class="flash__message">
+          <%= value %>
+        </div>
+
+        <div class="flash__close">
+          <%= inline_svg_tag 'icons/flash_close.svg' %>
+        </div>
+
       </div>
 
-      <div class="flash__message">
-        <%= value %>
-      </div>
-
-      <div class="flash__close">
-        <%= inline_svg_tag 'icons/flash_close.svg' %>
-      </div>
-
-    </div>
+    <% end %>
 
   <% end %>
 

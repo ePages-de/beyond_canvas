@@ -33,5 +33,11 @@ module BeyondCanvas
       hmac = OpenSSL::HMAC.digest(digest, secret, data)
       URI.decode(signature) == Base64.encode64(hmac).chop
     end
+
+    def signature_params
+      data = URI.parse(request.original_url).to_s
+      data << ":#{request.body.read}" if request.body.read.present?
+      data
+    end
   end
 end

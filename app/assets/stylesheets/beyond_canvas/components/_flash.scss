@@ -1,13 +1,13 @@
 .flash {
   @include position(fixed, 70px null null null);
 
-  background-color: $white;
-  border-radius: $flash-border-radius;
-  box-shadow: $flash-box-shadow;
+  background-color: var(--notification-background);
+  border-radius: var(--notification-borderRadius);
+  box-shadow: var(--notification-boxShadow);
   display: flex;
   overflow: hidden;
   transition: 0.7s linear;
-  z-index: 9999;
+  z-index: 999999;
 
   &--shown {
     // sass-lint:disable no-important
@@ -24,25 +24,25 @@
     > svg {
       @include size(18px);
 
-      fill: $white;
+      fill: var(--notification-background);
     }
 
     &--success,
     &--notice {
-      background-color: $flash-success;
+      background-color: var(--notification-success);
     }
 
     &--info {
-      background-color: $flash-info;
+      background-color: var(--notification-info);
     }
 
     &--warning {
-      background-color: $flash-warning;
+      background-color: var(--notification-warning);
     }
 
     &--error,
     &--alert {
-      background-color: $flash-error;
+      background-color: var(--notification-danger);
     }
   }
 
@@ -50,7 +50,7 @@
     @include padding(10px 15px);
 
     box-sizing: border-box;
-    color: $flash-color;
+    color: var(--notification-text);
   }
 
   &__close {
@@ -61,7 +61,7 @@
     > svg {
       @include size(8px);
 
-      fill: $flash-color;
+      fill: var(--notification-text);
     }
   }
 }
