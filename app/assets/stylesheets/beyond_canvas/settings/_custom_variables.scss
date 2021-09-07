@@ -1,0 +1,233 @@
+:root {
+  // ************************************************************
+  // Menu
+  // ************************************************************
+  --menu-height: 60px;
+}
+
+
+
+
+
+
+
+// ************************************************************
+// Colors
+// ************************************************************
+
+$white: rgb(255, 255, 255);
+$black: rgb(0, 0, 0);
+$palette-primary: rgb(78, 183, 168) !default;
+$palette-secondary: rgb(28, 53, 69) !default;
+$palette-cancel: rgb(153, 153, 153) !default;
+$palette-danger: rgb(218, 60, 60) !default;
+
+// ************************************************************
+// General styles
+// ************************************************************
+
+$main-transition: 0.125s ease-in;
+$main-color: red;
+
+// ************************************************************
+// Typography
+// ************************************************************
+
+$main-font-family: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif';
+$main-line-height: 1.5;
+$main-font-size: 14px;
+
+// ************************************************************
+// Headlines
+// ************************************************************
+
+$headline-line-height: 1;
+
+// ************************************************************
+// Links
+// ************************************************************
+
+$link-primary-color: darken($palette-primary, 10%) !default;
+$link-secondary-color: darken($palette-cancel, 10%) !default;
+$link-danger-color: darken($palette-danger, 10%) !default;
+$link-disabled-color: rgb(208,208,208) !default;
+
+// ************************************************************
+// Buttons
+// ************************************************************
+
+$button-primary-background: $palette-primary !default;
+$button-primary-color: $white !default;
+
+$button-secondary-background: $palette-cancel !default;
+$button-secondary-color: $white !default;
+
+$button-danger-background: $palette-danger !default;
+$button-danger-color: $white !default;
+
+$button-disabled-background: rgb(208,208,208) !default;
+$button-disabled-color: rgb(144,144,144) !default;
+$button-disabled-text-shadow: 1px 1px 0 $white !default;
+
+$button-border-radius: 3px !default;
+$button-box-shadow: true !default;
+$button-font-weight: 700;
+$button-padding: 6px 12px 7px;
+
+// ************************************************************
+// Cards
+// ************************************************************
+
+$card-padding: 40px;
+$card-margin: 30px;
+$card-separator-spacing: 40px;
+
+// ************************************************************
+// Containers
+// ************************************************************
+
+$container-spacing: 30px;
+
+// ************************************************************
+// Inputs
+// ************************************************************
+
+$input-border-color: rgb(217, 216, 195) !default;
+$input-border-color-focus: $palette-primary !default;
+$input-errors-color: $palette-danger !default;
+$input-disabled-background: rgb(245,244,239) !default;
+$input-disabled-color: rgb(163,161,137) !default;
+
+// ************************************************************
+// Checkboxes
+// ************************************************************
+
+$checkbox-checked-color: #97C344 !default; // This value MUST be HEX
+$checkbox-checked-background: #ffffff !default; // This value MUST be HEX
+$checkbox-unchecked-color: #C2BF9D !default; // This value MUST be HEX
+$checkbox-unchecked-background: #ffffff !default; // This value MUST be HEX
+
+// ************************************************************
+// Toggles
+// ************************************************************
+
+$toggle-border-color: #cbc9ad !default;
+$toggle-disabled-background: #f5f4ef !default;
+$toggle-checked-background: #97c344 !default; // This value MUST be HEX
+$toggle-checked-color: #ffffff !default; // This value MUST be HEX
+$toggle-unchecked-background: #c2bf9d !default; // This value MUST be HEX
+$toggle-unchecked-color: #ffffff !default; // This value MUST be HEX
+
+// ************************************************************
+// Radiobuttons
+// ************************************************************
+
+$radio-checked-color: #97C344 !default; // This value MUST be HEX
+$radio-checked-background: #ffffff !default; // This value MUST be HEX
+$radio-unchecked-color: #C2BF9D !default; // This value MUST be HEX
+$radio-unchecked-background: #ffffff !default; // This value MUST be HEX
+
+// ************************************************************
+// Hints
+// ************************************************************
+
+$hint-color: rgb(158, 158, 158) !default;
+
+// ************************************************************
+// Logo
+// ************************************************************
+
+$logo-margin-top-public: 0;
+$logo-margin-bottom-public: 34px;
+
+// ************************************************************
+// Comments
+// ************************************************************
+
+$comment-background: rgb(246, 246, 243) !default;
+$comment-color: rgb(170, 169, 156) !default;
+
+// ************************************************************
+// Breadcrums
+// ************************************************************
+
+$breadcrum-color: rgb(112, 110, 77) !default;
+$breadcrum-color-hover: rgb(67, 65, 46) !default;
+$breadcrum-color-current: rgb(112, 110, 77) !default;
+
+// ************************************************************
+// Titles
+// ************************************************************
+
+$title-color: rgb(122, 118, 76) !default;
+
+// ************************************************************
+// Menu
+// ************************************************************
+
+$menu-background: #1c3445 !default;
+$menu-height: 60px !default;
+$menu-logo-height: 30px !default;
+$menu-item-color: #9ab5c6 !default;
+$menu-item-hover-color: lighten($menu-item-color, 13%) !default;
+$menu-item-selected-color: #4eb7a8 !default;
+$menu-item-selected-hover-color: lighten($menu-item-selected-color, 13%) !default;
+
+// ************************************************************
+// Action bar
+// ************************************************************
+
+$action-bar-background: rgb(255, 255, 255) !default;
+$action-bar-shadow: 1px solid rgba(0, 0, 0, 0.2) !default;
+$action-bar-height: 73px !default;
+
+// ************************************************************
+// Markdown
+// ************************************************************
+
+$markdown-table-head-background: #f6f8fa;
+$markdown-table-border-color: #dfe2e5;
+$markdown-blockquote-font-color: #6a737d;
+$markdown-blockquote-border-color: #dfe2e5;
+$markdown-hr-background: #e1e4e8;
+
+// ************************************************************
+// Sidebar
+// ************************************************************
+
+$sidebar-width: 250px;
+$sidebar-background: #1d3544;
+$sidebar-header-background: #12222c;
+$sidebar-footer-background: #12222c;
+$sidebar-footer-icon-background: #9ab5c5;
+$sidebar-item-background: #9ab5c6;
+$sidebar-item-selected-background: #4eb7a8;
+
+// ************************************************************
+// Modals
+// ************************************************************
+
+$modal-padding: 20px;
+$modal-width: 650px;
+$modal-close-icon-color: #8b8b8b !default;
+$modal-background-color: rgba(0, 0, 0, 0.75) !default;
+
+// ************************************************************
+// Select2
+// ************************************************************
+
+$select2-border-color: $input-border-color !default;
+$select2-border-color-focus: $input-border-color-focus !default;
+$select2-close-icon-color: #79764b !default;
+$select2-close-icon-color-hover: darken($select2-close-icon-color, 15%) !default;
+$select2-tag-background: rgb(223, 222, 204) !default;
+$select2-tag-color: rgb(122, 118, 76) !default;
+$select2-disabled-background: rgb(245, 244, 239) !default;
+$select2-option-hover-background: rgb(229, 241, 240) !default;
+$select2-option-hover-color: rgb(62, 62, 62) !default;
+
+// ************************************************************
+// Collapsibles
+// ************************************************************
+
+$collapsible-color: $palette-primary !default;

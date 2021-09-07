@@ -23,12 +23,14 @@ const BUTTON_SELECTORS = '[class^="button"]';
     });
   };
 
-  $(document).on('confirm:complete', function ()  {
+  $(document).on('confirm:complete', function () {
     $.restoreActionElements();
   });
 
-  $(document).on('click', BUTTON_SELECTORS, function () {
+  $(document).on('click', BUTTON_SELECTORS, function (e) {
     var button = $(this);
+
+    if(e.target.attributes.getNamedItem('target')?.value === '_blank') return;
 
     $.disableActionElements();
 
@@ -38,10 +40,15 @@ const BUTTON_SELECTORS = '[class^="button"]';
   });
 
   $(document).on('ready page:load turbolinks:load', onDOMReady);
+
+  $(document).on('beforeunload turbolinks:before-visit', function () {
+    $.restoreActionElements();
+  });
 })(jQuery);
 
 $.extend({
   restoreActionElements: function () {
+    setTimeout(function () {
     // Hide spinners
     $(BUTTON_SELECTORS).each(function (_, button) {
       setTimeout(function () {
@@ -56,6 +63,7 @@ $.extend({
     $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function () {
       $(this).removeClass('actions--disabled');
     });
+    }, 100);
   },
   disableActionElements: function () {
     $('a, input[type="submit"], input[type="button"], input[type="reset"], button').each(function () {

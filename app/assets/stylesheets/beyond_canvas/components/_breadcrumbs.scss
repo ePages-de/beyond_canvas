@@ -5,7 +5,7 @@
   .home-icon {
     width: 12px;
     height: 12px;
-    fill: $breadcrum-color-current;
+    fill: var(--breadcrumb-icon);
   }
 
   .arrow-right {
@@ -13,20 +13,20 @@
     height: 8px;
     margin-left: 7px;
     margin-right: 7px;
-    fill: $breadcrum-color;
+    fill: var(--breadcrumb-text);
   }
 }
 
 .breadcrumb {
   &__item {
-    color: $breadcrum-color-current;
+    color: var(--breadcrumb-link);
 
     &:hover {
-      color: $breadcrum-color-hover
+      color: var(--breadcrumb-link-hover);
     }
 
     &--current {
-      color: $breadcrum-color;
+      color: var(--breadcrumb-text);
       pointer-events: none;
     }
   }
