@@ -36,6 +36,7 @@
   $(document).on('ready page:load turbolinks:load', () => {
     const observer = new MutationObserver(() => onDOMReady());
 
+    onDOMReady();
     observer.observe(document.body, { childList: true, subtree: true });
   });
 })(jQuery);
