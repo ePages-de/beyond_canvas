@@ -7,6 +7,7 @@ module BeyondCanvas
     layout 'beyond_canvas/public'
 
     include ::BeyondCanvas::Authentication
+    include ::BeyondCanvas::CustomStyles
 
     before_action :validate_app_installation_request!,
                   only: :new,
@@ -67,8 +68,12 @@ module BeyondCanvas
 
     def open_app(shop)
       shop.authenticate(params[:code]) if params[:code]
+
       reset_session
       log_in shop
+
+      cookies.delete(:custom_styles_url)
+      set_custom_styles_url shop if BeyondCanvas.configuration.cockpit_app
 
       redirect_to after_sign_in_path
     end

@@ -57,8 +57,8 @@ module BeyondCanvas
 
             session = self.to_session
 
-            session.webhook_subscriptions.all.embedded.subscriptions.each do |webhook|
-              session.webhook_subscriptions.delete(webhook.id)
+            session.webhook_subscriptions.all.dig(:embedded, :subscriptions)&.each do |webhook|
+              session.webhook_subscriptions.delete(webhook.dig(:id))
             end
           end
 
@@ -70,8 +70,8 @@ module BeyondCanvas
 
             session = self.to_session
 
-            session.webhook_subscriptions.all.embedded.subscriptions.each do |webhook|
-              session.webhook_subscriptions.update(webhook.id, callback_uri: callback_uri,
+            session.webhook_subscriptions.all.dig(:embedded, :subscriptions)&.each do |webhook|
+              session.webhook_subscriptions.update(webhook.dig(:id), callback_uri: callback_uri,
                                                                event_types: BeyondCanvas.configuration.webhook_events.to_a)
             end
           end
@@ -84,7 +84,7 @@ module BeyondCanvas
           #
           def create_signer
             # Get all existing signer ids
-            signer_ids = self.to_session.signers.all.embedded.signers&.map(&:id)
+            signer_ids = self.to_session.signers.all.dig(:embedded, :signers)&.map(&:id)
             # Remove the first signer if max number of signers reached to allow to create a new one
             self.to_session.signers.delete(signer_ids.slice!(0)) if signer_ids.count == 5
 

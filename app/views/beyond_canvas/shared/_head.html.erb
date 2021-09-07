@@ -16,6 +16,10 @@
     <% end %>
   <% end %>
 
+  <% if BeyondCanvas.configuration.cockpit_app %>
+      <%= stylesheet_link_tag cookies[:custom_styles_url] %>
+  <% end %>
+
   <% BeyondCanvas.configuration.javascripts.each do |path| %>
     <% if BeyondCanvas.configuration.skip_webpacker %>
       <%= javascript_include_tag path %>

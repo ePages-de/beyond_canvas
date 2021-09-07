@@ -45,9 +45,13 @@
   }
 
   &--primary {
-    @include color-darken($link-primary-color, 10%);
+    color: var(--primaryLink-color);
 
     @extend %link;
+
+    &:hover {
+      color: var(--primaryLink-hover-color);
+    }
 
     &[target="_blank"] {
       @include external($link-primary-color)
@@ -55,9 +59,13 @@
   }
 
   &--secondary {
-    @include color-darken($link-secondary-color, 10%);
+    color: var(--defaultLink-color);
 
     @extend %link;
+
+    &:hover {
+      color: var(--defaultLink-hover-color);
+    }
 
     &[target="_blank"] {
       @include external($link-secondary-color)

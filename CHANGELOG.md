@@ -1,5 +1,9 @@
 ### v0.23.0.pre
 
+* deprecations
+  * Remove `button__transparent--secondary`
+  * Remove `button__transparent--danger`
+
 * bug-fixes
   * Fix button line breaks
   * Fix `form__actions` bottom spacing
@@ -7,6 +11,7 @@
   * Increase flash element's `z-index`
 
 * features
+  * Allow to load the reseller specific styles
   * Add the following `form_tag_helpers`:
     * `email_field_tag`
     * `text_field_tag`
@@ -19,6 +24,7 @@
   * Add `:hover` effect to table rows
   * Add `step_list` helper
   * Allow to send `pre` and `post` attributes to inputs
+  * Automatically subscribe to Beyond webhooks
 
 * enhancements
   * Make `field_wrapper` and `inline_wrapper` private on `BeyondCanvas::FormBuilder`
@@ -26,6 +32,8 @@
   * Update gem dependencies
   * Increase locale expiration to 1 year
   * Add `text-overflow: ellipsis;` to `collapse` elements
+  * Allow to use `client_credentials` token via configuration option when opening the app
+  * Allow to use different logos for app and email
 
 ### v0.22.0.pre
 
