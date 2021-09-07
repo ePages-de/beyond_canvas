@@ -8,6 +8,7 @@
   * Fix button line breaks
   * Fix `form__actions` bottom spacing
   * Fix `action_bar` spacings
+  * Fix input type `file` label
   * Increase flash element's `z-index`
 
 * features
