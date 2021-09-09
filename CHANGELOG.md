@@ -1,3 +1,8 @@
+### v0.23.1.pre
+
+* bug-fixes
+  * Fix `label` attribute as `false`
+
 ### v0.23.0.pre
 
 * deprecations
