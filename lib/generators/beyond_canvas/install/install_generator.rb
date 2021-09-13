@@ -38,6 +38,12 @@ module BeyondCanvas
       def copy_locale
         copy_file '../../../../../config/locales/en.yml', 'config/locales/beyond_canvas.en.yml'
       end
+
+      def copy_public
+        Dir[File.join(BeyondCanvas::Engine.root, 'public', '*')].each do |file|
+          copy_file file, File.join(Rails.root, 'public', File.basename(file))
+        end
+      end
     end
   end
 end

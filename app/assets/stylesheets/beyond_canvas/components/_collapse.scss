@@ -9,18 +9,21 @@
   }
 
   &__button {
-    color: $palette-primary;
+    color: var(--primary-color);
     font-weight: 700;
     cursor: pointer;
-    display: table;
+    display: block;
     line-height: 1;
     margin-bottom: 4px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   &__icon {
     @include size(10px);
 
-    fill: $palette-primary;
+    fill: var(--primary-color);
     margin-right: 2px;
 
     &--open {

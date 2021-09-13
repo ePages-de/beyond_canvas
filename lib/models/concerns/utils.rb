@@ -30,7 +30,7 @@ module BeyondCanvas
           def refresh_token_if_needed
             token_timestamp = decoded_jwt['exp']
             current_timestamp = DateTime.now.to_i
-            return unless token_timestamp - current_timestamp <= 3600
+            return unless token_timestamp - current_timestamp <= 0
 
             refresh_token
           end

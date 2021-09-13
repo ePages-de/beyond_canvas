@@ -1,8 +1,8 @@
 .action_bar {
   width: 100%;
-  height: $action-bar-height;
-  background-color: $action-bar-background;
-  border-bottom: $action-bar-shadow;
+  height: var(--header-bar-height);
+  background-color: var(--workspace-toolbar-background);
+  border-bottom: var(--workspace-toolbar-border);
   padding: 0 25px;
   box-sizing: border-box;
   display: flex;
@@ -13,16 +13,21 @@
   z-index: 999;
 
   &--menu {
-    top: $menu-height;
+    top: var(--menu-height);
+  }
+
+  &--left,
+  &--right {
+    display: flex;
+    align-items: center;
+    min-width: 50%;
   }
 
   &--left {
-    display: flex;
     justify-content: flex-start;
   }
 
   &--right {
-    display: flex;
     justify-content: flex-end;
   }
 }

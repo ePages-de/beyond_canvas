@@ -13,7 +13,7 @@ body, #{$all-text-inputs}, #{$all-buttons}, select {
 }
 
 body, #{$all-text-inputs}, select {
-  color: $main-color;
+  color: var(--workspace-text);
 }
 
 body, #{$all-text-inputs} {
@@ -25,7 +25,7 @@ select {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  color: $headline-color;
+  color: var(--workspace-headline);
   font-weight: bold;
   line-height: $headline-line-height;
 }
@@ -55,13 +55,17 @@ p {
 }
 
 a {
-  color: $main-color;
+  color: var(--workspace-text);
   outline: none;
   text-decoration: none;
 }
 
 strong {
   font-weight: bold;
+}
+
+em {
+  font-style: italic;
 }
 
 // sass-lint:enable single-line-per-selector, no-vendor-prefixes

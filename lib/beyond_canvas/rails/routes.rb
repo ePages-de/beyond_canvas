@@ -3,18 +3,38 @@
 module ActionDispatch
   module Routing
     class Mapper # :nodoc:
-      def beyond_canvas_routes(options = nil)
-        mount BeyondCanvas::Engine => BeyondCanvas.configuration.namespace
+      def beyond_canvas_routes(*resources)
+        scope BeyondCanvas.configuration.namespace do
+          put 'locale', to: 'beyond_canvas/system#update_locale', as: :update_locale
+        end
 
-        BeyondCanvas.use_rails_app_controller = options.present? && options[:custom_controller].present?
+        resources = resources.extract_options!
 
-        set_routes if BeyondCanvas.use_rails_app_controller
+        beyond_canvas_for_controllers(resources[:controllers] || {})
       end
 
-      def set_routes
+      protected
+
+      def beyond_canvas_for_controllers(controllers)
+        [:authentications, :webhooks].each do |method|
+          controllers.key?(method) ? send("set_#{method}_routes", controllers[method]) : send("set_#{method}_routes")
+        end
+      end
+
+      def set_webhooks_routes(controller = 'beyond_canvas/webhooks')
         scope BeyondCanvas.configuration.namespace do
-          get  'callback', controller: :authentications, action: :new
-          post 'callback', controller: :authentications, action: :install
+          resources :shops, only: [] do
+            member do
+              post :beyond_webhook, controller: controller, action: :webhook
+            end
+          end
+        end
+      end
+
+      def set_authentications_routes(controller = 'beyond_canvas/authentications')
+        scope BeyondCanvas.configuration.namespace do
+          get  'callback', controller: controller, action: :new
+          post 'callback', controller: controller, action: :install
         end
       end
     end

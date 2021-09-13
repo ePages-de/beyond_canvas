@@ -42,6 +42,9 @@ module BeyondCanvas
       t.text :encrypted_beyond_refresh_token,    null: true
       t.text :encrypted_beyond_refresh_token_iv, null: true
 
+      t.text :encrypted_beyond_shared_secret,    null: true
+      t.text :encrypted_beyond_shared_secret_iv, null: true
+
 RUBY
       end
     end
