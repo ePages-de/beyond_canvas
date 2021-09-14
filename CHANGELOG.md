@@ -7,6 +7,9 @@
 * bug-fixes
   * Minor style fixes
 
+* enhancements
+  * Allow to retrieve `client_credentials` token on any environment but `production`
+
 ### v0.23.0.pre
 
 * deprecations
