@@ -9,7 +9,7 @@
   }
 
   &__button {
-    color: var(--primary-color);
+    color: var(--primaryLink-color);
     font-weight: 700;
     cursor: pointer;
     display: block;
@@ -23,7 +23,7 @@
   &__icon {
     @include size(10px);
 
-    fill: var(--primary-color);
+    fill: var(--primaryLink-color);
     margin-right: 2px;
 
     &--open {

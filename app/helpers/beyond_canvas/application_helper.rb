@@ -8,20 +8,6 @@ module BeyondCanvas
       page_title.empty? ? base_title : page_title + ' | ' + base_title
     end
 
-    def link_to_with_icon(name = nil, options = nil, fa_class = nil, html_options = nil)
-      options ||= {}
-
-      html_options = convert_options_to_data_attributes(options, html_options)
-
-      url = url_for(options)
-      html_options['href'] ||= url
-
-      content_tag('a', name || url, html_options) do
-        (fa_class.nil? ? '' : content_tag('i', nil, class: ['link__icon ' + fa_class])) +
-          name
-      end
-    end
-
     %i[success info warning error].each do |method|
       define_method :"notice_#{method}" do |name = nil, html_options = nil, &block|
         notice_render(method, name, html_options, &block)

@@ -5,81 +5,42 @@
   pointer-events: none;
 }
 
-%link {
+@mixin link($color, $color-hover) {
+  color: var(#{$color});
   line-height: 1.2;
-}
-
-@mixin external($color) {
-  background-image: url('data:image/svg+xml;utf8,\
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">\
-      <path d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/>\
-    </svg>');
-
-  background-position-x: right;
-  background-position-y: center;
-  background-repeat: no-repeat;
-  background-size: 12px;
-  padding-right: 18px;
-
-  @include recolor($color, 1);
 
   &:hover {
-    @include recolor(darken($color, 10%), 1);
+    color: var(#{$color-hover});
 
-    transition: $main-transition;
+    svg {
+      fill: var(#{$color-hover});
+    }
+  }
+
+  svg {
+    fill: var(#{$color});
+
+    &:first-child {
+      margin-right: 4px;
+    }
+
+    &:last-child {
+      margin-left: 6px;
+    }
   }
 }
 
 .link {
-  &__icon--left,
-  &__icon--right {
-    @include size(14px);
-  }
-
-  &__icon--left {
-    margin-right: 6px;
-  }
-
-  &__icon--right {
-    margin-left: 6px;
-  }
-
   &--primary {
-    color: var(--primaryLink-color);
-
-    @extend %link;
-
-    &:hover {
-      color: var(--primaryLink-hover-color);
-    }
-
-    &[target="_blank"] {
-      @include external($link-primary-color)
-    }
+    @include link(--primaryLink-color, --primaryLink-hover-color);
   }
 
   &--secondary {
-    color: var(--defaultLink-color);
-
-    @extend %link;
-
-    &:hover {
-      color: var(--defaultLink-hover-color);
-    }
-
-    &[target="_blank"] {
-      @include external($link-secondary-color)
-    }
+    @include link(--defaultLink-color, --defaultLink-hover-color);
   }
 
   &--danger {
-    @include color-darken($link-danger-color, 10%);
-
-    @extend %link;
-
-    &[target="_blank"] {
-      @include external($link-secondary-color)
-    }
+    @include link(--button-danger-background, --button-danger-background-hover);
   }
 
   &--primary,
