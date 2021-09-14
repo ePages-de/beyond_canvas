@@ -1,3 +1,12 @@
+### v0.23.1.pre
+
+* deprecations
+  * Remove `link_to_with_icon`
+  * `external_link` icon will no longer be automatically added on `target="_blank"` anchors
+
+* bug-fixes
+  * Minor style fixes
+
 ### v0.23.0.pre
 
 * deprecations
