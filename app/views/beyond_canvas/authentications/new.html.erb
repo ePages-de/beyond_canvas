@@ -3,7 +3,7 @@
 
 <div class="card card--padding">
 
-  <%= form_with(url: callback_path, method: :post, scope: :shop, model: @shop, local: true, builder: BeyondCanvas::FormBuilder) do |f| %>
+  <%= form_with(url: main_app.callback_path, method: :post, scope: :shop, model: @shop, local: true, builder: BeyondCanvas::FormBuilder) do |f| %>
 
     <h2 class="card__headline"><%= I18n.t('headline', app_name: app_name, scope: i18n_scope) %></h2>
 
