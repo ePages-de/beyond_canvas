@@ -19,11 +19,11 @@
   pointer-events: none;
   color: var(--button-disabled-text);
   text-shadow: var(--button-disabled-textShadow);
-  border-bottom-color: #aaaaaa;
+  border-bottom-color: var(--button-disabled-borderBottom-color);
 }
 
-@mixin button-border-bottom($border-bottom-color) {
-  border-bottom: var(--button-borderBottom-width) solid var(#{$border-bottom-color});
+@mixin button-border-bottom($border-bottom-width, $border-bottom-color) {
+  border-bottom: var(#{$border-bottom-width}) solid var(#{$border-bottom-color});
 }
 
 @mixin button-solid($background, $background-hover, $color) {
@@ -77,21 +77,21 @@ input[type=file][disabled] ~ .button__transparent--primary {
       @extend %button;
 
       @include button-solid(--button-primary-background, --button-primary-background-hover, --button-text);
-      @include button-border-bottom(--button-primary-borderBottom-color);
+      @include button-border-bottom(--button-borderBottom-width, --button-primary-borderBottom-color);
     }
 
     &--secondary {
       @extend %button;
 
       @include button-solid(--button-default-background, --button-default-background-hover, --button-text);
-      @include button-border-bottom(--button-default-borderBottom-color);
+      @include button-border-bottom(--button-borderBottom-width, --button-default-borderBottom-color);
     }
 
     &--danger {
       @extend %button;
 
       @include button-solid(--button-danger-background, --button-danger-background-hover, --button-text);
-      @include button-border-bottom(--button-danger-borderBottom-color);
+      @include button-border-bottom(--button-borderBottom-width, --button-danger-borderBottom-color);
     }
   }
 
@@ -100,7 +100,7 @@ input[type=file][disabled] ~ .button__transparent--primary {
       @extend %button;
 
       @include button-transparent(--button-outline-background, --button-outline-background-hover, --button-outline-text);
-      @include button-border-bottom(--button-primary-borderBottom-color);
+      @include button-border-bottom(--button-outline-borderBottom-width, --button-outline-border-color);
     }
   }
 }
