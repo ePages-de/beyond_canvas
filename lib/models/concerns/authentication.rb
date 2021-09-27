@@ -7,7 +7,7 @@ module BeyondCanvas
         extend ActiveSupport::Concern
 
         included do
-          attr_accessor :code, :signature, :access_token_url, :api_url, :return_url, :terms
+          attr_accessor :code, :signature, :access_token_url, :api_url, :return_url
 
           ##############################################################################
           # Encrypted attribute configuration
