@@ -26,10 +26,10 @@ module BeyondCanvas
                     presence: true
           validates :beyond_access_token,
                     presence: true,
-                    unless: -> { encrypted_beyond_access_token_was.blank? }
+                    if: -> { encrypted_beyond_access_token_was.present? }
           validates :beyond_refresh_token,
                     presence: true,
-                    unless: -> { encrypted_beyond_refresh_token_was.blank? }
+                    if: -> { encrypted_beyond_refresh_token_was.present? }
 
           ##############################################################################
           # Instance methods
