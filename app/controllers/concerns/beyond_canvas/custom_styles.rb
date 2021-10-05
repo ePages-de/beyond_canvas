@@ -44,6 +44,8 @@ module BeyondCanvas
 
       return if shop.blank?
 
+      shop.refresh_token_if_needed
+
       reseller = shop.to_session.shop.current[:reseller_name]
 
       cookies[:custom_styles_url] = {
