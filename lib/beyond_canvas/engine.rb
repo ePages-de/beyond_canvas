@@ -23,10 +23,6 @@ module BeyondCanvas
           secure: true,
           same_site: :none,
         }
-
-        app.config.action_dispatch.default_headers = {
-          'X-Frame-Options' => 'ALLOWALL'
-        }
       end
     end
 
@@ -54,6 +50,11 @@ module BeyondCanvas
       # ActiveSupport.on_load :action_dispatch_request do
       #   puts 'oliii'
       # end
+      Rails.application.configure do
+        config.action_dispatch.default_headers = {
+          'X-Frame-Options' => 'ALLOWALL'
+        }
+      end
     end
   end
 end
