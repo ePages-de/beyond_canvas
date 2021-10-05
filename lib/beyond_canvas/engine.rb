@@ -23,8 +23,14 @@ module BeyondCanvas
           secure: true,
           same_site: :none,
         }
+
+        app.config.action_dispatch.default_headers = {
+          'X-Frame-Options' => 'ALLOWALL'
+        }
       end
     end
+
+    # SEE:  https://guides.rubyonrails.org/engines.html#available-load-hooks
 
     config.before_initialize do
       ActiveSupport.on_load :action_controller do
@@ -44,6 +50,10 @@ module BeyondCanvas
       ActiveSupport.on_load :action_controller do
         include ::BeyondCanvas::AddBlockerCheck
       end
+
+      # ActiveSupport.on_load :action_dispatch_request do
+      #   puts 'oliii'
+      # end
     end
   end
 end
