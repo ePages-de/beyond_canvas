@@ -26,6 +26,10 @@ module BeyondCanvas
       end
     end
 
+    initializer "beyond_canvas.add_middleware" do |app|
+      app.middleware.use BeyondCanvas::CockpitAppHeader
+    end
+
     # SEE:  https://guides.rubyonrails.org/engines.html#available-load-hooks
 
     config.before_initialize do
@@ -45,18 +49,6 @@ module BeyondCanvas
     config.after_initialize do
       ActiveSupport.on_load :action_controller do
         include ::BeyondCanvas::AddBlockerCheck
-      end
-
-      ActiveSupport.on_load :action_dispatch_request do
-        ActionDispatch::Response.default_headers = {
-          'X-Frame-Options' => 'ALLOWALL'
-        }
-      end
-
-      ActiveSupport.on_load :action_dispatch_response do
-        ActionDispatch::Response.default_headers = {
-          'X-Frame-Options' => 'ALLOWALL'
-        }
       end
     end
   end
