@@ -14,14 +14,19 @@ module BeyondCanvas
           ##############################################################################
 
           #
-          # Generates a new access_token and refresh_token
+          # Retrieves new access_token and refresh_token and stores them.
           #
           def refresh_token
-            beyond_session = BeyondApi::Session.new(api_url: beyond_api_url, refresh_token: beyond_refresh_token)
-            beyond_session.token.refresh
+            session = BeyondApi::Session.new(api_url: beyond_api_url, refresh_token: beyond_refresh_token)
 
-            update(beyond_access_token: beyond_session.access_token,
-                   beyond_refresh_token: beyond_session.refresh_token)
+            if BeyondCanvas.configuration.client_credentials?
+              session.token.client_credentials
+            else
+              session.token.refresh_token
+            end
+
+            update(beyond_access_token: session.access_token,
+                   beyond_refresh_token: session.refresh_token)
           end
 
           #
