@@ -47,11 +47,14 @@ module BeyondCanvas
         include ::BeyondCanvas::AddBlockerCheck
       end
 
-      # ActiveSupport.on_load :action_dispatch_request do
-      #   puts 'oliii'
-      # end
-      Rails.application.configure do
-        config.action_dispatch.default_headers = {
+      ActiveSupport.on_load :action_dispatch_request do
+        ActionDispatch::Response.default_headers = {
+          'X-Frame-Options' => 'ALLOWALL'
+        }
+      end
+
+      ActiveSupport.on_load :action_dispatch_response do
+        ActionDispatch::Response.default_headers = {
           'X-Frame-Options' => 'ALLOWALL'
         }
       end
