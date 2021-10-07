@@ -27,7 +27,9 @@ module BeyondCanvas
     end
 
     initializer "beyond_canvas.add_middleware" do |app|
-      app.middleware.use BeyondCanvas::CockpitAppHeader
+      if BeyondCanvas.configuration.cockpit_app == true
+        app.middleware.use BeyondCanvas::Middleware::CockpitAppHeader
+      end
     end
 
     # SEE:  https://guides.rubyonrails.org/engines.html#available-load-hooks
