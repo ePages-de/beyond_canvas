@@ -15,6 +15,8 @@ module BeyondCanvas
     before_action :clear_locale_cookie, only: [:new, :install]
 
     def new
+      reset_session
+
       @shop = Shop.find_or_initialize_by(beyond_api_url: params[:api_url])
 
       if @shop&.authenticated?
