@@ -87,6 +87,9 @@ module BeyondCanvas
     end
 
     def clear_locale_cookie
+      puts '#' * 75
+      puts cookies.inspect
+      puts '#' * 75
       cookies.delete :locale if BeyondCanvas.configuration.cockpit_app
     end
   end
