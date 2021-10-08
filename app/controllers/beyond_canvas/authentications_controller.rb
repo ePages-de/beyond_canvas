@@ -17,7 +17,13 @@ module BeyondCanvas
     def new
       reset_session
 
+      puts '*' * 100
+      puts params[:api_url]
+
       @shop = Shop.find_or_initialize_by(beyond_api_url: params[:api_url])
+
+      puts @shop.inspect
+      puts '*' * 100
 
       if @shop&.authenticated?
         open_app(@shop)
