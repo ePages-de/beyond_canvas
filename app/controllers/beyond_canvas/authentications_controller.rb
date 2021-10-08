@@ -15,8 +15,6 @@ module BeyondCanvas
     before_action :clear_locale_cookie, only: [:new, :install]
 
     def new
-      reset_session
-
       puts '*' * 100
       puts params[:api_url]
 
