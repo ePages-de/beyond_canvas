@@ -15,8 +15,6 @@ require 'premailer/rails'
 require 'beyond_api'
 require 'attr_encrypted'
 
-require 'beyond_canvas/middleware/cockpit_app_header'
-
 module BeyondCanvas # :nodoc:
   autoload :AssetRegistration,        'beyond_canvas/asset_registration'
   autoload :Configuration,            'beyond_canvas/configuration'
