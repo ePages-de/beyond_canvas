@@ -6,8 +6,6 @@ module BeyondCanvas
   class Engine < ::Rails::Engine # :nodoc:
     isolate_namespace BeyondCanvas
 
-    config.autoload_paths << File.expand_path("beyond_canvas/middleware", __dir__)
-
     initializer 'beyond_canvas.assets.precompile' do |app|
       BeyondCanvas.configuration.stylesheets.each do |path, _|
         app.config.assets.precompile << path

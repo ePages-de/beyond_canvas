@@ -15,7 +15,6 @@ require 'premailer/rails'
 require 'beyond_api'
 require 'attr_encrypted'
 
-require 'beyond_canvas/middleware/cockpit_app_header'
 
 module BeyondCanvas # :nodoc:
   autoload :AssetRegistration,        'beyond_canvas/asset_registration'
@@ -23,6 +22,8 @@ module BeyondCanvas # :nodoc:
   autoload :MenuItemRegistration,     'beyond_canvas/menu_item_registration'
   autoload :ParameterSanitizer,       'beyond_canvas/parameter_sanitizer'
   autoload :WebhookEventRegistration, 'beyond_canvas/webhook_event_registration'
+
+  autoload :CockpitAppHeader 'beyond_canvas/middleware/cockpit_app_header'
 
   module Models # :nodoc:
     autoload :Shop, 'models/shop'
