@@ -6,15 +6,10 @@ module BeyondCanvas
       end
 
       def call(env)
-        puts '~' * 75
-        puts 'INSIDE MIDDLEWARE'
-        puts '~' * 75
         status, headers, response = @app.call(env)
         request = ActionDispatch::Request.new env
         headers['X-Frame-Options'] = 'ALLOWALL'
-        puts ',' * 75
-        puts "REQUEST PATH: #{request.path}"
-        puts ',' * 75
+
         [status, headers, response]
       end
     end

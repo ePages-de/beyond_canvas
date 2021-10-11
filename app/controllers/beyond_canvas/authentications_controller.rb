@@ -15,13 +15,7 @@ module BeyondCanvas
     before_action :clear_locale_cookie, only: [:new, :install]
 
     def new
-      puts '*' * 100
-      puts params[:api_url]
-
       @shop = Shop.find_or_initialize_by(beyond_api_url: params[:api_url])
-
-      puts @shop.inspect
-      puts '*' * 100
 
       if @shop&.authenticated?
         open_app(@shop)
@@ -85,9 +79,6 @@ module BeyondCanvas
     end
 
     def clear_locale_cookie
-      puts '#' * 75
-      puts cookies.inspect
-      puts '#' * 75
       cookies.delete :locale if BeyondCanvas.configuration.cockpit_app
     end
   end
