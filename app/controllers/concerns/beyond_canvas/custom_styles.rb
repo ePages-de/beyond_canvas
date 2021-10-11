@@ -5,7 +5,7 @@ module BeyondCanvas
     extend ActiveSupport::Concern
 
     included do
-      before_action :check_custom_styles!, except [:callback], if: -> { BeyondCanvas.configuration.cockpit_app } # rubocop:disable Rails/LexicallyScopedActionFilter
+      before_action :check_custom_styles!, except [:new], if: -> { BeyondCanvas.configuration.cockpit_app } # rubocop:disable Rails/LexicallyScopedActionFilter
     end
 
     private
