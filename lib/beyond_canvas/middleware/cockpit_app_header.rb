@@ -12,7 +12,7 @@ module BeyondCanvas
         headers['Access-Control-Allow-Origin'] = '*'
         headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS, PATCH, DELETE'
         headers['Access-Control-Request-Method'] = '*'
-        # headers['X-Frame-Options'] = 'ALLOWALL'
+        headers['X-Frame-Options'] = 'ALLOWALL'
 
         [status, headers, response]
       end
