@@ -9,6 +9,8 @@ module BeyondCanvas
     include ::BeyondCanvas::Authentication
     include ::BeyondCanvas::CustomStyles
 
+    skip_before_action :check_custom_styles!
+
     before_action :validate_app_installation_request!,
                   only: :new,
                   unless: -> { Rails.env.development? && BeyondCanvas.configuration.client_credentials }
