@@ -8,6 +8,10 @@ module BeyondCanvas
       def call(env)
         status, headers, response = @app.call(env)
         request = ActionDispatch::Request.new env
+
+        headers['Access-Control-Allow-Origin'] = '*'
+        headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
+        headers['Access-Control-Request-Method'] = '*'
         headers['X-Frame-Options'] = 'ALLOWALL'
 
         [status, headers, response]
