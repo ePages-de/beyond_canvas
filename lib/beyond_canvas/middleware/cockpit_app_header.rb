@@ -10,9 +10,9 @@ module BeyondCanvas
         request = ActionDispatch::Request.new env
 
         headers['Access-Control-Allow-Origin'] = '*'
-        headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
+        headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS, PATCH, DELETE'
         headers['Access-Control-Request-Method'] = '*'
-        headers['X-Frame-Options'] = 'ALLOWALL'
+        # headers['X-Frame-Options'] = 'ALLOWALL'
 
         [status, headers, response]
       end
