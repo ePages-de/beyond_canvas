@@ -1,12 +1,14 @@
 :root {
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Brand
   /*  --------------------------------------------------- */
   --primary-color: Orange;
   --secondary-color: #383838;
   --tertiary-color: DeepSkyBlue;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Global layout
   /*  --------------------------------------------------- */
@@ -17,7 +19,8 @@
   --padding: 40px;
   --borderRadius: 3px;
   --surfaceHover-color: #b3ecff;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Card
   /*  --------------------------------------------------- */
@@ -27,7 +30,8 @@
   --card-divider-border: 1px solid #e6e6e6;
   --card-borderRadius: 3px;
   --card-padding: 40px;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Breadcrumb
   /*  --------------------------------------------------- */
@@ -35,14 +39,16 @@
   --breadcrumb-link: #787878;
   --breadcrumb-link-hover: #525252;
   --breadcrumb-icon: #787878;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Action bar
   /*  --------------------------------------------------- */
   --workspace-toolbar-background: white;
   --workspace-toolbar-border: 1px solid rgba(0, 0, 0, 0.2);
   --header-bar-height: 73px;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Notification and Toast messages
   /*  --------------------------------------------------- */
@@ -54,7 +60,8 @@
   --notification-info: #999999;
   --notification-warning: #f3b547;
   --notification-danger: #da3c3c;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Modal
   /*  --------------------------------------------------- */
@@ -64,7 +71,8 @@
   --modal-closeButton-icon: #8b8b8b;
   --modal-closeButton-icon-hover: #717171;
   --modal-container-padding: 40px;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Empty states
   /*  --------------------------------------------------- */
@@ -74,12 +82,14 @@
   --emptyState-headline: #676767;
   --emptyState-help-text: gray;
   /*
+                    
   /*  ---------------------------------------------------
   /*  Loading spinner
   /*  --------------------------------------------------- */
   --spinner-border: #c0c0c0;
   --spinner-border-highlighting: #676767;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  States
   /*  --------------------------------------------------- */
@@ -89,6 +99,7 @@
   --disabled-color: #d0d0d0;
   --default-color: #999999;
   /*
+                    
   /* ---------------------------------------------------
   /* Status bubbles
   /* --------------------------------------------------- */
@@ -101,7 +112,8 @@
   --outline-status-background: transparent;
   --outline-status-border: #b3b3b3;
   --outline-status-text: #808080;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Link
   /*  --------------------------------------------------- */
@@ -109,7 +121,8 @@
   --primaryLink-hover-color: #0099cc;
   --defaultLink-color: #787878;
   --defaultLink-hover-color: #5e5e5e;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Buttons
   /*  --------------------------------------------------- */
@@ -127,16 +140,19 @@
   --button-danger-background-hover: #ae3535;
   --button-danger-borderBottom-color: #ae3535;
   --button-disabled-background: #d0d0d0;
+  --button-disabled-borderBottom-color: #aaaaaa;
   --button-disabled-text: #909090;
   --button-disabled-textShadow: 1px 1px 0 #ffffff;
   --button-outline-border-color: Orange;
   --button-outline-border-width: 1px;
+  --button-outline-borderBottom-width: 2px;
   --button-outline-background: transparent;
   --button-outline-background-hover: #ffedcc;
   --button-outline-text: #eb9800;
   --button-link-default-text: #787878;
   --button-link-primary-text: DeepSkyBlue;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  RichTextEditor
   /*  --------------------------------------------------- */
@@ -151,7 +167,8 @@
   --textEditor-button-active-background: #d4d4d4;
   --textEditor-button-icon: #676767;
   --textEditor-button-icon-disabled: #b3b3b3;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Table
   /*  --------------------------------------------------- */
@@ -163,7 +180,8 @@
   --table-header-link-hover: #252525;
   --table-header-sort-icon-default: #b3b3b3;
   --table-header-sort-icon: currentColor;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Media queries
   /*  --------------------------------------------------- */
@@ -175,7 +193,8 @@
   --screen-lg: 75em;
   --screen-lg-max: 112.4375em;
   --screen-xl: 112.5em;
-  /*
+  /* 
+                    
   /*  ---------------------------------------------------
   /*  Form elements
   /*  --------------------------------------------------- */
@@ -200,6 +219,7 @@
   --smartInputField-value-icon-hover: #4d4d4d;
   --smartInputField-value-borderRadius: 3px;
   /*
+                    
   /*  ---------------------------------------------------
   /*  Checkboxes and Radio buttons
   /*  --------------------------------------------------- */
@@ -208,6 +228,7 @@
   --check-disabled-text: #c5c5c5;
   --check-disabled-icon: #d9d9d9;
   /*
+                    
   /*  ---------------------------------------------------
   /*  FlipSwitch
   /*  --------------------------------------------------- */
@@ -217,6 +238,7 @@
   --flipSwitch-label: gray;
   --flipSwitch-text: silver;
   /*
+                    
   /*  ---------------------------------------------------
   /*  Step list
   /*  --------------------------------------------------- */
@@ -226,12 +248,14 @@
   --stepList-bubble-background: #808080;
   --stepList-bubble-text: white;
   /*
+                    
   /*  ---------------------------------------------------
   /*  Reseller logo
   /*  --------------------------------------------------- */
   --logo-width: 238px;
   --logo-height: 76px;
   /*
+                    
   /*  ---------------------------------------------------
   /*  Gray scale colors
   /*  --------------------------------------------------- */
