@@ -9,12 +9,9 @@ module BeyondCanvas
         status, headers, response = @app.call(env)
         request = ActionDispatch::Request.new env
 
-        headers['X-Frame-Options'] = 'ALLOWALL'
-
-        unless request.user_agent.match(/Chrome/)
-          puts '*' * 75
-          puts 'NO CHROME'
-          puts '*' * 75
+        if request.user_agent.match(/Chrome/)
+          headers['X-Frame-Options'] = 'ALLOWALL'
+        else
           headers['Access-Control-Allow-Origin'] = '*'
           headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS, PATCH, DELETE'
           headers['Access-Control-Request-Method'] = '*'
