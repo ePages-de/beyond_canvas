@@ -11,7 +11,10 @@ module BeyondCanvas
 
         headers['X-Frame-Options'] = 'ALLOWALL'
 
-        unless headers['User-Agent'].match(/chrome/)
+        unless headers['User-Agent'].match(/Chrome/)
+          puts '*' * 75
+          puts 'NO CHROME'
+          puts '*' * 75
           headers['Access-Control-Allow-Origin'] = '*'
           headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS, PATCH, DELETE'
           headers['Access-Control-Request-Method'] = '*'
