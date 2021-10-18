@@ -9,13 +9,9 @@ module BeyondCanvas
         status, headers, response = @app.call(env)
         request = ActionDispatch::Request.new env
 
-        puts '-' * 75
-        puts headers
-        puts '-' * 75
-
         headers['X-Frame-Options'] = 'ALLOWALL'
 
-        unless headers['User-Agent'].match(/Chrome/)
+        unless request.user_agent.match(/Chrome/)
           puts '*' * 75
           puts 'NO CHROME'
           puts '*' * 75
