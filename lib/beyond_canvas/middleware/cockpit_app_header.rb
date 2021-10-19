@@ -11,6 +11,9 @@ module BeyondCanvas
 
         headers['X-Frame-Options'] = 'ALLOWALL' # Some browsers like Firefox needs this to display the page correctly in the iframe
 
+        # Referer
+        # Sec-Fetch-Dest
+
         unless request.user_agent.match(/Chrome/)
           headers['Access-Control-Allow-Origin'] = '*'
           headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS, PATCH, DELETE'

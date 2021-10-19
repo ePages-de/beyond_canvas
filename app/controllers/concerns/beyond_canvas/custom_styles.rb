@@ -5,7 +5,7 @@ module BeyondCanvas
     extend ActiveSupport::Concern
 
     included do
-      before_action :check_custom_styles!, except: [:new], if: -> { BeyondCanvas.configuration.cockpit_app } # rubocop:disable Rails/LexicallyScopedActionFilter
+      before_action :check_custom_styles!
     end
 
     private
@@ -15,6 +15,8 @@ module BeyondCanvas
     # styles url and stores it on `custom_styles_url` cookie.
     #
     def check_custom_styles!
+      cookies.delete(:custom_styles_url) and return unless BeyondCanvas.configuration.custom_styles?
+
       return if valid_custom_styles_stylesheet?(cookies[:custom_styles_url])
 
       set_custom_styles_url
