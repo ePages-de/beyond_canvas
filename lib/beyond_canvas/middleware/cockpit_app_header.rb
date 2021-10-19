@@ -19,6 +19,9 @@ module BeyondCanvas
         if request.headers['Sec-Fetch-Dest'] == 'iframe'
           headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
             default-src 'self';
+            font-src 'self';
+            style-src 'self';
+            script-src 'self';
             frame-ancestors #{request.referer};
           POLICY
 
