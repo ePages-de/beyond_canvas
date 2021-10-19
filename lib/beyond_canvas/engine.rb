@@ -17,6 +17,23 @@ module BeyondCanvas
       app.config.assets.precompile << 'beyond_canvas_manifest.js'
     end
 
+    initializer 'beyond_canvas.session' do |app|
+      if BeyondCanvas.configuration.cockpit_app == true && !Rails.env.development?
+        app.config.session_store :cookie_store, {
+          secure: true,
+          same_site: :none,
+        }
+      end
+    end
+
+    initializer "beyond_canvas.add_middleware" do |app|
+      if BeyondCanvas.configuration.cockpit_app == true
+        app.middleware.use BeyondCanvas::Middleware::CockpitAppHeader
+      end
+    end
+
+    # SEE:  https://guides.rubyonrails.org/engines.html#available-load-hooks
+
     config.before_initialize do
       ActiveSupport.on_load :action_controller do
         include ::BeyondCanvas::LocaleManagement

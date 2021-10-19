@@ -22,6 +22,10 @@ module BeyondCanvas # :nodoc:
   autoload :ParameterSanitizer,       'beyond_canvas/parameter_sanitizer'
   autoload :WebhookEventRegistration, 'beyond_canvas/webhook_event_registration'
 
+  module Middleware
+    autoload :CockpitAppHeader,         'beyond_canvas/middleware/cockpit_app_header'
+  end
+
   module Models # :nodoc:
     autoload :Shop, 'models/shop'
 
