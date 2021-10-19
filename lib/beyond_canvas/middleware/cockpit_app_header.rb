@@ -17,6 +17,10 @@ module BeyondCanvas
         # Sec-Fetch-Dest
 
         if request.headers['Sec-Fetch-Dest'] == 'iframe'
+          headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
+            frame-ancestors '#{request.referer}';
+          POLICY
+
           puts '-' * 75
           puts request.referer
           puts request.headers['referer']
