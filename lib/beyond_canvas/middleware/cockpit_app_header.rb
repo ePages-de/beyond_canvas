@@ -11,8 +11,17 @@ module BeyondCanvas
 
         headers['X-Frame-Options'] = 'ALLOWALL' # Some browsers like Firefox needs this to display the page correctly in the iframe
 
+        puts request.headers['Sec-Fetch-Mode']
+
         # Referer
         # Sec-Fetch-Dest
+
+        if request.headers['Sec-Fetch-Mode'] == 'iframe'
+          puts '-' * 75
+          puts request.referer
+          puts request.headers['referer']
+        puts '-' * 75
+        end
 
         unless request.user_agent.match(/Chrome/)
           headers['Access-Control-Allow-Origin'] = '*'
