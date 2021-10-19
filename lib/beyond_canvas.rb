@@ -27,7 +27,6 @@ module BeyondCanvas # :nodoc:
     autoload :CockpitAppHeader,         'beyond_canvas/middleware/cockpit_app_header'
   end
 
-
   module Models # :nodoc:
     autoload :Shop, 'models/shop'
 
