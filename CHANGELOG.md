@@ -6,9 +6,18 @@
 
 * bug-fixes
   * Minor style fixes
+  * Prevent checking custom styles when opening the app
+  * Remove unnecessary `URI.decode(signature)` call when validating open app request
+  * Remove unnecessary `terms` attribute from `Shop`
+  * Fix `#refresh_token` method when `client_credentials = true` is configured
+
+* features
+  * Add a middleware to automatically configure cockpit app headers
+  * Add styles for `.svg` images that include `.surface`, `.bubbles` and `.outline` classes
 
 * enhancements
   * Allow to retrieve `client_credentials` token on any environment but `production`
+  * Add convenient `custom_styles?` and `client_credentials?` methods
 
 ### v0.23.0.pre
 
