@@ -20,7 +20,7 @@ module BeyondCanvas
           headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
             default-src 'self' #{request.host};
             font-src 'self' #{request.host};
-            style-src 'self' #{request.host};
+            style-src 'self' #{request.host} https://team42.beyondshop.cloud;
             script-src 'self' #{request.host};
             frame-ancestors #{request.referer};
           POLICY
