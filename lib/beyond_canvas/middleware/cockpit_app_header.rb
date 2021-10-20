@@ -18,7 +18,6 @@ module BeyondCanvas
 
         if request.headers['Sec-Fetch-Dest'] == 'iframe'
           headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
-            default-src 'self' *;
             frame-ancestors #{request.referer};
           POLICY
 
@@ -28,12 +27,12 @@ module BeyondCanvas
         puts '-' * 75
         end
 
-        unless request.user_agent.match(/Chrome/)
-          headers['Access-Control-Allow-Origin'] = '*'
-          headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS, PATCH, DELETE'
-          headers['Access-Control-Request-Method'] = '*'
-          headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Frame-Options, X-CSRF-Token'
-        end
+        # unless request.user_agent.match(/Chrome/)
+        #   headers['Access-Control-Allow-Origin'] = '*'
+        #   headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS, PATCH, DELETE'
+        #   headers['Access-Control-Request-Method'] = '*'
+        #   headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization, X-Frame-Options, X-CSRF-Token'
+        # end
 
         [status, headers, response]
       end
