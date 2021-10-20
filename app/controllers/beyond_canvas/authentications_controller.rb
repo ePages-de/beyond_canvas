@@ -75,7 +75,7 @@ module BeyondCanvas
       log_in shop
 
       cookies.delete(:custom_styles_url)
-      set_custom_styles_url shop if BeyondCanvas.configuration.cockpit_app
+      set_custom_styles_url shop if BeyondCanvas.configuration.custom_styles?
 
       redirect_to after_sign_in_path
     end
