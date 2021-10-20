@@ -9,7 +9,7 @@ module BeyondCanvas
         status, headers, response = @app.call(env)
         request = ActionDispatch::Request.new env
 
-        headers['X-Frame-Options'] = 'ALLOWALL' # Some browsers like Firefox needs this to display the page correctly in the iframe
+        # headers['X-Frame-Options'] = 'ALLOWALL' # Some browsers like Firefox needs this to display the page correctly in the iframe
 
         puts request.headers['Sec-Fetch-Dest']
 
