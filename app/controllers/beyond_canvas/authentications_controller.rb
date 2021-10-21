@@ -32,6 +32,9 @@ module BeyondCanvas
     end
 
     def install
+      puts '*' * 75
+      puts 'install'
+      puts '*' * 75
       @shop = Shop.create_with(shop_params).create_or_find_by(beyond_api_url: params[:shop][:api_url])
 
       @shop.assign_attributes(shop_params)
