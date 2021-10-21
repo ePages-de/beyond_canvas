@@ -46,6 +46,8 @@ module BeyondCanvas
 
       return if shop.blank?
 
+      puts 'set_custom_styles_url'
+
       shop.refresh_token_if_needed
 
       reseller = shop.to_session.shop.current[:reseller_name]
