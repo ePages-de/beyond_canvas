@@ -77,6 +77,9 @@ module BeyondCanvas
     end
 
     def open_app(shop)
+      puts '_' * 75
+      puts 'open_app'
+      puts '_' * 75
       shop.authenticate(params[:code]) if params[:code]
 
       reset_session
