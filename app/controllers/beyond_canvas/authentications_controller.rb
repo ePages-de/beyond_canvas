@@ -23,9 +23,9 @@ module BeyondCanvas
         open_app(@shop)
       elsif BeyondCanvas.configuration.preinstalled
         puts '.' * 75
-        puts 'Sec-Fetch-Dest ' + request&.headers['Sec-Fetch-Dest']
-        puts 'referer ' + request&.referer
-        puts 'user_agent ' + request&.user_agent
+        puts "Sec-Fetch-Dest #{request&.headers['Sec-Fetch-Dest']}"
+        puts "referer #{request&.referer}"
+        puts "user_agent #{request&.user_agent}"
         puts '.' * 75
         preinstall
       end
@@ -80,7 +80,7 @@ module BeyondCanvas
       log_in shop
 
       cookies.delete(:custom_styles_url)
-      puts 'BeyondCanvas.configuration.custom_styles? ' + BeyondCanvas.configuration.custom_styles?
+      puts "BeyondCanvas.configuration.custom_styles? #{BeyondCanvas.configuration.custom_styles?}"
       set_custom_styles_url shop if BeyondCanvas.configuration.custom_styles?
 
       redirect_to after_sign_in_path
