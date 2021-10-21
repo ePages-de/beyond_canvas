@@ -86,7 +86,9 @@ module BeyondCanvas
       log_in shop
 
       cookies.delete(:custom_styles_url)
+      puts '.' * 75
       puts "BeyondCanvas.configuration.custom_styles? #{BeyondCanvas.configuration.custom_styles?}"
+      puts '.' * 75
       set_custom_styles_url shop if BeyondCanvas.configuration.custom_styles?
 
       redirect_to after_sign_in_path
