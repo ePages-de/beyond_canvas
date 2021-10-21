@@ -58,9 +58,13 @@ module BeyondCanvas
       puts '|' * 75
       reseller = 'base' unless existing_url?(custom_styles_url)
 
+
       cookies[:custom_styles_url] = {
         value: shop.url("cockpit/assets/reseller-styles/#{reseller}-variables.css")
       }.merge COOKIES_ATTRIBUTES
+
+      puts cookies[:custom_styles_url]
+      cookies
     end
   end
 end
