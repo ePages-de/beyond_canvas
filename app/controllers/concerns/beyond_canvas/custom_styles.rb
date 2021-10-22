@@ -63,7 +63,12 @@ module BeyondCanvas
         value: shop.url("cockpit/assets/reseller-styles/#{reseller}-variables.css")
       }.merge COOKIES_ATTRIBUTES
 
+      puts '.' * 75
+
+      puts COOKIES_ATTRIBUTES
+
       puts cookies[:custom_styles_url]
+      puts '.' * 75
       cookies
     end
   end
