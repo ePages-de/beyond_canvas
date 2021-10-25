@@ -22,11 +22,6 @@ module BeyondCanvas
       if @shop&.authenticated?
         open_app(@shop)
       elsif BeyondCanvas.configuration.preinstalled
-        puts '.' * 75
-        puts "Sec-Fetch-Dest #{request&.headers['Sec-Fetch-Dest']}"
-        puts "referer #{request&.referer}"
-        puts "user_agent #{request&.user_agent}"
-        puts '.' * 75
         preinstall
       end
     end
