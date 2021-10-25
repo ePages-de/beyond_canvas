@@ -46,30 +46,17 @@ module BeyondCanvas
 
       return if shop.blank?
 
-      puts 'set_custom_styles_url'
-
       shop.refresh_token_if_needed
 
       reseller = shop.to_session.shop.current[:reseller_name]
       custom_styles_url = shop.url("cockpit/assets/reseller-styles/#{reseller}-variables.css")
 
-      puts '|' * 75
-      puts custom_styles_url
-      puts '|' * 75
       reseller = 'base' unless existing_url?(custom_styles_url)
 
 
       cookies[:custom_styles_url] = {
         value: shop.url("cockpit/assets/reseller-styles/#{reseller}-variables.css")
       }.merge COOKIES_ATTRIBUTES
-
-      puts '.' * 75
-
-      puts COOKIES_ATTRIBUTES
-
-      puts cookies[:custom_styles_url]
-      puts '.' * 75
-      cookies
     end
   end
 end
