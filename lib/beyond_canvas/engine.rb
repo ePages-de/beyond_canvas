@@ -53,7 +53,7 @@ module BeyondCanvas
         include ::BeyondCanvas::AddBlockerCheck
       end
 
-      require_relative '../beyond_canvas/constants.rb'
+      require_relative '../beyond_canvas/constants'
     end
   end
 end
