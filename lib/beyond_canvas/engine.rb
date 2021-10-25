@@ -52,6 +52,8 @@ module BeyondCanvas
       ActiveSupport.on_load :action_controller do
         include ::BeyondCanvas::AddBlockerCheck
       end
+
+      require_relative '../beyond_canvas/constants.rb'
     end
   end
 end
