@@ -50,9 +50,7 @@ module BeyondCanvas
 
       reseller = shop.to_session.shop.current[:reseller_name]
       custom_styles_url = shop.url("cockpit/assets/reseller-styles/#{reseller}-variables.css")
-
       reseller = 'base' unless existing_url?(custom_styles_url)
-
 
       cookies[:custom_styles_url] = {
         value: shop.url("cockpit/assets/reseller-styles/#{reseller}-variables.css")
