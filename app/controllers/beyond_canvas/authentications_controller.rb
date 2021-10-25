@@ -32,9 +32,6 @@ module BeyondCanvas
     end
 
     def install
-      puts '*' * 75
-      puts 'install'
-      puts '*' * 75
       @shop = Shop.create_with(shop_params).create_or_find_by(beyond_api_url: params[:shop][:api_url])
 
       @shop.assign_attributes(shop_params)
@@ -77,18 +74,13 @@ module BeyondCanvas
     end
 
     def open_app(shop)
-      puts '_' * 75
-      puts 'open_app'
-      puts '_' * 75
       shop.authenticate(params[:code]) if params[:code]
 
       reset_session
       log_in shop
 
       cookies.delete(:custom_styles_url)
-      puts '.' * 75
-      puts "BeyondCanvas.configuration.custom_styles? #{BeyondCanvas.configuration.custom_styles?}"
-      puts '.' * 75
+
       set_custom_styles_url shop if BeyondCanvas.configuration.custom_styles?
 
       redirect_to after_sign_in_path
