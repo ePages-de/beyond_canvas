@@ -35,10 +35,11 @@ module BeyondCanvas
       puts "Signature:  #{signature}"
       puts "Validation: #{Base64.encode64(hmac).chop}"
       puts "CGI valid:  #{CGI.unescape(signature)}"
-      puts "CGI.unescape(signature) == Base64.encode64(hmac).chop #{CGI.unescape(signature) == Base64.encode64(hmac).chop}"
+      puts "CGI.unescape(signature) == Base64.encode64(hmac).chop #{CGI.unescape(signature.gsub(' ', '+')) == Base64.encode64(hmac).chop}"
+      puts "CGI.encode(CGI.unescape(signature)) #{CGI.encode(CGI.unescape(signature)) == CGI.encode(Base64.encode64(hmac).chop)}"
       puts '-' * 75
 
-      CGI.unescape(signature) == Base64.encode64(hmac).chop
+      CGI.unescape(signature).gsub(' ', '+') == Base64.encode64(hmac).chop
     end
 
     def signature_params
