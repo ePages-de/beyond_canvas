@@ -37,6 +37,7 @@ module BeyondCanvas
       puts "CGI valid:  #{CGI.unescape(signature)}"
       puts "CGI.unescape(signature) == Base64.encode64(hmac).chop #{CGI.unescape(signature.gsub(' ', '+')) == Base64.encode64(hmac).chop}"
       puts "CGI.escape(CGI.unescape(signature)):     #{CGI.escape(CGI.unescape(signature))}"
+      puts "CGI.escape(signature)              :     #{CGI.escape(signature)}"
       puts "CGI.encode(Base64.encode64(hmac).chop)}: #{CGI.escape(Base64.encode64(hmac).chop)}"
       puts "CGI.escape(CGI.unescape(signature)) #{CGI.escape(CGI.unescape(signature)) == CGI.escape(Base64.encode64(hmac).chop)}"
       puts '-' * 75
