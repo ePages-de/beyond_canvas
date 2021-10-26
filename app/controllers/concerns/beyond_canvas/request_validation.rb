@@ -32,9 +32,10 @@ module BeyondCanvas
       digest = OpenSSL::Digest.new('SHA1')
       hmac = OpenSSL::HMAC.digest(digest, secret, data)
       puts '-' * 75
-      puts "Signature:  #{signature}"
-      puts "Validation: #{Base64.encode64(hmac).chop}"
-      puts "CGI valid:  #{CGI.unescape(signature)}"
+      puts "Signature:                               #{signature}"
+      puts "Validation:                              #{Base64.encode64(hmac).chop}"
+      puts "CGI valid:                               #{CGI.unescape(signature)}"
+      puts "CGI.encode(Base64.encode64(hmac).chop)}: #{CGI.escape(Base64.encode64(hmac).chop)}"
       puts "CGI.unescape(signature) == Base64.encode64(hmac).chop #{CGI.unescape(signature.gsub(' ', '+')) == Base64.encode64(hmac).chop}"
       puts "CGI.escape(CGI.unescape(signature)):     #{CGI.escape(CGI.unescape(signature))}"
       puts "CGI.escape(signature)              :     #{CGI.escape(signature)}"
