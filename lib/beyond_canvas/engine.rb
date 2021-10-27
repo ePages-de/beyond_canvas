@@ -18,7 +18,7 @@ module BeyondCanvas
     end
 
     initializer 'beyond_canvas.session' do |app|
-      if BeyondCanvas.configuration.cockpit_app == true && !Rails.env.development?
+      if BeyondCanvas.configuration.cockpit_app == true && Rails.env.production?
         app.config.session_store :cookie_store, {
           secure: true,
           same_site: :none,
@@ -52,6 +52,8 @@ module BeyondCanvas
       ActiveSupport.on_load :action_controller do
         include ::BeyondCanvas::AddBlockerCheck
       end
+
+      require_relative '../beyond_canvas/constants'
     end
   end
 end
