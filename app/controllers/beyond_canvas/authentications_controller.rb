@@ -15,7 +15,6 @@ module BeyondCanvas
                   only: :new,
                   unless: -> { Rails.env.development? && BeyondCanvas.configuration.client_credentials }
     before_action :clear_locale_cookie, only: [:new, :install]
-    before_action :set_iframe_ancestor_url, only: :open_app
 
     def new
       @shop = Shop.find_or_initialize_by(beyond_api_url: params[:api_url])
@@ -74,6 +73,8 @@ module BeyondCanvas
 
       reset_session
       log_in shop
+
+      set_iframe_ancestor_url
 
       cookies.delete(:custom_styles_url)
       set_custom_styles_url shop if BeyondCanvas.configuration.custom_styles?
