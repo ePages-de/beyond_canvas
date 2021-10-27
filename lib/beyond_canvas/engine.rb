@@ -18,7 +18,7 @@ module BeyondCanvas
     end
 
     initializer 'beyond_canvas.session' do |app|
-      if BeyondCanvas.configuration.cockpit_app == true && !Rails.env.development?
+      if BeyondCanvas.configuration.cockpit_app == true && Rails.env.production?
         app.config.session_store :cookie_store, {
           secure: true,
           same_site: :none,
