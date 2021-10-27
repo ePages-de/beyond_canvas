@@ -32,6 +32,7 @@ module BeyondCanvas
       digest = OpenSSL::Digest.new('SHA1')
       hmac = OpenSSL::HMAC.digest(digest, secret, data)
       puts '-' * 75
+      puts request&.headers&.env
       puts "Signature:                               #{signature}"
       puts "Signature encoding:                      #{signature.encoding}"
       puts "Validation:                              #{Base64.encode64(hmac)}"
