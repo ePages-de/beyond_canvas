@@ -10,10 +10,10 @@ module BeyondCanvas
         request = ActionDispatch::Request.new env
 
         if request.headers['Sec-Fetch-Dest'] == 'iframe'
-          headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
-            frame-ancestors #{request.session[:iframe_ancestor_url]} #{request.referer};
-          POLICY
         end
+        headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
+          frame-ancestors #{request.session[:iframe_ancestor_url]} #{request.referer};
+        POLICY
 
         puts '-' * 75
         puts "CockpitAppHeader: #{request.path}"
@@ -22,7 +22,6 @@ module BeyondCanvas
         puts "CockpitAppHeader: #{request.headers['Sec-Fetch-Mode']}"
         puts "CockpitAppHeader: #{request.headers['Sec-Fetch-User']}"
         puts "CockpitAppHeader: #{request.user_agent}"
-        puts "CockpitAppHeader: #{request.headers['User-Agent']}"
         puts "CockpitAppHeader: #{request.headers['Accept']}"
         puts "CockpitAppHeader: #{request.headers['Accept-Encoding']}"
         puts "CockpitAppHeader: #{request.headers['Accept-Language']}"
