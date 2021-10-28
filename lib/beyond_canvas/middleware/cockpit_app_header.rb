@@ -15,24 +15,6 @@ module BeyondCanvas
           POLICY
         end
 
-        puts '-' * 75
-        puts "CockpitAppHeader: #{request.path}"
-        puts "CockpitAppHeader: #{request.headers['Sec-Fetch-Dest']}"
-        puts "CockpitAppHeader: #{request.headers['Sec-Fetch-Site']}"
-        puts "CockpitAppHeader: #{request.headers['Sec-Fetch-Mode']}"
-        puts "CockpitAppHeader: #{request.headers['Sec-Fetch-User']}"
-        puts "CockpitAppHeader: #{request.user_agent}"
-        puts "CockpitAppHeader: #{request.headers['User-Agent']}"
-        puts "CockpitAppHeader: #{request.headers['Accept']}"
-        puts "CockpitAppHeader: #{request.headers['Accept-Encoding']}"
-        puts "CockpitAppHeader: #{request.headers['Accept-Language']}"
-        puts "CockpitAppHeader: #{request.headers['Cache-Control']}"
-        puts "CockpitAppHeader: #{request.headers['Connection']}"
-        puts "CockpitAppHeader: #{request.headers['Host']}"
-        puts "CockpitAppHeader: #{request.headers['Origin']}"
-        puts "CockpitAppHeader: #{request.headers['Referer']}"
-        puts '-' * 75
-
         [status, headers, response]
       end
     end
