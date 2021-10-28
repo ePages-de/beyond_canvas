@@ -74,6 +74,8 @@ module BeyondCanvas
       reset_session
       log_in shop
 
+      set_iframe_ancestor_url
+
       cookies.delete(:custom_styles_url)
       set_custom_styles_url shop if BeyondCanvas.configuration.custom_styles?
 
@@ -82,6 +84,10 @@ module BeyondCanvas
 
     def clear_locale_cookie
       cookies.delete :locale if BeyondCanvas.configuration.cockpit_app
+    end
+
+    def set_iframe_ancestor_url
+      session[:iframe_ancestor_url] = request.referer
     end
   end
 end
