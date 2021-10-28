@@ -9,9 +9,6 @@ module BeyondCanvas
         status, headers, response = @app.call(env)
         request = ActionDispatch::Request.new env
 
-        session_key = (config.session_options || {})[:key]
-        session_data = request.cookie_jar.encrypted[session_key] || {}
-
         if request.headers['Sec-Fetch-Dest'] == 'iframe'
           headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
             frame-ancestors #{request.session[:iframe_ancestor_url]} #{request.referer};
