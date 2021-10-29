@@ -17,7 +17,6 @@ module BeyondCanvas
 
         puts '-' * 75
         puts "CockpitAppHeader: #{request.path}"
-        puts "CockpitAppHeader: #{request.destination}"
         puts "CockpitAppHeader: #{request.headers['Sec-Fetch-Dest']}"
         puts "CockpitAppHeader: #{request.headers['Sec-Fetch-Site']}"
         puts "CockpitAppHeader: #{request.headers['Sec-Fetch-Mode']}"
