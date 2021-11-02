@@ -17,7 +17,7 @@ module BeyondCanvas
 
         puts '-' * 75
 
-        if request.user_agent.match?(/Safari/)
+        if request.user_agent.match?(/Macintosh/)
           puts "Safari: #{request.user_agent}"
         end
 
