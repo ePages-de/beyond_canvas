@@ -14,6 +14,7 @@ module BeyondCanvas
         puts "Cockpit Sessions: #{request.session}"
         puts "Cockpit Sessions: #{request.session[:locale]}"
         puts "Cockpit Sessions: #{request.session[:custom_styles_url]}"
+        puts "Cockpit Sessions: #{request.session[:iframe_ancestor_url]}"
 
         if sec_fetch_dest == 'iframe' || (request.user_agent.match?(/Safari/) && sec_fetch_dest.blank?)
           headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
