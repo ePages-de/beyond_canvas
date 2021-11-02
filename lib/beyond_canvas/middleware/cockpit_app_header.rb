@@ -17,7 +17,7 @@ module BeyondCanvas
 
         puts '-' * 75
 
-        if request.user_agent.match?(/Macintosh/)
+        if request.user_agent.match?(/Macintosh/) && request.headers['Sec-Fetch-Dest'].blank?
           puts "Safari: #{request.user_agent}"
         end
 
