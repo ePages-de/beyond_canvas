@@ -16,12 +16,16 @@ module BeyondCanvas
           POLICY
         end
 
+        puts '_' * 80
+        puts "Cockpit Sessions: #{request.session}"
+        puts "Cockpit Sessions: #{request.session[:iframe_ancestor_url]}"
+        puts "Cockpit Sessions: #{request.session[:locale]}"
+        puts "Cockpit Sessions: #{request.session[:custom_styles_url]}"
+        puts "Cockpit Sessions: #{request.session[:iframe_ancestor_url]}"
+        puts '_' * 80
+
+
         puts '-' * 75
-
-        if request.user_agent.match?(/Macintosh/) && request.headers['Sec-Fetch-Dest'].blank?
-          puts "Safari: #{request.user_agent}"
-        end
-
         puts "CockpitAppHeader: #{request.path}"
         puts "CockpitAppHeader: #{request.headers['Sec-Fetch-Dest']}"
         puts "CockpitAppHeader: #{request.headers['Sec-Fetch-Site']}"
