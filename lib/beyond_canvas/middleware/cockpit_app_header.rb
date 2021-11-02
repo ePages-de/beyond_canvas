@@ -12,6 +12,8 @@ module BeyondCanvas
 
         puts '_' * 80
         puts "Cockpit Sessions: #{request.session}"
+        puts "Cockpit Cookies:  #{request.cookies}"
+        puts "Cockpit Headers:  #{request.session[:shop_id]}"
         puts "Cockpit Sessions: #{request.session[:locale]}"
         puts "Cockpit Sessions: #{request.session[:custom_styles_url]}"
         puts "Cockpit Sessions: #{request.session[:iframe_ancestor_url]}"
