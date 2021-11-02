@@ -16,6 +16,11 @@ module BeyondCanvas
         POLICY
 
         puts '-' * 75
+
+        if request.user_agent.match?(/Safari/)
+          puts "Safari: #{request.user_agent}"
+        end
+
         puts "CockpitAppHeader: #{request.path}"
         puts "CockpitAppHeader: #{request.headers['Sec-Fetch-Dest']}"
         puts "CockpitAppHeader: #{request.headers['Sec-Fetch-Site']}"
