@@ -18,7 +18,6 @@ module BeyondCanvas
 
         puts '_' * 80
         puts "Cockpit Sessions: #{request.session}"
-        puts "Cockpit Sessions: #{request.session[:iframe_ancestor_url]}"
         puts "Cockpit Sessions: #{request.session[:locale]}"
         puts "Cockpit Sessions: #{request.session[:custom_styles_url]}"
         puts "Cockpit Sessions: #{request.session[:iframe_ancestor_url]}"
