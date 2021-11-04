@@ -23,7 +23,7 @@ module BeyondCanvas
           domain: :all,
           secure: true,
           same_site: :none,
-          path: '/'
+          path: '/exports'
         }
       end
     end
