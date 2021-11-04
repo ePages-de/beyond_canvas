@@ -62,6 +62,17 @@ module BeyondCanvas
       end
     end
 
+    %i[top right bottom left].each do |method|
+      define_method :"tooltip_#{method}" do |name = nil, &block|
+        name = block if block_given?
+
+        content_tag('span', class: 'tooltip') do
+          content_tag('span', '?', class: 'tooltip__label', data: { placement: method }) +
+          content_tag('div', name, class: 'tooltip__bubble', &block)
+        end
+      end
+    end
+
     private
 
     def unique_id(attribute)
