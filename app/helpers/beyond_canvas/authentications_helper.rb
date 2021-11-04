@@ -6,6 +6,9 @@ module BeyondCanvas
     # Logs in the given shop
     #
     def log_in(shop)
+      cookies[:shop_id] = {
+        value: shop.id
+      }.merge COOKIES_ATTRIBUTES
       session[:shop_id] = shop.id
     end
 
