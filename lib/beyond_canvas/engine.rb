@@ -19,9 +19,8 @@ module BeyondCanvas
 
     initializer 'beyond_canvas.session' do |app|
       if BeyondCanvas.configuration.cockpit_app == true && Rails.env.production?
-        app.config.session_store :cache_store, {
-          key: '_beyond_canvas',
-          serializer: :json,
+        app.config.session_store :cookie_store, {
+          domain: :all,
           secure: true,
           same_site: :none,
         }
