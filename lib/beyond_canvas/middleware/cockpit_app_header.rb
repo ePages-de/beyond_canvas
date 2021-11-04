@@ -29,7 +29,7 @@ module BeyondCanvas
           POLICY
         end
 
-        request.session[:set_safari_seesion] = true if request.user_agent.match?(/Safari/)
+        request.session[:safari_cookie_fixed] = true if request.user_agent.match?(/Safari/)
 
         puts "Cockpit Sessions: #{request.session[:iframe_ancestor_url]}"
         puts '_' * 80

@@ -19,6 +19,7 @@ module BeyondCanvas
       puts '*' * 75
       puts request.session
       puts "PATH: #{request.path}"
+      puts "SAFARI COOKIE FIXED: #{request.session[:safari_cookie_fixed]}"
       puts '*' * 75
       if session[:shop_id]
         @current_shop ||= Shop.find_by(id: session[:shop_id])
