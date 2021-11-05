@@ -1,18 +1,18 @@
 $arrow-size: 8px;
 
 .tooltip {
+  cursor: default;
   position: relative;
   padding: 5px;
+
+  &:hover .tooltip__bubble {
+    opacity: 1;
+    visibility: visible;
+  }
 
   &__label {
     color: var(--primary-color);
     font-weight: 700;
-    cursor: default;
-
-    &:hover ~ .tooltip__bubble {
-      opacity: 1;
-      visibility: visible;
-    }
 
     &[data-placement="top"] ~ .tooltip__bubble,
     &[data-placement="bottom"] ~ .tooltip__bubble {
@@ -39,6 +39,8 @@ $arrow-size: 8px;
         @include position(absolute, null null -8px null);
 
         content: '';
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
 
@@ -61,6 +63,8 @@ $arrow-size: 8px;
         @include position(absolute, -8px null null null);
 
         content: '';
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
 
@@ -79,7 +83,7 @@ $arrow-size: 8px;
   &__bubble {
     position: absolute;
     padding: 1em;
-    z-index: 1;
+    z-index: 99;
     opacity: 0;
     visibility: hidden;
     max-width: 350px;
@@ -89,6 +93,6 @@ $arrow-size: 8px;
     box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.4);
     line-height: 1;
     font-weight: normal;
-    white-space: nowrap;
+    width: max-content;
   }
 }
