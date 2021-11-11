@@ -23,11 +23,11 @@ module BeyondCanvas
         puts "Cockpit Cookies: #{request.cookies[:locale]}"
         puts "Cockpit Cookies: #{request.cookies[:shop_id]}"
 
-        if sec_fetch_dest == 'iframe' || (request.user_agent.match?(/Safari/) && sec_fetch_dest.blank?)
-          headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
-            frame-ancestors #{request.session[:iframe_ancestor_url]} #{request.referer};
-          POLICY
-        end
+        # if sec_fetch_dest == 'iframe' || (request.user_agent.match?(/Safari/) && sec_fetch_dest.blank?)
+        headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
+          frame-ancestors #{request.session[:iframe_ancestor_url]} #{request.referer};
+        POLICY
+        # end
 
         request.session[:safari_cookie_fixed] = true
         puts "Cockpit Sessions: #{request.session[:safari_cookie_fixed]}"
