@@ -91,12 +91,34 @@
     }
   });
   (function($) {
-    $(document).on("click", "[data-toggle='collapse']", function(e) {
+    $(document).on("click", '[data-toggle="collapse"]', function(e) {
       e.preventDefault();
-      $($(this).attr("data-target")).slideToggle();
-      $(this).find(".collapse__icon").toggleClass("collapse__icon--open");
+      var target = $(this).attr("data-target");
+      if ($(target).is(":hidden")) {
+        $(this).openCollapse();
+      } else {
+        $(this).closeCollapse();
+      }
     });
   })(jQuery);
+  $.fn.extend({
+    openCollapse: function openCollapse() {
+      var target = $(this).attr("data-target");
+      $(this).trigger("bc.collapse.open");
+      $(this).attr("data-visible", true);
+      $(this).find(".collapse__icon").addClass("collapse__icon--open");
+      $(target).slideDown();
+      $(this).trigger("bc.collapse.opened");
+    },
+    closeCollapse: function closeCollapse() {
+      var target = $(this).attr("data-target");
+      $(this).trigger("bc.collapse.close");
+      $(this).attr("data-visible", false);
+      $(this).find(".collapse__icon").removeClass("collapse__icon--open");
+      $(target).slideUp();
+      $(this).trigger("bc.collapse.closed");
+    }
+  });
   (function($) {
     var onDOMReady = function onDOMReady() {
       $(".flash").each(function() {
