@@ -14,13 +14,6 @@ module BeyondCanvas
           headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
             frame-ancestors #{request.session[:iframe_ancestor_url]} #{request.referer};
           POLICY
-
-          if sec_fetch_dest.blank?
-            headers['X-Frame-Options'] = 'ALLOWALL'
-            puts '_' * 100
-            puts "USER AGENT: #{request.user_agent}"
-            puts '_' * 100
-          end
         end
 
         [status, headers, response]
