@@ -18,7 +18,7 @@ module BeyondCanvas
           if sec_fetch_dest.blank?
             headers['X-Frame-Options'] = 'ALLOWALL'
             puts '_' * 100
-            puts request.user_agent
+            puts "USER AGENT: #{request.user_agent}"
             puts '_' * 100
           end
         end
