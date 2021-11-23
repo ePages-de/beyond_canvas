@@ -11,9 +11,11 @@ module BeyondCanvas
         sec_fetch_dest = request.headers['Sec-Fetch-Dest']
 
         if sec_fetch_dest == 'iframe' || (request.user_agent.match?(/Safari/) && sec_fetch_dest.blank?)
-        headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
-          frame-ancestors #{request.session[:iframe_ancestor_url]} #{request.referer};
-        POLICY
+          headers['Content-Security-Policy'] = <<~POLICY.gsub "\n", ' '
+            frame-ancestors #{request.session[:iframe_ancestor_url]} #{request.referer};
+          POLICY
+
+          headers['X-Frame-Options'] = 'ALLOWALL' if sec_fetch_dest.blank?
         end
 
         [status, headers, response]
