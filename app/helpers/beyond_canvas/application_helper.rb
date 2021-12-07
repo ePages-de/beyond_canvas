@@ -41,24 +41,24 @@ module BeyondCanvas
       end
     end
 
-    def step_list(title, steps = [])
+    def step_list(title = nil, steps: [])
       content_tag('div', class: 'step-list__container') do
-        content_tag('h4', title, class: 'step-list__title') +
-        content_tag('table', class: 'step-list__items') do
-          content_tag('tbody') do
-            steps.each_with_index.collect do |step, index|
-              content_tag('tr') do
-                content_tag('td', class: 'step-list__bubble-column') do
-                  content_tag('div', index + 1, class: 'step-list__bubble')
-                end +
-                content_tag('td') do
-                  content_tag('strong', step.dig(:headline)&.html_safe, class: 'step-list__headline') +
-                  content_tag('p', step.dig(:description)&.html_safe, class: 'step-list__description')
+        (title.nil? ? content_tag('div') : content_tag('h4', title, class: 'step-list__title')) +
+          content_tag('table', class: 'step-list__items') do
+            content_tag('tbody') do
+              safe_join(steps.each_with_index.collect do |step, index|
+                content_tag('tr') do
+                  content_tag('td', class: 'step-list__bubble-column') do
+                    content_tag('div', index + 1, class: 'step-list__bubble')
+                  end +
+                    content_tag('td') do
+                      content_tag('strong', step[:headline]&.html_safe, class: 'step-list__headline') +
+                        content_tag('p', step[:description]&.html_safe, class: 'step-list__description')
+                    end
                 end
-              end
-            end.join.html_safe
+              end)
+            end
           end
-        end
       end
     end
 
