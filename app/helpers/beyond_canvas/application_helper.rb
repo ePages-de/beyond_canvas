@@ -5,7 +5,7 @@ module BeyondCanvas
     def full_title(page_title = '')
       base_title = BeyondCanvas.configuration.site_title
 
-      page_title.empty? ? base_title : page_title + ' | ' + base_title
+      page_title.empty? ? base_title : "#{page_title} | #{base_title}"
     end
 
     %i[success info warning error].each do |method|
@@ -33,11 +33,11 @@ module BeyondCanvas
 
       content_tag('div', class: 'collapse') do
         content_tag('a', class: 'collapse__button', title: name, data: { visible: false, toggle: 'collapse', target: "##{id}" }) do
-          (inline_svg_tag('icons/arrow_right.svg', class: 'collapse__icon') + name).html_safe
+          inline_svg_tag('icons/arrow_right.svg', class: 'collapse__icon') + name
         end +
-        content_tag('div', html_options) do
-          yield block if block_given?
-        end
+          content_tag('div', html_options) do
+            yield block if block_given?
+          end
       end
     end
 
@@ -68,7 +68,7 @@ module BeyondCanvas
 
         content_tag('span', class: 'tooltip') do
           content_tag('span', '?', class: 'tooltip__label', data: { placement: method }) +
-          content_tag('div', name, class: 'tooltip__bubble', &block)
+            content_tag('div', name, class: 'tooltip__bubble', &block)
         end
       end
     end
