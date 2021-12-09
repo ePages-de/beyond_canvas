@@ -5,7 +5,7 @@ module BeyondCanvas
     def full_title(page_title = '')
       base_title = BeyondCanvas.configuration.site_title
 
-      page_title.empty? ? base_title : page_title + ' | ' + base_title
+      page_title.empty? ? base_title : "#{page_title} | #{base_title}"
     end
 
     %i[success info warning error].each do |method|
@@ -33,32 +33,34 @@ module BeyondCanvas
 
       content_tag('div', class: 'collapse') do
         content_tag('a', class: 'collapse__button', title: name, data: { visible: false, toggle: 'collapse', target: "##{id}" }) do
-          (inline_svg_tag('icons/arrow_right.svg', class: 'collapse__icon') + name).html_safe
+          inline_svg_tag('icons/arrow_right.svg', class: 'collapse__icon') + name
         end +
-        content_tag('div', html_options) do
-          yield block if block_given?
-        end
+          content_tag('div', html_options) do
+            yield block if block_given?
+          end
       end
     end
 
-    def step_list(title, steps = [])
+    def step_list(title = nil, steps: [])
       content_tag('div', class: 'step-list__container') do
-        content_tag('h4', title, class: 'step-list__title') +
-        content_tag('table', class: 'step-list__items') do
-          content_tag('tbody') do
-            steps.each_with_index.collect do |step, index|
-              content_tag('tr') do
-                content_tag('td', class: 'step-list__bubble-column') do
-                  content_tag('div', index + 1, class: 'step-list__bubble')
-                end +
-                content_tag('td') do
-                  content_tag('strong', step.dig(:headline)&.html_safe, class: 'step-list__headline') +
-                  content_tag('p', step.dig(:description)&.html_safe, class: 'step-list__description')
+        [
+          (content_tag('h4', sanitize(title), class: 'step-list__title') if title.present?),
+          content_tag('table', class: 'step-list__items') do
+            content_tag('tbody') do
+              safe_join(steps.each_with_index.collect do |step, index|
+                content_tag('tr') do
+                  content_tag('td', class: 'step-list__bubble-column') do
+                    content_tag('div', index + 1, class: 'step-list__bubble')
+                  end +
+                    content_tag('td') do
+                      content_tag('strong', sanitize(step[:headline]), class: 'step-list__headline') +
+                        content_tag('p', sanitize(step[:description]), class: 'step-list__description')
+                    end
                 end
-              end
-            end.join.html_safe
+              end)
+            end
           end
-        end
+        ].compact.inject(:+)
       end
     end
 
@@ -68,7 +70,7 @@ module BeyondCanvas
 
         content_tag('span', class: 'tooltip') do
           content_tag('span', '?', class: 'tooltip__label', data: { placement: method }) +
-          content_tag('div', name, class: 'tooltip__bubble', &block)
+            content_tag('div', name, class: 'tooltip__bubble', &block)
         end
       end
     end

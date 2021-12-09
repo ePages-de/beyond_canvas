@@ -86,8 +86,8 @@ module BeyondCanvas
     private
 
     def field_wrapper(attribute, args, &block)
-      label = args.delete(:label)&.html_safe
-      hint = args.delete(:hint)&.html_safe
+      label = sanitize(args.delete(:label))
+      hint = sanitize(args.delete(:hint))
       pre = args.delete(:pre)
       post = args.delete(:post)
 
@@ -107,8 +107,8 @@ module BeyondCanvas
     end
 
     def inline_wrapper(attribute, args, filed_identifyer, &block)
-      label = args.delete(:label)&.html_safe
-      hint = args.delete(:hint)&.html_safe
+      label = sanitize(args.delete(:label))
+      hint = sanitize(args.delete(:hint))
 
       content_tag(:div, class: 'form__row') do
         content_tag(:div, class: 'relative', style: 'display: flex; align-items: center;') do

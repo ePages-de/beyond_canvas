@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+include ActionView::Helpers
 
 module BeyondCanvas
   class FormBuilder < ActionView::Helpers::FormBuilder # :nodoc:
@@ -75,8 +76,8 @@ module BeyondCanvas
     private
 
     def field_wrapper(attribute, args, &block)
-      label = args.delete(:label)&.html_safe
-      hint = args.delete(:hint)&.html_safe
+      label = sanitize(args.delete(:label))
+      hint = sanitize(args.delete(:hint))
       pre = args.delete(:pre)
       post = args.delete(:post)
 
@@ -99,8 +100,8 @@ module BeyondCanvas
     end
 
     def inline_wrapper(attribute, args, filed_identifyer, &block)
-      label = args.delete(:label)&.html_safe
-      hint = args.delete(:hint)&.html_safe
+      label = sanitize(args.delete(:label))
+      hint = sanitize(args.delete(:hint))
       errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
 
       @template.content_tag(:div, class: 'form__row') do
