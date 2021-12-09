@@ -52,8 +52,8 @@ module BeyondCanvas
                     content_tag('div', index + 1, class: 'step-list__bubble')
                   end +
                     content_tag('td') do
-                      content_tag('strong', step[:headline]&.html_safe, class: 'step-list__headline') +
-                        content_tag('p', step[:description]&.html_safe, class: 'step-list__description')
+                      content_tag('strong', sanitize(step[:headline]), class: 'step-list__headline') +
+                        content_tag('p', sanitize(step[:description]), class: 'step-list__description')
                     end
                 end
               end)
