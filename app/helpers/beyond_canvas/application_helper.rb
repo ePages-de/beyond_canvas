@@ -43,7 +43,7 @@ module BeyondCanvas
 
     def step_list(title = nil, steps: [])
       content_tag('div', class: 'step-list__container') do
-        (title.nil? ? content_tag('div') : content_tag('h4', title, class: 'step-list__title')) +
+        (title.nil? ? content_tag('div') : content_tag('h4', sanitize(title), class: 'step-list__title')) +
           content_tag('table', class: 'step-list__items') do
             content_tag('tbody') do
               safe_join(steps.each_with_index.collect do |step, index|
