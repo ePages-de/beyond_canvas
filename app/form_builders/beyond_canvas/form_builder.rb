@@ -1,8 +1,9 @@
 # frozen_string_literal: true
-include ActionView::Helpers
 
 module BeyondCanvas
   class FormBuilder < ActionView::Helpers::FormBuilder # :nodoc:
+    include ActionView::Helpers::SanitizeHelper
+
     %i[email_field text_field number_field password_field text_area].each do |method|
       define_method method do |attribute, args = {}|
         field_wrapper(attribute, args) do
