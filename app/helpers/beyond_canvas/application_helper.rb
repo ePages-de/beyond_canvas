@@ -44,7 +44,7 @@ module BeyondCanvas
     def step_list(title = nil, steps: [])
       content_tag('div', class: 'step-list__container') do
         [
-          (content_tag('h4', sanitize(title), class: 'step-list__title') if title.present?),
+          (content_tag('h4', raw(title), class: 'step-list__title') if title.present?),
           content_tag('table', class: 'step-list__items') do
             content_tag('tbody') do
               safe_join(steps.each_with_index.collect do |step, index|
@@ -53,8 +53,8 @@ module BeyondCanvas
                     content_tag('div', index + 1, class: 'step-list__bubble')
                   end +
                     content_tag('td') do
-                      content_tag('strong', sanitize(step[:headline]), class: 'step-list__headline') +
-                        content_tag('p', sanitize(step[:description]), class: 'step-list__description')
+                      content_tag('strong', raw(step[:headline]), class: 'step-list__headline') +
+                        content_tag('p', raw(step[:description]), class: 'step-list__description')
                     end
                 end
               end)
