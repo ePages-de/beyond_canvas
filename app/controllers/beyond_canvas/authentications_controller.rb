@@ -61,17 +61,11 @@ module BeyondCanvas
 
     def preinstall
       @shop = Shop.create_or_find_by(beyond_api_url: params[:api_url])
-      puts '*' * 100
       @shop.http_host = request.env['HTTP_HOST']
-      puts "@shop.http_host -> #{@shop.http_host}"
       @shop.authenticate(params[:code])
-      puts "@shop -> #{@shop.inspect}"
-      puts "@shop.id -> #{@shop.id}"
       @shop.valid?
-      puts @shop.errors.inspect
       @shop.save
       @shop.subscribe_to_beyond_webhooks
-      puts '*' * 100
 
       redirect_to after_preinstallation_path
     end
