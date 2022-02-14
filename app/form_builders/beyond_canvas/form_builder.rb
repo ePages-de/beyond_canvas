@@ -74,8 +74,8 @@ module BeyondCanvas
       end
     end
 
-    def image_file_field(attribute, args = {})
-      field_wrapper(attribute, args) do
+    def image_file_field(attribute, args = {}, &block)
+      image_field_wrapper(attribute, args) do
         filed_identifyer = filed_identifyer(attribute)
 
         args.merge!(id: filed_identifyer)
@@ -84,6 +84,9 @@ module BeyondCanvas
         custom_attributes = { data: { multiple_selection_text: '{count} files selected' } }
         args = custom_attributes.merge!(args)
 
+        @template.content_tag(:div) do
+          block.call if block_given?
+        end +
         @template.content_tag(:div, class: 'input__file') do
           @template.content_tag(:input, args.merge(type: 'file')) do args end +
           @template.content_tag(:label,
@@ -120,6 +123,30 @@ module BeyondCanvas
             ].compact.inject(:+)
           end),
           (@template.content_tag(:div, hint, class: 'input__hint') if hint.present?)
+        ].compact.inject(:+)
+      end
+    end
+
+    def image_field_wrapper(attribute, args, &block)
+      label = sanitize(args.delete(:label))
+      hint = sanitize(args.delete(:hint))
+      pre = args.delete(:pre)
+      post = args.delete(:post)
+
+      errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
+
+      @template.content_tag(:div, class: 'form__row') do
+        [
+          (@template.content_tag(:label, label, class: 'input__label') if label.present?),
+          (@template.content_tag(:div, hint, class: 'input__hint') if hint.present?),
+          (@template.content_tag(:div, class: 'relative', style: "#{'display: flex;' if pre || post}") do
+            [
+              (@template.content_tag(:span, pre, class: 'input__pre') if pre.present?),
+              (@template.content_tag(:span, post, class: 'input__post') if post.present?),
+              block.call,
+              (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
+            ].compact.inject(:+)
+          end),
         ].compact.inject(:+)
       end
     end
