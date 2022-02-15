@@ -87,8 +87,8 @@ module BeyondCanvas
         @template.content_tag(:div) do
           block.call if block_given?
         end +
-        @template.content_tag(:div, class: 'input__file') do
-          @template.content_tag(:input, args.merge(type: 'file')) do args end +
+        @template.content_tag(:div, class: 'input__file input__file__image') do
+          @template.file_field(@object_name, attribute, args) +
           @template.content_tag(:label,
                                 for: filed_identifyer,
                                 class: 'input__file__control button__transparent--primary') do
