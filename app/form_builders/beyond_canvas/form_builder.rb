@@ -87,7 +87,7 @@ module BeyondCanvas
         @template.content_tag(:div) do
           block.call if block_given?
         end +
-        @template.content_tag(:div, class: 'input__file input__file__image') do
+        @template.content_tag(:div, class: 'input__file', style: 'margin-top: 16px') do
           @template.file_field(@object_name, attribute, args) +
           @template.content_tag(:label,
                                 for: filed_identifyer,
@@ -138,7 +138,7 @@ module BeyondCanvas
       @template.content_tag(:div, class: 'form__row') do
         [
           (@template.content_tag(:label, label, class: 'input__label') if label.present?),
-          (@template.content_tag(:div, hint, class: 'input__hint') if hint.present?),
+          (@template.content_tag(:div, hint, class: 'input__hint', style: 'margin-bottom: 10x') if hint.present?),
           (@template.content_tag(:div, class: 'relative', style: "#{'display: flex;' if pre || post}") do
             [
               (@template.content_tag(:span, pre, class: 'input__pre') if pre.present?),
