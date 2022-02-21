@@ -83,6 +83,19 @@ module BeyondCanvas
       end
     end
 
+    def image_attachment_tag(blob, args = {})
+      if blob
+        content_tag(:figure, class: "attachment attachment--#{blob.representable? ? 'preview' : 'file'} attachment--#{blob.filename.extension}") do
+          if blob.representable?
+            [
+              (image_tag(args.present? && args[:transformations].present? ? blob.representation(args[:transformations]) : blob)),
+              (link_to(inline_svg_tag('icons/delete.svg'), args.dig(:remove, :href), {class: 'attachment__delete-icon', method: :delete}) if args.dig(:remove, :href))
+            ].compact.inject(:+)
+          end
+        end
+      end
+    end
+
     private
 
     def field_wrapper(attribute, args, &block)
