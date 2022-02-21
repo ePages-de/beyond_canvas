@@ -84,19 +84,26 @@ module BeyondCanvas
         custom_attributes = { data: { multiple_selection_text: '{count} files selected' } }
         args = custom_attributes.merge!(args)
 
-        @template.content_tag(:div) do
-          block.call if block_given?
+        placeholder_with = 300
+        placeholder_height = 300
+
+        placeholder_with, placeholder_height = args[:placeholder_size].split('x') if args[:placeholder_size].present?
+
+        @template.content_tag(:div, class: 'attachments js-images', js_identifier: filed_identifyer) do
+          image = @object.send(attribute)
+          [
+            image_attachment_tag_wrapper(attribute, args),
+            (image_placeholder(attribute, args) if image.class == ActiveStorage::Attached::One && image.attachment.blank?),
+            (image_placeholder(attribute, args) if image.class == ActiveStorage::Attached::Many && image.attachments.blank?)
+          ].compact.inject(:+)
         end +
         @template.content_tag(:div, class: 'input__file', style: 'margin-top: 16px') do
           @template.file_field(@object_name, attribute, args) +
           @template.content_tag(:label,
                                 for: filed_identifyer,
                                 class: 'input__file__control button__transparent--primary') do
-            args[:data][:button_text] || 'Choose file'
-          end +
-          @template.content_tag(:span,
-                                args[:data][:no_file_text] || 'No file chosen',
-                                class: "input__file__text #{filed_identifyer}")
+            args[:data][:button_text] || 'Upload image'
+          end
         end
       end
     end
@@ -172,6 +179,20 @@ module BeyondCanvas
 
     def filed_identifyer(attribute)
       "#{attribute}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
+    end
+
+    def image_attachment_tag_wrapper(attribute, args)
+      return @template.image_attachment_tag(@object.send(attribute).attachment, args[:blob]) if(@object.send(attribute).class == ActiveStorage::Attached::One)
+
+      @object.send(attribute).map { |image|@template.image_attachment_tag(image, args[:blob]) }.compact.inject(:+)
+    end
+
+    def image_placeholder(attribute, args)
+      placeholder_with = 300
+      placeholder_height = 300
+      placeholder_with, placeholder_height = args[:placeholder_size].split('x') if args[:placeholder_size].present?
+
+      @template.inline_svg_tag('icons/placeholder.svg', class: 'attachment', style: "width:#{placeholder_with}px;height:#{placeholder_height}px;")
     end
   end
 end
