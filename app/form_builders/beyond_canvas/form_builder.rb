@@ -81,14 +81,6 @@ module BeyondCanvas
         args.merge!(id: filed_identifyer)
             .merge!(style: 'visibility: hidden; position: absolute;')
 
-        custom_attributes = { data: { multiple_selection_text: '{count} files selected' } }
-        args = custom_attributes.merge!(args)
-
-        placeholder_with = 300
-        placeholder_height = 300
-
-        placeholder_with, placeholder_height = args[:placeholder_size].split('x') if args[:placeholder_size].present?
-
         @template.content_tag(:div, class: 'attachments js-images', js_identifier: filed_identifyer) do
           image = @object.send(attribute)
           [
@@ -104,7 +96,7 @@ module BeyondCanvas
           @template.content_tag(:label,
                                 for: filed_identifyer,
                                 class: 'input__file__control button__transparent--primary') do
-            args[:data][:button_text] || 'Upload image'
+            args.dig(:data, :button_text) || 'Upload image'
           end
         end
       end
