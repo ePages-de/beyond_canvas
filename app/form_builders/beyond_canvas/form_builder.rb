@@ -92,9 +92,11 @@ module BeyondCanvas
         @template.content_tag(:div, class: 'attachments js-images', js_identifier: filed_identifyer) do
           image = @object.send(attribute)
           [
-            image_attachment_tag_wrapper(attribute, args),
-            (image_placeholder(attribute, args) if image.class == ActiveStorage::Attached::One && image.attachment.blank?),
-            (image_placeholder(attribute, args) if image.class == ActiveStorage::Attached::Many && image.attachments.blank?)
+            (block.call if block_given?)
+          ].compact.inject(:+)
+          [
+            (image_placeholder(args) if image.class == ActiveStorage::Attached::One && image.attachment.blank?),
+            (image_placeholder(args) if image.class == ActiveStorage::Attached::Many && image.attachments.blank?)
           ].compact.inject(:+)
         end +
         @template.content_tag(:div, class: 'input__file', style: 'margin-top: 16px') do
@@ -181,13 +183,7 @@ module BeyondCanvas
       "#{attribute}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
     end
 
-    def image_attachment_tag_wrapper(attribute, args)
-      return @template.image_attachment_tag(@object.send(attribute).attachment, args[:blob]) if(@object.send(attribute).class == ActiveStorage::Attached::One)
-
-      @object.send(attribute).map { |image|@template.image_attachment_tag(image, args[:blob]) }.compact.inject(:+)
-    end
-
-    def image_placeholder(attribute, args)
+    def image_placeholder(args)
       placeholder_with = 300
       placeholder_height = 300
       placeholder_with, placeholder_height = args[:placeholder_size].split('x') if args[:placeholder_size].present?
