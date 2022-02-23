@@ -55,10 +55,6 @@
     }
   }
 
-  &__body {
-    @extend %scrollbox;
-  }
-
   &__footer {
     margin-top: 35px;
   }
