@@ -74,7 +74,9 @@ module BeyondCanvas
       end
     end
 
-    def image_file_field(attribute, args = {}, &block)
+    def image_file_field(attribute, args = {}, &block) # IMPORTANT: Using this method inside a form_for block will set the enclosing form's encoding to multipart/form-data.
+      self.multipart = true # SEE: https://api.rubyonrails.org/v6.1.0/classes/ActionView/Helpers/FormBuilder.html#method-i-file_field
+
       image_field_wrapper(attribute, args) do
         filed_identifyer = filed_identifyer(attribute)
 
