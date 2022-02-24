@@ -3,6 +3,7 @@
  */
 //= require jquery3
 //= require rails-ujs
+//= require beyond_canvas/commonFunctions
 //= require_self
 
 (function(factory) {

@@ -93,8 +93,8 @@ module BeyondCanvas
             (image_placeholder(args) if image.class == ActiveStorage::Attached::Many && image.attachments.blank?)
           ].compact.inject(:+)
         end +
-        @template.content_tag(:div, class: 'input__file', style: 'margin-top: 16px') do
-          @template.file_field(@object_name, attribute, args) +
+        @template.content_tag(:div, class: 'input__file') do
+          @template.file_field(@object_name, attribute, { onchange: 'bc.previewImage(event)' }.merge(args)) +
           @template.content_tag(:label,
                                 for: filed_identifyer,
                                 class: 'input__file__control button__transparent--primary') do
@@ -182,7 +182,9 @@ module BeyondCanvas
       placeholder_height = 300
       placeholder_with, placeholder_height = args[:placeholder_size].split('x') if args[:placeholder_size].present?
 
-      @template.inline_svg_tag('icons/placeholder.svg', class: 'attachment', style: "width:#{placeholder_with}px;height:#{placeholder_height}px;")
+      @template.content_tag(:figure, class: 'attachment placeholder', style: "width:#{placeholder_with}px;height:#{placeholder_height}px;") do
+        @template.inline_svg_tag('icons/placeholder.svg')
+      end
     end
   end
 end
