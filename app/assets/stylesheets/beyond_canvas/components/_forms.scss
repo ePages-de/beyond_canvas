@@ -40,6 +40,22 @@
     &--space-between {
       display: flex;
       justify-content: space-between;
+
+      > *:not(:last-child) {
+        > * {
+          &:not(:first-child) {
+            margin-left: 30px;
+          }
+        }
+      }
+
+      > *:last-child {
+        > * {
+          &:not(:last-child) {
+            margin-right: 30px;
+          }
+        }
+      }
     }
   }
 }
