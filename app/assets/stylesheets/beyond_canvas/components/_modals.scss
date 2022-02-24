@@ -11,6 +11,10 @@
   z-index: 99999;
   visibility: hidden;
 
+  scroll-shadow {
+    width: 100%;
+  }
+
   &__dialog {
     width: 100%;
     max-width: $modal-width;
@@ -38,6 +42,14 @@
     color: var(--notification-text);
   }
 
+  &__body {
+    scroll-shadow & {
+      max-height: 65vh;
+      overflow-x: hidden;
+      padding-right: 20px;
+    }
+  }
+
   &__close {
     // SEE: https://newbedev.com/change-svg-fill-color-in-before-or-after-css
     @include position(absolute, 20px 20px null null);
@@ -53,10 +65,6 @@
     &:hover {
       background-color: var(--modal-closeButton-icon-hover);
     }
-  }
-
-  &__body {
-    @extend %scrollbox;
   }
 
   &__footer {
