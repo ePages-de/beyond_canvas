@@ -74,6 +74,36 @@ module BeyondCanvas
       end
     end
 
+    def image_file_field(attribute, args = {}, &block) # IMPORTANT: Using this method inside a form_for block will set the enclosing form's encoding to multipart/form-data.
+      self.multipart = true # SEE: https://api.rubyonrails.org/v6.1.0/classes/ActionView/Helpers/FormBuilder.html#method-i-file_field
+
+      image_field_wrapper(attribute, args) do
+        filed_identifyer = filed_identifyer(attribute)
+
+        args.merge!(id: filed_identifyer)
+            .merge!(style: 'visibility: hidden; position: absolute;')
+
+        @template.content_tag(:div, class: 'attachments js-images', js_identifier: filed_identifyer) do
+          image = @object.send(attribute)
+          [
+            (block.call if block_given?)
+          ].compact.inject(:+)
+          [
+            (image_placeholder(args) if image.class == ActiveStorage::Attached::One && image.attachment.blank?),
+            (image_placeholder(args) if image.class == ActiveStorage::Attached::Many && image.attachments.blank?)
+          ].compact.inject(:+)
+        end +
+        @template.content_tag(:div, class: 'input__file') do
+          @template.file_field(@object_name, attribute, { onchange: 'bc.previewImage(event)' }.merge(args)) +
+          @template.content_tag(:label,
+                                for: filed_identifyer,
+                                class: 'input__file__control button__transparent--primary') do
+            args.dig(:data, :button_text) || 'Upload image'
+          end
+        end
+      end
+    end
+
     private
 
     def field_wrapper(attribute, args, &block)
@@ -100,6 +130,30 @@ module BeyondCanvas
       end
     end
 
+    def image_field_wrapper(attribute, args, &block)
+      label = sanitize(args.delete(:label))
+      hint = sanitize(args.delete(:hint))
+      pre = args.delete(:pre)
+      post = args.delete(:post)
+
+      errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
+
+      @template.content_tag(:div, class: 'form__row') do
+        [
+          (@template.content_tag(:label, label, class: 'input__label') if label.present?),
+          (@template.content_tag(:div, hint, class: 'input__hint', style: 'margin-bottom: 10x') if hint.present?),
+          (@template.content_tag(:div, class: 'relative', style: "#{'display: flex;' if pre || post}") do
+            [
+              (@template.content_tag(:span, pre, class: 'input__pre') if pre.present?),
+              (@template.content_tag(:span, post, class: 'input__post') if post.present?),
+              block.call,
+              (@template.content_tag(:label, errors, class: 'input__error') if errors.present?)
+            ].compact.inject(:+)
+          end),
+        ].compact.inject(:+)
+      end
+    end
+
     def inline_wrapper(attribute, args, filed_identifyer, &block)
       label = sanitize(args.delete(:label))
       hint = sanitize(args.delete(:hint))
@@ -121,6 +175,16 @@ module BeyondCanvas
 
     def filed_identifyer(attribute)
       "#{attribute}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
+    end
+
+    def image_placeholder(args)
+      placeholder_with = 300
+      placeholder_height = 300
+      placeholder_with, placeholder_height = args[:placeholder_size].split('x') if args[:placeholder_size].present?
+
+      @template.content_tag(:figure, class: 'attachment attachment__placeholder', style: "width:#{placeholder_with}px;height:#{placeholder_height}px;") do
+        @template.inline_svg_tag('icons/placeholder.svg')
+      end
     end
   end
 end

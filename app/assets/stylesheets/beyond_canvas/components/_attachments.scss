@@ -1,0 +1,60 @@
+.attachments {
+  margin-top: 10px;
+}
+
+.attachment {
+  background-color: $white;
+  border: $attachment-border;
+  border-radius: 3px;
+  display: inline-flex;
+  margin-bottom: 16px;
+  padding: 10px;
+  position: relative;
+
+  &__delete-icon {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+
+    &:hover {
+      svg {
+        path{
+          fill: $attachment-delete-icon-hover-color;
+        }
+      }
+    }
+
+    svg {
+      filter: drop-shadow(0 1px 0 $white);
+
+      path {
+        fill: $attachment-delete-icon-color;
+      }
+    }
+
+    &s {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+
+      .attachment {
+        &:not(:first-child) {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+
+  &__placeholder {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+
+    svg {
+      height: 50%;
+      width: 50%;
+    }
+  }
+}

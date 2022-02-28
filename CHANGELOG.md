@@ -13,6 +13,8 @@
 
 * features
   * Add a middleware to automatically configure cockpit app headers
+  * Add `image_file_field` component to upload images and render a `placeholder` if there is no image
+  * Add `image_attachment_tag` component to render images
   * Add styles for `.svg` images that include `.surface`, `.bubbles` and `.outline` classes
 
 * enhancements
