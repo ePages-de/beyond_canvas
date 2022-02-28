@@ -182,7 +182,7 @@ module BeyondCanvas
       placeholder_height = 300
       placeholder_with, placeholder_height = args[:placeholder_size].split('x') if args[:placeholder_size].present?
 
-      @template.content_tag(:figure, class: 'attachment placeholder', style: "width:#{placeholder_with}px;height:#{placeholder_height}px;") do
+      @template.content_tag(:figure, class: 'attachment attachment__placeholder', style: "width:#{placeholder_with}px;height:#{placeholder_height}px;") do
         @template.inline_svg_tag('icons/placeholder.svg')
       end
     end

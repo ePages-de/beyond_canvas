@@ -5,7 +5,7 @@ export function previewImage(e) {
   const elementFather = $(e.target).parents('.relative').find('.js-images');
 
   if($(e.target).attr('multiple')) {
-    $(elementFather).children('.placeholder, [preview]').each((_, img) => $(img).remove());
+    $(elementFather).children('attachment__placeholder, [preview]').each((_, img) => $(img).remove());
   } else {
     $(elementFather).find('figure').remove();
   }

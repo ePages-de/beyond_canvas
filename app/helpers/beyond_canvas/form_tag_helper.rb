@@ -89,7 +89,7 @@ module BeyondCanvas
           if blob.representable?
             [
               (image_tag(args.present? && args[:transformations].present? ? blob.representation(args[:transformations]) : blob)),
-              (link_to(inline_svg_tag('icons/delete.svg'), delete_url, {class: 'attachment__delete-icon', method: :delete}.merge(args[:remove].to_h)) unless delete_url.blank?)
+              (link_to(inline_svg_tag('icons/delete.svg'), delete_url, {class: 'attachment__delete-icon', method: :delete}.merge(args[:link_html_options].to_h)) unless delete_url.blank?)
             ].compact.inject(:+)
           end
         end

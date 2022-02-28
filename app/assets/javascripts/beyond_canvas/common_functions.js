@@ -7,7 +7,7 @@ var bc = (function (exports) {
     var elementFather = $(e.target).parents('.relative').find('.js-images');
 
     if ($(e.target).attr('multiple')) {
-      $(elementFather).children('.placeholder, [preview]').each(function (_, img) {
+      $(elementFather).children('attachment__placeholder, [preview]').each(function (_, img) {
         return $(img).remove();
       });
     } else {

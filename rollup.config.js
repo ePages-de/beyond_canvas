@@ -17,7 +17,7 @@ const uglifyOptions = {
        */
       //= require jquery3
       //= require rails-ujs
-      //= require beyond_canvas/commonFunctions
+      //= require beyond_canvas/common_functions
       //= require_self
     ` + '\n',
   },
@@ -43,9 +43,9 @@ export default [
     ]
   },
   {
-    input: 'app/javascript/beyond_canvas/lib/commonFunctions.js',
+    input: 'app/javascript/beyond_canvas/lib/common_functions.js',
     output: {
-      file: 'app/assets/javascripts/beyond_canvas/commonFunctions.js',
+      file: 'app/assets/javascripts/beyond_canvas/common_functions.js',
       format: 'iife',
       name: 'bc',
     },

@@ -44,17 +44,17 @@
       }
     }
   }
-}
 
-.placeholder {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  max-width: 100%;
-  box-sizing: border-box;
+  &__placeholder {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
 
-  svg {
-    width: 50%;
-    height: 50%;
+    svg {
+      height: 50%;
+      width: 50%;
+    }
   }
 }
