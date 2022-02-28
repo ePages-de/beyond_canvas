@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+<%= render 'beyond_canvas/shared/head' %>
+
+<body class="beyond-canvas body--blank">
+
+  <main class="main <%= params[:controller].gsub(/[\/_]/, "-") %>--<%= params[:action] %>">
+
+    <div class="main-wrapper"<% if content_for?(:max_width)%> style="max-width: <%= yield :max_width %>"<% end %>>
+
+      <%= yield %>
+
+    </div>
+
+    <%= debug(params) if debug_mode? %>
+
+  </main>
+
+</body>
+</html>
