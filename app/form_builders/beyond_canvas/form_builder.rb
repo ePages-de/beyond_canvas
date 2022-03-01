@@ -89,8 +89,7 @@ module BeyondCanvas
             (block.call if block_given?)
           ].compact.inject(:+)
           [
-            (image_placeholder(args) if image.class == ActiveStorage::Attached::One && image.attachment.blank?),
-            (image_placeholder(args) if image.class == ActiveStorage::Attached::Many && image.attachments.blank?)
+            (image_placeholder(args) unless image_exist?(attribute))
           ].compact.inject(:+)
         end +
         @template.content_tag(:div, class: 'input__file') do
@@ -98,7 +97,7 @@ module BeyondCanvas
           @template.content_tag(:label,
                                 for: filed_identifyer,
                                 class: 'input__file__control button__transparent--primary') do
-            args.dig(:data, :button_text) || 'Upload image'
+            image_exist?(attribute) ? args.dig(:data, :button_change_text) || 'Change image' : args.dig(:data, :button_upload_text) || 'Upload image'
           end
         end
       end
@@ -185,6 +184,13 @@ module BeyondCanvas
       @template.content_tag(:figure, class: 'attachment attachment__placeholder', style: "width:#{placeholder_with}px;height:#{placeholder_height}px;") do
         @template.inline_svg_tag('icons/placeholder.svg')
       end
+    end
+
+    def image_exist?(attribute)
+      image = @object.send(attribute)
+
+      image.class == ActiveStorage::Attached::One && image.attachment.present? ||
+        image.class == ActiveStorage::Attached::Many && image.attachments.present?
     end
   end
 end
