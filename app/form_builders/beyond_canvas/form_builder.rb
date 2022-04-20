@@ -111,7 +111,7 @@ module BeyondCanvas
       pre = args.delete(:pre)
       post = args.delete(:post)
 
-      errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
+      errors = object.errors[attribute].join(BeyondCanvas.configuration.concatenated_errors) if object.respond_to?(:errors) && object.errors.include?(attribute)
 
       @template.content_tag(:div, class: 'form__row') do
         [
@@ -135,7 +135,7 @@ module BeyondCanvas
       pre = args.delete(:pre)
       post = args.delete(:post)
 
-      errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
+      errors = object.errors[attribute].join(BeyondCanvas.configuration.concatenated_errors) if object.respond_to?(:errors) && object.errors.include?(attribute)
 
       @template.content_tag(:div, class: 'form__row') do
         [
@@ -156,7 +156,7 @@ module BeyondCanvas
     def inline_wrapper(attribute, args, filed_identifyer, &block)
       label = sanitize(args.delete(:label))
       hint = sanitize(args.delete(:hint))
-      errors = object.errors[attribute].join(', ') if object.respond_to?(:errors) && object.errors.include?(attribute)
+      errors = object.errors[attribute].join(BeyondCanvas.configuration.concatenated_errors) if object.respond_to?(:errors) && object.errors.include?(attribute)
 
       @template.content_tag(:div, class: 'form__row') do
         @template.content_tag(:div, class: 'relative', style: 'display: flex; align-items: center;') do
