@@ -7,7 +7,7 @@ var bc = (function (exports) {
     var elementFather = $(e.target).parents('.relative').find('.js-images');
 
     if ($(e.target).attr('multiple')) {
-      $(elementFather).children('attachment__placeholder, [preview]').each(function (_, img) {
+      $(elementFather).children('.attachment__placeholder, [preview]').each(function (_, img) {
         return $(img).remove();
       });
     } else {
@@ -28,6 +28,8 @@ var bc = (function (exports) {
         $(elementFather).append(figure);
       };
     });
+
+    $(e.target).parent().find('label').text($(e.target).attr('data-button-change-text'));
   }
 
   exports.previewImage = previewImage;
