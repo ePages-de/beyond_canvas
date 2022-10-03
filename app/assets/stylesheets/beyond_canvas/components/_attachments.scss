@@ -45,6 +45,34 @@
     }
   }
 
+  &__icon {
+    height: 24px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 24px;
+
+    svg {
+      filter: drop-shadow(0 1px 0 $white);
+
+      path {
+        fill: $attachment-delete-icon-color;
+      }
+    }
+
+    &s {
+      &:not(:last-child) {
+        margin-bottom: 30px;
+      }
+
+      .attachment {
+        &:not(:first-child) {
+          margin-top: 30px;
+        }
+      }
+    }
+  }
+
   &__placeholder {
     align-items: center;
     box-sizing: border-box;
