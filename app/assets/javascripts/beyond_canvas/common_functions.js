@@ -43,8 +43,9 @@ var bc = (function (exports) {
   function previewImage(e) {
     var arr = Array.from(e.target.files);
     var elementFather = $(e.target).parents('.relative').find('.js-images');
-    var imgAttr = getAtrributesFromElement($(elementFather).find('figure').find('img')[0]);
-    var figureAttr = getAtrributesFromElement($(elementFather).find('figure')[0]);
+    var figureElement = $(elementFather).find('figure');
+    var imgAttr = getImagesAttributes($(figureElement));
+    var figureAttr = getAtrributesFromElement($(figureElement)[0]);
     delete imgAttr.src;
     delete figureAttr["class"];
 
@@ -73,11 +74,37 @@ var bc = (function (exports) {
       };
     });
   }
+  var getImagesAttributes = function getImagesAttributes(figureElement) {
+    var svgElement = $(figureElement).find('svg')[0];
+    var imageElement = $(figureElement).find('img')[0];
+
+    if (imageElement) {
+      return getAtrributesFromElement(imageElement);
+    }
+
+    return getAtrributesFromSVG(svgElement);
+  };
   var getAtrributesFromElement = function getAtrributesFromElement(element) {
     var attributes = {};
+    if (!element) return attributes;
 
     for (var _iterator = _createForOfIteratorHelperLoose(element.getAttributeNames()), _step; !(_step = _iterator()).done;) {
       var attr = _step.value;
+      attributes[attr] = element.getAttribute(attr);
+    }
+
+    return attributes;
+  };
+  var getAtrributesFromSVG = function getAtrributesFromSVG(element) {
+    var svgAttrToExclude = ['xmlns', 'xmlns:xlink', 'version', 'id', 'x', 'y', 'viewBox', 'style', 'xml:space'];
+    var attributes = {};
+    if (!element) return attributes;
+    var svgAttr = element.getAttributeNames().filter(function (attr) {
+      return !svgAttrToExclude.includes(attr);
+    });
+
+    for (var _iterator2 = _createForOfIteratorHelperLoose(svgAttr), _step2; !(_step2 = _iterator2()).done;) {
+      var attr = _step2.value;
       attributes[attr] = element.getAttribute(attr);
     }
 
@@ -90,6 +117,8 @@ var bc = (function (exports) {
   };
 
   exports.getAtrributesFromElement = getAtrributesFromElement;
+  exports.getAtrributesFromSVG = getAtrributesFromSVG;
+  exports.getImagesAttributes = getImagesAttributes;
   exports.previewImage = previewImage;
   exports.setAttributesToElement = setAttributesToElement;
 
