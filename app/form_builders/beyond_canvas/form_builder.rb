@@ -86,10 +86,8 @@ module BeyondCanvas
         @template.content_tag(:div, class: 'attachments js-images', js_identifier: filed_identifyer) do
           image = @object.send(attribute)
           [
-            (block.call if block_given?)
-          ].compact.inject(:+)
-          [
-            (image_placeholder(args) unless image_exist?(attribute))
+            (block.call if block_given?),
+            (image_placeholder(args))
           ].compact.inject(:+)
         end +
         @template.content_tag(:div, class: 'input__file') do
