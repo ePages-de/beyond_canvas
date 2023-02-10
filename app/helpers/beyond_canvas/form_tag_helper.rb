@@ -16,7 +16,7 @@ module BeyondCanvas
       end
     end
 
-    def check_box_tag(name, value = 1, checked = false, options = {})
+    def svg_check_box_tag(name, value = 1, checked = false, options = {})
       filed_identifyer = filed_identifyer(name)
 
       inline_wrapper(name, options, filed_identifyer) do
@@ -25,7 +25,7 @@ module BeyondCanvas
                .merge!(hidden: true)
                .merge!(class: 'input__checkbox')
 
-        super(name, value, checked, options) +
+        check_box_tag(name, value, checked, options) +
           content_tag(:label, class: 'input__checkbox__control', for: filed_identifyer) do
             inline_svg_tag('icons/checkbox_checked.svg', style: 'display: none;', class: 'input__checkbox--checked') +
             inline_svg_tag('icons/checkbox_unchecked.svg', style: 'display: none;', class: 'input__checkbox--unchecked')
