@@ -11,10 +11,12 @@ export function previewImage(e) {
   delete figureAttr.class;
 
   if($(e.target).attr('multiple')) {
-    $(elementFather).children('attachment__placeholder, [preview]').each((_, img) => $(img).remove());
+    $(elementFather).children('attachment__placeholder').each((_, img) => $(img).remove());
   } else {
     $(elementFather).find('figure').remove();
   }
+
+  $(e.target).parents('.relative').find('.js-placeholder').hide();
 
   arr.forEach(file => {
     const reader = new FileReader();

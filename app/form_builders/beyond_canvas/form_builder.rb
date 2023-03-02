@@ -79,19 +79,23 @@ module BeyondCanvas
 
       image_field_wrapper(attribute, args) do
         filed_identifyer = filed_identifyer(attribute)
+        placeholder_div_arguments = {
+          class: 'attachments js-placeholder',
+          js_placeholder_identifier: filed_identifyer,
+        }
 
         args.merge!(id: filed_identifyer)
             .merge!(style: 'visibility: hidden; position: absolute;')
 
-        @template.content_tag(:div, class: 'attachments js-placeholder', js_placeholder_identifier: filed_identifyer) do
+        placeholder_div_arguments.merge!(style: 'display: none') if image_exist?(attribute)
+
+        @template.content_tag(:div, placeholder_div_arguments) do
           [
             (image_placeholder(args) if(args.fetch(:placeholder, true))),
           ].compact.inject(:+)
         end +
         @template.content_tag(:div, class: 'attachments js-images', js_identifier: filed_identifyer) do
-          image = @object.send(attribute)
           [
-            (image_placeholder(args) if(args.fetch(:placeholder, true))),
             (block.call if block_given?),
           ].compact.inject(:+)
         end +
