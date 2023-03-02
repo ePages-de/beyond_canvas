@@ -103,7 +103,7 @@ module BeyondCanvas
     def image_placeholder_tag(**options)
       placeholder_with = 300
       placeholder_height = 300
-      placeholder_with, placeholder_height = options[:placeholder_size].split('x') if options[:placeholder_size].present?
+      placeholder_with, placeholder_height = options[:size].split('x') if options[:size].present?
       classes = "attachment attachment__placeholder #{options.fetch(:class, '')}"
       styles  = "#{options.fetch(:style, '')};width:#{placeholder_with}px;height:#{placeholder_height}px;"
 
