@@ -91,7 +91,7 @@ module BeyondCanvas
 
         @template.content_tag(:div, placeholder_div_arguments) do
           [
-            (image_placeholder(args) if(args.fetch(:placeholder, true))),
+            (@template.image_placeholder_tag(args.fetch(:placeholder)) if(args.fetch(:placeholder, true))),
           ].compact.inject(:+)
         end +
         @template.content_tag(:div, class: 'attachments js-images', js_identifier: filed_identifyer) do
