@@ -83,11 +83,16 @@ module BeyondCanvas
         args.merge!(id: filed_identifyer)
             .merge!(style: 'visibility: hidden; position: absolute;')
 
+        @template.content_tag(:div, class: 'attachments js-placeholder', js_placeholder_identifier: filed_identifyer) do
+          [
+            (image_placeholder(args) if(args.fetch(:placeholder, true))),
+          ].compact.inject(:+)
+        end +
         @template.content_tag(:div, class: 'attachments js-images', js_identifier: filed_identifyer) do
           image = @object.send(attribute)
           [
-            (block.call if block_given?),
             (image_placeholder(args) if(args.fetch(:placeholder, true))),
+            (block.call if block_given?),
           ].compact.inject(:+)
         end +
         @template.content_tag(:div, class: 'input__file') do
