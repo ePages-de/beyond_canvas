@@ -183,21 +183,6 @@ module BeyondCanvas
       "#{attribute}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
     end
 
-    def image_placeholder(args)
-      placeholder_with = 300
-      placeholder_height = 300
-      placeholder_with, placeholder_height = args[:placeholder_size].split('x') if args[:placeholder_size].present?
-
-      options = {
-        class: 'attachment attachment__placeholder',
-        style: "width:#{placeholder_with}px;height:#{placeholder_height}px;"
-      }. merge args[:placeholder_figure_html_options]
-
-      @template.content_tag(:figure, options) do
-        @template.inline_svg_tag('icons/placeholder.svg', args[:placeholder_image_html_options])
-      end
-    end
-
     def image_exist?(attribute)
       image = @object.send(attribute)
 
