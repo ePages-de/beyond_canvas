@@ -50,13 +50,14 @@ var bc = (function (exports) {
     delete figureAttr["class"];
 
     if ($(e.target).attr('multiple')) {
-      $(elementFather).children('attachment__placeholder, [preview]').each(function (_, img) {
+      $(elementFather).children('attachment__placeholder').each(function (_, img) {
         return $(img).remove();
       });
     } else {
       $(elementFather).find('figure').remove();
     }
 
+    $(e.target).parents('.relative').find('.js-placeholder').hide();
     arr.forEach(function (file) {
       var reader = new FileReader();
       reader.readAsDataURL(file);

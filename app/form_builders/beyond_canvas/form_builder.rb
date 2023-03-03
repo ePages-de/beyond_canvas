@@ -79,17 +79,24 @@ module BeyondCanvas
 
       image_field_wrapper(attribute, args) do
         filed_identifyer = filed_identifyer(attribute)
+        placeholder_div_arguments = {
+          class: 'attachments js-placeholder',
+          js_placeholder_identifier: filed_identifyer,
+        }
 
         args.merge!(id: filed_identifyer)
             .merge!(style: 'visibility: hidden; position: absolute;')
 
-        @template.content_tag(:div, class: 'attachments js-images', js_identifier: filed_identifyer) do
-          image = @object.send(attribute)
+        placeholder_div_arguments.merge!(style: 'display: none') if image_exist?(attribute)
+
+        @template.content_tag(:div, placeholder_div_arguments) do
           [
-            (block.call if block_given?)
+            (@template.image_placeholder_tag(args.fetch(:placeholder)) if(args.fetch(:placeholder, true))),
           ].compact.inject(:+)
+        end +
+        @template.content_tag(:div, class: 'attachments js-images', js_identifier: filed_identifyer) do
           [
-            (image_placeholder(args) unless image_exist?(attribute))
+            (block.call if block_given?),
           ].compact.inject(:+)
         end +
         @template.content_tag(:div, class: 'input__file') do
@@ -174,21 +181,6 @@ module BeyondCanvas
 
     def filed_identifyer(attribute)
       "#{attribute}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
-    end
-
-    def image_placeholder(args)
-      placeholder_with = 300
-      placeholder_height = 300
-      placeholder_with, placeholder_height = args[:placeholder_size].split('x') if args[:placeholder_size].present?
-
-      options = {
-        class: 'attachment attachment__placeholder',
-        style: "width:#{placeholder_with}px;height:#{placeholder_height}px;"
-      }. merge args[:placeholder_figure_html_options]
-
-      @template.content_tag(:figure, options) do
-        @template.inline_svg_tag('icons/placeholder.svg', args[:placeholder_image_html_options])
-      end
     end
 
     def image_exist?(attribute)

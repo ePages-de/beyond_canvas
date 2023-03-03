@@ -100,6 +100,20 @@ module BeyondCanvas
       end
     end
 
+    def image_placeholder_tag(**options)
+      placeholder_with = 300
+      placeholder_height = 300
+      placeholder_with, placeholder_height = options[:size].split('x') if options[:size].present?
+      classes = "attachment attachment__placeholder #{options.fetch(:class, '')}"
+      styles  = "#{options.fetch(:style, '')};width:#{placeholder_with}px;height:#{placeholder_height}px;"
+
+      content_tag(:figure, class: classes, style: styles, data: options[:data]) do
+        [
+          (inline_svg_tag('icons/placeholder.svg', options.fetch(:image_html_options, {})))
+        ].compact.inject(:+)
+      end
+    end
+
     private
 
     def field_wrapper(attribute, args, &block)
