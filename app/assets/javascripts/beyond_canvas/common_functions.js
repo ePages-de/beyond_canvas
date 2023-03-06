@@ -44,10 +44,12 @@ var bc = (function (exports) {
     var arr = Array.from(e.target.files);
     var elementFather = $(e.target).parents('.relative').find('.js-images');
     var figureElement = $(elementFather).find('figure');
+    var figurePlaceholderElement = $(e.target).parents('.relative').find('.js-placeholder').find('figure');
     var imgAttr = getImagesAttributes($(figureElement));
-    var figureAttr = getAtrributesFromElement($(figureElement)[0]);
+    var figureAttr = getAtrributesFromElement($(figurePlaceholderElement)[0]);
     delete imgAttr.src;
     delete figureAttr["class"];
+    delete figureAttr.style;
 
     if ($(e.target).attr('multiple')) {
       $(elementFather).children('attachment__placeholder, [preview]').each(function (_, img) {

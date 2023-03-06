@@ -4,11 +4,13 @@ export function previewImage(e) {
   const arr = Array.from(e.target.files);
   const elementFather = $(e.target).parents('.relative').find('.js-images');
   const figureElement = $(elementFather).find('figure');
+  const figurePlaceholderElement = $(e.target).parents('.relative').find('.js-placeholder').find('figure');
 
   const imgAttr = getImagesAttributes($(figureElement));
-  const figureAttr = getAtrributesFromElement($(figureElement)[0]);
+  const figureAttr = getAtrributesFromElement($(figurePlaceholderElement)[0]);
   delete imgAttr.src;
   delete figureAttr.class;
+  delete figureAttr.style
 
   if($(e.target).attr('multiple')) {
     $(elementFather).children('attachment__placeholder, [preview]').each((_, img) => $(img).remove());
