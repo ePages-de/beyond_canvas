@@ -50,7 +50,7 @@ var bc = (function (exports) {
     delete figureAttr["class"];
 
     if ($(e.target).attr('multiple')) {
-      $(elementFather).children('attachment__placeholder').each(function (_, img) {
+      $(elementFather).children('attachment__placeholder, [preview]').each(function (_, img) {
         return $(img).remove();
       });
     } else {
