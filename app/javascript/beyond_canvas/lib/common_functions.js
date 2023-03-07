@@ -6,8 +6,9 @@ export function previewImage(e) {
   const figureElement = $(elementFather).find('figure');
   const figurePlaceholderElement = $(e.target).parents('.relative').find('.js-placeholder').find('figure');
 
-  const imgAttr = getImagesAttributes($(figureElement));
-  const figureAttr = getAtrributesFromElement($(figurePlaceholderElement)[0]);
+  const imgAttr = getImagesAttributes(figureElement, figurePlaceholderElement)
+  const figureAttr = getAttributesFromFigureElements(figureElement, figurePlaceholderElement)
+
   delete imgAttr.src;
   delete figureAttr.class;
   delete figureAttr.style
@@ -41,18 +42,32 @@ export function previewImage(e) {
   });
 }
 
-export const getImagesAttributes = (figureElement) => {
+const getImagesAttributes = (figureImageElement, figurePlaceholderElement) => {
+  return {
+    ...getImageAttributes($(figurePlaceholderElement)),
+    ...getImageAttributes($(figureImageElement))
+  }
+}
+
+const getAttributesFromFigureElements = (figureImageElement, figurePlaceholderElement) => {
+  return {
+    ...getAttributesFromElement($(figurePlaceholderElement)[0]),
+    ...getAttributesFromElement($(figureImageElement)[0])
+  }
+}
+
+export const getImageAttributes = (figureElement) => {
   const svgElement = $(figureElement).find('svg')[0];
   const imageElement = $(figureElement).find('img')[0];
 
   if(imageElement) {
-    return getAtrributesFromElement(imageElement);
+    return getAttributesFromElement(imageElement);
   }
 
-  return getAtrributesFromSVG(svgElement);
+  return getAttributesFromSVG(svgElement);
 }
 
-export const getAtrributesFromElement = (element) => {
+export const getAttributesFromElement = (element) => {
   const attributes = {};
 
   if(!element) return attributes;
@@ -64,7 +79,7 @@ export const getAtrributesFromElement = (element) => {
   return attributes;
 };
 
-export const getAtrributesFromSVG = (element) => {
+export const getAttributesFromSVG = (element) => {
   const svgAttrToExclude = ['xmlns', 'xmlns:xlink', 'version', 'id', 'x', 'y', 'viewBox', 'style', 'xml:space'];
   const attributes = {};
 

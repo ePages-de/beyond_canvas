@@ -1,6 +1,24 @@
 var bc = (function (exports) {
   'use strict';
 
+  function _extends() {
+    _extends = Object.assign || function (target) {
+      for (var i = 1; i < arguments.length; i++) {
+        var source = arguments[i];
+
+        for (var key in source) {
+          if (Object.prototype.hasOwnProperty.call(source, key)) {
+            target[key] = source[key];
+          }
+        }
+      }
+
+      return target;
+    };
+
+    return _extends.apply(this, arguments);
+  }
+
   function _unsupportedIterableToArray(o, minLen) {
     if (!o) return;
     if (typeof o === "string") return _arrayLikeToArray(o, minLen);
@@ -45,8 +63,8 @@ var bc = (function (exports) {
     var elementFather = $(e.target).parents('.relative').find('.js-images');
     var figureElement = $(elementFather).find('figure');
     var figurePlaceholderElement = $(e.target).parents('.relative').find('.js-placeholder').find('figure');
-    var imgAttr = getImagesAttributes($(figureElement));
-    var figureAttr = getAtrributesFromElement($(figurePlaceholderElement)[0]);
+    var imgAttr = getImagesAttributes(figureElement, figurePlaceholderElement);
+    var figureAttr = getAttributesFromFigureElements(figureElement, figurePlaceholderElement);
     delete imgAttr.src;
     delete figureAttr["class"];
     delete figureAttr.style;
@@ -77,17 +95,26 @@ var bc = (function (exports) {
       };
     });
   }
-  var getImagesAttributes = function getImagesAttributes(figureElement) {
+
+  var getImagesAttributes = function getImagesAttributes(figureImageElement, figurePlaceholderElement) {
+    return _extends({}, getImageAttributes($(figurePlaceholderElement)), getImageAttributes($(figureImageElement)));
+  };
+
+  var getAttributesFromFigureElements = function getAttributesFromFigureElements(figureImageElement, figurePlaceholderElement) {
+    return _extends({}, getAttributesFromElement($(figurePlaceholderElement)[0]), getAttributesFromElement($(figureImageElement)[0]));
+  };
+
+  var getImageAttributes = function getImageAttributes(figureElement) {
     var svgElement = $(figureElement).find('svg')[0];
     var imageElement = $(figureElement).find('img')[0];
 
     if (imageElement) {
-      return getAtrributesFromElement(imageElement);
+      return getAttributesFromElement(imageElement);
     }
 
-    return getAtrributesFromSVG(svgElement);
+    return getAttributesFromSVG(svgElement);
   };
-  var getAtrributesFromElement = function getAtrributesFromElement(element) {
+  var getAttributesFromElement = function getAttributesFromElement(element) {
     var attributes = {};
     if (!element) return attributes;
 
@@ -98,7 +125,7 @@ var bc = (function (exports) {
 
     return attributes;
   };
-  var getAtrributesFromSVG = function getAtrributesFromSVG(element) {
+  var getAttributesFromSVG = function getAttributesFromSVG(element) {
     var svgAttrToExclude = ['xmlns', 'xmlns:xlink', 'version', 'id', 'x', 'y', 'viewBox', 'style', 'xml:space'];
     var attributes = {};
     if (!element) return attributes;
@@ -119,9 +146,9 @@ var bc = (function (exports) {
     }
   };
 
-  exports.getAtrributesFromElement = getAtrributesFromElement;
-  exports.getAtrributesFromSVG = getAtrributesFromSVG;
-  exports.getImagesAttributes = getImagesAttributes;
+  exports.getAttributesFromElement = getAttributesFromElement;
+  exports.getAttributesFromSVG = getAttributesFromSVG;
+  exports.getImageAttributes = getImageAttributes;
   exports.previewImage = previewImage;
   exports.setAttributesToElement = setAttributesToElement;
 
