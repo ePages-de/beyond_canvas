@@ -121,9 +121,12 @@ BeyondCanvas.setup do |config|
   #
   # To subscribe to multiple webhook events:
   # config.register_webhook_events(['product.created', 'product.updated'])
+  #
+  # To avoid subscribing to any webhooks:
+  # config.clear_webhook_events!
 
   # Set a URL where webhooks will call on non-production environments. You can
-  # make use of https://webhook.site/.
+  # make use of https://webhook.site/. In case you don't need it you can leave it blank
   # On production environments, the URL will be automatically generated.
   config.webhook_site_url = nil
 end
