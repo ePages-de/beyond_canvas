@@ -37,6 +37,10 @@ module BeyondCanvas
           #
           def subscribe_to_beyond_webhooks
             return if BeyondCanvas.configuration.webhook_events.to_a.empty?
+            if !Rails.env.production? &&
+               BeyondCanvas.configuration.webhook_events.to_a.excluding('app.uninstalled').empty?
+              return
+            end
 
             # Unsubscribe from all existing Beyond webhooks
             self.unsubscribe_from_all_beyond_webhooks
