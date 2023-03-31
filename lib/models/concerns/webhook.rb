@@ -36,6 +36,7 @@ module BeyondCanvas
           #   * Callback URI: {APP_URL}/shops/:id/beyond_webhook
           #
           def subscribe_to_beyond_webhooks
+            return if BeyondCanvas.configuration.webhook_events.to_a.empty?
             return if !Rails.env.production? && BeyondCanvas.configuration.webhook_site_url.blank?
 
             # Unsubscribe from all existing Beyond webhooks
