@@ -45,8 +45,8 @@
     $('form').on('click', 'input[type="file"][data-clear-on-click="true"]', function () {
       // Clear previous selected files
       const dt = new DataTransfer();
-      this.files = dt.files;
 
+      this.files = dt.files;
       // Trigger change
       this.dispatchEvent(new Event('change', { bubbles: true, composed: true }));
     });
