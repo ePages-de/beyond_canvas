@@ -154,11 +154,16 @@
       $('input[type="file"]').each(function() {
         var $input = $(this);
         var $label = $(".input__file__text." + $input.attr("id"));
-        var labelVal = $label.html();
+        var noFileText = $input.attr("data-no-file-text");
+        var svgFileIcon = '\n        <svg class="input__file__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">\n          <path d="M15 2v5h5v15h-16v-20h11zm1-2h-14v24h20v-18l-6-6z"/>\n        </svg>';
         $input.on("change", function(e) {
           var fileName = "";
           if (this.files && this.files.length > 1) fileName = (this.getAttribute("data-multiple-caption") || "{count} files selected").replace("{count}", this.files.length); else if (e.target.value) fileName = e.target.value.split("\\").pop();
-          if (fileName) $label.html('<svg class="input__file__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 2v5h5v15h-16v-20h11zm1-2h-14v24h20v-18l-6-6z"/></svg>' + fileName); else $label.html(labelVal);
+          if (fileName) {
+            $label.html("" + svgFileIcon + fileName);
+          } else {
+            $label.html(noFileText);
+          }
         });
         $input.on("focus", function() {
           $input.addClass("has-focus");
@@ -167,11 +172,22 @@
         });
       });
     };
+    var initializeClearOnClickInputs = function initializeClearOnClickInputs() {
+      $("form").on("click", 'input[type="file"][data-clear-on-click="true"]', function() {
+        var dt = new DataTransfer();
+        this.files = dt.files;
+        this.dispatchEvent(new Event("change", {
+          bubbles: true,
+          composed: true
+        }));
+      });
+    };
     $(document).on("ready page:load turbolinks:load", function() {
       var observer = new MutationObserver(function() {
         return onDOMReady();
       });
       onDOMReady();
+      initializeClearOnClickInputs();
       observer.observe(document.body, {
         childList: true,
         subtree: true
