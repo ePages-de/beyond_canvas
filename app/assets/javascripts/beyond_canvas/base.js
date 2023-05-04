@@ -151,25 +151,41 @@
   });
   (function($) {
     var onDOMReady = function onDOMReady() {
-      $('input[type="file"]').each(function() {
-        var $input = $(this);
-        var $label = $(".input__file__text." + $input.attr("id"));
-        var noFileText = $input.attr("data-no-file-text");
+      updateInputLabel();
+      initializeClearOnClickInputs();
+      addInputFocusClass();
+      removeInputFocusClass();
+    };
+    var updateInputLabel = function updateInputLabel() {
+      $("form").on("change", 'input[type="file"]', function(_ref) {
+        var input = _ref.currentTarget;
+        var label = $(".input__file__text." + input.getAttribute("id"));
+        var noFileText = input.getAttribute("data-no-file-text");
         var svgFileIcon = '\n        <svg class="input__file__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">\n          <path d="M15 2v5h5v15h-16v-20h11zm1-2h-14v24h20v-18l-6-6z"/>\n        </svg>';
-        $input.on("change", function(e) {
-          var fileName = "";
-          if (this.files && this.files.length > 1) fileName = (this.getAttribute("data-multiple-caption") || "{count} files selected").replace("{count}", this.files.length); else if (e.target.value) fileName = e.target.value.split("\\").pop();
-          if (fileName) {
-            $label.html("" + svgFileIcon + fileName);
-          } else {
-            $label.html(noFileText);
-          }
-        });
-        $input.on("focus", function() {
-          $input.addClass("has-focus");
-        }).on("blur", function() {
-          $input.removeClass("has-focus");
-        });
+        if (!label) return;
+        var fileName = "";
+        if (input.files && input.files.length > 1) {
+          fileName = (input.getAttribute("data-multiple-caption") || "{count} files selected").replace("{count}", input.files.length);
+        } else if (input.value) {
+          fileName = input.value.split("\\").pop();
+        }
+        if (fileName) {
+          label.html("" + svgFileIcon + fileName);
+        } else {
+          label.html(noFileText);
+        }
+      });
+    };
+    var addInputFocusClass = function addInputFocusClass() {
+      $("form").on("focus", 'input[type="file"]', function(_ref2) {
+        var input = _ref2.currentTarget;
+        input.addClass("has-focus");
+      });
+    };
+    var removeInputFocusClass = function removeInputFocusClass() {
+      $("form").on("blur", 'input[type="file"]', function(_ref3) {
+        var input = _ref3.currentTarget;
+        input.removeClass("has-focus");
       });
     };
     var initializeClearOnClickInputs = function initializeClearOnClickInputs() {
@@ -183,15 +199,7 @@
       });
     };
     $(document).on("ready page:load turbolinks:load", function() {
-      var observer = new MutationObserver(function() {
-        return onDOMReady();
-      });
-      onDOMReady();
-      initializeClearOnClickInputs();
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true
-      });
+      return onDOMReady();
     });
   })(jQuery);
   (function($) {
