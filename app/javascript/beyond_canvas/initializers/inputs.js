@@ -18,12 +18,12 @@
           <path d="M15 2v5h5v15h-16v-20h11zm1-2h-14v24h20v-18l-6-6z"/>
         </svg>`;
 
-      const fileName = (input.files && input.files.length > 1) ?
-        (input.getAttribute('data-multiple-caption') || '{count} files selected').replace(
+      const fileName = input.files?.length > 1 ?
+        input.getAttribute('data-multiple-selection-text')?.replace(
           '{count}',
           input.files.length
         ) :
-        input.value?.split('\\').pop() && '';
+        input.value?.split('\\').pop() || '';
 
       // Adds icon + filename to label or default no-file text
       fileName ? label.html(`${svgFileIcon}${fileName}`) : label.html(noFileText);
