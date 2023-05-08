@@ -60,11 +60,11 @@ module BeyondCanvas
         custom_attributes = {
                               data: {
                                       multiple_selection_text: '{count} files selected',
-                                      no_file_text: args[:data][:no_file_text] || 'No file chosen'
+                                      no_file_text: args.dig(:data, :no_file_text) || 'No file chosen'
                               }
                             }
 
-        custom_attributes[:data].merge! args[:data]
+        custom_attributes[:data].merge! args[:data] if args.has_key? :data
         args.merge!(custom_attributes)
 
         @template.content_tag(:div, class: 'input__file') do
@@ -72,10 +72,10 @@ module BeyondCanvas
             @template.content_tag(:label,
                                   for: filed_identifyer,
                                   class: 'input__file__control button__transparent--primary') do
-              args[:data][:button_text] || 'Choose file'
+              args.dig(:data, :button_text) || 'Choose file'
             end +
             @template.content_tag(:span,
-                                  args[:data][:no_file_text],
+                                  args.dig(:data, :no_file_text),
                                   class: "input__file__text #{filed_identifyer}")
         end
       end
