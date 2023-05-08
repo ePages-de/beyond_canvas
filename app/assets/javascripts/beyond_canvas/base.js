@@ -158,22 +158,14 @@
     };
     var updateInputLabel = function updateInputLabel() {
       $("form").on("change", 'input[type="file"]', function(_ref) {
+        var _input$value;
         var input = _ref.currentTarget;
         var label = $(".input__file__text." + input.getAttribute("id"));
+        if (!label) return;
         var noFileText = input.getAttribute("data-no-file-text");
         var svgFileIcon = '\n        <svg class="input__file__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">\n          <path d="M15 2v5h5v15h-16v-20h11zm1-2h-14v24h20v-18l-6-6z"/>\n        </svg>';
-        if (!label) return;
-        var fileName = "";
-        if (input.files && input.files.length > 1) {
-          fileName = (input.getAttribute("data-multiple-caption") || "{count} files selected").replace("{count}", input.files.length);
-        } else if (input.value) {
-          fileName = input.value.split("\\").pop();
-        }
-        if (fileName) {
-          label.html("" + svgFileIcon + fileName);
-        } else {
-          label.html(noFileText);
-        }
+        var fileName = input.files && input.files.length > 1 ? (input.getAttribute("data-multiple-caption") || "{count} files selected").replace("{count}", input.files.length) : ((_input$value = input.value) == null ? void 0 : _input$value.split("\\").pop()) && "";
+        fileName ? label.html("" + svgFileIcon + fileName) : label.html(noFileText);
       });
     };
     var addInputFocusClass = function addInputFocusClass() {

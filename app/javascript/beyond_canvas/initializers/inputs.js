@@ -10,37 +10,29 @@
     $('form').on('change', 'input[type="file"]', function ({ currentTarget: input }) {
       const label = $(`.input__file__text.${input.getAttribute('id')}`);
 
-      if(!label) return;
+      if (!label) return;
 
       const noFileText = input.getAttribute('data-no-file-text');
       const svgFileIcon = `
         <svg class="input__file__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path d="M15 2v5h5v15h-16v-20h11zm1-2h-14v24h20v-18l-6-6z"/>
         </svg>`;
-      let fileName = '';
 
-      if (input.files && input.files.length > 1) {
-        fileName = (input.getAttribute('data-multiple-caption') || '{count} files selected').replace(
+      const fileName = (input.files && input.files.length > 1) ?
+        (input.getAttribute('data-multiple-caption') || '{count} files selected').replace(
           '{count}',
           input.files.length
-        );
-      } else if (input.value) {
-        fileName = input.value.split('\\').pop();
-      }
+        ) :
+        input.value?.split('\\').pop() && '';
 
-      if (fileName) {
-        // Adds icon + filename to label
-        label.html(`${svgFileIcon}${fileName}`);
-      } else {
-        // Adds default no-file text
-        label.html(noFileText);
-      }
+      // Adds icon + filename to label or default no-file text
+      fileName ? label.html(`${svgFileIcon}${fileName}`) : label.html(noFileText);
     });
   };
 
   const addInputFocusClass = () => {
     $('form').on('focus', 'input[type="file"]', function ({ currentTarget: input }) {
-        input.addClass('has-focus');
+      input.addClass('has-focus');
     });
   };
 
