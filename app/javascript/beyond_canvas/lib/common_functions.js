@@ -6,12 +6,12 @@ export function previewImage(e) {
   const figureElement = $(elementFather).find('figure');
   const figurePlaceholderElement = $(e.target).parents('.relative').find('.js-placeholder').find('figure');
 
-  const imgAttr = getImagesAttributes(figureElement, figurePlaceholderElement)
-  const figureAttr = getAttributesFromFigureElements(figureElement, figurePlaceholderElement)
+  const imgAttr = getImagesAttributes(figureElement, figurePlaceholderElement);
+  const figureAttr = getAttributesFromFigureElements(figureElement, figurePlaceholderElement);
 
   delete imgAttr.src;
   delete figureAttr.class;
-  delete figureAttr.style
+  delete figureAttr.style;
 
   if($(e.target).attr('multiple')) {
     $(elementFather).children('attachment__placeholder, [preview]').each((_, img) => $(img).remove());
@@ -46,15 +46,15 @@ const getImagesAttributes = (figureImageElement, figurePlaceholderElement) => {
   return {
     ...getImageAttributes($(figurePlaceholderElement)),
     ...getImageAttributes($(figureImageElement))
-  }
-}
+  };
+};
 
 const getAttributesFromFigureElements = (figureImageElement, figurePlaceholderElement) => {
   return {
     ...getAttributesFromElement($(figurePlaceholderElement)[0]),
     ...getAttributesFromElement($(figureImageElement)[0])
-  }
-}
+  };
+};
 
 export const getImageAttributes = (figureElement) => {
   const svgElement = $(figureElement).find('svg')[0];
@@ -65,7 +65,7 @@ export const getImageAttributes = (figureElement) => {
   }
 
   return getAttributesFromSVG(svgElement);
-}
+};
 
 export const getAttributesFromElement = (element) => {
   const attributes = {};

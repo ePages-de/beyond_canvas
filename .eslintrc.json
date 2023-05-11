@@ -4,11 +4,9 @@
     "es6": true,
     "jquery": true
   },
-  "extends": [
-    "eslint:recommended"
-  ],
+  "extends": ["eslint:recommended"],
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 11,
     "sourceType": "module"
   },
   "rules": {
@@ -28,14 +26,8 @@
         "allowTemplateLiterals": true
       }
     ],
-    "semi": [
-      "error",
-      "always"
-    ],
-    "init-declarations": [
-      "error",
-      "always"
-    ],
+    "semi": ["error", "always"],
+    "init-declarations": ["error", "always"],
     "no-undefined": "error"
   }
 }
