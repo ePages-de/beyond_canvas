@@ -47,7 +47,7 @@ module BeyondCanvas
           # attributes) from the instantiated Shop.
           #
           def to_session
-            refresh_token_if_needed
+            refresh_token_if_needed unless BeyondCanvas.configuration.client_credentials
 
             BeyondApi::Session.new(api_url: beyond_api_url,
                                    access_token: beyond_access_token,
