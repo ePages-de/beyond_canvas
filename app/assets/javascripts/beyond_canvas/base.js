@@ -230,35 +230,16 @@
       modal.trigger("bc.modal.hidden");
     }
   });
-  const template = `
-  <style>
-  :host {
-    display: inline-block;
-    position: relative;
-  }
-  :host([hidden]) {
-    display: none;
-  }
-  s {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-    background:
-      var(--scroll-shadow-top, radial-gradient(farthest-side at 50% 0%, rgba(0,0,0,.2), rgba(0,0,0,0))) top/100% var(--top),
-      var(--scroll-shadow-bottom, radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0))) bottom/100% var(--bottom),
-      var(--scroll-shadow-left, radial-gradient(farthest-side at 0%, rgba(0,0,0,.2), rgba(0,0,0,0))) left/var(--left) 100%,
-      var(--scroll-shadow-right, radial-gradient(farthest-side at 100%, rgba(0,0,0,.2), rgba(0,0,0,0))) right/var(--right) 100%;
-    background-repeat: no-repeat;
-  }
-  </style>
-  <slot></slot>
-  <s></s>
-`;
+  const template = `<style>:host{display:inline-block;position:relative}:host([hidden]){display:none}s{position:absolute;top:0;bottom:0;left:0;right:0;pointer-events:none;background:var(--scroll-shadow-top,radial-gradient(farthest-side at 50% 0,#0003,#0000)) top/100% var(--top),var(--scroll-shadow-bottom,radial-gradient(farthest-side at 50% 100%,#0003,#0000)) bottom/100% var(--bottom),var(--scroll-shadow-left,radial-gradient(farthest-side at 0,#0003,#0000)) left/var(--left) 100%,var(--scroll-shadow-right,radial-gradient(farthest-side at 100%,#0003,#0000)) right/var(--right) 100%;background-repeat:no-repeat}</style><slot></slot><s></s>`;
   const updaters = new WeakMap();
   class ScrollShadowElement extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({
+        mode: "open"
+      }).innerHTML = template;
+      updaters.set(this, new Updater(this.shadowRoot.lastElementChild));
+    }
     static get observedAttributes() {
       return [ "el" ];
     }
@@ -267,13 +248,6 @@
     }
     set el(value) {
       this.setAttribute("el", value);
-    }
-    constructor() {
-      super();
-      this.attachShadow({
-        mode: "open"
-      }).innerHTML = template;
-      updaters.set(this, new Updater(this.shadowRoot.lastElementChild));
     }
     connectedCallback() {
       this.shadowRoot.querySelector("slot").addEventListener("slotchange", () => this.start());
@@ -289,34 +263,36 @@
       }
     }
     start() {
-      const el = this.scrollEl || this.firstElementChild;
-      updaters.get(this).start(el, this.scrollEl ? this.firstElementChild : null);
+      updaters.get(this).start(this.scrollEl || this.firstElementChild, this.scrollEl ? this.firstElementChild : null);
     }
   }
   class Updater {
     constructor(targetElement) {
       const update = this.update.bind(this, targetElement, getComputedStyle(targetElement));
       this.handleScroll = throttle(update);
-      this.resizeObserver = new ResizeObserver(update);
+      this.rO = new ResizeObserver(update);
+      this.mO = new MutationObserver(() => this.start(this.el, this.rootEl));
     }
     start(element, rootElement) {
       if (this.el) this.stop();
       if (element) {
         element.addEventListener("scroll", this.handleScroll);
-        this.resizeObserver.observe(element);
+        [ element, ...element.children ].forEach(el => this.rO.observe(el));
+        this.mO.observe(element, {
+          childList: true
+        });
         this.el = element;
       }
       if (rootElement) {
-        this.resizeObserver.observe(rootElement);
+        this.rO.observe(rootElement);
         this.rootEl = rootElement;
       }
     }
     stop() {
-      if (!this.el) return;
       this.el.removeEventListener("scroll", this.handleScroll);
-      this.resizeObserver.disconnect();
-      this.el = null;
-      this.rootEl = null;
+      this.mO.disconnect();
+      this.rO.disconnect();
+      this.el = this.rootEl = null;
     }
     update(targetElement, computedStyle) {
       const {
@@ -324,7 +300,7 @@
         rootEl
       } = this;
       if (!el) return;
-      const maxSize = Number(computedStyle.getPropertyValue("--scroll-shadow-size") || 14);
+      const maxSize = Number(computedStyle.getPropertyValue("--scroll-shadow-size")) || 14;
       const style = {
         "--top": clamp(el.scrollTop, 0, maxSize),
         "--bottom": clamp(el.scrollHeight - el.offsetHeight - el.scrollTop, 0, maxSize),

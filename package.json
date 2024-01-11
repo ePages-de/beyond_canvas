@@ -29,29 +29,30 @@
     "type": "git",
     "url": "https://github.com/ePages-de/beyond_canvas.git"
   },
+  "type": "module",
   "scripts": {
     "build": "rollup --config rollup.config.js",
     "prepublishOnly": "rm -rf src && cp -R app/javascript/beyond_canvas src && cp -R app/assets/stylesheets/beyond_canvas src/scss",
     "eslint": "eslint ./app/javascript/beyond_canvas"
   },
   "dependencies": {
-    "bourbon": "^7.0.0",
-    "jquery": "^3.5.1",
-    "scroll-shadow-element": "^1.1.3"
+    "bourbon": "^7.3.0",
+    "jquery": "^3.7.1",
+    "scroll-shadow-element": "^1.1.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/preset-env": "^7.6.2",
-    "@rollup/plugin-babel": "^5.0.0",
-    "@rollup/plugin-commonjs": "^11.1.0",
-    "@rollup/plugin-node-resolve": "^7.1.3",
-    "common-tags": "^1.8.0",
-    "eslint": "^7.1.0",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
+    "@babel/core": "^7.23.7",
+    "@babel/preset-env": "^7.23.8",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "common-tags": "^1.8.2",
+    "eslint": "^8.56.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-standard": "^4.0.1",
-    "rollup": "^1.21.4",
+    "eslint-plugin-standard": "^5.0.0",
+    "rollup": "^4.9.4",
     "rollup-plugin-uglify": "^6.0.4"
   }
 }
