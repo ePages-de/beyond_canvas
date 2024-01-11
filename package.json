@@ -27,7 +27,7 @@
   "main": "app/assets/javascripts/beyond_canvas/base.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ePages-de/beyond_canvas.git"
+    "url": "git+https://github.com/ePages-de/beyond_canvas.git"
   },
   "type": "module",
   "scripts": {
