@@ -8,6 +8,9 @@
 @mixin link($color, $color-hover) {
   color: var(#{$color});
   line-height: 1.2;
+  background-color: transparent;
+  border: none;
+  padding: 0;
 
   &:hover {
     color: var(#{$color-hover});
@@ -46,6 +49,7 @@
   &--primary,
   &--secondary,
   &--danger {
+
     &:disabled,
     &[disabled] {
       @extend %link_disabled;
