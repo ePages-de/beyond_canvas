@@ -49,7 +49,6 @@
   &--primary,
   &--secondary,
   &--danger {
-
     &:disabled,
     &[disabled] {
       @extend %link_disabled;
