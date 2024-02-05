@@ -100,7 +100,7 @@ module BeyondCanvas
       end
     end
 
-    def image_placeholder_tag(**options)
+    def image_placeholder_tag(options)
       placeholder_with = 300
       placeholder_height = 300
       placeholder_with, placeholder_height = options[:size].split('x') if options[:size].present?
