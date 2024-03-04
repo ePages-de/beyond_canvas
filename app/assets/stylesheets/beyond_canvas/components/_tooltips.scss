@@ -3,6 +3,7 @@ $arrow-size: 8px;
 .tooltip {
   cursor: default;
   position: relative;
+  margin-left: 4px;
 
   &:hover .tooltip__bubble {
     opacity: 1;
