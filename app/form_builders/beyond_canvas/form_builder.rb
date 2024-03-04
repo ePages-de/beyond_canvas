@@ -120,7 +120,7 @@ module BeyondCanvas
     private
 
     def field_wrapper(attribute, args, &block)
-      label = sanitize(args.delete(:label))
+      label = args.delete(:label)&.html_safe
       hint = sanitize(args.delete(:hint))
       pre = args.delete(:pre)
       post = args.delete(:post)
@@ -168,7 +168,7 @@ module BeyondCanvas
     end
 
     def inline_wrapper(attribute, args, filed_identifyer, &block)
-      label = sanitize(args.delete(:label))
+      label = args.delete(:label)&.html_safe
       hint = sanitize(args.delete(:hint))
       errors = object.errors[attribute].join(BeyondCanvas.configuration.model_errors_joined_by) if object.respond_to?(:errors) && object.errors.include?(attribute)
 
