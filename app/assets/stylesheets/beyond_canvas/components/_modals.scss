@@ -43,11 +43,25 @@
   }
 
   &__body {
-    scroll-shadow & {
-      max-height: 65vh;
-      overflow-x: hidden;
-      padding-right: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 100%;
+    max-height: 65vh;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
     }
+  }
+
+  scroll-shadow {
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    --scroll-shadow-left: none;
+    --scroll-shadow-right: none;
   }
 
   &__close {
