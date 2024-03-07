@@ -3,12 +3,18 @@ $arrow-size: 8px;
 .tooltip {
   cursor: default;
   position: relative;
-  white-space: break-spaces;
-  padding: 5px;
+  margin-left: 4px;
 
   &:hover .tooltip__bubble {
     opacity: 1;
     visibility: visible;
+  }
+
+  > svg {
+    @include size(14px);
+
+    fill: var(--primary-color);
+    transform: translateY(1px);
   }
 
   &__label {
