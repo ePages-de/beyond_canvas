@@ -5,7 +5,7 @@ module BeyondCanvas
     extend ActiveSupport::Concern
 
     included do
-      around_action :switch_locale, except: :update_locale # rubocop:disable Rails/LexicallyScopedActionFilter
+      around_action :switch_locale
     end
 
     private
@@ -17,7 +17,7 @@ module BeyondCanvas
     def switch_locale(&action)
       unless valid_locale?(cookies[:locale])
         cookies[:locale] = {
-          value: app_locale,
+          value: app_locale
         }.merge COOKIES_ATTRIBUTES
       end
 
@@ -50,7 +50,7 @@ module BeyondCanvas
     #
     def shop_locale
       BeyondApi::Session.new(api_url: current_shop.beyond_api_url).shop.current.default_locale
-    rescue
+    rescue StandardError
       browser_compatible_locale
     end
 
@@ -71,7 +71,7 @@ module BeyondCanvas
       locales = available_locales & browser_locales
 
       locales.empty? ? I18n.default_locale : locales.first
-    rescue
+    rescue StandardError
       I18n.default_locale
     end
   end

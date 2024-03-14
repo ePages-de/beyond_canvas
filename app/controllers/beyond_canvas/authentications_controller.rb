@@ -14,7 +14,7 @@ module BeyondCanvas
     before_action :validate_app_installation_request!,
                   only: :new,
                   unless: -> { Rails.env.development? && BeyondCanvas.configuration.client_credentials }
-    before_action :clear_locale_cookie, only: [:new, :install]
+    before_action :clear_locale_cookie, only: %i[new install]
 
     def new
       @shop = Shop.find_or_initialize_by(beyond_api_url: params[:api_url])
@@ -35,7 +35,7 @@ module BeyondCanvas
         @shop.authenticate(params[:shop][:code])
         @shop.subscribe_to_beyond_webhooks
 
-        redirect_to after_installation_path
+        redirect_to after_installation_path, allow_other_host: true
       else
         render :new
       end

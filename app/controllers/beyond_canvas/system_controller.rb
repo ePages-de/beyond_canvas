@@ -6,6 +6,8 @@ module BeyondCanvas
   class SystemController < ApplicationController # :nodoc:
     include ::BeyondCanvas::LocaleManagement
 
+    skip_around_action :switch_locale
+
     def update_locale
       cookies[:locale] = {
         value: system_locale_params[:locale]
