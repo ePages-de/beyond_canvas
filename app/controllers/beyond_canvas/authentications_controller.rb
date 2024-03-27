@@ -67,7 +67,7 @@ module BeyondCanvas
       @shop.save
       @shop.subscribe_to_beyond_webhooks
 
-      redirect_to after_preinstallation_path
+      redirect_to after_preinstallation_path, allow_other_host: true
     end
 
     def open_app(shop)
