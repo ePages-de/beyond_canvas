@@ -83,11 +83,46 @@ module BeyondCanvas
       end
     end
 
+    def image_attachment_tag(blob, delete_url = nil, args = {})
+      if blob
+        figure_options = {
+          class: ['attachment', "attachment--#{blob.representable? ? 'preview' : 'file'}", "attachment--#{blob.filename.extension}"]
+          }
+
+        content_tag(:figure, figure_options) do
+          if blob.representable?
+            [
+              (image_tag(args.present? && args[:transformations].present? ? blob.representation(args[:transformations]) : blob)),
+              (link_to(inline_svg_tag('icons/delete.svg'), delete_url, {class: 'attachment__delete-icon', method: :delete}.merge(args[:link_html_options].to_h)) unless delete_url.blank?)
+            ].compact.inject(:+)
+          end
+        end
+      end
+    end
+
+    def image_placeholder_tag(options)
+      placeholder_with = 300
+      placeholder_height = 300
+      placeholder_with, placeholder_height = options[:size].split('x') if options[:size].present?
+
+      figure_options = {
+        class: "attachment attachment__placeholder #{options.fetch(:class, '')}",
+        style: "#{options.fetch(:style, '')};width:#{placeholder_with}px;height:#{placeholder_height}px;",
+        data: options[:data]
+      }
+
+      content_tag(:figure, figure_options) do
+        [
+          (inline_svg_tag('icons/placeholder.svg', options.fetch(:image_html_options, {})))
+        ].compact.inject(:+)
+      end
+    end
+
     private
 
     def field_wrapper(attribute, args, &block)
-      label = args.delete(:label)&.html_safe
-      hint = args.delete(:hint)&.html_safe
+      label = sanitize(args.delete(:label))
+      hint = sanitize(args.delete(:hint))
       pre = args.delete(:pre)
       post = args.delete(:post)
 
@@ -107,8 +142,8 @@ module BeyondCanvas
     end
 
     def inline_wrapper(attribute, args, filed_identifyer, &block)
-      label = args.delete(:label)&.html_safe
-      hint = args.delete(:hint)&.html_safe
+      label = sanitize(args.delete(:label))
+      hint = sanitize(args.delete(:hint))
 
       content_tag(:div, class: 'form__row') do
         content_tag(:div, class: 'relative', style: 'display: flex; align-items: center;') do

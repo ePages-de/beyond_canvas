@@ -9,6 +9,8 @@ module BeyondCanvas
     include ::BeyondCanvas::Authentication
     include ::BeyondCanvas::CustomStyles
 
+    skip_before_action :check_custom_styles!
+
     before_action :validate_app_installation_request!,
                   only: :new,
                   unless: -> { Rails.env.development? && BeyondCanvas.configuration.client_credentials }
@@ -61,6 +63,8 @@ module BeyondCanvas
       @shop = Shop.create_or_find_by(beyond_api_url: params[:api_url])
       @shop.http_host = request.env['HTTP_HOST']
       @shop.authenticate(params[:code])
+      @shop.valid?
+      @shop.save
       @shop.subscribe_to_beyond_webhooks
 
       redirect_to after_preinstallation_path
@@ -72,14 +76,20 @@ module BeyondCanvas
       reset_session
       log_in shop
 
+      set_iframe_ancestor_url
+
       cookies.delete(:custom_styles_url)
-      set_custom_styles_url shop if BeyondCanvas.configuration.cockpit_app
+      set_custom_styles_url shop if BeyondCanvas.configuration.custom_styles?
 
       redirect_to after_sign_in_path
     end
 
     def clear_locale_cookie
       cookies.delete :locale if BeyondCanvas.configuration.cockpit_app
+    end
+
+    def set_iframe_ancestor_url
+      session[:iframe_ancestor_url] = request.referer
     end
   end
 end

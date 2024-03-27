@@ -1,3 +1,26 @@
+### v0.23.1.pre
+
+* deprecations
+  * Remove `link_to_with_icon`
+  * `external_link` icon will no longer be automatically added on `target="_blank"` anchors
+
+* bug-fixes
+  * Minor style fixes
+  * Prevent checking custom styles when opening the app
+  * Remove unnecessary `URI.decode(signature)` call when validating open app request
+  * Remove unnecessary `terms` attribute from `Shop`
+  * Fix `#refresh_token` method when `client_credentials = true` is configured
+
+* features
+  * Add a middleware to automatically configure cockpit app headers
+  * Add `image_file_field` component to upload images and render a `placeholder` if there is no image
+  * Add `image_attachment_tag` component to render images
+  * Add styles for `.svg` images that include `.surface`, `.bubbles` and `.outline` classes
+
+* enhancements
+  * Allow to retrieve `client_credentials` token on any environment but `production`
+  * Add convenient `custom_styles?` and `client_credentials?` methods
+
 ### v0.23.0.pre
 
 * deprecations

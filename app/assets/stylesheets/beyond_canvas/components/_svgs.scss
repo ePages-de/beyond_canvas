@@ -1,0 +1,11 @@
+svg {
+  .surface {
+    fill: var(--emptyState-surface);
+  }
+  .bubbles {
+    fill: var(--emptyState-bubbles);
+  }
+  .outline {
+    fill: var(--emptyState-outline);
+  }
+}

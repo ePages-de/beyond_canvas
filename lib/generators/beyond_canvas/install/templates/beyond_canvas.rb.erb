@@ -27,6 +27,9 @@ BeyondCanvas.setup do |config|
   #
   # config.preinstalled = false
 
+  # Set how to display errors when are concatenated
+  # config.model_errors_joined_by = ', '
+
   # Set if you want to enable the available debug mode Beyond Canvas offers.
   # This options displays a parameter debug as well as some custom Beyond Canvas
   # logs.
@@ -113,6 +116,9 @@ BeyondCanvas.setup do |config|
   # `product.updated`, `order.created`, `order.updated`) apart from
   # `app.uninstalled` on app installation process, add them like follows:
   #
+  # To clear the default webhook event list:
+  # config.clear_webhook_events!
+  #
   # To subscribe to a single webhook event:
   # config.register_webhook_event('product.created')
   #
@@ -120,7 +126,7 @@ BeyondCanvas.setup do |config|
   # config.register_webhook_events(['product.created', 'product.updated'])
 
   # Set a URL where webhooks will call on non-production environments. You can
-  # make use of https://webhook.site/.
+  # make use of https://webhook.site/. By default webhook subscription on non-production environment is skipped
   # On production environments, the URL will be automatically generated.
-  config.webhook_site_url = nil
+  # config.webhook_site_url = nil
 end

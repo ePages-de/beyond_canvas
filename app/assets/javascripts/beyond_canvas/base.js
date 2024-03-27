@@ -3,6 +3,7 @@
  */
 //= require jquery3
 //= require rails-ujs
+//= require beyond_canvas/common_functions
 //= require_self
 
 (function(factory) {
@@ -91,12 +92,34 @@
     }
   });
   (function($) {
-    $(document).on("click", "[data-toggle='collapse']", function(e) {
+    $(document).on("click", '[data-toggle="collapse"]', function(e) {
       e.preventDefault();
-      $($(this).attr("data-target")).slideToggle();
-      $(this).find(".collapse__icon").toggleClass("collapse__icon--open");
+      var target = $(this).attr("data-target");
+      if ($(target).is(":hidden")) {
+        $(this).openCollapse();
+      } else {
+        $(this).closeCollapse();
+      }
     });
   })(jQuery);
+  $.fn.extend({
+    openCollapse: function openCollapse() {
+      var target = $(this).attr("data-target");
+      $(this).trigger("bc.collapse.open");
+      $(this).attr("data-visible", true);
+      $(this).find(".collapse__icon").addClass("collapse__icon--open");
+      $(target).slideDown();
+      $(this).trigger("bc.collapse.opened");
+    },
+    closeCollapse: function closeCollapse() {
+      var target = $(this).attr("data-target");
+      $(this).trigger("bc.collapse.close");
+      $(this).attr("data-visible", false);
+      $(this).find(".collapse__icon").removeClass("collapse__icon--open");
+      $(target).slideUp();
+      $(this).trigger("bc.collapse.closed");
+    }
+  });
   (function($) {
     var onDOMReady = function onDOMReady() {
       $(".flash").each(function() {
@@ -128,29 +151,47 @@
   });
   (function($) {
     var onDOMReady = function onDOMReady() {
-      $('input[type="file"]').each(function() {
-        var $input = $(this), $label = $(".input__file__text." + $input.attr("id")), labelVal = $label.html();
-        $input.on("change", function(e) {
-          var fileName = "";
-          if (this.files && this.files.length > 1) fileName = (this.getAttribute("data-multiple-caption") || "{count} files selected").replace("{count}", this.files.length); else if (e.target.value) fileName = e.target.value.split("\\").pop();
-          if (fileName) $label.html('<svg class="input__file__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M15 2v5h5v15h-16v-20h11zm1-2h-14v24h20v-18l-6-6z"/></svg>' + fileName); else $label.html(labelVal);
-        });
-        $input.on("focus", function() {
-          $input.addClass("has-focus");
-        }).on("blur", function() {
-          $input.removeClass("has-focus");
-        });
+      updateInputLabel();
+      initializeClearOnClickInputs();
+      addInputFocusClass();
+      removeInputFocusClass();
+    };
+    var updateInputLabel = function updateInputLabel() {
+      $("form").on("change", 'input[type="file"]', function(_ref) {
+        var _input$files, _input$getAttribute, _input$value;
+        var input = _ref.currentTarget;
+        var label = $(".input__file__text." + input.getAttribute("id"));
+        if (!label) return;
+        var noFileText = input.getAttribute("data-no-file-text");
+        var svgFileIcon = '\n        <svg class="input__file__icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">\n          <path d="M15 2v5h5v15h-16v-20h11zm1-2h-14v24h20v-18l-6-6z"/>\n        </svg>';
+        var fileName = ((_input$files = input.files) == null ? void 0 : _input$files.length) > 1 ? (_input$getAttribute = input.getAttribute("data-multiple-selection-text")) == null ? void 0 : _input$getAttribute.replace("{count}", input.files.length) : ((_input$value = input.value) == null ? void 0 : _input$value.split("\\").pop()) || "";
+        fileName ? label.html("" + svgFileIcon + fileName) : label.html(noFileText);
+      });
+    };
+    var addInputFocusClass = function addInputFocusClass() {
+      $("form").on("focus", 'input[type="file"]', function(_ref2) {
+        var input = _ref2.currentTarget;
+        input.addClass("has-focus");
+      });
+    };
+    var removeInputFocusClass = function removeInputFocusClass() {
+      $("form").on("blur", 'input[type="file"]', function(_ref3) {
+        var input = _ref3.currentTarget;
+        input.removeClass("has-focus");
+      });
+    };
+    var initializeClearOnClickInputs = function initializeClearOnClickInputs() {
+      $("form").on("click", 'input[type="file"][data-clear-on-click="true"]', function() {
+        var dt = new DataTransfer();
+        this.files = dt.files;
+        this.dispatchEvent(new Event("change", {
+          bubbles: true,
+          composed: true
+        }));
       });
     };
     $(document).on("ready page:load turbolinks:load", function() {
-      var observer = new MutationObserver(function() {
-        return onDOMReady();
-      });
-      onDOMReady();
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true
-      });
+      return onDOMReady();
     });
   })(jQuery);
   (function($) {
@@ -189,4 +230,114 @@
       modal.trigger("bc.modal.hidden");
     }
   });
+  const template = `<style>:host{display:inline-block;position:relative}:host([hidden]){display:none}s{position:absolute;top:0;bottom:0;left:0;right:0;pointer-events:none;background:var(--scroll-shadow-top,radial-gradient(farthest-side at 50% 0,#0003,#0000)) top/100% var(--top),var(--scroll-shadow-bottom,radial-gradient(farthest-side at 50% 100%,#0003,#0000)) bottom/100% var(--bottom),var(--scroll-shadow-left,radial-gradient(farthest-side at 0,#0003,#0000)) left/var(--left) 100%,var(--scroll-shadow-right,radial-gradient(farthest-side at 100%,#0003,#0000)) right/var(--right) 100%;background-repeat:no-repeat}</style><slot></slot><s></s>`;
+  const updaters = new WeakMap();
+  class ScrollShadowElement extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({
+        mode: "open"
+      }).innerHTML = template;
+      updaters.set(this, new Updater(this.shadowRoot.lastElementChild));
+    }
+    static get observedAttributes() {
+      return [ "el" ];
+    }
+    get el() {
+      return this.getAttribute("el");
+    }
+    set el(value) {
+      this.setAttribute("el", value);
+    }
+    connectedCallback() {
+      this.shadowRoot.querySelector("slot").addEventListener("slotchange", () => this.start());
+      this.start();
+    }
+    disconnectedCallback() {
+      updaters.get(this).stop();
+    }
+    attributeChangedCallback(_name, oldValue, newValue) {
+      if (oldValue !== newValue) {
+        this.scrollEl = newValue ? this.querySelector(newValue) : null;
+        this.start();
+      }
+    }
+    start() {
+      updaters.get(this).start(this.scrollEl || this.firstElementChild, this.scrollEl ? this.firstElementChild : null);
+    }
+  }
+  class Updater {
+    constructor(targetElement) {
+      const update = this.update.bind(this, targetElement, getComputedStyle(targetElement));
+      this.handleScroll = throttle(update);
+      this.rO = new ResizeObserver(update);
+      this.mO = new MutationObserver(() => this.start(this.el, this.rootEl));
+    }
+    start(element, rootElement) {
+      if (this.el) this.stop();
+      if (element) {
+        element.addEventListener("scroll", this.handleScroll);
+        [ element, ...element.children ].forEach(el => this.rO.observe(el));
+        this.mO.observe(element, {
+          childList: true
+        });
+        this.el = element;
+      }
+      if (rootElement) {
+        this.rO.observe(rootElement);
+        this.rootEl = rootElement;
+      }
+    }
+    stop() {
+      this.el.removeEventListener("scroll", this.handleScroll);
+      this.mO.disconnect();
+      this.rO.disconnect();
+      this.el = this.rootEl = null;
+    }
+    update(targetElement, computedStyle) {
+      const {
+        el,
+        rootEl
+      } = this;
+      if (!el) return;
+      const maxSize = Number(computedStyle.getPropertyValue("--scroll-shadow-size")) || 14;
+      const style = {
+        "--top": clamp(el.scrollTop, 0, maxSize),
+        "--bottom": clamp(el.scrollHeight - el.offsetHeight - el.scrollTop, 0, maxSize),
+        "--left": clamp(el.scrollLeft, 0, maxSize),
+        "--right": clamp(el.scrollWidth - el.offsetWidth - el.scrollLeft, 0, maxSize)
+      };
+      if (rootEl) {
+        const clientRect = el.getBoundingClientRect();
+        const rootClientRect = rootEl.getBoundingClientRect();
+        Object.assign(style, {
+          top: clamp(clientRect.top - rootClientRect.top),
+          bottom: clamp(rootClientRect.bottom - clientRect.bottom),
+          left: clamp(clientRect.left - rootClientRect.left),
+          right: clamp(rootClientRect.right - clientRect.right)
+        });
+      }
+      for (const key in style) {
+        targetElement.style.setProperty(key, `${style[key]}px`);
+      }
+    }
+  }
+  function clamp(num, min = 0, max) {
+    if (num < min) return min;
+    if (num > max) return max;
+    return num;
+  }
+  function throttle(callback) {
+    let id = null;
+    return () => {
+      if (id) return;
+      id = requestAnimationFrame(() => {
+        callback();
+        id = null;
+      });
+    };
+  }
+  if ("customElements" in window && "ResizeObserver" in window) {
+    customElements.define("scroll-shadow", ScrollShadowElement);
+  }
 });

@@ -52,6 +52,19 @@ select {
   }
 }
 
+fieldset {
+  legend {
+    color: var(--workspace-headline);
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .form__row {
+    margin-bottom: 8px !important;
+  }
+}
+
 .input {
   &__label {
     color: var(--formGroup-label);

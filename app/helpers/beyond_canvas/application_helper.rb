@@ -5,21 +5,7 @@ module BeyondCanvas
     def full_title(page_title = '')
       base_title = BeyondCanvas.configuration.site_title
 
-      page_title.empty? ? base_title : page_title + ' | ' + base_title
-    end
-
-    def link_to_with_icon(name = nil, options = nil, fa_class = nil, html_options = nil)
-      options ||= {}
-
-      html_options = convert_options_to_data_attributes(options, html_options)
-
-      url = url_for(options)
-      html_options['href'] ||= url
-
-      content_tag('a', name || url, html_options) do
-        (fa_class.nil? ? '' : content_tag('i', nil, class: ['link__icon ' + fa_class])) +
-          name
-      end
+      page_title.empty? ? base_title : "#{page_title} | #{base_title}"
     end
 
     %i[success info warning error].each do |method|
@@ -46,32 +32,45 @@ module BeyondCanvas
       html_options.merge!(id: id)
 
       content_tag('div', class: 'collapse') do
-        content_tag('a', class: 'collapse__button', title: name, data: { toggle: 'collapse', target: "##{id}" }) do
-          (inline_svg_tag('icons/arrow_right.svg', class: 'collapse__icon') + name).html_safe
+        content_tag('a', class: 'collapse__button', title: name, data: { visible: false, toggle: 'collapse', target: "##{id}" }) do
+          inline_svg_tag('icons/arrow_right.svg', class: 'collapse__icon') + name
         end +
-        content_tag('div', html_options) do
-          yield block if block_given?
-        end
+          content_tag('div', html_options) do
+            yield block if block_given?
+          end
       end
     end
 
-    def step_list(title, steps = [])
+    def step_list(title = nil, steps: [])
       content_tag('div', class: 'step-list__container') do
-        content_tag('h4', title, class: 'step-list__title') +
-        content_tag('table', class: 'step-list__items') do
-          content_tag('tbody') do
-            steps.each_with_index.collect do |step, index|
-              content_tag('tr') do
-                content_tag('td', class: 'step-list__bubble-column') do
-                  content_tag('div', index + 1, class: 'step-list__bubble')
-                end +
-                content_tag('td') do
-                  content_tag('strong', step.dig(:headline)&.html_safe, class: 'step-list__headline') +
-                  content_tag('p', step.dig(:description)&.html_safe, class: 'step-list__description')
+        [
+          (content_tag('h4', raw(title), class: 'step-list__title') if title.present?),
+          content_tag('table', class: 'step-list__items') do
+            content_tag('tbody') do
+              safe_join(steps.each_with_index.collect do |step, index|
+                content_tag('tr') do
+                  content_tag('td', class: 'step-list__bubble-column') do
+                    content_tag('div', index + 1, class: 'step-list__bubble')
+                  end +
+                    content_tag('td') do
+                      content_tag('strong', raw(step[:headline]), class: 'step-list__headline') +
+                        content_tag('p', raw(step[:description]), class: 'step-list__description')
+                    end
                 end
-              end
-            end.join.html_safe
+              end)
+            end
           end
+        ].compact.inject(:+)
+      end
+    end
+
+    %i[top right bottom left].each do |method|
+      define_method :"tooltip_#{method}" do |name = nil, &block|
+        name = block if block_given?
+
+        content_tag('span', class: 'tooltip') do
+          inline_svg_tag('icons/tooltip.svg', class: 'tooltip__label', data: { placement: method }) +
+            content_tag('div', name, class: 'tooltip__bubble', &block)
         end
       end
     end
