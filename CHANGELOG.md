@@ -287,7 +287,7 @@
 ### v0.9.0.pre
 
 * enhancements
-  * Make javascripts work with turbolinks
+  * Make javascripts work with turbo
 
 * features
   * Add `.markdown` class for styling `.md` content
