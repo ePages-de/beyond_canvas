@@ -39,9 +39,9 @@ const BUTTON_SELECTORS = '[class^="button"]';
     }
   });
 
-  $(document).on('ready page:load turbolinks:load', onDOMReady);
+  $(document).on('ready page:load turbo:load', onDOMReady);
 
-  $(document).on('beforeunload turbolinks:before-visit', function () {
+  $(document).on('beforeunload turbo:before-visit', function () {
     $.restoreActionElements();
   });
 })(jQuery);

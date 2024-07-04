@@ -40,8 +40,8 @@
         $(this).showSpinner();
       }
     });
-    $(document).on("ready page:load turbolinks:load", onDOMReady);
-    $(document).on("beforeunload turbolinks:before-visit", function() {
+    $(document).on("ready page:load turbo:load", onDOMReady);
+    $(document).on("beforeunload turbo:before-visit", function() {
       $.restoreActionElements();
     });
   })(jQuery);
@@ -132,7 +132,7 @@
     $(document).on("click", ".flash__close", function() {
       $.closeAlert();
     });
-    $(document).on("ready page:load turbolinks:load bc.flash.shown", onDOMReady);
+    $(document).on("ready page:load turbo:load bc.flash.shown", onDOMReady);
   })(jQuery);
   $.extend({
     showFlash: function showFlash(status, message) {
@@ -190,7 +190,7 @@
         }));
       });
     };
-    $(document).on("ready page:load turbolinks:load", function() {
+    $(document).on("ready page:load turbo:load", function() {
       return onDOMReady();
     });
   })(jQuery);
@@ -212,7 +212,7 @@
       $.restoreActionElements();
       $(dataTarget).hideModal();
     });
-    $(document).on("ready page:load turbolinks:load", onDOMReady);
+    $(document).on("ready page:load turbo:load", onDOMReady);
   })(jQuery);
   $.fn.extend({
     showModal: function showModal() {

@@ -13,7 +13,7 @@
     $.closeAlert();
   });
 
-  $(document).on('ready page:load turbolinks:load bc.flash.shown', onDOMReady);
+  $(document).on('ready page:load turbo:load bc.flash.shown', onDOMReady);
 })(jQuery);
 
 $.extend({

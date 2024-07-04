@@ -55,5 +55,5 @@
     });
   };
 
-  $(document).on('ready page:load turbolinks:load', () => onDOMReady());
+  $(document).on('ready page:load turbo:load', () => onDOMReady());
 })(jQuery);
