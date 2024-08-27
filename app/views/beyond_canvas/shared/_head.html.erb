@@ -8,6 +8,8 @@
 
   <%= favicon_link_tag BeyondCanvas.configuration.favicon if BeyondCanvas.configuration.favicon %>
 
+  <%= javascript_importmap_tags %>
+
   <% BeyondCanvas.configuration.stylesheets.each do |style, options| %>
     <% if BeyondCanvas.configuration.skip_webpacker %>
       <%= stylesheet_link_tag style, options %>
