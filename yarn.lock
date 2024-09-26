@@ -2715,11 +2715,6 @@ safe-regex-test@^1.0.0:
     get-intrinsic "^1.2.2"
     is-regex "^1.1.4"
 
-scroll-shadow-element@^1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/scroll-shadow-element/-/scroll-shadow-element-1.1.6.tgz#a61f95f2303deb0850fd56fde14b974c8f51d727"
-  integrity sha512-YZaW9eEaFGQ8zfNwtk9w4Yt9cJl/0Um6siG1NogAKwD9vr1+tqIvRoudh6IWicpjub1faiRaqFwlEGiMKF9Y0g==
-
 semver@^6.1.0:
   version "6.3.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-6.3.0.tgz#ee0a64c8af5e8ceea67687b133761e1becbd1d3d"

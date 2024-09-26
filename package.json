@@ -37,8 +37,7 @@
   },
   "dependencies": {
     "bourbon": "^7.3.0",
-    "jquery": "^3.7.1",
-    "scroll-shadow-element": "^1.1.6"
+    "jquery": "^3.7.1"
   },
   "devDependencies": {
     "@babel/core": "^7.23.7",

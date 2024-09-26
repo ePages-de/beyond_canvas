@@ -11,10 +11,6 @@
   z-index: 99999;
   visibility: hidden;
 
-  scroll-shadow {
-    width: 100%;
-  }
-
   &__dialog {
     width: 100%;
     max-width: $modal-width;
@@ -54,14 +50,6 @@
     &::-webkit-scrollbar {
       display: none;
     }
-  }
-
-  scroll-shadow {
-    display: inline-block;
-    width: 100%;
-    max-width: 100%;
-    --scroll-shadow-left: none;
-    --scroll-shadow-right: none;
   }
 
   &__close {
