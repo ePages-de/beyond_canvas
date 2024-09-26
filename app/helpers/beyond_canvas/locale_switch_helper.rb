@@ -10,7 +10,6 @@ module BeyondCanvas
       if I18n.exists?("locales.#{locale}")
         I18n.t("locales.#{locale}")
       else
-        logger.debug "[BeyondCanvas] Missing translation: #{I18n.locale}.locales.#{locale}".yellow if debug_mode?
         locale
       end
     end

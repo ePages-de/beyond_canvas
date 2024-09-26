@@ -38,7 +38,6 @@ module BeyondCanvas
         include ::BeyondCanvas::CustomStyles
         include ::BeyondCanvas::StatusCodes
         include ::BeyondCanvas::AuthenticationsHelper
-        include ::BeyondCanvas::DebugHelper
         include ::BeyondCanvas::ControllerHelper
 
         ::ActionController::Base.helper BeyondCanvas::Engine.helpers
