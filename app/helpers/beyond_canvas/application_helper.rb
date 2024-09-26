@@ -17,28 +17,5 @@ module BeyondCanvas
         image_tag logo_path, html_options
       end
     end
-
-    def collapse(name, html_options = nil, &block)
-      html_options ||= {}
-      id = unique_id(:collapse)
-
-      html_options.merge!(class: 'collapse__content') { |_key, old_val, new_val| [new_val, old_val].join(' ') }
-      html_options.merge!(id: id)
-
-      content_tag('div', class: 'collapse') do
-        content_tag('a', class: 'collapse__button', title: name, data: { visible: false, toggle: 'collapse', target: "##{id}" }) do
-          inline_svg_tag('icons/arrow_right.svg', class: 'collapse__icon') + name
-        end +
-          content_tag('div', html_options) do
-            yield block if block_given?
-          end
-      end
-    end
-
-    private
-
-    def unique_id(attribute)
-      "#{attribute}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
-    end
   end
 end
