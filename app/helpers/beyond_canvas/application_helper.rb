@@ -8,12 +8,6 @@ module BeyondCanvas
       page_title.empty? ? base_title : "#{page_title} | #{base_title}"
     end
 
-    %i[success info warning error].each do |method|
-      define_method :"notice_#{method}" do |name = nil, html_options = nil, &block|
-        notice_render(method, name, html_options, &block)
-      end
-    end
-
     def logo_image_tag(logo_path, options = {})
       html_options = { class: 'logo', alt: 'logo' }.merge options
 
@@ -79,38 +73,6 @@ module BeyondCanvas
 
     def unique_id(attribute)
       "#{attribute}_#{DateTime.now.strftime('%Q') + rand(10_000).to_s}"
-    end
-
-    def get_flash_icon(key)
-      case key
-      when 'success', 'notice'
-        inline_svg_tag 'icons/flash_checkbox.svg'
-      when 'info'
-        inline_svg_tag 'icons/flash_info.svg'
-      when 'warning'
-        inline_svg_tag 'icons/flash_warning.svg'
-      when 'error', 'alert'
-        inline_svg_tag 'icons/flash_error.svg'
-      else
-        inline_svg_tag 'icons/flash_info.svg'
-      end
-    end
-
-    def notice_render(method, name = nil, html_options = nil, &block)
-      if block_given?
-        html_options = name
-        name = block
-      end
-
-      html_options ||= {}
-
-      html_options.merge!(class: "notice notice--#{method}") { |_key, old_val, new_val| [new_val, old_val].join(' ') }
-
-      content_tag('div', html_options) do
-        content_tag('div', class: 'notice__icon') do
-          get_flash_icon(method.to_s)
-        end + content_tag('span', block_given? ? capture(&name) : name, class: 'notice__content')
-      end
     end
   end
 end
