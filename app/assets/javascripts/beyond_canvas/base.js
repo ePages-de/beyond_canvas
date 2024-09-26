@@ -65,32 +65,6 @@
       });
     }
   });
-  $.fn.extend({
-    buildButton: function buildButton() {
-      var button = $(this);
-      if (button.is('[class^=button]')) {
-        if (!button.hasClass('button--no-spinner')) {
-          button.width(button.width());
-          button.data('oldWidth', button.width());
-          if (button.find('.spinner').length == 0) {
-            button.prepend("\n          <div class='spinner'>\n            <div class='bounce1'></div>\n            <div class='bounce2'></div>\n            <div class='bounce3'></div>\n          </div>");
-          }
-        }
-        button.closest('form').on('ajax:success', function() {
-          $.restoreActionElements();
-        }).on('ajax:error', function() {
-          $.restoreActionElements();
-        });
-      }
-    },
-    showSpinner: function showSpinner() {
-      var button = $(this);
-      button.width(button.width() + $('.spinner').outerWidth(true));
-      setTimeout(function() {
-        button.find('.spinner').css('display', 'inline-flex');
-      }, SPINNER_ANIMATION_TIMEOUT);
-    }
-  });
   (function($) {
     $(document).on('click', '[data-toggle="collapse"]', function(e) {
       e.preventDefault();
