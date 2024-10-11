@@ -16,14 +16,6 @@ body {
   padding: 25px 25px 100px 25px;
 }
 
-.card {
-  background: white;
-  border-radius: 3px;
-  box-shadow: 0 2px 7px rgb(0 0 0 / 20%);
-  padding: 40px;
-  position: relative;
-}
-
 .wrapper {
   display: flex;
   justify-content: center;
@@ -61,14 +53,6 @@ body {
   margin-right: 40px;
 }
 
-.headline {
-  color: #7a764c;
-  font-size: 42px;
-  font-weight: 100;
-  line-height: 1;
-  margin-bottom: 20px;
-}
-
 .text {
   color: #808080;
   font-size: 17px;
@@ -81,10 +65,6 @@ body {
   }
 
   .text {
-    text-align: center;
-  }
-
-  .headline {
     text-align: center;
   }
 

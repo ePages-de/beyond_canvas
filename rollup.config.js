@@ -17,26 +17,41 @@ const uglifyOptions = {
        */
       //= require jquery3
       //= require rails-ujs
+      //= require beyond_canvas/common_functions
       //= require_self
     ` + '\n',
   },
 };
 
-export default {
-  input: 'app/javascript/beyond_canvas/base.js',
-  output: {
-    file: 'app/assets/javascripts/beyond_canvas/base.js',
-    format: 'umd',
-    name: 'ActiveAdmin',
+export default [
+  {
+    input: 'app/javascript/beyond_canvas/base.js',
+    output: {
+      file: 'app/assets/javascripts/beyond_canvas/base.js',
+      format: 'umd',
+      name: 'BeyondCanvas',
+    },
+    plugins: [
+      resolve(),
+      commonjs(),
+      babel(),
+      uglify(uglifyOptions)
+    ],
+    // Use client's yarn dependencies instead of bundling everything
+    external: [
+      'jquery'
+    ]
   },
-  plugins: [
-    resolve(),
-    commonjs(),
-    babel(),
-    uglify(uglifyOptions)
-  ],
-  // Use client's yarn dependencies instead of bundling everything
-  external: [
-    'jquery'
-  ]
-};
+  {
+    input: 'app/javascript/beyond_canvas/lib/common_functions.js',
+    output: {
+      file: 'app/assets/javascripts/beyond_canvas/common_functions.js',
+      format: 'iife',
+      name: 'bc',
+    },
+    plugins: [
+      resolve(),
+      babel()
+    ],
+  }
+];

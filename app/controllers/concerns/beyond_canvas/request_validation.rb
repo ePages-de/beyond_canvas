@@ -29,15 +29,21 @@ module BeyondCanvas
     end
 
     def valid_signature?(signature, data, secret)
+      signature = CGI.unescape(signature) unless base64?(signature)
       digest = OpenSSL::Digest.new('SHA1')
       hmac = OpenSSL::HMAC.digest(digest, secret, data)
-      URI.decode(signature) == Base64.encode64(hmac).chop
+
+      signature == Base64.encode64(hmac).chop
     end
 
     def signature_params
       data = URI.parse(request.original_url).to_s
       data << ":#{request.body.read}" if request.body.read.present?
       data
+    end
+
+    def base64?(value)
+      value.is_a?(String) && Base64.strict_encode64(Base64.decode64(value)) == value
     end
   end
 end

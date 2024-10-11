@@ -20,7 +20,12 @@ module BeyondCanvas # :nodoc:
   autoload :Configuration,            'beyond_canvas/configuration'
   autoload :MenuItemRegistration,     'beyond_canvas/menu_item_registration'
   autoload :ParameterSanitizer,       'beyond_canvas/parameter_sanitizer'
+  autoload :TestTools,                'beyond_canvas/test_tools'
   autoload :WebhookEventRegistration, 'beyond_canvas/webhook_event_registration'
+
+  module Middleware
+    autoload :CockpitAppHeader,         'beyond_canvas/middleware/cockpit_app_header'
+  end
 
   module Models # :nodoc:
     autoload :Shop, 'models/shop'

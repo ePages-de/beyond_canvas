@@ -38,6 +38,20 @@
     color: var(--notification-text);
   }
 
+  &__body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 100%;
+    max-height: 65vh;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
   &__close {
     // SEE: https://newbedev.com/change-svg-fill-color-in-before-or-after-css
     @include position(absolute, 20px 20px null null);
@@ -53,10 +67,6 @@
     &:hover {
       background-color: var(--modal-closeButton-icon-hover);
     }
-  }
-
-  &__body {
-    @extend %scrollbox;
   }
 
   &__footer {

@@ -38,94 +38,10 @@ $main-line-height: 1.5;
 $main-font-size: 14px;
 
 // ************************************************************
-// Headlines
-// ************************************************************
-
-$headline-line-height: 1;
-
-// ************************************************************
-// Links
-// ************************************************************
-
-$link-primary-color: darken($palette-primary, 10%) !default;
-$link-secondary-color: darken($palette-cancel, 10%) !default;
-$link-danger-color: darken($palette-danger, 10%) !default;
-$link-disabled-color: rgb(208,208,208) !default;
-
-// ************************************************************
-// Buttons
-// ************************************************************
-
-$button-primary-background: $palette-primary !default;
-$button-primary-color: $white !default;
-
-$button-secondary-background: $palette-cancel !default;
-$button-secondary-color: $white !default;
-
-$button-danger-background: $palette-danger !default;
-$button-danger-color: $white !default;
-
-$button-disabled-background: rgb(208,208,208) !default;
-$button-disabled-color: rgb(144,144,144) !default;
-$button-disabled-text-shadow: 1px 1px 0 $white !default;
-
-$button-border-radius: 3px !default;
-$button-box-shadow: true !default;
-$button-font-weight: 700;
-$button-padding: 6px 12px 7px;
-
-// ************************************************************
-// Cards
-// ************************************************************
-
-$card-padding: 40px;
-$card-margin: 30px;
-$card-separator-spacing: 40px;
-
-// ************************************************************
 // Containers
 // ************************************************************
 
 $container-spacing: 30px;
-
-// ************************************************************
-// Inputs
-// ************************************************************
-
-$input-border-color: rgb(217, 216, 195) !default;
-$input-border-color-focus: $palette-primary !default;
-$input-errors-color: $palette-danger !default;
-$input-disabled-background: rgb(245,244,239) !default;
-$input-disabled-color: rgb(163,161,137) !default;
-
-// ************************************************************
-// Checkboxes
-// ************************************************************
-
-$checkbox-checked-color: #97C344 !default; // This value MUST be HEX
-$checkbox-checked-background: #ffffff !default; // This value MUST be HEX
-$checkbox-unchecked-color: #C2BF9D !default; // This value MUST be HEX
-$checkbox-unchecked-background: #ffffff !default; // This value MUST be HEX
-
-// ************************************************************
-// Toggles
-// ************************************************************
-
-$toggle-border-color: #cbc9ad !default;
-$toggle-disabled-background: #f5f4ef !default;
-$toggle-checked-background: #97c344 !default; // This value MUST be HEX
-$toggle-checked-color: #ffffff !default; // This value MUST be HEX
-$toggle-unchecked-background: #c2bf9d !default; // This value MUST be HEX
-$toggle-unchecked-color: #ffffff !default; // This value MUST be HEX
-
-// ************************************************************
-// Radiobuttons
-// ************************************************************
-
-$radio-checked-color: #97C344 !default; // This value MUST be HEX
-$radio-checked-background: #ffffff !default; // This value MUST be HEX
-$radio-unchecked-color: #C2BF9D !default; // This value MUST be HEX
-$radio-unchecked-background: #ffffff !default; // This value MUST be HEX
 
 // ************************************************************
 // Hints
@@ -146,20 +62,6 @@ $logo-margin-bottom-public: 34px;
 
 $comment-background: rgb(246, 246, 243) !default;
 $comment-color: rgb(170, 169, 156) !default;
-
-// ************************************************************
-// Breadcrums
-// ************************************************************
-
-$breadcrum-color: rgb(112, 110, 77) !default;
-$breadcrum-color-hover: rgb(67, 65, 46) !default;
-$breadcrum-color-current: rgb(112, 110, 77) !default;
-
-// ************************************************************
-// Titles
-// ************************************************************
-
-$title-color: rgb(122, 118, 76) !default;
 
 // ************************************************************
 // Menu
@@ -225,9 +127,3 @@ $select2-tag-color: rgb(122, 118, 76) !default;
 $select2-disabled-background: rgb(245, 244, 239) !default;
 $select2-option-hover-background: rgb(229, 241, 240) !default;
 $select2-option-hover-color: rgb(62, 62, 62) !default;
-
-// ************************************************************
-// Collapsibles
-// ************************************************************
-
-$collapsible-color: $palette-primary !default;

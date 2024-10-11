@@ -3,20 +3,17 @@
 <html>
 <%= render 'beyond_canvas/shared/head' %>
 
-<body class="beyond-canvas body--public">
+<body class="beyond-canvas body--blank">
 
   <main class="main <%= params[:controller].gsub(/[\/_]/, "-") %>--<%= params[:action] %>">
 
-    <%= render 'beyond_canvas/shared/locales' %>
-
-    <div class="main-wrapper">
-
-      <%= render 'beyond_canvas/shared/logo' %>
+    <div class="main-wrapper"<% if content_for?(:max_width)%> style="max-width: <%= yield :max_width %>"<% end %>>
 
       <%= yield %>
 
     </div>
 
   </main>
+
 </body>
 </html>
