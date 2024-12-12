@@ -3,6 +3,13 @@
 ![Gem Version](https://img.shields.io/gem/v/beyond_canvas?label=gem%20version)
 ![License](https://img.shields.io/github/license/ePages-de/beyond_canvas)
 
+> [!WARNING]  
+> **Repository no Longer Maintained**
+>
+> This repository is no longer actively maintained. Feel free to fork it and modify it as needed. Issues and pull requests will no longer be monitored or addressed.
+>
+> Thank you for your understanding.
+
 ## Documentation
 
 Please see the [Beyond Canvas wiki](https://github.com/ePages-de/beyond_canvas/wiki) for additional information about the gem and its features.
